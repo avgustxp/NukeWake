@@ -1,65 +1,23 @@
 - type: lobbyBackground
-  id: NCCampFire
-  background: /Textures/Corvax/LobbyScreens/camp.png
-  name: Silence Camp
-  artist: baohe
+  id: LEGION
+  background: /Textures/Corvax/LobbyScreens/Legion.png
+  name: Legion
+  artist: Fallout TV Amazon
 
 - type: lobbyBackground
-  id: NCAdVictoriam
-  background: /Textures/Corvax/LobbyScreens/ad_victoriam.png
-  name: AD VICTORIAM
-  artist: baohe
+  id: ncrr
+  background: /Textures/Corvax/LobbyScreens/NCR.png
+  name: NCR
+  artist: Fallout TV Amazon
 
 - type: lobbyBackground
-  id: NCOasisBar
-  background: /Textures/Corvax/LobbyScreens/oasisbar.png
-  name: Oasis Bar
-  artist: rozycosmic
+  id: warr
+  background: /Textures/Corvax/LobbyScreens/War.png
+  name: WAR
+  artist: Fallout TV Amazon
 
 - type: lobbyBackground
-  id: NCTribalYama
-  background: /Textures/Corvax/LobbyScreens/tribalyama.png
-  name: Tribal Yama
-  artist: sverhbomba
-
-- type: lobbyBackground
-  id: NCDelaniHuk
-  background: /Textures/Corvax/LobbyScreens/arbat.png
-  name: Delani Huk
-  artist: Fox_Place
-
-- type: lobbyBackground
-  id: NCAquilliiNCRRangers
-  background: /Textures/Corvax/LobbyScreens/aquillii.png
-  name: Aquillii NCR Rangers
-  artist: l_i_q_u_e_u_r
-
-- type: lobbyBackground
-  id: NCBarWild
-  background: /Textures/Corvax/LobbyScreens/barwild.png
-  name: Wild Bar
-  artist: miaurokku
-
-- type: lobbyBackground
-  id: NCDepression
-  background: /Textures/Corvax/LobbyScreens/depression.png
-  name: Depression
-  artist: miaurokku
-
-- type: lobbyBackground
-  id: NClegionNoob
-  background: /Textures/Corvax/LobbyScreens/legionnoob.png
-  name: Legion get good
-  artist: miaurokku
-
-- type: lobbyBackground
-  id: NCWBSBrothers
-  background: /Textures/Corvax/LobbyScreens/me_and_the_brothers.png
-  name: Me and the brothers
-  artist: baohe
-
-- type: lobbyBackground
-  id: NCNain
-  background: /Textures/Corvax/LobbyScreens/nain.png
-  name: NaiN
-  artist: NaiN
+  id: bos
+  background: /Textures/Corvax/LobbyScreens/BoS.png
+  name: BoS
+  artist: Fallout TV Amazon
