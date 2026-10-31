@@ -1752,7 +1752,6 @@
     N14Magazine: 10
     N14Magazine50AMR: 200
     N14Magazine50AMRHEIAP: 200
-    N14MagazineAmerican120Drum: 120
     N14MagazineAwesome: 25
     N14MagazineAwesomeDirty: 10
     N14MagazineCovert: 25
@@ -2599,7 +2598,7 @@
     N14ClothingOuterCombatArmorMK3: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterCombatArmorRCMP: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterCombatArmorSeniorBOS: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
-    N14ClothingOuterNCRCombatVeteranArmors: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
+    N14ClothingOuterNCRCombatVeteranArmor: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterNCRCombatArmor: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterNCRCombatArmorBlueprint: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterNCRCombatArmorMK2: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
@@ -2682,7 +2681,7 @@
     N14ClothingHeadHatRanger: /Textures/_NukeWake/icons/iconsarmor/rangerhat.rsi
     N14ClothingOuterRangerArmor: /Textures/_NukeWake/icons/iconsarmor/patrolranger.rsi
     N14ClothingOuterRangerArmorOld: /Textures/_NukeWake/icons/iconsarmor/patrolranger.rsi
-    N14ClothingUniformJumpsuitPreWarCasual: /Textures/_NukeWake/icons/iconsarmor/prewarcasualoutfit.rsis
+    N14ClothingUniformJumpsuitPreWarCasual: /Textures/_NukeWake/icons/iconsarmor/prewarcasualoutfit.rsi
     N14ClothingUniformRangerVeteran: /Textures/_NukeWake/icons/iconsarmor/prewarcasualoutfit.rsi
     N14ClothingUniformRangerVeteranBlack: /Textures/_NukeWake/icons/iconsarmor/prewarcasualoutfit.rsi
     N14ClothingUniformJumpsuitCaravan: /Textures/_NukeWake/icons/iconsarmor/caravanfit.rsi
