@@ -8,4 +8,5 @@ n14-merchant-exit = Exit
 
 n14-merchant-info-cond = Прочность: {$pct}%
 n14-merchant-info-price = Цена: {$price}
-n14-merchant-info-ammo = {$caliber} ({$mag}/{$bag})
+n14-merchant-info-ammo = {$caliber} ({$mag}/{$cap}) {$bag}
+n14-merchant-info-charge = Заряд: {$mag}/{$cap}

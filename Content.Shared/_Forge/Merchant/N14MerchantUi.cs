@@ -64,6 +64,9 @@ public sealed class N14MerchantItemState
     /// <summary>Magazine/drum capacity.</summary>
     public int MagCapacity;
 
+    /// <summary>Weapon is powered by a battery: <see cref="AmmoInMag"/>/<see cref="MagCapacity"/> hold shots (charge).</summary>
+    public bool IsEnergyWeapon;
+
     /// <summary>Rounds of that caliber in the player's inventory (outside the magazine).</summary>
     public int AmmoInBag;
 
@@ -72,6 +75,9 @@ public sealed class N14MerchantItemState
 
     /// <summary>RSI path for the preview icon (empty = use client default).</summary>
     public string IconPath = string.Empty;
+
+    /// <summary>Optional RSI state for the preview icon (empty = "icon" or the first state).</summary>
+    public string IconState = string.Empty;
 }
 
 /// <summary>

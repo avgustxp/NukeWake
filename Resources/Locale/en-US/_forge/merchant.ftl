@@ -8,4 +8,5 @@ n14-merchant-exit = Exit
 
 n14-merchant-info-cond = Condition: {$pct}%
 n14-merchant-info-price = Price: {$price}
-n14-merchant-info-ammo = {$caliber} ({$mag}/{$bag})
+n14-merchant-info-ammo = {$caliber} ({$mag}/{$cap}) {$bag}
+n14-merchant-info-charge = Charge: {$mag}/{$cap}

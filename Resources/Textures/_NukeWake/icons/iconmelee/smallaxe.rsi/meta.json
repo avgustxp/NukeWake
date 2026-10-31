@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Fallout NV",
+  "size": {
+    "x": 106,
+    "y": 169
+  },
+  "states": [
+    {
+      "name": "image"
+    }
+    ]
+}

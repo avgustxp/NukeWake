@@ -1,0 +1,493 @@
+# MARK: Наборы товаров торговцев (merchant stock sets)
+# Каждый набор — 10 позиций: оружие ближнего боя, стрелковое, броня, одежда,
+# шлем, росток, патроны, руда, материал, хлам.
+# Все наборы одного тира объединяются в пул торговца: при появлении и каждые
+# 20 минут он случайно набирает из пула stockSize (по умолчанию 10) позиций.
+# Цена 0 = взять из N14MerchantPrices.
+# ВАЖНО: не добавлять дубли id прототипов внутри одного документа YAML.
+
+# MARK: Тир 1 — калибры до 7.62, дешёвое снаряжение
+- type: n14MerchantStockSet
+  id: N14MerchantStockT1Combat
+  name: Tier 1 - Combat
+  entries:
+    - product: N14WeaponRifle762SKS
+      price: 0
+    - product: N14ScrapMachete
+      price: 0
+    - product: N14ClothingOuterMetalArmor
+      price: 0
+    - product: N14ClothingUniformJumpsuitCombat
+      price: 0
+    - product: N14ClothingHeadHatCombatHelmet
+      price: 0
+    - product: N14FloraWildTatoClippingSeed
+      price: 0
+    - product: MagazineBox762
+      price: 0
+    - product: N14IronOre
+      price: 0
+    - product: N14Gunpowder
+      price: 0
+    - product: N14JunkDuctTape
+      price: 0
+    - product: N14WeaponSniper308Ross
+      price: 0
+    - product: N14WeaponSniperEnfield
+      price: 0
+    - product: N14WeaponSniper308PipeRifle
+      price: 0
+    - product: N14WeaponLaserRifle
+      price: 0
+    - product: N14WeaponRifle556Pipe
+      price: 0
+    - product: N14WeaponRifle556Carbine
+      price: 0
+    - product: N14WeaponSMG10mmPipe
+      price: 0
+    - product: N14WeaponShotgunCaravan
+      price: 0
+    - product: N14WeaponShotgunShort
+      price: 0
+
+- type: n14MerchantStockSet
+  id: N14MerchantStockT1Travel
+  name: Tier 1 - Travel
+  entries:
+    - product: N14WeaponSniper556VarmintRifle
+      price: 0
+    - product: N14CombatKnife
+      price: 0
+    - product: N14ClothingOuterLeatherArmor
+      price: 0
+    - product: N14ClothingBootsCowboy
+      price: 0
+    - product: N14ClothingHeadHatChineseHelmet
+      price: 0
+    - product: N14FloraWildBrocFlowerClippingSeed
+      price: 0
+    - product: MagazineBox556
+      price: 0
+    - product: N14LeadOre
+      price: 0
+    - product: N14MaterialThread
+      price: 0
+    - product: N14JunkCoffeepot
+      price: 0
+
+    - product: N14ClothingOuterVaultSecVest
+      price: 0
+    - product: N14ClothingOuterVestChinese
+      price: 0
+    - product: N14ClothingOuterLightMetalArmor
+      price: 0
+    - product: N14ClothingOuterMetalArmor
+      price: 0
+    - product: ClothingHeadHelmetBasic
+      price: 0
+
+    - product: N14ClothingHeadHatChineseHelmet
+      price: 0
+    - product: N14ClothingHeadHatLightBaseballHelmet
+      price: 0
+    - product: ClothingHeadHelmetRiot
+      price: 0
+    - product: MisfitsClothingHeadKhanHelmet
+      price: 0
+    - product: N14ClothingHeadTownGuardBrodie
+      price: 0
+
+    - product: N14ClothingHeadHatEyeBot
+      price: 0
+    - product: N14ClothingHeadHatScavengerHelmet
+      price: 0
+
+- type: n14MerchantStockSet
+  id: N14MerchantStockT1Utility
+  name: Tier 1 - Utility
+  entries:
+    - product: N14WeaponPistol10mmPipe
+      price: 0
+    - product: N14BaseBallBat
+      price: 0
+    - product: N14ClothingOuterCoatDuster
+      price: 0
+    - product: N14ClothingUniformJumpsuitTrader
+      price: 0
+    - product: N14ClothingHeadHatHelmetFirefighterHelmet
+      price: 0
+    - product: N14FloraWildCottonClippingSeed
+      price: 0
+    - product: MagazineBox10mm
+      price: 0
+    - product: N14CopperOre
+      price: 0
+    - product: N14MaterialLeather
+      price: 0
+    - product: N14JunkToaster
+      price: 0
+
+    - product: N14DirtyGauze10
+      price: 0
+    - product: Brutepack
+      price: 0
+    - product: N14AloeSalve
+      price: 0
+
+    - product: ClothingBeltRope
+      price: 0
+    - product: N14StimpakDirty
+      price: 0
+    - product: N14Psycho
+      price: 0
+
+# MARK: Тир 2 — дробовики 12/20ga, .44, .308, 12.7mm
+- type: n14MerchantStockSet
+  id: N14MerchantStockT2Combat
+  name: Tier 2 - Combat
+  entries:
+    - product: N14WeaponRifle762Fal
+      price: 0
+    - product: N14Machete
+      price: 0
+    - product: N14ClothingOuterCombatArmor
+      price: 0
+    - product: N14ClothingUniformJumpsuitCombat
+      price: 0
+    - product: N14ClothingHeadHatCombatHelmetMK2
+      price: 0
+    - product: N14FloraWildXanderRootClippingSeed
+      price: 0
+    - product: MagazineBox762
+      price: 0
+    - product: N14GoldOre
+      price: 0
+    - product: N14MaterialCircuitry
+      price: 0
+    - product: N14JunkComponentSensorModule
+      price: 0
+    - product: JunkCannon
+      price: 0
+    - product: N14WeaponSMG12mmPipe
+      price: 0
+    - product: N14WeaponSMG12mmAdvancedCanadian
+      price: 0
+    - product: N14WeaponSMG12mm
+      price: 0
+    - product: N14WeaponSMG9mmCanadian
+      price: 0
+    - product: N14WeaponSMG45
+      price: 0
+    - product: N14WeaponRifle308Battle
+      price: 0
+    - product: N14WeaponSniper308LeverRifle
+      price: 0
+    - product: N14WeaponLaserRifleRecharger
+      price: 0
+    - product: N14ClothingOuterCombatArmor
+      price: 0
+    - product: N14WeaponShotgunLever
+      price: 0
+    - product: N14WeaponShotgunAuto
+      price: 0
+    - product: N14WeaponShotgun
+      price: 0
+    - product: N14WeaponBlowback
+      price: 0
+    - product: N14WeaponLaserRevolver
+      price: 0
+    - product: N14WeaponLaserRifleMakeshift
+      price: 0
+    - product: N14WeaponPlasmaRifleCrude
+      price: 0
+    - product: N14WeaponPlasmaPistol
+      price: 0
+
+
+- type: n14MerchantStockSet
+  id: N14MerchantStockT2Travel
+  name: Tier 2 - Travel
+  entries:
+    - product: N14WeaponShotgunRiot
+      price: 0
+    - product: N14ClothingScavengerHeavyArmor
+      price: 0
+    - product: N14ClothingBootsCombat
+      price: 0
+    - product: N14ClothingHeadVaultTecCombatHelmet
+      price: 0
+    - product: N14FloraWildBrocFlowerClippingSeed
+      price: 0
+    - product: MagazineBox20gauge
+      price: 0
+    - product: N14SilverOre
+      price: 0
+    - product: N14PowerCellHigh
+      price: 0
+    - product: N14MaterialBrahminHide
+      price: 0
+    - product: N14JunkToaster
+      price: 0
+    - product: N14Turbo
+      price: 0
+    - product: N14Psycho
+      price: 0
+    - product: N14Jet
+      price: 0
+    - product: N14FoodSugarbombs
+      price: 0
+    - product: ThrowingKnife
+      price: 0
+    - product: MagazineBox22
+      price: 0
+    - product: MagazineBox45-70
+      price: 0
+
+
+- type: n14MerchantStockSet
+  id: N14MerchantStockT2Utility
+  name: Tier 2 - Utility
+  entries:
+    - product: N14WeaponSMG12mm
+      price: 0
+    - product: N14ripper
+      price: 0
+    - product: N14ClothingOuterPoliceCombat
+      price: 0
+    - product: N14ClothingUniformJumpsuitMerc
+      price: 0
+    - product: N14ClothingHeadHatHelmetRadHelmet
+      price: 0
+    - product: N14FloraWildPricklyPearClippingSeed
+      price: 0
+    - product: MagazineBox12
+      price: 0
+    - product: N14AluminumOre
+      price: 0
+    - product: N14MaterialAntChitin
+      price: 0
+    - product: N14JunkComponentGearLarge
+      price: 0
+    - product: N14MedkitFilled
+      price: 0
+    - product: ClothingBeltRope
+      price: 0
+    - product: N14LongSword
+      price: 0
+    - product: N14GolfClub
+      price: 0
+    - product: N14ClothingHandsKnucklesWithClaws
+      price: 0
+    - product: N14StimpakDirty
+      price: 0
+    - product: N14DrinkNukaCola
+      price: 0
+    - product: N14CleanGauze10
+      price:
+    - product: N14Ointment10
+      price: 0
+    - product: ClothingMaskGasMaskHose
+      price: 0
+    - product: N14ClothingOuterPainspike
+      price: 0
+    - product: N14ClothingOuterRaiderBadlands
+      price: 0
+    - product: N14ClothingSnowGoggles
+      price: 0
+    - product: ClothingHeadHatWelding
+      price: 0
+
+# MARK: Тир 3 — .50, премиум-оружие, лучшая не-фракционная броня
+- type: n14MerchantStockSet
+  id: N14MerchantStockT3Combat
+  name: Tier 3 - Combat
+  entries:
+    - product: N14WeaponRifleAk112
+      price: 0
+    - product: N14ClothingScavengerHeavyArmor
+      price: 0
+    - product: N14WeaponGaussRifle
+      price: 0
+    - product: N14WeaponLaserRifleWattz2000
+      price: 0
+    - product: N14WeaponLaserRCW
+      price: 0
+    - product: N14WeaponMinigun
+      price: 0
+    - product: N14SuperSledgeHammer
+      price: 0
+    - product: N14BaseBallBat
+      price: 0
+    - product: N14ClothingEyesNCRNVGs
+      price: 0
+    - product: N14WeaponLMG
+      price: 0
+    - product: N14WeaponLaserRifle
+      price: 0
+    - product: N14WeaponLMGchinese
+      price: 0
+    - product: N14WeaponHMGcanadian
+      price: 0
+    - product: N14WeaponSMG12mmAdvanced
+      price: 0
+    - product: N14WeaponSMG22Silenced
+      price: 0
+    - product: N14WeaponSMG12mmAdvancedChinese
+      price: 0
+    - product: N14WeaponSniper50Pipe
+      price: 0
+    - product: N14WeaponRevolver45-70WildWhisper
+      price: 0
+    - product: N14WeaponRevolver44TribalUpgradedExtra
+      price: 0
+    - product: N14WeaponRifle762Canadian
+      price: 0
+    - product: N14WeaponLaserMagnetoPistol
+      price: 0
+    - product: N14WeaponRifleGrenade
+      price: 0
+    - product: N14WeaponShotgunCanadian
+      price: 0
+    - product: N14WeaponSniper45-70BrushGun
+      price: 0
+    - product: N14WeaponPlasmaRifle
+      price: 0
+    - product: N14WeaponPlasmaCaster
+      price: 0
+    - product: N14WeaponLauncherMissile
+      price: 0
+    - product: N14WeaponLMGBren
+      price: 0
+    - product: N14ClothingOuterCombatArmorMK2
+      price: 0
+    - product: N14ClothingUniformJumpsuitMilUniform
+      price: 0
+    - product: N14ClothingHeadHatBaseballHelmet
+      price: 0
+    - product: N14FloraWildGlowpepperClippingSeed
+      price: 0
+    - product: MagazineBox545
+      price: 0
+    - product: N14WeaponPistol10mm
+      price: 0
+    - product: N14GoldOre
+      price: 0
+    - product: N14IngotLead20
+      price: 0
+    - product: N14ScrapElectronic
+      price: 0
+
+- type: n14MerchantStockSet
+  id: N14MerchantStockT3Travel
+  name: Tier 3 - Travel
+  entries:
+    - product: N14ripper
+      price: 0
+    - product: N14ClothingBootsCombatMK2
+      price: 0
+    - product: N14ClothingHeadHatBaseHelmetmarine
+      price: 0
+    - product: N14FloraDaturaClippingSeed
+      price: 0
+    - product: MagazineBox308
+      price: 0
+    - product: N14SilverOre
+      price: 0
+    - product: N14MaterialNightstalkerPelt
+      price: 0
+    - product: N14Scrap
+      price: 0
+    - product: N14DrinkSunsetSarsaparillaBottleFull
+      price: 0
+    - product: N14CryoGrenade
+      price: 0
+    - product: Portafib
+      price: 0
+    - product: N14ClothingBackpackHiking
+      price: 0
+    - product: N14JunkLunchboxFill
+      price: 0
+    - product: N14ScrapBrass1
+      price: 0
+    - product: N14HolotapeQuestEnclaveplans
+      price: 0
+    - product: N14CeremonialSword
+      price: 0
+    - product: N14ripper
+      price: 0
+    - product: N14ClothingBootsCombatMK2
+      price: 0
+    - product: N14ClothingHeadHatBaseHelmetmarine
+      price: 0
+    - product: N14FloraDaturaClippingSeed
+      price: 0
+    - product: MagazineBox12
+      price: 0
+    - product: N14JunkGunpartsAdvancedFrame
+      price: 0
+    - product: N14MagazineMinigun5mm
+      price: 0
+    - product: N14PlasmaCartridge
+      price: 0
+    - product: 0N14DrinkNukaColaQuantum
+      price: 0
+    - product: N14ClothingOuterVaultTecCombatArmor
+      price: 0
+    - product: N14ClothingUniformJumpsuitManagerSuit
+      price: 0
+    - product: N14FloraWildMutfruitClippingSeed
+      price: 0
+    - product: MagazineBox50
+      price: 0
+    - product: N14BrassOre
+      price: 0
+    - product: N14IngotGold
+      price: 0
+    - product: N14JunkComponentSensorModule
+      price: 0
+    - product: N14SledgeHammer
+      price: 0
+    - product: 40mmGrenadeFrag
+      price: 0
+    - product: SmokeGrenade
+      price: 0
+    - product: N14ClothingHandsPowerFist
+      price: 0
+    - product: N14ClothingBeltBoSWebbing
+      price: 0
+    - product: ClothingBeltMilitary
+      price: 0
+
+
+- type: n14MerchantStockSet
+  id: N14MerchantStockT3Utility
+  name: Tier 3 - Utility
+  entries:
+    - product: N14StimpakDirty
+      price: 0
+    - product: N14Stimpak
+      price: 0
+    - product: N14DirtySuperStimpak
+      price: 0
+    - product: N14RadXCanisterFilled
+      price: 0
+    - product: N14ChemicalSyringeAntidote
+      price: 0
+    - product: N14RadAwayBloodbag
+      price: 0
+    - product: N14RadAwayInhaler
+      price: 0
+    - product: N14HealingPoultice
+      price: 0
+    - product: N14HealingPowder
+      price: 0
+    - product: N14DoctorBag
+      price: 0
+    - product: N14CleanGauze10
+      price: 0
+    - product: MedkitCombat
+      price: 0
+    - product: N14RegenerativeOintment
+      price: 0
+
+

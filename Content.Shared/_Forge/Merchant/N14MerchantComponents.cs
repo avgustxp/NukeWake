@@ -38,6 +38,43 @@ public sealed partial class N14MerchantComponent : Component
     /// </summary>
     [DataField("wants")]
     public List<N14MerchantListing> Wants = new();
+
+    /// <summary>
+    ///     Наборы-пулы, из которых торговец собирает ассортимент.
+    ///     Записи всех перечисленных наборов объединяются в один пул, и при каждом
+    ///     обновлении из него случайно выбирается <see cref="StockSize"/> позиций.
+    /// </summary>
+    [DataField("stockSets")]
+    public List<ProtoId<N14MerchantStockSetPrototype>> StockSets = new();
+
+    /// <summary>
+    ///     Сколько позиций торговец набирает из пула при создании и обновлении ассортимента.
+    /// </summary>
+    [DataField("stockSize")]
+    public int StockSize = 10;
+
+    /// <summary>
+    ///     Интервал обновления ассортимента в секундах. 0 или меньше — не обновлять.
+    /// </summary>
+    [DataField("restockSeconds")]
+    public int RestockSeconds = 1200;
+
+    /// <summary>
+    ///     Накопитель времени до следующего обновления. Не сохраняется в карту.
+    /// </summary>
+    public float RestockTimer;
+
+    /// <summary>
+    ///     Lower bound for the random starting caps roll. Negative = use static <see cref="Caps"/>.
+    /// </summary>
+    [DataField("capsMin")]
+    public int CapsMin = -1;
+
+    /// <summary>
+    ///     Upper bound for the random starting caps roll (inclusive).
+    /// </summary>
+    [DataField("capsMax")]
+    public int CapsMax = -1;
 }
 
 /// <summary>
@@ -63,4 +100,11 @@ public partial record struct N14MerchantListing()
     /// </summary>
     [DataField("remaining")]
     public int Remaining { get; set; } = -1;
+
+    /// <summary>
+    ///     Позиция выкуплена у игрока. Такие позиции не удаляются при обновлении
+    ///     ассортимента и остаются в продаже до тех пор, пока их не купят.
+    /// </summary>
+    [DataField("playerSold")]
+    public bool PlayerSold { get; set; }
 }

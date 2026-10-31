@@ -23,6 +23,21 @@ public sealed class N14MerchantWindow : FancyWindow
     /// <summary>Дефолтная иконка предпросмотра для сущностей без явного пути в списке иконок.</summary>
     private const string DefaultPreviewRsiPath = "/Textures/_NukeWake/icons/iconsother/musor.rsi";
 
+    /// <summary>
+    ///     «Золотой стандарт» предпросмотра — иконка N14WeaponRifle556Service.
+    ///     Задаёт пропорции рамки: все остальные иконки масштабируются внутрь неё.
+    /// </summary>
+    private const string StandardPreviewRsiPath = "/Textures/_NukeWake/icons/iconsguns/servicerifle.rsi";
+
+    /// <summary>Высота рамки предпросмотра (px). Ширина рамки считается по пропорциям эталона.</summary>
+    private const float PreviewBoxHeight = 112f;
+
+    /// <summary>Пропорции эталона (141x161) — на случай, если ресурс не загрузился.</summary>
+    private const float PreviewFallbackAspect = 141f / 161f;
+
+    /// <summary>Отступ рамки предпросмотра от нижнего края левой колонки.</summary>
+    private const float PreviewPanelTopGap = 18f;
+
     /// <summary>Кэш текстур предпросмотра по пути к RSI.</summary>
     private static readonly Dictionary<string, Texture?> PreviewCache = new();
 
@@ -74,6 +89,7 @@ public sealed class N14MerchantWindow : FancyWindow
     private readonly Dictionary<string, N14MerchantItemState> _itemsByProto = new();
 
     private readonly HashSet<int> _selectedOffers = new();
+    private readonly Dictionary<int, string> _selectedOfferProtos = new();
     private readonly HashSet<string> _selectedRequests = new();
 
     private readonly Font _font = N14MerchantTheme.GetFont(14);
@@ -81,6 +97,9 @@ public sealed class N14MerchantWindow : FancyWindow
 
     public N14MerchantWindow()
     {
+        // Звуки кликов загружаются заранее, чтобы первый клик не ждал файла.
+        N14MerchantSounds.Preload();
+
         Resizable = false;
         SetSize = new Vector2(820, 620);
         Title = Loc.GetString("n14-merchant-window-title");
@@ -119,14 +138,20 @@ public sealed class N14MerchantWindow : FancyWindow
         // Позиция/размер колонок меняются при пересборке строк — пересчитываем укладку описания.
         _columns.OnResized += LayoutItemData;
 
+        // Рамка предпросмотра задаётся эталонной иконкой (N14WeaponRifle556Service):
+        // высота фиксирована, ширина — по её пропорциям.
+        var previewBox = GetPreviewBox();
+
         // Спрайт-предпросмотр: висит под нижним краем левой колонки, по центру её ширины.
         _preview = new TextureRect
         {
             Texture = LoadPreviewTexture(null),
             Modulate = N14MerchantTheme.Accent,
-            MinSize = new Vector2(96f, 112f),
-            MaxSize = new Vector2(96f, 112f),
-            Stretch = TextureRect.StretchMode.Scale,
+            MinSize = previewBox,
+            MaxSize = previewBox,
+            // Каждая иконка вписывается в рамку эталона целиком: ширина, высота и общий размер
+            // меняются под её пропорции, но сама картинка не искажается.
+            Stretch = TextureRect.StretchMode.KeepAspectCentered,
             MouseFilter = Control.MouseFilterMode.Ignore,
             VerticalAlignment = VAlignment.Center,
         };
@@ -175,15 +200,15 @@ public sealed class N14MerchantWindow : FancyWindow
         };
         previewPanel.AddChild(_preview);
 
-        // Анкер к нижнему центру колонки: иконка (96) отцентрирована.
+        // Анкер к нижнему центру колонки: рамка иконки отцентрирована по её ширине.
         LayoutContainer.SetAnchorLeft(previewPanel, 0.5f);
         LayoutContainer.SetAnchorRight(previewPanel, 0.5f);
         LayoutContainer.SetAnchorTop(previewPanel, 1f);
         LayoutContainer.SetAnchorBottom(previewPanel, 1f);
-        LayoutContainer.SetMarginLeft(previewPanel, -48f);
-        LayoutContainer.SetMarginRight(previewPanel, 48f);
-        LayoutContainer.SetMarginTop(previewPanel, 18f);
-        LayoutContainer.SetMarginBottom(previewPanel, 130f);
+        LayoutContainer.SetMarginLeft(previewPanel, -previewBox.X / 2f);
+        LayoutContainer.SetMarginRight(previewPanel, previewBox.X / 2f);
+        LayoutContainer.SetMarginTop(previewPanel, PreviewPanelTopGap);
+        LayoutContainer.SetMarginBottom(previewPanel, PreviewPanelTopGap + PreviewBoxHeight);
 
         _previewPanel = previewPanel;
         _playerColumn.AddChild(previewPanel);
@@ -197,7 +222,19 @@ public sealed class N14MerchantWindow : FancyWindow
         accept.Label.FontOverride = _font;
         accept.Label.FontColorOverride = N14MerchantTheme.Accent;
         ApplyButtonStyle(accept);
-        accept.OnPressed += _ => OnAccept?.Invoke();
+        accept.OnPressed += _ =>
+        {
+            // Accept — подтверждение сделки; звуки покупки/продажи — по выбранным позициям.
+            N14MerchantSounds.PlayAccept();
+
+            if (_selectedOffers.Count > 0)
+                N14MerchantSounds.PlayPurchase();
+
+            if (_selectedRequests.Count > 0)
+                N14MerchantSounds.PlaySale();
+
+            OnAccept?.Invoke();
+        };
 
         var exit = new Button
         {
@@ -210,6 +247,7 @@ public sealed class N14MerchantWindow : FancyWindow
         ApplyButtonStyle(exit);
         exit.OnPressed += _ =>
         {
+            N14MerchantSounds.PlayExit();
             OnExit?.Invoke();
             Close();
         };
@@ -406,6 +444,19 @@ public sealed class N14MerchantWindow : FancyWindow
         foreach (var item in state.Offers)
             _itemsByProto.TryAdd(item.Proto, item);
 
+        // Отбрасываем выбор по индексам, которые после обновления ассортимента
+        // указывают уже на другой товар (или на позицию, которой больше нет).
+        var currentOffers = new Dictionary<int, string>();
+        foreach (var item in state.Offers)
+            currentOffers[item.Index] = item.Proto;
+
+        _selectedOffers.RemoveWhere(index =>
+            !currentOffers.TryGetValue(index, out var proto) ||
+            _selectedOfferProtos.GetValueOrDefault(index) != proto);
+        _selectedOfferProtos.Clear();
+        foreach (var index in _selectedOffers)
+            _selectedOfferProtos[index] = currentOffers[index];
+
         _playerColumn.Rows.RemoveAllChildren();
         foreach (var item in state.Requests)
         {
@@ -426,8 +477,6 @@ public sealed class N14MerchantWindow : FancyWindow
             _merchantColumn.Rows.AddChild(row);
         }
 
-        // Отбрасываем выбор по позициям, которых больше нет.
-        _selectedOffers.RemoveWhere(i => state.Offers.All(o => o.Index != i));
         _selectedRequests.RemoveWhere(p => state.Requests.All(r => r.Proto != p));
 
         RecenterWindow(new Vector2(0.5f, 0.5f));
@@ -437,9 +486,17 @@ public sealed class N14MerchantWindow : FancyWindow
     private void OnOfferClicked(N14MerchantRow row)
     {
         if (row.Selected)
+        {
             _selectedOffers.Add(row.OfferIndex);
+            _selectedOfferProtos[row.OfferIndex] = row.Proto;
+            N14MerchantSounds.PlayItemSelected();
+        }
         else
+        {
             _selectedOffers.Remove(row.OfferIndex);
+            _selectedOfferProtos.Remove(row.OfferIndex);
+            N14MerchantSounds.PlayItemDeselected();
+        }
 
         RebuildMiddle();
     }
@@ -447,9 +504,15 @@ public sealed class N14MerchantWindow : FancyWindow
     private void OnRequestClicked(N14MerchantRow row)
     {
         if (row.Selected)
+        {
             _selectedRequests.Add(row.Proto);
+            N14MerchantSounds.PlayItemSelected();
+        }
         else
+        {
             _selectedRequests.Remove(row.Proto);
+            N14MerchantSounds.PlayItemDeselected();
+        }
 
         RebuildMiddle();
     }
@@ -470,13 +533,21 @@ public sealed class N14MerchantWindow : FancyWindow
         _priceBox.SetText(Loc.GetString("n14-merchant-info-price", ("price", item.Price)));
         _priceBox.Visible = true;
 
-        // Калибр и патроны — только если есть калибр (оружие).
+        // Калибр и патроны — для огнестрельного; заряд батареи — для лазерного/плазменного.
         if (!string.IsNullOrEmpty(item.Caliber))
         {
             _ammoBox.SetText(Loc.GetString("n14-merchant-info-ammo",
                 ("caliber", item.Caliber),
                 ("mag", item.AmmoInMag),
+                ("cap", item.MagCapacity),
                 ("bag", item.AmmoInBag)));
+            _ammoBox.Visible = true;
+        }
+        else if (item.IsEnergyWeapon)
+        {
+            _ammoBox.SetText(Loc.GetString("n14-merchant-info-charge",
+                ("mag", item.AmmoInMag),
+                ("cap", item.MagCapacity)));
             _ammoBox.Visible = true;
         }
         else
@@ -492,7 +563,7 @@ public sealed class N14MerchantWindow : FancyWindow
         _itemData.Visible = true;
 
         // Иконка из YAML-списка (или дефолт iconsother.rsi).
-        _preview.Texture = LoadPreviewTexture(item.IconPath);
+        _preview.Texture = LoadPreviewTexture(item.IconPath, item.IconState);
         LayoutItemData();
     }
 
@@ -503,35 +574,63 @@ public sealed class N14MerchantWindow : FancyWindow
         => text.Replace("[", "[lb]");
 
     /// <summary>
-    ///     Первый кадр первого состояния RSI с иконкой предпросмотра (или null, если не нашли).
+    ///     Размер рамки предпросмотра по «золотому стандарту»: высота фиксирована, ширина —
+    ///     из пропорций эталонной иконки (N14WeaponRifle556Service). Внутри рамки каждая иконка
+    ///     вписывается целиком, поэтому её ширина, высота и общий размер меняются относительно
+    ///     эталона, но сама картинка не растягивается.
     /// </summary>
-    private static Texture? LoadPreviewTexture(string? rsiPath)
+    private static Vector2 GetPreviewBox()
+    {
+        var aspect = PreviewFallbackAspect;
+
+        if (TryLoadRsiFirstFrame(StandardPreviewRsiPath) is { Height: > 0 } standard)
+            aspect = (float)standard.Width / standard.Height;
+
+        return new Vector2(PreviewBoxHeight * aspect, PreviewBoxHeight);
+    }
+
+    /// <summary>
+    ///     Первый кадр состояния RSI с иконкой предпросмотра (или null, если не нашли).
+    ///     <paramref name="state"/> задаёт конкретное состояние; без него берётся "icon", затем первое.
+    /// </summary>
+    private static Texture? LoadPreviewTexture(string? rsiPath, string? state = null)
     {
         var path = string.IsNullOrEmpty(rsiPath) ? DefaultPreviewRsiPath : rsiPath;
+        var key = string.IsNullOrEmpty(state) ? path : $"{path}#{state}";
 
-        if (PreviewCache.TryGetValue(path, out var cached))
+        if (PreviewCache.TryGetValue(key, out var cached))
             return cached;
 
-        var texture = TryLoadRsiFirstFrame(path);
+        var texture = TryLoadRsiFirstFrame(path, state);
 
         // Путь из списка мог быть неверным/битым — падаем на дефолтную иконку.
         if (texture == null && path != DefaultPreviewRsiPath)
             texture = TryLoadRsiFirstFrame(DefaultPreviewRsiPath);
 
-        PreviewCache[path] = texture;
+        PreviewCache[key] = texture;
         return texture;
     }
 
-    /// <summary>Первый кадр первого состояния RSI (или null, если ресурс/кадр не найден).</summary>
-    private static Texture? TryLoadRsiFirstFrame(string path)
+    /// <summary>
+    ///     Кадр иконки из RSI. Приоритет: заданное состояние -> "icon" -> первое доступное.
+    /// </summary>
+    private static Texture? TryLoadRsiFirstFrame(string path, string? state = null)
     {
         var cache = IoCManager.Resolve<IResourceCache>();
 
         if (!cache.TryGetResource<RSIResource>(path, out var rsi))
             return null;
 
-        foreach (var state in rsi.RSI)
-            return state.Frame0;
+        // Явно заданное состояние (например, "iron" для руды).
+        if (!string.IsNullOrEmpty(state) && rsi.RSI.TryGetState(state, out var requested))
+            return requested.Frame0;
+
+        // Prefer the inventory icon state so clothes/armour previews show the item sprite.
+        if (rsi.RSI.TryGetState("icon", out var icon))
+            return icon.Frame0;
+
+        foreach (var rsiState in rsi.RSI)
+            return rsiState.Frame0;
 
         return null;
     }
@@ -620,6 +719,7 @@ public sealed class N14MerchantWindow : FancyWindow
     public void ClearSelection()
     {
         _selectedOffers.Clear();
+        _selectedOfferProtos.Clear();
         _selectedRequests.Clear();
 
         foreach (var row in _merchantColumn.Rows.Children)
