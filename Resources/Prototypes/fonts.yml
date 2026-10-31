@@ -15,6 +15,10 @@
   path: /Fonts/NotoSans/NotoSans-BoldItalic.ttf
 
 - type: font
+  id: Monofonto
+  path: /Fonts/Monofonto/Monofonto.ttf
+
+- type: font
   id: NotoSansDisplay
   path: /Fonts/NotoSansDisplay/NotoSansDisplay-Regular.ttf
 

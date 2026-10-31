@@ -1,0 +1,16 @@
+light_mode unshaded;
+
+uniform sampler2D SCREEN_TEXTURE;
+uniform lowp vec3 tint_color;   // RGB on a 0-1 scale
+uniform lowp float tint_opacity; // 0-1
+
+void fragment() {
+    highp vec4 color = zTextureSpec(SCREEN_TEXTURE, FRAGCOORD.xy * SCREEN_PIXEL_SIZE);
+
+    // Fallout: New Vegas "ImageSpace -> Cinematic" tint:
+    // a multiply blend lerped by the tint opacity. At full opacity the whole
+    // frame renders in shades of tint_color while keeping its shading.
+    color.rgb = mix(color.rgb, color.rgb * tint_color, tint_opacity);
+
+    COLOR = color;
+}

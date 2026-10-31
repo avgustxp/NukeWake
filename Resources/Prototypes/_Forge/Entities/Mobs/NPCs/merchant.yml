@@ -1,0 +1,160 @@
+# MARK: Торговцы (merchant NPCs)
+# Неподвижные NPC трёх тиров: клик по ним открывает окно торговли.
+# Ассортимент собирается из пула наборов n14MerchantStockSet (merchant_tiers.yml):
+# записи всех перечисленных наборов объединяются, и торговец случайно набирает
+# stockSize позиций. Ассортимент обновляется каждые restockSeconds секунд
+# (по умолчанию 1200 = 20 минут).
+# Выкупленные у игрока вещи остаются в продаже и после обновления ассортимента.
+# Крышки в запасе роллятся случайно при появлении на карте.
+
+# MARK: Тир 1 — дешёвое снаряжение, калибры до 7.62
+- type: startingGear
+  id: N14MerchantGearT1
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitTrader
+    shoes: N14ClothingBootsCowboy
+    head: N14ClothingHeadHatCowboyBrown
+    outerClothing: N14ClothingOuterCoatDuster
+
+- type: entity
+  parent: N14MobHumanWastelander
+  id: N14MobHumanMerchant
+  name: Местный торговец
+  description: Вчерашний обитатель пустоши. Продает легко доступное оружие и слабую броню.
+  components:
+    - type: Icon
+      sprite: _Nuclear14/Markers/Jobs/wastelanders.rsi
+      state: wastelander
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [N14MerchantGearT1]
+    - type: NpcFactionMember
+      factions:
+      - CaravanCompany
+    # Неподвижность: статичное тело, игрок не может утащить/поднять/обыскать.
+    - type: Physics
+      bodyType: Static
+    - type: RemoveComponents
+      components:
+        - Strippable
+        - Pullable
+        - Carriable
+    # Бессмертие.
+    - type: Godmode
+    - type: N14Merchant
+      merchantName: Merchant
+      capsMin: 2000
+      capsMax: 4000
+      stockSets:
+        - N14MerchantStockT1Combat
+        - N14MerchantStockT1Travel
+        - N14MerchantStockT1Utility
+      stockSize: 10
+      restockSeconds: 1200
+    - type: ActivatableUI
+      key: enum.N14MerchantUiKey.Key
+    - type: UserInterface
+      interfaces:
+        enum.N14MerchantUiKey.Key:
+          type: N14MerchantBoundUserInterface
+
+# MARK: Тир 2 — среднее снаряжение, дробовики и .308
+- type: startingGear
+  id: N14MerchantGearT2
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitTrader
+    shoes: N14ClothingBootsCombat
+    head: N14ClothingMaskLinerBlack
+    outerClothing: N14ClothingOuterChitinArmor
+
+- type: entity
+  parent: N14MobHumanWastelander
+  id: N14MobHumanMerchantTier2
+  name: Караванщик
+  description: Обыкновенный караванщик, продает товары каравана.
+  components:
+    - type: Icon
+      sprite: _Nuclear14/Markers/Jobs/wastelanders.rsi
+      state: wastelander
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [N14MerchantGearT2]
+    - type: NpcFactionMember
+      factions:
+      - CaravanCompany
+    - type: Physics
+      bodyType: Static
+    - type: RemoveComponents
+      components:
+        - Strippable
+        - Pullable
+        - Carriable
+    - type: Godmode
+    - type: N14Merchant
+      merchantName: Veteran Trader
+      capsMin: 3000
+      capsMax: 5000
+      stockSets:
+        - N14MerchantStockT2Combat
+        - N14MerchantStockT2Travel
+        - N14MerchantStockT2Utility
+      stockSize: 10
+      restockSeconds: 1200
+    - type: ActivatableUI
+      key: enum.N14MerchantUiKey.Key
+    - type: UserInterface
+      interfaces:
+        enum.N14MerchantUiKey.Key:
+          type: N14MerchantBoundUserInterface
+
+# MARK: Тир 3 — премиум-оружие, .50 и лучшая не-фракционная броня
+- type: startingGear
+  id: N14MerchantGearT3
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitMilUniform
+    shoes: N14ClothingBootsCombatMK2
+    head: N14ClothingHeadHatEnclaveHelmetHood
+    outerClothing: N14ClothingOuterPowerArmorAdvanced2
+
+- type: entity
+  parent: N14MobHumanWastelander
+  id: N14MobHumanMerchantTier3
+  name: Поставщик
+  description: Довольно редкий персонаж на пустошах. Обладает в своем ассортименте уникальным и редким товаром.
+  components:
+    - type: Icon
+      sprite: _Nuclear14/Markers/Jobs/wastelanders.rsi
+      state: wastelander
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [N14MerchantGearT3]
+    - type: NpcFactionMember
+      factions:
+      - CaravanCompany
+    - type: Physics
+      bodyType: Static
+    - type: RemoveComponents
+      components:
+        - Strippable
+        - Pullable
+        - Carriable
+    - type: Godmode
+    - type: N14Merchant
+      merchantName: Elite Trader
+      capsMin: 6000
+      capsMax: 7000
+      stockSets:
+        - N14MerchantStockT3Combat
+        - N14MerchantStockT3Travel
+        - N14MerchantStockT3Utility
+      stockSize: 10
+      restockSeconds: 1200
+    - type: ActivatableUI
+      key: enum.N14MerchantUiKey.Key
+    - type: UserInterface
+      interfaces:
+        enum.N14MerchantUiKey.Key:
+          type: N14MerchantBoundUserInterface
