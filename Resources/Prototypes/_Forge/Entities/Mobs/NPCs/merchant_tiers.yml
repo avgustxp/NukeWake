@@ -283,7 +283,7 @@
     - product: N14DrinkNukaCola
       price: 0
     - product: N14CleanGauze10
-      price:
+      price: 0
     - product: N14Ointment10
       price: 0
     - product: ClothingMaskGasMaskHose

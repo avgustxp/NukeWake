@@ -2798,3 +2798,13 @@
     N14ClothingHeadHatCenturionConquerorHelmet: /Textures/_NukeWake/icons/iconsarmor/centurionhelmet.rsi
     N14ClothingOuterCinderCenturionArmor: /Textures/_NukeWake/icons/iconsarmor/centurionarmor.rsi
     N14ClothingOuterHeavyCenturionArmor: /Textures/_NukeWake/icons/iconsarmor/centurionarmor.rsi
+    # Силовые шлемы (дополнение)
+    N14ClothingHeadHelmetPowerArmorHellCat: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
+    N14ClothingHeadHelmetPowerArmorMidwest: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
+    N14ClothingHeadHelmetPowerArmorMidwestCommander: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
+    N14ClothingHeadHelmetPowerArmorRaiderNPC: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
+    N14ClothingHeadHelmetPowerArmorT51BC: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
+    N14ClothingHeadHelmetPowerArmorT51China: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
+    N14ClothingHeadHelmetPowerArmorT51ChinaRaiderNPC: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
+    N14ClothingHeadHelmetPowerArmorT51Wash: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
+    N14ClothingHeadHelmetPowerArmorT51WashElite: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
