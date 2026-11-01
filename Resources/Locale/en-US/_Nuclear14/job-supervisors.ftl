@@ -2,10 +2,7 @@
 job-supervisors-bos-mid-knight = the Paladins of the Midwestern chapter
 job-supervisors-bos-mid = your bunker's commanding officer
 job-supervisors-bos-mid-commander = no one, but the Elder Council & your sense of duty
-job-supervisors-bos-wash-initiate = anyone in the Washington chapter
-job-supervisors-bos-wash-knight = the Paladins of the Washington chapter
 job-supervisors-bos-wash = your bunker's commanding officer
-job-supervisors-bos-wash-commander = no one, but the Elder & your sense of duty
 job-supervisors-caravan = the caravan leader
 job-supervisors-caravan-leader = your greed & Blue Line Co. leadership
 job-supervisors-ncr = the Sergeant of the NCR Army

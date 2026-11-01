@@ -10,19 +10,6 @@ job-description-bos-mid-scribe = Conduct scientific missions and research for yo
 job-name-bos-mid-squire = Midwest BoS Initiate
 job-description-bos-mid-squire = Follow the orders of your superiors and prove your worth.
 
-# Washington Brotherhood
-job-name-bos-washington-commander = Washington BoS Commander
-job-description-bos-washington-commander = Lead the Washington Brotherhood of Steel on their mission.
-job-name-bos-washington-initiate = Washington BoS Initiate
-job-description-bos-washington-initiate = Follow the orders of your superiors and prove your worth.
-job-name-bos-washington-knight = Washington BoS Knight
-job-description-bos-washington-knight = Follow the Paladins on their mission for the chapter.
-job-name-bos-washington-paladin = Washington BoS Paladin
-job-description-bos-washington-paladin = Assist the Paladin Commander as their second in command & heavy infantry.
-job-name-bos-washington-scribe = Washington BoS Scribe
-job-description-bos-washington-scribe = Conduct scientific missions and research for your chapter.
-
-# Caravan
 job-name-caravan-leader = Caravan Leader
 job-description-caravan-leader = Coordinate the caravan company in the area and strike up trade deals with the locals.
 job-name-caravan-trader = Caravan Trader

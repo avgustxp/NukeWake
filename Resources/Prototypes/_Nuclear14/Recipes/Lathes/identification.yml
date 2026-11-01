@@ -91,39 +91,6 @@
 
 #MARK: Brotherhood Washington
 - type: latheRecipe
-  id: HolotagWashingtonScribe
-  result: N14IDBrotherhoodWashingtonHolotagScribe
-  category: N14Identification
-  completetime: 5
-  materials:
-    Steel: 100
-
-- type: latheRecipe
-  id: HolotagWashingtonInitiate
-  result: N14IDBrotherhoodWashingtonHolotagInitiate
-  category: N14Identification
-  completetime: 5
-  materials:
-    Steel: 100
-
-- type: latheRecipe
-  id: HolotagWashingtonKnight
-  result: N14IDBrotherhoodWashingtonHolotagKnight
-  category: N14Identification
-  completetime: 5
-  materials:
-    Steel: 100
-
-- type: latheRecipe
-  id: HolotagWashingtonPaladin
-  result: N14IDBrotherhoodWashingtonHolotagPaladin
-  category: N14Identification
-  completetime: 5
-  materials:
-    Steel: 100
-
-# MARK: NCR
-- type: latheRecipe
   id: DogtagNCR
   result: N14IDNCRDogtag
   category: N14Identification

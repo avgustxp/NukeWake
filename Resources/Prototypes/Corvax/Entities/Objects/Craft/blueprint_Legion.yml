@@ -36,15 +36,6 @@
 
 - type: entity
   parent: N14BaseBlueprintPaper
-  id: N14ClothingOuterLegionnaireHeavyArmorBlueprint
-  name: чертёж тяжёлой легионерской брони
-  suffix: Craft, Legion
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterLegionnaireHeavyArmorRecipe
-
-- type: entity
-  parent: N14BaseBlueprintPaper
   id: N14ClothingHeadHatBaseballHelmetBlueprint
   name: чертёж бейсбольного шлема
   suffix: Craft, Legion

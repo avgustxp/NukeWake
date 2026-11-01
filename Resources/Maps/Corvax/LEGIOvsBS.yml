@@ -61535,13 +61535,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 256.51324,45.619175
       parent: 2
-- proto: N14ClothingOuterNCRVeteranArmor
-  entities:
-  - uid: 22299
-    components:
-    - type: Transform
-      pos: 139.6252,52.208195
-      parent: 2
 - proto: N14ClothingOuterPowerArmorAdvanced1NCR
   entities:
   - uid: 12772

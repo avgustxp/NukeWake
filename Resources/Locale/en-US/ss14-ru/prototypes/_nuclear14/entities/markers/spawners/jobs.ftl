@@ -10,7 +10,6 @@ ent-N14SpawnPointBoSMidInitiate = BOS midwest squire
     .desc = { ent-N14SpawnPointWastelander.desc }
 ent-N14SpawnPointBoSMidScribe = BOS midwest scribe
     .desc = { ent-N14SpawnPointWastelander.desc }
-ent-N14SpawnPointBoSWashingtonCommander = BOS washington commander
     .desc = { ent-N14SpawnPointWastelander.desc }
 ent-N14SpawnPointBoSWashingtonRecruit = BOS washington recruit
     .desc = { ent-N14SpawnPointWastelander.desc }
