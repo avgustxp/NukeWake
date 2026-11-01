@@ -125,10 +125,6 @@
         - BoSMidPaladin
         - BoSMidKnight
         - BoSMidSquire
-        - BoSWashingtonCommander
-        - BoSWashingtonPaladin
-        - BoSWashingtonKnight
-        - BoSWashingtonInitiate
         - BoSWestElderCommander
         - BoSWestPaladin
         - BoSWestKnight
@@ -158,10 +154,6 @@
         - BoSMidPaladinCommander
         - BoSMidPaladin
         - BoSMidKnight
-        - BoSWashingtonCommander
-        - BoSWashingtonPaladin
-        - BoSWashingtonKnight
-        - BoSWashingtonInitiate
         - BoSWestElderCommander
         - BoSWestPaladin
         - BoSWestKnight
@@ -190,8 +182,6 @@
       jobs:
         - BoSMidPaladinCommander
         - BoSMidPaladin
-        - BoSWashingtonCommander
-        - BoSWashingtonPaladin
         - BoSWestElderCommander
         - BoSWestPaladin
     - !type:CharacterLogicOrRequirement

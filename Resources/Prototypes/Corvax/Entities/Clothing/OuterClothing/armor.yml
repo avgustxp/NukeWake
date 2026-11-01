@@ -150,94 +150,6 @@
 #    strengthModifier: 2
 
 - type: entity
-  parent: N14ClothingOuterLegionnaireVeteranArmor
-  id: N14ClothingOuterLegionnaireArmorGastat
-  name: legionary gastat armor
-  description: "Roughly stitched leather and a pair of worn shoulder pads conquered Arizona"
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/gastatveteranarmor.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/gastatveteranarmor.rsi
-
-- type: entity
-  parent: N14ClothingOuterLegionnaireVeteranArmor
-  id: N14ClothingOuterLegionnaireArmorPrimeGastat
-  name: legionary prime gastat armor
-  description: "One of the most impressive serial bull armors"
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/gastatveteranarmor++.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/gastatveteranarmor++.rsi
-
-- type: entity
-  parent: N14ClothingOuterLegionnaireVeteranArmor
-  id: N14ClothingOuterLegionnaireVeteranArmorVeteranGastat
-  name: legionary veteran gastat armor
-  description: "Forged in the forges of the Phoenix, this is armor that only the best in the Legion deserves."
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/gastatveteranarmor+.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/gastatveteranarmor+.rsi
-
-- type: entity
-  parent: N14ClothingOuterLegionnaireBaseArmor
-  id: N14ClothingOuterLegionnaireTriariumArmor
-  name: legionary triarium armor
-  description: "It is thanks to the soldiers in this armor that the Legion's roads remain safe"
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/triariumarmor.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/triariumarmor.rsi
-
-- type: entity
-  parent: N14ClothingOuterDeanLegionnairePrimeArmor
-  id: N14ClothingOuterLegionnairePrincepsPrimeArmor
-  name: legionary prime princeps armor
-  description: "The wearers of this armor act as the first line in the bellum"
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/princepsarmor+.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/princepsarmor+.rsi
-
-- type: entity
-  parent: N14ClothingOuterDeanLegionnairePrimeArmor
-  id: N14ClothingOuterLegionnairePrincepsArmor
-  name: legionary princeps armor
-  description: "Usually such armor is given to the most courageous and fanatical"
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/princepsarmor.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/princepsarmor.rsi
-
-- type: entity
-  parent: N14ClothingOuterLegionnaireReconnaissanceArmor
-  id: N14ClothingOuterLegionnaireAssassinArmor
-  name: legionary assassin armor
-  description: "This armor combines maneuverability and dynamism"
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/assassinarmor.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/assassinarmor.rsi
-
-- type: entity
-  parent: N14ClothingOuterLegionnaireReconnaissanceArmor
-  id: N14ClothingOuterLegionnaireAssassinPrimeArmor
-  name: legionary veteran assassin armor
-  description: "given only to the most dedicated and experienced human hunters"
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/assassinarmor+.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/assassinarmor+.rsi
-
-- type: entity
   parent: N14FalloutArmorBase
   id: N14ClothingOuterDeanLegionnairePrimeArmor
   name: heavy legionary armor
@@ -386,21 +298,6 @@
     damageCoefficient: 0.85
 
 - type: entity
-  parent: N14ClothingOuterLegionnaireBaseArmor
-  id: N14ClothingOuterLegionnaireVexillariusArmor
-  name: vexillarius armor
-  description: The armor of the Legion vexillarius, the standard-bearer. Decorated with the colors of the Legion.
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/vexarmor.rsi
-    scale: 0.5, 0.5
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/vexarmor.rsi
-  - type: ClothingSpeedModifier
-    walkModifier: 1.05
-    sprintModifier: 1.05
-
-- type: entity
   parent: N14FalloutArmorBase
   id: N14ClothingOuterLegionnaireRecruitArmor
   name: light legionnaire armor
@@ -504,9 +401,9 @@
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/falloutNCRpaddedwebvest.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/falloutNCRpaddedwebvest.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/falloutNCRpaddedwebvest.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/falloutNCRpaddedwebvest.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -747,121 +644,6 @@
     sprite: Corvax/Clothing/OuterClothing/Armor/falloutcombatNCRsnow.rsi
 
 - type: entity
-  parent: N14FalloutArmorBase
-  id: N14ClothingOuterWBoSKnightBattleArmor
-  components:
-  - type: ToolRefinable
-    qualityNeeded: Prying
-    refineTime: 2
-    refineFuel: 0
-    refineResult:
-    - id: N14ComponentArmorPlateMK1
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/wbosknightarmor.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/wbosknightarmor.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.75
-        Slash: 0.75
-        Piercing: 0.7
-        Heat: 0.7
-        Radiation: 0.85
-        Caustic: 0.9
-    priceMultiplier: 0.5
-  - type: FireProtection
-    reduction: 0.2
-  - type: ExplosionResistance
-    damageCoefficient: 0.8
-
-- type: entity
-  parent: N14ClothingOuterWBoSKnightBattleArmor
-  id: N14ClothingOuterWBoSKnightBattleArmorKilt
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/wbosknightarmorkilt.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/wbosknightarmorkilt.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.725
-        Slash: 0.725
-        Piercing: 0.675
-        Heat: 0.675
-        Caustic: 0.9
-        Radiation: 0.825
-    priceMultiplier: 0.5
-  - type: FireProtection
-    reduction: 0.2
-  - type: ExplosionResistance
-    damageCoefficient: 0.8
-
-- type: entity
-  parent: N14ClothingOuterBase
-  id: N14ClothingOuterWBoSLordBattleArmor
-  components:
-  - type: ToolRefinable
-    qualityNeeded: Prying
-    refineTime: 10
-    refineFuel: 0
-    refineResult:
-    - id: N14ComponentArmorPlateMK3
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/wboslordarmor.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/wboslordarmor.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.65
-        Slash: 0.65
-        Piercing: 0.6
-        Heat: 0.6
-        Radiation: 0.7
-        Caustic: 0.8
-    priceMultiplier: 0.6
-  - type: ExplosionResistance
-    damageCoefficient: 0.7
-  - type: ClothingSpeedModifier
-    walkModifier: 1.05
-    sprintModifier: 1.05
-
-- type: entity
-  parent: N14ClothingOuterWBoSKnightBattleArmor
-  id: N14ClothingOuterWBoSReconBattleArmor
-  components:
-  - type: ToolRefinable
-    qualityNeeded: Prying
-    refineTime: 5
-    refineFuel: 0
-    refineResult:
-    - id: N14ComponentArmorPlateMK2
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/wbosreconarmor.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/wbosreconarmor.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.7
-        Slash: 0.7
-        Piercing: 0.65
-        Heat: 0.65
-        Radiation: 0.85
-        Caustic: 0.9
-    priceMultiplier: 0.6
-  - type: ExplosionResistance
-    damageCoefficient: 0.8
-  - type: ClothingSpeedModifier
-    walkModifier: 1.05
-    sprintModifier: 1.05
-  - type: ToggleableClothing
-    clothingPrototype: N14ClothingHeadHatWBoSReconHood
-    slot: head
-
-- type: entity
   parent: N14ClothingOuterRangerCombat
   id: N14ClothingOuterDeserted
   categories: [ HideSpawnMenu ]
@@ -888,28 +670,6 @@
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.7
-
-- type: entity
-  parent: N14ClothingOuterLegionnaireLightReconnaissanceArmor
-  id: N14ClothingOuterLegionnaireDuster
-  name: legionary duster
-  description: "Duster with a bull symbol"
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/legioduster.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/legioduster.rsi
-
-- type: entity
-  parent: N14ClothingOuterLegionnaireReconnaissanceArmor
-  id: N14ClothingOuterLegionnaireDusterMk2
-  name: legionary duster mk2
-  description: "Duster with a bull symbol, reinforced for veteran legionnaires."
-  components:
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/legiodustermk2.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/legiodustermk2.rsi
 
 - type: entity
   parent: N14FalloutArmorBase
@@ -1050,33 +810,3 @@
         Piercing: 0.85
         Heat: 0.85
 
-- type: entity
-  parent: N14FalloutArmorBase
-  id: N14ClothingOuterLegionnaireHeavyArmor
-  name: тяжёлая легионерская броня
-  description: Сделана из самой тяжелой и защищёной бронепластины, которую только смогли добыть на пустошах.
-  components:
-  - type: ToolRefinable
-    qualityNeeded: Prying
-    refineTime: 10
-    refineFuel: 0
-    refineResult:
-    - id: N14ComponentArmorPlateMK3
-  - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/pretorianarmor.rsi
-  - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/pretorianarmor.rsi
-  - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.55
-        Slash: 0.55
-        Piercing: 0.6
-        Heat: 0.55
-  - type: ExplosionResistance
-    damageCoefficient: 0.65
-  - type: StaminaDamageResistance
-    coefficient: 0.85

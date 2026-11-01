@@ -1040940,7 +1040940,6 @@ entities:
           - 45156
           - 46658
           - 46659
-          - 47924
           - 47925
           - 123426
           - 123431
@@ -1053198,17 +1053197,6 @@ entities:
       angularDamping: 0
       linearDamping: 0
       canCollide: False
-- proto: N14ClothingOuterNCRVeteranArmor
-  entities:
-  - uid: 47924
-    components:
-    - type: Transform
-      parent: 45136
-    - type: Physics
-      angularDamping: 0
-      linearDamping: 0
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: N14ClothingOuterOverseerCoat
   entities:
   - uid: 1148

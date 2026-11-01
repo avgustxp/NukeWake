@@ -45,10 +45,6 @@
         - NCRSoldier
         - NCRCadet
 #        - CaravanGuard
-        - BoSWashingtonCommander
-        - BoSWashingtonPaladin
-        - BoSWashingtonKnight
-        - BoSWashingtonInitiate
         - BoSMidPaladinCommander
         - BoSMidPaladin
         - BoSMidKnight
@@ -95,7 +91,6 @@
         - TribalHealer
         - TownDoctor
         - NCRMedic
-        - BoSWashingtonScribe
         - BoSMidScribe
         - VaultDoctor
         - Followers # Forge-Change

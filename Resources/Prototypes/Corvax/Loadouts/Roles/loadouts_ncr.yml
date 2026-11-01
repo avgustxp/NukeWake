@@ -19,24 +19,6 @@
     - N14ClothingOuterNCRVestpaddedWeb
 
 - type: loadout
-  id: LoadoutClothingOuterNCRVeteranArmorDesert
-  category: OuterArmor
-  cost: 4
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSoldier
-        - NCREngineer
-        - NCRMedic
-        - NCRWS
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRSoldier
-      min: 72000 # 20 hours veterancy unlock
-  items:
-    - N14ClothingOuterNCRVeteranArmor
-
-- type: loadout
   id: LoadoutClothingOuterNCRCoatLabArmored
   category: OuterArmor
   cost: 4
@@ -51,24 +33,6 @@
   items:
     - N14ClothingOuterNCRCoatLabArmored
 
-- type: loadout
-  id: LoadoutClothingOuterNCRCombatVeteranArmor
-  category: OuterArmor
-  cost: 4
-  exclusive: true
-  requirements:
-  - !type:CharacterJobRequirement
-    jobs:
-    - NCRSGT
-  - !type:CharacterPlaytimeRequirement
-    tracker: NCRNCO
-    min: 72000 # 20 hours veterancy unlock
-  items:
-  - N14ClothingOuterNCRCombatVeteranArmor
-
-#MARK: Зимнее снаряжение
-
-#Униформа.
 - type: loadout
   id: LoadoutClothingUniformNCRSnow
   category: Uniform
@@ -146,24 +110,6 @@
     - N14ClothingOuterNCRVestpaddedWebSnow
 
 - type: loadout
-  id: LoadoutClothingOuterNCRVeteranArmorSnow
-  category: OuterArmor
-  cost: 4
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSoldier
-        - NCREngineer
-        - NCRMedic
-        - NCRWS
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRSoldier
-      min: 72000 # 20 hours veterancy unlock
-  items:
-    - N14ClothingOuterNCRVeteranArmorSnow
-
-- type: loadout
   id: LoadoutClothingOuterNCRCombatArmorSnow
   category: OuterArmor
   cost: 0
@@ -175,20 +121,6 @@
   items:
     - N14ClothingOuterNCRCombatArmorSnow
 
-- type: loadout
-  id: LoadoutClothingOuterNCRCombatVeteranArmorSnow
-  category: OuterArmor
-  cost: 4
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSGT
-  items:
-    - N14ClothingOuterNCRCombatVeteranArmorSnow
-
-
-#Шлем.
 - type: loadout
   id: LoadoutClothingHeadHatNCRHelmetSnow
   category: Head
