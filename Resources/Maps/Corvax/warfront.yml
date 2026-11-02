@@ -519398,27 +519398,6 @@ entities:
     - type: Transform
       pos: 479.5,397.5
       parent: 1
-- proto: N14PosterAbraxo
-  entities:
-  - uid: 44625
-    components:
-    - type: Transform
-      pos: 344.5,343.5
-      parent: 1
-- proto: N14PosterBoscom
-  entities:
-  - uid: 44626
-    components:
-    - type: Transform
-      pos: 348.5,339.5
-      parent: 1
-- proto: N14PosterDangerSign2
-  entities:
-  - uid: 44627
-    components:
-    - type: Transform
-      pos: 413.5,108.5
-      parent: 1
 - proto: N14PosterNCR3
   entities:
   - uid: 44628
@@ -829676,13 +829655,6 @@ entities:
     - type: Physics
       angularDamping: 0
       linearDamping: 0
-- proto: StreetFurnitureBillboardNukacola1
-  entities:
-  - uid: 102324
-    components:
-    - type: Transform
-      pos: 424.5,91.5
-      parent: 1
 - proto: SubstationWallBasic
   entities:
   - uid: 102325

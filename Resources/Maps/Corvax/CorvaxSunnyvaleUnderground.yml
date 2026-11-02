@@ -110641,98 +110641,12 @@ entities:
     - type: Transform
       pos: 38.5,164.5
       parent: 2
-- proto: N14PosterAdvertNukaCola2
-  entities:
-  - uid: 33911
-    components:
-    - type: Transform
-      pos: -52.5,4.5
-      parent: 2
-  - uid: 33912
-    components:
-    - type: Transform
-      pos: -154.5,-20.5
-      parent: 2
-- proto: N14PosterCautionSign1
-  entities:
-  - uid: 33913
-    components:
-    - type: Transform
-      pos: -27.5,85.5
-      parent: 2
-- proto: N14PosterDangerSign1
-  entities:
-  - uid: 33914
-    components:
-    - type: Transform
-      pos: -10.5,32.5
-      parent: 2
-  - uid: 33915
-    components:
-    - type: Transform
-      pos: -64.5,99.5
-      parent: 2
-  - uid: 33916
-    components:
-    - type: Transform
-      pos: -65.5,110.5
-      parent: 2
-- proto: N14PosterDangerSign2
-  entities:
-  - uid: 33917
-    components:
-    - type: Transform
-      pos: -104.5,133.5
-      parent: 2
-  - uid: 46729
-    components:
-    - type: Transform
-      pos: -157.5,158.5
-      parent: 2
-  - uid: 46730
-    components:
-    - type: Transform
-      pos: -152.5,158.5
-      parent: 2
-- proto: N14PosterDangerSign4
-  entities:
-  - uid: 33918
-    components:
-    - type: Transform
-      pos: 21.5,159.5
-      parent: 2
 - proto: N14PosterFallout
   entities:
   - uid: 33919
     components:
     - type: Transform
       pos: -3.5667186,20.646431
-      parent: 2
-- proto: N14PosterSafety12
-  entities:
-  - uid: 33920
-    components:
-    - type: Transform
-      pos: -11.5,32.5
-      parent: 2
-- proto: N14PosterSafety3
-  entities:
-  - uid: 33921
-    components:
-    - type: Transform
-      pos: -67.5,106.5
-      parent: 2
-- proto: N14PosterSafety5
-  entities:
-  - uid: 33922
-    components:
-    - type: Transform
-      pos: -12.5,32.5
-      parent: 2
-  - uid: 33923
-    components:
-    - type: Transform
-      pos: -157.5,-56.5
       parent: 2
 - proto: N14PosterVaultTec01
   entities:
@@ -110766,13 +110680,6 @@ entities:
     components:
     - type: Transform
       pos: -43.5,22.5
-      parent: 2
-- proto: N14PosterWideNukacola1
-  entities:
-  - uid: 33930
-    components:
-    - type: Transform
-      pos: -132.5,-37.5
       parent: 2
 - proto: N14PowerCellHigh
   entities:

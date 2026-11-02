@@ -251,9 +251,6 @@
   - proto: N14WeaponRifle762MarksmanChinese
     price: 550
     count: 2
-  - proto: N14WeaponRifleL86
-    price: 300
-    count: 3
 
 - type: storeCategoryStructured
   id: CaravanBuy2_EnergyWeapons

@@ -72556,20 +72556,6 @@ entities:
       angularDamping: 0
       linearDamping: 0
       canCollide: False
-- proto: N14PosterAdvertNukaCola1
-  entities:
-  - uid: 12201
-    components:
-    - type: Transform
-      pos: 87.5,52.5
-      parent: 2
-- proto: N14PosterAdvertNukaCola2
-  entities:
-  - uid: 2847
-    components:
-    - type: Transform
-      pos: 94.5,83.5
-      parent: 2
 - proto: N14PosterVaultTec06
   entities:
   - uid: 12207
@@ -72584,13 +72570,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 84.5,241.5
-      parent: 2
-- proto: N14PosterWideVim
-  entities:
-  - uid: 584
-    components:
-    - type: Transform
-      pos: 96.5,178.5
       parent: 2
 - proto: N14PowerCellHigh
   entities:
@@ -73241,13 +73220,6 @@ entities:
     components:
     - type: Transform
       pos: 53.5,119.5
-      parent: 2
-- proto: N14SignRedRocket
-  entities:
-  - uid: 934
-    components:
-    - type: Transform
-      pos: 114.5,233.5
       parent: 2
 - proto: N14SignStreetBusstop
   entities:
@@ -99289,20 +99261,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 82.5,170.5
-      parent: 2
-- proto: StreetFurnitureBillboardNukacola1
-  entities:
-  - uid: 1966
-    components:
-    - type: Transform
-      pos: 23.5,263.5
-      parent: 2
-- proto: StreetFurnitureBillboardRedrocket1worn
-  entities:
-  - uid: 935
-    components:
-    - type: Transform
-      pos: 118.5,229.5
       parent: 2
 - proto: Stunbaton
   entities:
