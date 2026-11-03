@@ -392,11 +392,6 @@
   category: Physical
   points: -5
   requirements:
-    - !type:CharacterTraitRequirement
-      inverted: true
-      traits:
-        - N14ExtremeAugKnight
-        - N14ExtremeAugScribe
   functions:
     - !type:TraitAddComponent
       components:
