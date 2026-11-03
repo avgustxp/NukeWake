@@ -391,7 +391,6 @@
   id: N14HandyTools
   category: Physical
   points: -5
-  requirements:
   functions:
     - !type:TraitAddComponent
       components:
