@@ -9,6 +9,7 @@
 - type: n14MerchantPrice
   id: N14MerchantPrices
   prices:
+    MagazineBox22: 40
     MagazineBox45-70: 100
     Brutepack: 60
     ThrowingKnife: 30
@@ -140,7 +141,6 @@
     N14CigaretteWinston: 2
     N14CleanGauze1: 15
     N14CleanGauze10: 50
-    N14ClothingAssassinVeteranArmor: 500
     N14ClothingBackpackCaravanFilled: 80
     N14ClothingBackpackCaravanLeaderFilled: 80
     N14ClothingBackpackCaravanTraderFilled: 80
@@ -268,7 +268,6 @@
     N14ClothingHeadHatArmyBeretSpecial: 20
     N14ClothingHeadHatArmyCap: 20
     N14ClothingHeadHatAssasin: 20
-    N14ClothingHeadHatAssassinVeteranHelmet: 25
     N14ClothingHeadHatBandit: 20
     N14ClothingHeadHatBanganeBoS: 20
     N14ClothingHeadHatBaseHelmetmarine: 800
@@ -319,7 +318,6 @@
     N14ClothingHeadHatCowboyBrown: 20
     N14ClothingHeadHatCowboyGrey: 20
     N14ClothingHeadHatCowboyGreyBanded: 20
-    N14ClothingHeadHatCowboyOld: 20
     N14ClothingHeadHatDeanPrimeHelmet: 100
     N14ClothingHeadHatDeanRecruitHelmet: 100
     N14ClothingHeadHatDeanVeteranHelmet: 100
@@ -387,7 +385,6 @@
     N14ClothingHeadHatPrincepsGalea: 25
     N14ClothingHeadHatPrincepsPrime: 20
     N14ClothingHeadHatPrincepsPrimeGalea: 25
-    N14ClothingHeadHatPrincepsVeteranHelmet: 25
     N14ClothingHeadHatRaiderbag: 20
     N14ClothingHeadHatRanger: 20
     N14ClothingHeadHatRangerB: 20
@@ -399,23 +396,17 @@
     N14ClothingHeadHatRangerHelmetModif: 80
     N14ClothingHeadHatRangerHelmetOld: 80
     N14ClothingHeadHatRangerHelmetPrice: 80
-    N14ClothingHeadHatRangerHelmetSnowFox: 80
     N14ClothingHeadHatScavengerHelmet: 25
     N14ClothingHeadHatSheriff: 20
     N14ClothingHeadHatSpecHelmetRCMP: 25
     N14ClothingHeadHatTownGuard: 20
     N14ClothingHeadHatTriarium: 20
-    N14ClothingHeadHatTriariumVeteranHelmet: 25
     N14ClothingHeadHatTribalOutcastHood: 20
     N14ClothingHeadHatTribalPowerhelm: 20
     N14ClothingHeadHatTrucker: 20
     N14ClothingHeadHatVancouver: 20
     N14ClothingHeadHatVaultRiot: 20
     N14ClothingHeadHatVenator: 20
-    N14ClothingHeadHatWBoSBattleHelmet: 80
-    N14ClothingHeadHatWBoSBeret: 20
-    N14ClothingHeadHatWBoSLordHelmet: 80
-    N14ClothingHeadHatWBoSReconHood: 20
     N14ClothingHeadHatWinterBoonie: 20
     N14ClothingHeadHatWoodBoonie: 20
     N14ClothingHeadHelmetChinaStealth: 1500
@@ -456,7 +447,6 @@
     N14ClothingMaskCultist: 15
     N14ClothingMaskDesertMask: 15
     N14ClothingMaskGasRangerEliteDeserted: 25
-    N14ClothingMaskGasWBoSRecon: 25
     N14ClothingMaskGasZealotGasMask: 25
     N14ClothingMaskGreenMask: 15
     N14ClothingMaskGrill: 15
@@ -476,7 +466,6 @@
     N14ClothingNeckCapeLegionSagum: 10
     N14ClothingNeckCapeStranger: 10
     N14ClothingNeckCloakBrotherhoodWashington: 10
-    N14ClothingNeckCloakCowboyOld: 10
     N14ClothingNeckCloakDarkCloak: 10
     N14ClothingNeckCloakGhillie: 10
     N14ClothingNeckCloakLeather: 10
@@ -537,7 +526,6 @@
     N14ClothingNeckNCRShoulderPad: 20
     N14ClothingNeckNCRShoulderPadFlag: 20
     N14ClothingNeckShawl: 10
-    N14ClothingNeckThragg: 10
     N14ClothingNeckTownGuardCloak: 10
     N14ClothingNeckTownGuardMantle: 20
     N14ClothingNeckTribalCloak: 10
@@ -619,35 +607,20 @@
     N14ClothingOuterHeavySteelArmor: 150
     N14ClothingOuterInsectArmor: 55
     N14ClothingOuterJacketBomber: 30
-    N14ClothingOuterJacketCowboyOld: 30
     N14ClothingOuterJacketLettermanBrown: 30
     N14ClothingOuterJacketLettermanRed: 30
     N14ClothingOuterKnightWesternArmor: 200
     N14ClothingOuterLeatherArmor: 65
     N14ClothingOuterLeatherRobes: 30
     N14ClothingOuterLegateArmor: 200
-    N14ClothingOuterLegionPaladinKiller: 800
-    N14ClothingOuterLegionnaireArmorGastat: 200
-    N14ClothingOuterLegionnaireArmorPrimeGastat: 300
-    N14ClothingOuterLegionnaireAssassinArmor: 200
-    N14ClothingOuterLegionnaireAssassinPrimeArmor: 300
     N14ClothingOuterLegionnaireBaseArmor: 200
     N14ClothingOuterLegionnaireBaseArmorBlueprint: 10
-    N14ClothingOuterLegionnaireDuster: 200
-    N14ClothingOuterLegionnaireDusterMk2: 300
-    N14ClothingOuterLegionnaireHeavyArmor: 300
-    N14ClothingOuterLegionnaireHeavyArmorBlueprint: 10
     N14ClothingOuterLegionnaireLightReconnaissanceArmor: 200
-    N14ClothingOuterLegionnairePrincepsArmor: 200
-    N14ClothingOuterLegionnairePrincepsPrimeArmor: 300
     N14ClothingOuterLegionnaireReconnaissanceArmor: 200
     N14ClothingOuterLegionnaireRecruitArmor: 200
     N14ClothingOuterLegionnaireRecruitArmorBlueprint: 10
-    N14ClothingOuterLegionnaireTriariumArmor: 200
     N14ClothingOuterLegionnaireVeteranArmor: 300
     N14ClothingOuterLegionnaireVeteranArmorBlueprint: 10
-    N14ClothingOuterLegionnaireVeteranArmorVeteranGastat: 300
-    N14ClothingOuterLegionnaireVexillariusArmor: 200
     N14ClothingOuterLightLeatherArmor: 50
     N14ClothingOuterLightMetalArmor: 55
     N14ClothingOuterMBoSInitiateArmor: 200
@@ -674,12 +647,9 @@
     N14ClothingOuterNCRCombatArmorSnow: 200
     N14ClothingOuterNCRCombatVeteranArmor: 300
     N14ClothingOuterNCRCombatVeteranArmorSnow: 300
-    N14ClothingOuterNCRCombatVeteranKiltArmor: 300
-    N14ClothingOuterNCRCombatVeteranKiltArmorSnow: 300
     N14ClothingOuterNCRCorrectional: 30
     N14ClothingOuterNCRDressJacket: 15
     N14ClothingOuterNCRDressJacketCO: 15
-    N14ClothingOuterNCRMPArmorWest: 200
     N14ClothingOuterNCRPlateDesert: 200
     N14ClothingOuterNCRPlateWoods: 200
     N14ClothingOuterNCRQuartermaster: 30
@@ -687,17 +657,11 @@
     N14ClothingOuterNCRVest: 100
     N14ClothingOuterNCRVestBlueprint: 10
     N14ClothingOuterNCRVestCoatBlack: 100
-    N14ClothingOuterNCRVestDesertCoat: 100
-    N14ClothingOuterNCRVestDesertCoatSnow: 100
     N14ClothingOuterNCRVestSnow: 100
     N14ClothingOuterNCRVestWoods: 100
     N14ClothingOuterNCRVestpaddedWeb: 100
-    N14ClothingOuterNCRVestpaddedWebKilt: 100
-    N14ClothingOuterNCRVestpaddedWebKiltSnow: 100
     N14ClothingOuterNCRVestpaddedWebSnow: 100
     N14ClothingOuterNCRVeteranArmor: 300
-    N14ClothingOuterNCRVeteranArmorKilt: 300
-    N14ClothingOuterNCRVeteranArmorKiltSnow: 300
     N14ClothingOuterNCRVeteranArmorSnow: 300
     N14ClothingOuterOverseerCoat: 30
     N14ClothingOuterPainspike: 30
@@ -713,7 +677,6 @@
     N14ClothingOuterPowerArmorAdvanced2: 4000
     N14ClothingOuterPowerArmorAdvanced2Hellfire: 4000
     N14ClothingOuterPowerArmorAdvanced2Tesla: 4000
-    N14ClothingOuterPowerArmorHellCat: 4000
     N14ClothingOuterPowerArmorMidwest: 4000
     N14ClothingOuterPowerArmorMidwestCommander: 4000
     N14ClothingOuterPowerArmorRaider: 4000
@@ -764,7 +727,6 @@
     N14ClothingOuterRangerPrice: 200
     N14ClothingOuterRangerRedwood: 200
     N14ClothingOuterRangerScorpion: 30
-    N14ClothingOuterRangerSnowFox: 200
     N14ClothingOuterRangerVest: 100
     N14ClothingOuterRangerWeathered: 200
     N14ClothingOuterRecruitWesternArmor: 200
@@ -791,18 +753,11 @@
     N14ClothingOuterVestChinese: 200
     N14ClothingOuterVestLeather: 35
     N14ClothingOuterVestRCMP: 100
-    N14ClothingOuterWBoSAcolyteCoat: 30
     N14ClothingOuterWBoSInitiateArmor: 200
     N14ClothingOuterWBoSKnightArmor: 200
-    N14ClothingOuterWBoSKnightBattleArmor: 200
-    N14ClothingOuterWBoSKnightBattleArmorKilt: 200
-    N14ClothingOuterWBoSLordBattleArmor: 200
     N14ClothingOuterWBoSPaladinArmor: 200
-    N14ClothingOuterWBoSReconBattleArmor: 200
-    N14ClothingOuterWBoSScripterCoat: 30
     N14ClothingOuterWBoSSeniorKArmor: 200
     N14ClothingOuterWBoSSquireArmor: 200
-    N14ClothingOuterWandererCoat: 30
     N14ClothingOuterZealotDuster: 100
     N14ClothingOuterdrylandelder: 30
     N14ClothingOuterdrylandersimple: 200
@@ -820,7 +775,6 @@
     N14ClothingPAGauntletsTesla: 400
     N14ClothingPowerSystemsBack: 400
     N14ClothingPowerSystemsBackRaiderNPC: 400
-    N14ClothingPrincepsVeteranArmor: 300
     N14ClothingScavengerHeavyArmor: 300
     N14ClothingShoesBlack: 15
     N14ClothingShoesBrown: 15
@@ -830,7 +784,6 @@
     N14ClothingShoesRaider: 15
     N14ClothingShoesTribal: 15
     N14ClothingSnowGoggles: 20
-    N14ClothingTriariumVeteranArmor: 300
     N14ClothingTribalHeadWraps: 20
     N14ClothingTribalHood: 20
     N14ClothingTribalHunterHood: 20
@@ -856,8 +809,6 @@
     N14ClothingUniformJumpskirtSundress: 15
     N14ClothingUniformJumpskirtTribal: 15
     N14ClothingUniformJumpskirtVault14: 15
-    N14ClothingUniformJumpskirtVault14Gold: 15
-    N14ClothingUniformJumpskirtVault14Purple: 15
     N14ClothingUniformJumpskirtWastelandDoc: 15
     N14ClothingUniformJumpsuitBOSBlack: 15
     N14ClothingUniformJumpsuitBOSFieldScribe: 15
@@ -884,7 +835,6 @@
     N14ClothingUniformJumpsuitCombat: 15
     N14ClothingUniformJumpsuitCowboyBrown: 15
     N14ClothingUniformJumpsuitCowboyGrey: 15
-    N14ClothingUniformJumpsuitCowboyOld: 15
     N14ClothingUniformJumpsuitDetectiveAlt: 15
     N14ClothingUniformJumpsuitEnclave: 15
     N14ClothingUniformJumpsuitFollowers: 15
@@ -897,7 +847,6 @@
     N14ClothingUniformJumpsuitMerc: 15
     N14ClothingUniformJumpsuitMerchant: 15
     N14ClothingUniformJumpsuitMilUniform: 15
-    N14ClothingUniformJumpsuitNCRMP: 15
     N14ClothingUniformJumpsuitPreWarCasual: 15
     N14ClothingUniformJumpsuitPreWarLumberjack: 15
     N14ClothingUniformJumpsuitPreWarManager: 15
@@ -916,11 +865,6 @@
     N14ClothingUniformJumpsuitVancouver: 15
     N14ClothingUniformJumpsuitVault: 15
     N14ClothingUniformJumpsuitVault14: 15
-    N14ClothingUniformJumpsuitVault14Gold: 15
-    N14ClothingUniformJumpsuitVault14Purple: 15
-    N14ClothingUniformJumpsuitWBoSAcolyte: 15
-    N14ClothingUniformJumpsuitWBoSClassic: 15
-    N14ClothingUniformJumpsuitWBoSLord: 15
     N14ClothingUniformJumpsuitWarriorTribal: 15
     N14ClothingUniformJumpsuitWastelandDoc: 15
     N14ClothingUniformJumpsuitdrylanderTribal: 15
@@ -939,7 +883,6 @@
     N14ClothingUniformRangerVeteran: 15
     N14ClothingUniformRangerVeteranBlack: 15
     N14ClothingUniformRangerVeteranRed: 15
-    N14ClothingUniformValkyrieRaider: 15
     N14Clothingkingoftherats: 80
     N14ColourlessPoisonChemistryBottle: 500
     N14CombatKnife: 20
@@ -1533,11 +1476,6 @@
     N14IDBrotherhoodHolotagKnight: 10
     N14IDBrotherhoodHolotagPaladin: 10
     N14IDBrotherhoodHolotagSquire: 10
-    N14IDBrotherhoodWashingtonHolotagCommander: 10
-    N14IDBrotherhoodWashingtonHolotagInitiate: 10
-    N14IDBrotherhoodWashingtonHolotagKnight: 10
-    N14IDBrotherhoodWashingtonHolotagPaladin: 10
-    N14IDBrotherhoodWashingtonHolotagScribe: 10
     N14IDBrotherhoodWestHolotag: 10
     N14IDBrotherhoodWestHolotagElderCommander: 10
     N14IDBrotherhoodWestHolotagGunsmith: 10
@@ -1601,12 +1539,6 @@
     N14IDTribeBulletsPendant: 10
     N14IDTribeEnforcerPendant: 10
     N14IDTribeSawbonePendant: 10
-    N14IDWashingtonBrotherhoodHolotagAgent: 10
-    N14IDWashingtonBrotherhoodHolotagCaptain: 10
-    N14IDWashingtonBrotherhoodHolotagCommander: 10
-    N14IDWashingtonBrotherhoodHolotagRecruit: 10
-    N14IDWashingtonBrotherhoodHolotagResearcher: 10
-    N14IDWashingtonBrotherhoodHolotagSoldier: 10
     N14IngotAluminum: 5
     N14IngotAluminum1: 18
     N14IngotBrass: 5
@@ -1895,7 +1827,6 @@
     N14PilumSpear: 20
     N14PipBoyRadioCartridge: 1
     N14Pipboy: 350
-    N14PipboyGold: 700
     N14PlasmaCartridge: 150
     N14PlasmaCell: 100
     N14PlasmaGrenade: 100
@@ -2041,19 +1972,12 @@
     N14TyaguchkaToxinChemistryBottle: 200
     N14UltraStimpak: 25
     N14VaultBotanistPDA: 350
-    N14VaultBotanistPDAGold: 700
     N14VaultChefPDA: 350
-    N14VaultChefPDAGold: 700
     N14VaultDoctorPDA: 350
-    N14VaultDoctorPDAGold: 700
     N14VaultEngineerPDA: 350
-    N14VaultEngineerPDAGold: 700
     N14VaultOverseerPDA: 350
-    N14VaultOverseerPDAGold: 700
     N14VaultPDA: 350
-    N14VaultPDAGold: 700
     N14VaultSecurityPDA: 350
-    N14VaultSecurityPDAGold: 700
     N14VinsPlushie: 5
     N14VitoPlushie: 5
     N14Wallet: 20
@@ -2188,7 +2112,6 @@
     N14WeaponRifleAk112pn: 2000
     N14WeaponRifleBozarGRA: 1500
     N14WeaponRifleGrenade: 6000
-    N14WeaponRifleL86: 1000
     N14WeaponRifleM7Spear: 3999
     N14WeaponRifleM7SpearScope: 500
     N14WeaponSMG10mm: 250
@@ -2313,7 +2236,6 @@
     N14WeaponGaussRifle: /Textures/_NukeWake/icons/iconsguns/gaussrifle.rsi
     N14WeaponRifle762MarksmanChinese: /Textures/_NukeWake/icons/iconsguns/svd.rsi
     N14WeaponLMGBren: /Textures/_NukeWake/icons/iconsguns/bren.rsi
-    N14WeaponRifleL86: /Textures/_NukeWake/icons/iconsguns/l85lsw.rsi
     N14WeaponDesertEagle44: /Textures/_NukeWake/icons/iconsguns/deserteagle.rsi
     N14WeaponLaserdotDesertEagle44: /Textures/_NukeWake/icons/iconsguns/deserteagle.rsi
     N14WeaponRifleAk112: /Textures/_NukeWake/icons/iconsguns/ak112.rsi
@@ -2620,7 +2542,6 @@
     N14ClothingOuterPowerArmorAdvanced2: /Textures/_NukeWake/icons/iconsarmor/t45.rsi
     N14ClothingOuterPowerArmorAdvanced2Hellfire: /Textures/_NukeWake/icons/iconsarmor/t45.rsi
     N14ClothingOuterPowerArmorAdvanced2Tesla: /Textures/_NukeWake/icons/iconsarmor/t45.rsi
-    N14ClothingOuterPowerArmorHellCat: /Textures/_NukeWake/icons/iconsarmor/t45.rsi
     N14ClothingOuterPowerArmorMidwest: /Textures/_NukeWake/icons/iconsarmor/t45.rsi
     N14ClothingOuterPowerArmorMidwestCommander: /Textures/_NukeWake/icons/iconsarmor/t45.rsi
     N14ClothingOuterPowerArmorRaider: /Textures/_NukeWake/icons/iconsarmor/t45.rsi
@@ -2685,7 +2606,6 @@
     N14ClothingUniformRangerVeteran: /Textures/_NukeWake/icons/iconsarmor/prewarcasualoutfit.rsi
     N14ClothingUniformRangerVeteranBlack: /Textures/_NukeWake/icons/iconsarmor/prewarcasualoutfit.rsi
     N14ClothingUniformJumpsuitCaravan: /Textures/_NukeWake/icons/iconsarmor/caravanfit.rsi
-    N14ClothingOuterNCRMPArmorWest: /Textures/_NukeWake/icons/iconsarmor/ncrvestsuit.rsi
     N14ClothingOuterVaultSecVest: /Textures/_NukeWake/icons/iconsarmor/ncrvestsuit.rsi
     N14ClothingOuterRadSuitEnclave: /Textures/_NukeWake/icons/iconsarmor/Enclavescientistoutfit.rsi
     N14ClothingOuterHazmatSuit: /Textures/_NukeWake/icons/iconsarmor/Enclavescientistoutfit.rsi
@@ -2736,9 +2656,7 @@
     NCClothingOuterRobeScribeWesternBoS: /Textures/_NukeWake/icons/iconsarmor/scriberob.rsi
     N14ClothingUniformJumpsuitVault14: /Textures/_NukeWake/icons/iconsarmor/vaultsuit.rsi
     N14ClothingUniformJumpsuitVault: /Textures/_NukeWake/icons/iconsarmor/vaultsuit.rsi
-    N14ClothingOuterLegionnaireDuster: /Textures/_NukeWake/icons/iconsarmor/duster.rsi
     N14ClothingOuterCoatDuster: /Textures/_NukeWake/icons/iconsarmor/duster.rsi
-    N14ClothingOuterLegionnaireDusterMk2: /Textures/_NukeWake/icons/iconsarmor/duster.rsi
     N14ClothingOuterCoatCombatDuster: /Textures/_NukeWake/icons/iconsarmor/duster.rsi
     N14ClothingOuterCoatLeatherDuster: /Textures/_NukeWake/icons/iconsarmor/duster.rsi
     N14ClothingOuterLeatherArmor: /Textures/_NukeWake/icons/iconsarmor/leatherarmor.rsi
@@ -2768,12 +2686,10 @@
     N14ClothingOuterDeanLegionnaireVeteranArmor: /Textures/_NukeWake/icons/iconsarmor/legionveteranarmor.rsi
     N14ClothingOuterDeanLegionnairePrimeArmor: /Textures/_NukeWake/icons/iconsarmor/legionveteranarmor.rsi
     N14ClothingOuterLegionnaireVeteranArmor: /Textures/_NukeWake/icons/iconsarmor/legionveteranarmor.rsi
-    N14ClothingOuterLegionnaireHeavyArmor: /Textures/_NukeWake/icons/iconsarmor/pretorlegioarmor.rsi
     N14ClothingOuterLegionnaireBaseArmor: /Textures/_NukeWake/icons/iconsarmor/legionfigherhelmet.rsi
     N14ClothingOuterLegionnaireRecruitArmor: /Textures/_NukeWake/icons/iconsarmor/legionrecruitarmor.rsi
     N14ClothingOuterConquerorCenturionArmor: /Textures/_NukeWake/icons/iconsarmor/legatearmor.rsi
     N14ClothingOuterLegateArmor: /Textures/_NukeWake/icons/iconsarmor/legatearmor.rsi
-    N14ClothingOuterLegionnaireVexillariusArmor: /Textures/_NukeWake/icons/iconsarmor/vexillariusarmor.rsi
     N14ClothingHeadHatAnimal: /Textures/_NukeWake/icons/iconsarmor/vexillariushelmet.rsi
     N14ClothingHeadHatDog: /Textures/_NukeWake/icons/iconsarmor/vexillariushelmet.rsi
     N14ClothingHeadHatRangerHelmetOld: /Textures/_NukeWake/icons/iconsarmor/rangerhelmet.rsi
@@ -2798,7 +2714,6 @@
     N14ClothingOuterCinderCenturionArmor: /Textures/_NukeWake/icons/iconsarmor/centurionarmor.rsi
     N14ClothingOuterHeavyCenturionArmor: /Textures/_NukeWake/icons/iconsarmor/centurionarmor.rsi
     # Силовые шлемы (дополнение)
-    N14ClothingHeadHelmetPowerArmorHellCat: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
     N14ClothingHeadHelmetPowerArmorMidwest: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
     N14ClothingHeadHelmetPowerArmorMidwestCommander: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
     N14ClothingHeadHelmetPowerArmorRaiderNPC: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi

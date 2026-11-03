@@ -17,6 +17,9 @@ namespace Content.Client._Forge.Merchant;
 /// </summary>
 public static class N14MerchantTheme
 {
+    /// <summary>Общий масштаб окна торговли относительно исходных размеров.</summary>
+    public const float UiScale = 1.5f;
+
     /// <summary>Цвет заливки UI: rgb(27, 255, 128).</summary>
     public static readonly Color Ui = Color.FromHex("#0f2519");
 
@@ -69,9 +72,9 @@ public static class N14MerchantTheme
 public sealed class N14MerchantBackdrop : Control
 {
     private const int SoftSteps = 6;
-    private const float SoftSpacing = 3f;
-    private const float LineInset = 18f;
-    private const float LineBend = 10f;
+    private const float SoftSpacing = 3f * N14MerchantTheme.UiScale;
+    private const float LineInset = 18f * N14MerchantTheme.UiScale;
+    private const float LineBend = 10f * N14MerchantTheme.UiScale;
 
     /// <summary>
     ///     Контрол, под которым рисуется нижняя линия: её края совпадают с краями этого контрола
@@ -140,11 +143,11 @@ public sealed class N14MerchantBackdrop : Control
 /// </summary>
 public sealed class N14MerchantFrame : Control
 {
-    private const float Tick = 9f;
-    private const float Inset = 6f;
+    private const float Tick = 9f * N14MerchantTheme.UiScale;
+    private const float Inset = 6f * N14MerchantTheme.UiScale;
 
     /// <summary>Ширина разрыва под заголовок по центру верхней границы.</summary>
-    public float HeaderGap { get; set; } = 60f;
+    public float HeaderGap { get; set; } = 60f * N14MerchantTheme.UiScale;
 
     /// <summary>Смещение разрыва от центра колонки (в пикселях).</summary>
     public float HeaderOffset { get; set; }
@@ -190,8 +193,8 @@ public sealed class N14MerchantFrame : Control
 /// </summary>
 public sealed class N14MerchantTriangle : Control
 {
-    private const float Width = 10f;
-    private const float Height = 15f;
+    private const float Width = 10f * N14MerchantTheme.UiScale;
+    private const float Height = 15f * N14MerchantTheme.UiScale;
 
     /// <summary>true — вершина смотрит вправо (▶), false — влево (◀).</summary>
     public bool PointRight { get; }
@@ -238,8 +241,8 @@ public sealed class N14MerchantTriangle : Control
 /// </summary>
 public sealed class N14MerchantArrow : Control
 {
-    private const float DefaultWidth = 96f;
-    private const float DefaultHeight = 60f;
+    private const float DefaultWidth = 96f * N14MerchantTheme.UiScale;
+    private const float DefaultHeight = 60f * N14MerchantTheme.UiScale;
 
     /// <summary>true — стрелка смотрит вправо, false — влево.</summary>
     public bool PointRight { get; }
@@ -311,10 +314,10 @@ public sealed class N14MerchantArrow : Control
 /// </summary>
 public sealed class N14MerchantSelectMark : Control
 {
-    private const float MarkSize = 14f;
+    private const float MarkSize = 14f * N14MerchantTheme.UiScale;
 
     /// <summary>Отступ с боков маркера (слева от строки и справа от маркера).</summary>
-    public const float MarkSideInset = 6f;
+    public const float MarkSideInset = 6f * N14MerchantTheme.UiScale;
 
     public Color Color { get; set; } = N14MerchantTheme.Accent;
 
@@ -343,24 +346,25 @@ public sealed class N14MerchantSelectMark : Control
 /// </summary>
 public sealed class N14MerchantColumn : LayoutContainer
 {
-    private const float HeaderGapPadding = 32f;
-    private const float HeaderSpacing = 8f;
+    private const float HeaderGapPadding = 32f * N14MerchantTheme.UiScale;
+    private const float HeaderSpacing = 8f * N14MerchantTheme.UiScale;
 
     public Label Header { get; }
     public Label Caps { get; }
+    public Label Restock { get; }
     public BoxContainer Rows { get; }
 
     private readonly N14MerchantFrame _frame;
     private readonly BoxContainer _headerRow;
-    private readonly Font _headerFont = N14MerchantTheme.GetFont(16);
+    private readonly Font _headerFont = N14MerchantTheme.GetFont(24);
 
     public N14MerchantColumn(string headerText)
     {
         // Фиксируем размер колонки, чтобы обе колонки были одинаковой ширины/высоты
         // и их рамки (верхняя и нижняя линии) совпадали по горизонтали.
         InheritChildMeasure = false;
-        MinSize = new Vector2(320, 360);
-        MaxSize = new Vector2(320, 10000);
+        MinSize = new Vector2(480, 540);
+        MaxSize = new Vector2(480, 10000);
 
         _frame = new N14MerchantFrame();
 
@@ -396,8 +400,17 @@ public sealed class N14MerchantColumn : LayoutContainer
             // Крышки — у правого края колонки, не заходя за правую линию рамки (тик на width-15).
             HorizontalAlignment = HAlignment.Right,
             FontColorOverride = N14MerchantTheme.Accent,
-            FontOverride = N14MerchantTheme.GetFont(14),
-            Margin = new Thickness(0, 8, 9, 2),
+            FontOverride = N14MerchantTheme.GetFont(21),
+            Margin = new Thickness(0, 12, 14, 3),
+        };
+
+        Restock = new Label
+        {
+            Visible = false,
+            HorizontalAlignment = HAlignment.Right,
+            FontColorOverride = N14MerchantTheme.Accent,
+            FontOverride = N14MerchantTheme.GetFont(18),
+            Margin = new Thickness(0, 0, 14, 6),
         };
 
         Rows = new BoxContainer
@@ -410,7 +423,7 @@ public sealed class N14MerchantColumn : LayoutContainer
             HorizontalExpand = true,
             VerticalExpand = true,
             // Отступ, чтобы первая строка не налезала на слово "Caps".
-            Margin = new Thickness(0, 30, 0, 0),
+            Margin = new Thickness(0, 45, 0, 0),
         };
         scroll.AddChild(Rows);
 
@@ -418,10 +431,11 @@ public sealed class N14MerchantColumn : LayoutContainer
         {
             Orientation = LayoutOrientation.Vertical,
             // Отрицательный верхний отступ ставит заголовок по центру верхней линии рамки (y ≈ 1).
-            Margin = new Thickness(8, -9, 8, 16),
+            Margin = new Thickness(12, -14, 12, 24),
         };
         content.AddChild(_headerRow);
         content.AddChild(Caps);
+        content.AddChild(Restock);
         content.AddChild(scroll);
 
         AddChild(content);
@@ -461,7 +475,7 @@ public sealed class N14MerchantColumn : LayoutContainer
 /// </summary>
 public sealed class N14MerchantRow : PanelContainer
 {
-    private static readonly Thickness NoMargin = new(4, 2, 4, 2);
+    private static readonly Thickness NoMargin = new(6, 3, 6, 3);
 
     /// <summary>Путь к звуку наведения курсора на строку.</summary>
     private const string HoverSoundPath = "/Audio/_Forge/UserInterface/ui_menu_focus.wav";
@@ -569,7 +583,7 @@ public sealed class N14MerchantRow : PanelContainer
         inner.AddChild(_price);
 
         AddChild(inner);
-        MinHeight = 26;
+        MinHeight = 39;
         ApplyStyle();
     }
 
@@ -638,7 +652,7 @@ public sealed class N14MerchantRow : PanelContainer
 /// </summary>
 public static class N14MerchantFrameDraw
 {
-    public const float Tick = 5f;
+    public const float Tick = 7.5f;
 
     public static void DrawHalfFrame(DrawingHandleScreen handle, Vector2 size, Color color)
     {
@@ -668,7 +682,7 @@ public sealed class N14MerchantInfoBox : Control
     public Color LineColor { get; set; } = N14MerchantTheme.Accent;
 
     /// <summary>Высота одной строки бокса (вместе с внутренним отступом).</summary>
-    public const float RowHeight = 20f;
+    public const float RowHeight = 30f;
 
     public N14MerchantInfoBox(string text, Font font)
     {

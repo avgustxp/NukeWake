@@ -25,6 +25,9 @@ public sealed class N14MerchantUiState : BoundUserInterfaceState
     /// <summary>Капсы игрока.</summary>
     public int PlayerCaps;
 
+    /// <summary>Секунд до обновления ассортимента; 0 — обновление отключено.</summary>
+    public float RestockSeconds;
+
     public List<N14MerchantItemState> Offers = new();
     public List<N14MerchantItemState> Requests = new();
 }

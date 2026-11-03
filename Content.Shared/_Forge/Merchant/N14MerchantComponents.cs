@@ -9,6 +9,11 @@ namespace Content.Shared._Forge.Merchant;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class N14MerchantTradeUserComponent : Component
 {
+    /// <summary>
+    ///     Торговцы, окна которых сейчас открыты у игрока. Серверное поле:
+    ///     компонент снимается только после закрытия последнего окна.
+    /// </summary>
+    public readonly HashSet<EntityUid> OpenMerchants = new();
 }
 
 /// <summary>
@@ -17,6 +22,12 @@ public sealed partial class N14MerchantTradeUserComponent : Component
 [RegisterComponent]
 public sealed partial class N14MerchantComponent : Component
 {
+    /// <summary>
+    ///     Игрок, у которого сейчас открыто окно торговца. Пока окно открыто,
+    ///     другие игроки открыть его не могут (одно окно на торговца).
+    /// </summary>
+    public EntityUid? CurrentUser;
+
     [DataField("merchantName")]
     public string MerchantName = "Merchant";
 
@@ -52,6 +63,14 @@ public sealed partial class N14MerchantComponent : Component
     /// </summary>
     [DataField("stockSize")]
     public int StockSize = 10;
+
+    /// <summary>
+    ///     Сколько экземпляров одного товара торговец выставляет за цикл.
+    ///     После продажи всех экземпляров позиция пропадает до обновления ассортимента.
+    ///     0 или меньше — без ограничения.
+    /// </summary>
+    [DataField("stockPerItem")]
+    public int StockPerItem = 3;
 
     /// <summary>
     ///     Интервал обновления ассортимента в секундах. 0 или меньше — не обновлять.
@@ -107,4 +126,11 @@ public partial record struct N14MerchantListing()
     /// </summary>
     [DataField("playerSold")]
     public bool PlayerSold { get; set; }
+
+    /// <summary>
+    ///     Прочность оружия на момент продажи торговцу (в единицах компонента).
+    ///     -1 — прочность не сохранялась (не оружие или товар из прототипа).
+    /// </summary>
+    [DataField("condition")]
+    public float Condition { get; set; } = -1f;
 }

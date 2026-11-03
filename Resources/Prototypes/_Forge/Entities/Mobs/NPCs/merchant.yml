@@ -3,7 +3,8 @@
 # Ассортимент собирается из пула наборов n14MerchantStockSet (merchant_tiers.yml):
 # записи всех перечисленных наборов объединяются, и торговец случайно набирает
 # stockSize позиций. Ассортимент обновляется каждые restockSeconds секунд
-# (по умолчанию 1200 = 20 минут).
+# (по умолчанию 1200 = 20 минут). stockPerItem ограничивает число экземпляров
+# одного товара: когда их разбирают, позиция пропадает до обновления.
 # Выкупленные у игрока вещи остаются в продаже и после обновления ассортимента.
 # Крышки в запасе роллятся случайно при появлении на карте.
 
@@ -50,10 +51,13 @@
         - N14MerchantStockT1Combat
         - N14MerchantStockT1Travel
         - N14MerchantStockT1Utility
-      stockSize: 10
+      stockSize: 50
+      stockPerItem: 3
       restockSeconds: 1200
     - type: ActivatableUI
       key: enum.N14MerchantUiKey.Key
+      # Одно окно на торговца: второй игрок получает отказ ещё на клиенте.
+      singleUser: true
     - type: UserInterface
       interfaces:
         enum.N14MerchantUiKey.Key:
@@ -100,10 +104,13 @@
         - N14MerchantStockT2Combat
         - N14MerchantStockT2Travel
         - N14MerchantStockT2Utility
-      stockSize: 10
+      stockSize: 50
+      stockPerItem: 3
       restockSeconds: 1200
     - type: ActivatableUI
       key: enum.N14MerchantUiKey.Key
+      # Одно окно на торговца: второй игрок получает отказ ещё на клиенте.
+      singleUser: true
     - type: UserInterface
       interfaces:
         enum.N14MerchantUiKey.Key:
@@ -150,10 +157,13 @@
         - N14MerchantStockT3Combat
         - N14MerchantStockT3Travel
         - N14MerchantStockT3Utility
-      stockSize: 10
+      stockSize: 50
+      stockPerItem: 3
       restockSeconds: 1200
     - type: ActivatableUI
       key: enum.N14MerchantUiKey.Key
+      # Одно окно на торговца: второй игрок получает отказ ещё на клиенте.
+      singleUser: true
     - type: UserInterface
       interfaces:
         enum.N14MerchantUiKey.Key:
