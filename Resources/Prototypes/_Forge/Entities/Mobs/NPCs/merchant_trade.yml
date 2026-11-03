@@ -71,7 +71,7 @@
     N14BoxPlasticFilledWastelander: 100
     N14BrahminDung: 2
     N14BrassKnife: 20
-    N14BrassOre: 5
+    N14BrassOre: 30
     N14BrassOre1: 5
     N14BrocJam: 12
     N14BrokenPipe: 10
@@ -82,7 +82,7 @@
     N14BuffoutPill: 20
     N14BufftatsCanisterFilled: 100
     N14BufftatsPill: 20
-    N14BumperSword: 450
+    N14BumperSword: 900
     N14ButchersCleaver: 20
     N14CactusJam: 12
     N14CardAccessBlue: 10
@@ -123,8 +123,8 @@
     N14Chainsaw: 300
     N14ChemicalSyringe: 25
     N14ChemicalSyringeAntidote: 95
-    N14ChemicalSyringeAntidoteEmpty: 25
-    N14ChineseSword: 600
+    N14ChemicalSyringeAntidoteEmpty: 20
+    N14ChineseSword: 800
     N14Cigarette: 2
     N14CigaretteKool: 2
     N14CigaretteMarlboro: 2
@@ -194,6 +194,7 @@
     N14ClothingBackpackTrekker: 30
     N14ClothingBackpackTribal: 30
     N14ClothingBackpackTribalFilled: 80
+    JunkCannon: 6000
     N14ClothingBackpackTribalHealerFilled: 80
     N14ClothingBackpackVaultBlue: 30
     N14ClothingBackpackVaultBlueDark: 30
@@ -255,10 +256,10 @@
     N14ClothingHandsGlovesNitrilePurple: 15
     N14ClothingHandsGlovesPatrol: 15
     N14ClothingHandsGlovesTribal: 15
-    N14ClothingHandsIndusrialPowerFist: 300
+    N14ClothingHandsIndusrialPowerFist: 2200
     N14ClothingHandsKnuckles: 25
     N14ClothingHandsKnucklesWithClaws: 40
-    N14ClothingHandsPowerFist: 1000
+    N14ClothingHandsPowerFist: 2000
     N14ClothingHandsPowerFistCenturion: 1000
     N14ClothingHeadBaron: 80
     N14ClothingHeadHatAnimal: 20
@@ -270,9 +271,9 @@
     N14ClothingHeadHatAssasin: 20
     N14ClothingHeadHatBandit: 20
     N14ClothingHeadHatBanganeBoS: 20
-    N14ClothingHeadHatBaseHelmetmarine: 800
-    N14ClothingHeadHatBaseball: 20
-    N14ClothingHeadHatBaseballHelmet: 30
+    N14ClothingHeadHatBaseHelmetmarine: 1400
+    N14ClothingHeadHatBaseball: 100
+    N14ClothingHeadHatBaseballHelmet: 70
     N14ClothingHeadHatBaseballHelmetBlueprint: 10
     N14ClothingHeadHatBeanie: 20
     N14ClothingHeadHatBeretknighBoS: 20
@@ -290,7 +291,7 @@
     N14ClothingHeadHatBrotherhoodHelmetCaptain: 25
     N14ClothingHeadHatBrotherhoodHelmetKnight: 25
     N14ClothingHeadHatBrotherhoodHelmetMK2: 80
-    N14ClothingHeadHatBrotherhoodHelmetMK3: 25
+    N14ClothingHeadHatBrotherhoodHelmetMK3: 200
     N14ClothingHeadHatBrotherhoodHelmetOutcast: 25
     N14ClothingHeadHatBrotherhoodHelmetPaladin: 25
     N14ClothingHeadHatBrotherhoodMidwestHelmet: 25
@@ -309,11 +310,11 @@
     N14ClothingHeadHatCenturionHelmet: 4600
     N14ClothingHeadHatChinese: 5
     N14ClothingHeadHatChineseHelmet: 300
-    N14ClothingHeadHatChineseHelmetMk2: 600
+    N14ClothingHeadHatChineseHelmetMk2: 800
     N14ClothingHeadHatCombatHelmet: 450
     N14ClothingHeadHatCombatHelmetCargo: 450
-    N14ClothingHeadHatCombatHelmetMK2: 700
-    N14ClothingHeadHatCombatHelmetMK2Cargo: 700
+    N14ClothingHeadHatCombatHelmetMK2: 800
+    N14ClothingHeadHatCombatHelmetMK2Cargo: 800
     N14ClothingHeadHatConusRobeHood: 20
     N14ClothingHeadHatCowboyBrown: 20
     N14ClothingHeadHatCowboyGrey: 20
@@ -388,14 +389,14 @@
     N14ClothingHeadHatRaiderbag: 20
     N14ClothingHeadHatRanger: 20
     N14ClothingHeadHatRangerB: 20
-    N14ClothingHeadHatRangerHelmet: 80
-    N14ClothingHeadHatRangerHelmetDesert: 80
-    N14ClothingHeadHatRangerHelmetElite: 80
-    N14ClothingHeadHatRangerHelmetEliteOld: 80
-    N14ClothingHeadHatRangerHelmetFox: 80
-    N14ClothingHeadHatRangerHelmetModif: 80
-    N14ClothingHeadHatRangerHelmetOld: 80
-    N14ClothingHeadHatRangerHelmetPrice: 80
+    N14ClothingHeadHatRangerHelmet: 200
+    N14ClothingHeadHatRangerHelmetDesert: 200
+    N14ClothingHeadHatRangerHelmetElite: 200
+    N14ClothingHeadHatRangerHelmetEliteOld: 200
+    N14ClothingHeadHatRangerHelmetFox: 200
+    N14ClothingHeadHatRangerHelmetModif: 200
+    N14ClothingHeadHatRangerHelmetOld: 200
+    N14ClothingHeadHatRangerHelmetPrice: 200
     N14ClothingHeadHatScavengerHelmet: 25
     N14ClothingHeadHatSheriff: 20
     N14ClothingHeadHatSpecHelmetRCMP: 25
@@ -571,12 +572,12 @@
     N14ClothingOuterCombatArmorCargo: 200
     N14ClothingOuterCombatArmorChinese: 200
     N14ClothingOuterCombatArmorKnightBOS: 200
-    N14ClothingOuterCombatArmorMK2: 800
+    N14ClothingOuterCombatArmorMK2: 2000
     SmokeGrenade: 300
     MedkitCombat: 600
     40mmGrenadeFrag: 1000
     N14ClothingOuterCombatArmorMK2Blueprint: 10
-    N14ClothingOuterCombatArmorMK2Cargo: 800
+    N14ClothingOuterCombatArmorMK2Cargo: 2000
     N14ClothingOuterCombatArmorMK3: 200
     N14ClothingOuterCombatArmorRCMP: 200
     N14ClothingOuterCombatArmorSeniorBOS: 200
@@ -1425,8 +1426,8 @@
     N14GiftFillMedical: 100
     N14GiftFillWeapon: 100
     N14Gladius: 30
-    N14GoldOre: 5
-    N14GoldOre1: 5
+    N14GoldOre: 50
+    N14GoldOre1: 50
     N14GolfClub: 20
     N14Gunpowder: 4
     N14Gunpowder1: 4
@@ -1541,35 +1542,35 @@
     N14IDTribeSawbonePendant: 10
     N14IngotAluminum: 5
     N14IngotAluminum1: 18
-    N14IngotBrass: 5
-    N14IngotBrass1: 18
-    N14IngotCopper: 5
-    N14IngotCopper1: 18
-    N14IngotGold: 10
-    N14IngotGold1: 45
-    N14IngotIron: 5
-    N14IngotIron1: 18
+    N14IngotBrass: 40
+    N14IngotBrass1: 40
+    N14IngotCopper: 30
+    N14IngotCopper1: 30
+    N14IngotGold: 60
+    N14IngotGold1: 60
+    N14IngotIron: 30
+    N14IngotIron1: 30
     N14IngotLead: 5
-    N14IngotLead1: 18
-    N14IngotLead20: 250
+    N14IngotLead1: 40
+    N14IngotLead20: 800
     N14IngotSilver: 10
     N14IngotSilver1: 35
     N14InjectionCarbine: 100
     N14InjectionCarbineBlueprint: 10
     N14InjectionSyringe: 25
     N14InsectShield: 50
-    N14InstrumentBanjo: 200
-    N14InstrumentClarinet: 200
-    N14InstrumentFlute: 200
-    N14InstrumentGuitar: 200
-    N14InstrumentHarmonica: 200
-    N14InstrumentPanflute: 200
-    N14InstrumentSaxaphone: 200
-    N14InstrumentTrombone: 200
-    N14InstrumentTrumpet: 200
-    N14InstrumentViolin: 200
-    N14IronOre: 5
-    N14IronOre1: 5
+    N14InstrumentBanjo: 100
+    N14InstrumentClarinet: 100
+    N14InstrumentFlute: 100
+    N14InstrumentGuitar: 100
+    N14InstrumentHarmonica: 100
+    N14InstrumentPanflute: 100
+    N14InstrumentSaxaphone: 100
+    N14InstrumentTrombone: 100
+    N14InstrumentTrumpet: 100
+    N14InstrumentViolin: 100
+    N14IronOre: 30
+    N14IronOre1: 30
     N14Jet: 40
     N14JetInhaler: 20
     N14JugAntiseptic: 60
@@ -2067,11 +2068,11 @@
     N14WeaponPlasmaPistol: 500
     N14WeaponPlasmaRifle: 2000
     N14WeaponPlasmaRifleAuto: 3000
-    N14WeaponPlasmaRifleCrude: 3000
+    N14WeaponPlasmaRifleCrude: 700
     N14WeaponPlasmaRifleCrudeBlueprint: 10
     N14WeaponPlasmaRifleUrban: 1500
     N14WeaponRevolver10mm: 30
-    N14WeaponRevolver10mmEmpty: 500
+    N14WeaponRevolver10mmEmpty: 30
     N14WeaponRevolver12-7x55mmRSH12: 500
     N14WeaponRevolver44MagnumCaptain: 500
     N14WeaponRevolver44Magnun: 70
@@ -2116,15 +2117,15 @@
     N14WeaponRifleM7SpearScope: 500
     N14WeaponSMG10mm: 250
     N14WeaponSMG10mmChinese: 330
-    N14WeaponSMG10mmPipe: 170
-    N14WeaponSMG10mmPipeEmpty: 500
+    N14WeaponSMG10mmPipe: 40
+    N14WeaponSMG10mmPipeEmpty: 40
     N14WeaponSMG10mmSuppressed: 300
     N14WeaponSMG12mm: 220
     N14WeaponSMG12mmAdvanced: 2000
     N14WeaponSMG12mmAdvancedCanadian: 1500
     N14WeaponSMG12mmAdvancedChinese: 2000
-    N14WeaponSMG12mmPipe: 125
-    N14WeaponSMG12mmPipeEmpty: 500
+    N14WeaponSMG12mmPipe: 70
+    N14WeaponSMG12mmPipeEmpty: 70
     N14WeaponSMG22Silenced: 2000
     N14WeaponSMG45: 150
     N14WeaponSMG9mm: 130
@@ -2713,6 +2714,7 @@
     N14ClothingHeadHatCenturionConquerorHelmet: /Textures/_NukeWake/icons/iconsarmor/centurionhelmet.rsi
     N14ClothingOuterCinderCenturionArmor: /Textures/_NukeWake/icons/iconsarmor/centurionarmor.rsi
     N14ClothingOuterHeavyCenturionArmor: /Textures/_NukeWake/icons/iconsarmor/centurionarmor.rsi
+    N14ClothingHeadHatEyeBot: /Textures/_NukeWake/icons/iconsarmor/eyebothelmet.rsi
     # Силовые шлемы (дополнение)
     N14ClothingHeadHelmetPowerArmorMidwest: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
     N14ClothingHeadHelmetPowerArmorMidwestCommander: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
@@ -2722,3 +2724,19 @@
     N14ClothingHeadHelmetPowerArmorT51ChinaRaiderNPC: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
     N14ClothingHeadHelmetPowerArmorT51Wash: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
     N14ClothingHeadHelmetPowerArmorT51WashElite: /Textures/_NukeWake/icons/iconsarmor/t45helmet.rsi
+
+    N14IngotSilver1: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotSilver: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotLead1: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotLead: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotLead20: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotCopper: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotCopper1: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotBrass1: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotBrass: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotGold: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotGold1: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotIron: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotIron1: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotAluminum: /Textures/_NukeWake/icons/iconitems/bar.rsi
+    N14IngotAluminum1: /Textures/_NukeWake/icons/iconitems/bar.rsi
