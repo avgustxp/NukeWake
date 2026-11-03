@@ -366,12 +366,6 @@
       jobs:
         - Followers
     # Forge-Change-End
-    - !type:CharacterTraitRequirement
-      inverted: true
-      traits:
-        - N14ExtremeAugKnight
-        - N14ExtremeAugScribe
-        - N14ExtremeAugPaladin
   functions:
     - !type:TraitAddComponent
       components:

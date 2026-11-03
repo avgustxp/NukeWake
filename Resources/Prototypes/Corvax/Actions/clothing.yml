@@ -9,9 +9,9 @@
     checkConsciousness: true
     itemIconStyle: NoItem
     icon:
-      sprite: Corvax/Clothing/Head/PowerArmorHelmets/paladinKiller.rsi
+      sprite: Corvax/Clothing/Head/Helmets/baseballhelmet.rsi
       state: icon-sealed
     iconOn:
-      sprite: Corvax/Clothing/Head/PowerArmorHelmets/paladinKiller.rsi
+      sprite: Corvax/Clothing/Head/Helmets/baseballhelmet.rsi
       state: icon
     event: !type:SealClothingEvent { }
