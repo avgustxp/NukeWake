@@ -501,6 +501,9 @@ public sealed class N14MerchantRow : PanelContainer
 
     public int Price { get; }
 
+    /// <summary>Количество единиц в строке: для продажи — всего у игрока, для покупки — остаток у торговца.</summary>
+    public int Count { get; }
+
     public event Action<N14MerchantRow>? OnClicked;
 
     /// <summary>Срабатывает при наведении/уходе курсора; аргумент — прототип под курсором или null.</summary>
@@ -524,6 +527,7 @@ public sealed class N14MerchantRow : PanelContainer
         Proto = proto;
         OfferIndex = offerIndex;
         Price = price;
+        Count = count;
 
         EnsureHoverSource();
 

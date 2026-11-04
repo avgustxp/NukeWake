@@ -699,8 +699,9 @@ public sealed class N14MerchantWindow : FancyWindow
 
         foreach (var row in _playerColumn.Rows.Children)
         {
+            // Стак продаётся целиком: цена за единицу умножается на количество.
             if (row is N14MerchantRow request && request.Selected)
-                sellTotal += request.Price;
+                sellTotal += request.Price * Math.Max(1, request.Count);
         }
 
         // Покупка у торговца: списываем крышки — знак «-».

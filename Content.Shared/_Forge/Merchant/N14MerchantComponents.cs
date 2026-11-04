@@ -133,4 +133,12 @@ public partial record struct N14MerchantListing()
     /// </summary>
     [DataField("condition")]
     public float Condition { get; set; } = -1f;
+
+    /// <summary>
+    ///     Сколько единиц товара в одном лоте. Для позиций, выкупленных у игрока стаком,
+    ///     это размер стака: при покупке игрок получит ровно столько единиц.
+    ///     0/-1 — лот создан из прототипа и берёт количество по умолчанию.
+    /// </summary>
+    [DataField("stackCount")]
+    public int StackCount { get; set; } = -1;
 }
