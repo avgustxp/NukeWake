@@ -43,12 +43,6 @@
   category: Speech
   points: -2
   requirements:
-  - !type:CharacterTraitRequirement
-    inverted: true
-    traits:
-    - N14ExtremeAugKnight
-    - N14ExtremeAugScribe
-    - N14ExtremeAugPaladin
   - !type:CharacterDepartmentRequirement
     departments:
     - BrotherhoodMidwest
@@ -80,8 +74,6 @@
     - NCRRanger # Forge-Change
     - NCRSGT
 #    - CaravanLeader
-#    - BoSWashingtonCommander
-#    - BoSWashingtonPaladin
     - BoSMidPaladinCommander
     - BoSMidPaladin
     # Forge-Change-Start

@@ -39,6 +39,6 @@
   id: N14ClothingHeadHatNCRMPCap
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/Head/Hats/InquisitorCap.rsi
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/enclaveofficer.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/Head/Hats/InquisitorCap.rsi
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/enclaveofficer.rsi

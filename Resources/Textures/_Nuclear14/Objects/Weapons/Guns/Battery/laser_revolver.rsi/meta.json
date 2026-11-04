@@ -6,7 +6,7 @@
         "x": 32,
         "y": 32
     },
-    "states": [
+        "states": [
         {
             "name": "icon"
         },
@@ -35,6 +35,9 @@
         {
             "name": "inhand-right",
             "directions": 4
+        },
+        {
+            "name": "equipped-BELT"
         }
     ]
 }

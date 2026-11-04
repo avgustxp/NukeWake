@@ -6,29 +6,32 @@
     "x": 32,
     "y": 32
   },
-  "states": [
-    {
-      "name": "pole",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "dyedispenser"
-    },
-    {
-      "name": "dyedispenser-off"
-    },
-    {
-      "name": "dyedispenser-broken"
-    },
-    {
-      "name": "thesnip"
-    }
-  ]
+      "states": [
+        {
+            "name": "pole",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "dyedispenser"
+        },
+        {
+            "name": "dyedispenser-off"
+        },
+        {
+            "name": "dyedispenser-broken"
+        },
+        {
+            "name": "thesnip"
+        },
+        {
+            "name": "barberchair"
+        }
+    ]
 }

@@ -75,25 +75,6 @@
       amount: 3
 
 - type: craftRecipe
-  id: N14ClothingOuterLegionnaireHeavyArmorRecipe
-  resultProtos:
-    - N14ClothingOuterLegionnaireHeavyArmor
-  requiredWorkbench: N14WorkbenchArmorbench
-  availableFaction:
-    - CaesarLegion
-  craftTime: 7.5
-  items:
-    N14ClothingOuterLegionnaireHeavyArmorBlueprint:
-      amount: 1
-      catalyzer: true
-    N14ComponentArmorPlateMK3:
-      amount: 1
-    MaterialCloth1:
-      amount: 2
-    N14MaterialThread1:
-      amount: 3
-
-- type: craftRecipe
   id: N14ClothingHeadHatBaseballHelmetRecipe
   resultProtos:
     - N14ClothingHeadHatBaseballHelmet

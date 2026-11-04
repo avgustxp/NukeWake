@@ -713,19 +713,6 @@
     - HolotagMidwestPaladin
     - NCClothingBandageBoS # Forge-Change
 
-- type: entity
-  parent: N14WorkbenchIDPrinter
-  id: N14WorkbenchIDPrinterBrotherhoodWashington
-  description: An ID printer for printing Washington Brotherhood holotags.
-  suffix: Washington BOS
-  components:
-  - type: Lathe
-    staticRecipes:
-    - HolotagWashingtonScribe
-    - HolotagWashingtonInitiate
-    - HolotagWashingtonKnight
-    - HolotagWashingtonPaladin
-
 #- type: entity
 #  parent: N14WorkbenchIDPrinter
 #  id: N14WorkbenchIDPrinterCaravan

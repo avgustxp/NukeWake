@@ -6,7 +6,7 @@
         "x": 32,
         "y": 32
     },
-    "states": [
+        "states": [
         {
             "name": "icon"
         },
@@ -17,14 +17,17 @@
         {
             "name": "inhand-right",
             "directions": 4
-    },
-    {
-        "name": "wielded-inhand-left",
-        "directions": 4
-    },
-    {
-        "name": "wielded-inhand-right",
-        "directions": 4
-    }
-  ]
+        },
+        {
+            "name": "wielded-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "wielded-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "equipped-BACKPACK"
+        }
+    ]
 }

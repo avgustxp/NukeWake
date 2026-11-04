@@ -22,7 +22,7 @@
   equipment:
     head: N14ClothingHeadHatNCRCombatHelmet
     jumpsuit: N14ClothingOfficerUniformNCRDesert
-    outerClothing: N14ClothingOuterNCRCombatVeteranArmor
+    outerClothing: N14ClothingOuterNCRCombatArmor
     shoes: N14ClothingBootsCombatFilled
     gloves: N14ClothingHandsGlovesCombat
     belt: ClothingBeltNCR

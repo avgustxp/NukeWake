@@ -6,46 +6,49 @@
     "x": 64,
     "y": 32
   },
-  "states": [
-    {
-      "name": "bench_metal",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "forge",
-      "delays": [
-        [
-          0.4,
-          0.4,
-          0.4,
-          1,
-          0.4
-        ]
-      ]
-    },
-    {
-      "name": "forgeframe0"
-    },
-    {
-      "name": "forgeframe1"
-    },
-    {
-      "name": "forgeframe2"
-    },
-    {
-      "name": "forgeframe3"
-    },
-    {
-      "name": "forgeframe4"
-    },
-    {
-      "name": "forgeicon"
-    }
-  ]
+      "states": [
+        {
+            "name": "bench_metal",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "forge",
+            "delays": [
+                [
+                    0.4,
+                    0.4,
+                    0.4,
+                    1,
+                    0.4
+                ]
+            ]
+        },
+        {
+            "name": "forgeframe0"
+        },
+        {
+            "name": "forgeframe1"
+        },
+        {
+            "name": "forgeframe2"
+        },
+        {
+            "name": "forgeframe3"
+        },
+        {
+            "name": "forgeframe4"
+        },
+        {
+            "name": "forgeicon"
+        },
+        {
+            "name": "forgeframe5"
+        }
+    ]
 }

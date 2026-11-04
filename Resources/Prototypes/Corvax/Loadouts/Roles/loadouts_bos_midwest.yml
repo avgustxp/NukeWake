@@ -1,6 +1,6 @@
 - type: loadout
   id: LoadoutBoSMidwestUnknown
-  category: Outer
+  category: OuterArmor
   cost: 10
   exclusive: true
   requirements:
@@ -12,7 +12,7 @@
 
 - type: loadout
   id: LoadoutBoSMidwestUnknown2
-  category: Outer
+  category: OuterArmor
   cost: 10
   exclusive: true
   requirements:
@@ -24,7 +24,7 @@
 
 - type: loadout
   id: LoadoutClothingOuterBOSInquisitorBlackCoat
-  category: Outer
+  category: OuterArmor
   cost: 8
   exclusive: true
   requirements:
@@ -39,7 +39,7 @@
 
 - type: loadout
   id: LoadoutClothingOuterBOSInquisitorBattleArmor
-  category: Outer
+  category: OuterArmor
   cost: 8
   exclusive: true
   requirements:
@@ -125,10 +125,6 @@
         - BoSMidPaladin
         - BoSMidKnight
         - BoSMidSquire
-        - BoSWashingtonCommander
-        - BoSWashingtonPaladin
-        - BoSWashingtonKnight
-        - BoSWashingtonInitiate
         - BoSWestElderCommander
         - BoSWestPaladin
         - BoSWestKnight
@@ -158,10 +154,6 @@
         - BoSMidPaladinCommander
         - BoSMidPaladin
         - BoSMidKnight
-        - BoSWashingtonCommander
-        - BoSWashingtonPaladin
-        - BoSWashingtonKnight
-        - BoSWashingtonInitiate
         - BoSWestElderCommander
         - BoSWestPaladin
         - BoSWestKnight
@@ -190,8 +182,6 @@
       jobs:
         - BoSMidPaladinCommander
         - BoSMidPaladin
-        - BoSWashingtonCommander
-        - BoSWashingtonPaladin
         - BoSWestElderCommander
         - BoSWestPaladin
     - !type:CharacterLogicOrRequirement

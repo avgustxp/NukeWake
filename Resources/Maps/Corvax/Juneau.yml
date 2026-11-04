@@ -782961,119 +782961,6 @@ entities:
     - type: Transform
       pos: -71.5,-237.5
       parent: 1
-- proto: N14PosterAbraxo
-  entities:
-  - uid: 79837
-    components:
-    - type: Transform
-      pos: -153.5,33.5
-      parent: 1
-  - uid: 79838
-    components:
-    - type: Transform
-      pos: 129.5,-11.5
-      parent: 1
-  - uid: 79839
-    components:
-    - type: Transform
-      pos: 171.5,94.5
-      parent: 1
-  - uid: 79840
-    components:
-    - type: Transform
-      pos: 122.5,-206.5
-      parent: 1
-  - uid: 79841
-    components:
-    - type: Transform
-      pos: 111.5,-65.5
-      parent: 1
-  - uid: 79842
-    components:
-    - type: Transform
-      pos: 17.5,172.5
-      parent: 1
-  - uid: 79843
-    components:
-    - type: Transform
-      pos: -120.5,65.5
-      parent: 1
-  - uid: 110346
-    components:
-    - type: Transform
-      pos: -187.5,33.5
-      parent: 1
-- proto: N14PosterAdvertGrognak1
-  entities:
-  - uid: 79844
-    components:
-    - type: Transform
-      pos: -44.5,-208.5
-      parent: 1
-- proto: N14PosterAdvertJet
-  entities:
-  - uid: 79845
-    components:
-    - type: Transform
-      pos: -42.5,-201.5
-      parent: 1
-- proto: N14PosterAdvertNukaCola1
-  entities:
-  - uid: 79846
-    components:
-    - type: Transform
-      pos: 128.5,-214.5
-      parent: 1
-  - uid: 79847
-    components:
-    - type: Transform
-      pos: -42.5,-204.5
-      parent: 1
-- proto: N14PosterAdvertNukaCola2
-  entities:
-  - uid: 79848
-    components:
-    - type: Transform
-      pos: 88.5,-199.5
-      parent: 1
-- proto: N14PosterBoscom
-  entities:
-  - uid: 79849
-    components:
-    - type: Transform
-      pos: -43.5,-127.5
-      parent: 1
-  - uid: 79850
-    components:
-    - type: Transform
-      pos: -41.5,-236.5
-      parent: 1
-- proto: N14PosterCautionSign1
-  entities:
-  - uid: 79851
-    components:
-    - type: Transform
-      pos: -78.5,106.5
-      parent: 1
-- proto: N14PosterCautionSign2
-  entities:
-  - uid: 79852
-    components:
-    - type: Transform
-      pos: 157.5,109.5
-      parent: 1
-  - uid: 79853
-    components:
-    - type: Transform
-      pos: 13.5,-132.5
-      parent: 1
-- proto: N14PosterDangerSign2
-  entities:
-  - uid: 79854
-    components:
-    - type: Transform
-      pos: -75.5,110.5
-      parent: 1
 - proto: N14PosterFallout
   entities:
   - uid: 79855
@@ -783137,18 +783024,6 @@ entities:
     components:
     - type: Transform
       pos: -185.72911,47.784874
-      parent: 1
-- proto: N14PosterGNN
-  entities:
-  - uid: 79865
-    components:
-    - type: Transform
-      pos: 17.5,177.5
-      parent: 1
-  - uid: 105345
-    components:
-    - type: Transform
-      pos: 27.5,-60.5
       parent: 1
 - proto: N14PosterNCR1
   entities:
@@ -783263,65 +783138,6 @@ entities:
     components:
     - type: Transform
       pos: -13.856651,79.76764
-      parent: 1
-- proto: N14PosterSafety11
-  entities:
-  - uid: 79884
-    components:
-    - type: Transform
-      pos: 98.5,65.5
-      parent: 1
-- proto: N14PosterSafety12
-  entities:
-  - uid: 79885
-    components:
-    - type: Transform
-      pos: -143.5,28.5
-      parent: 1
-- proto: N14PosterSafety3
-  entities:
-  - uid: 79886
-    components:
-    - type: Transform
-      pos: -197.5,-124.5
-      parent: 1
-  - uid: 79887
-    components:
-    - type: Transform
-      pos: -144.5,35.5
-      parent: 1
-- proto: N14PosterSafety4
-  entities:
-  - uid: 79888
-    components:
-    - type: Transform
-      pos: 111.5,-217.5
-      parent: 1
-  - uid: 79889
-    components:
-    - type: Transform
-      pos: -186.5,-121.5
-      parent: 1
-- proto: N14PosterSafety5
-  entities:
-  - uid: 79890
-    components:
-    - type: Transform
-      pos: -54.5,-125.5
-      parent: 1
-- proto: N14PosterSafety8
-  entities:
-  - uid: 79891
-    components:
-    - type: Transform
-      pos: 123.5,-202.5
-      parent: 1
-- proto: N14PosterSafety9
-  entities:
-  - uid: 116805
-    components:
-    - type: Transform
-      pos: -57.5,-220.5
       parent: 1
 - proto: N14PosterVaultTec02
   entities:
@@ -783551,70 +783367,6 @@ entities:
     components:
     - type: Transform
       pos: -71.5,-230.5
-      parent: 1
-- proto: N14PosterWideMassfusion1
-  entities:
-  - uid: 79925
-    components:
-    - type: Transform
-      pos: 87.5,-20.5
-      parent: 1
-  - uid: 79926
-    components:
-    - type: Transform
-      pos: 94.5,70.5
-      parent: 1
-  - uid: 79927
-    components:
-    - type: Transform
-      pos: -62.5,-128.5
-      parent: 1
-  - uid: 79928
-    components:
-    - type: Transform
-      pos: -42.5,-242.5
-      parent: 1
-- proto: N14PosterWideNukaDark
-  entities:
-  - uid: 79929
-    components:
-    - type: MetaData
-      name: Dark2Gold
-    - type: Transform
-      pos: 17.5,161.5
-      parent: 1
-- proto: N14PosterWideRedrocket1
-  entities:
-  - uid: 79930
-    components:
-    - type: Transform
-      pos: -151.5,35.5
-      parent: 1
-- proto: N14PosterWideVim
-  entities:
-  - uid: 79931
-    components:
-    - type: Transform
-      pos: 146.5,124.5
-      parent: 1
-  - uid: 114141
-    components:
-    - type: Transform
-      pos: -14.5,83.5
-      parent: 1
-- proto: N14PosterWideVimCaptainsblend
-  entities:
-  - uid: 79932
-    components:
-    - type: Transform
-      pos: 99.5,31.5
-      parent: 1
-- proto: N14PosterWideVimQuartz
-  entities:
-  - uid: 79933
-    components:
-    - type: Transform
-      pos: 23.5,170.5
       parent: 1
 - proto: N14PowerCellFocusedYk42b
   entities:
@@ -796085,14 +795837,6 @@ entities:
         117523:
         - - Pressed
           - Toggle
-- proto: N14SignAmeliaEspresso
-  entities:
-  - uid: 80741
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 26.074947,-43.03016
-      parent: 1
 - proto: N14SignBar
   entities:
   - uid: 80742
@@ -796101,14 +795845,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 17.572535,-44.550686
       parent: 1
-- proto: N14SignBarstowStrongExpress
-  entities:
-  - uid: 80743
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 26.053143,-56.53274
-      parent: 1
 - proto: N14SignBazaarOn
   entities:
   - uid: 80744
@@ -796116,13 +795852,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 17.33816,-45.050686
-      parent: 1
-- proto: N14SignBeantownBrewery
-  entities:
-  - uid: 80745
-    components:
-    - type: Transform
-      pos: -78.5,-158.5
       parent: 1
 - proto: N14SignClinic
   entities:
@@ -796171,13 +795900,6 @@ entities:
     - type: Transform
       pos: -42.5,-80.5
       parent: 1
-- proto: N14SignGroceries
-  entities:
-  - uid: 80753
-    components:
-    - type: Transform
-      pos: 110.33492,26.548075
-      parent: 1
 - proto: N14SignHotel
   entities:
   - uid: 80754
@@ -796207,14 +795929,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 398.5,71.5
-      parent: 1
-- proto: N14SignHubrisComics
-  entities:
-  - uid: 80758
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 20.065502,-54.584118
       parent: 1
 - proto: N14SignNotice
   entities:
@@ -796558,27 +796272,6 @@ entities:
       canCollide: False
     - type: Fixtures
       fixtures: {}
-- proto: N14SignSullivans
-  entities:
-  - uid: 80797
-    components:
-    - type: Transform
-      pos: -79.5,-95.5
-      parent: 1
-- proto: N14SignTheJerkShakes
-  entities:
-  - uid: 80798
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -118.987885,103.27722
-      parent: 1
-  - uid: 80799
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 26.618584,-43.571384
-      parent: 1
 - proto: N14SignVaultTecWorn
   entities:
   - uid: 80800
@@ -796586,13 +796279,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 74.034546,-87.46102
-      parent: 1
-- proto: N14SignWickedShipping
-  entities:
-  - uid: 80801
-    components:
-    - type: Transform
-      pos: 68.5,-185.5
       parent: 1
 - proto: N14SignWorkersOnly
   entities:
@@ -984152,27 +983838,6 @@ entities:
     components:
     - type: Transform
       pos: 67.537926,-99.36688
-      parent: 1
-- proto: StreetFurnitureBillboardMassfusion1
-  entities:
-  - uid: 112072
-    components:
-    - type: Transform
-      pos: 288.5,48.5
-      parent: 1
-- proto: StreetFurnitureBillboardNukacola1worn
-  entities:
-  - uid: 112073
-    components:
-    - type: Transform
-      pos: 331.5,54.5
-      parent: 1
-- proto: StreetFurnitureBillboardRedrocket1worn
-  entities:
-  - uid: 112074
-    components:
-    - type: Transform
-      pos: 70.5,-19.5
       parent: 1
 - proto: SubstationBasic
   entities:

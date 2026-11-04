@@ -22,7 +22,4 @@ job-supervisors-townsfolk = мэру города
 job-supervisors-raider = никому
 job-supervisors-followers = никому
 
-job-supervisors-bos-wash-initiate = старшим по званию в Вашингтонском Братстве Стали
-job-supervisors-bos-wash-knight = паладинам Вашингтонского Братства Стали
 job-supervisors-bos-wash = командиру вашего бункера
-job-supervisors-bos-wash-commander = старейшине Вашингтонского Братства Стали

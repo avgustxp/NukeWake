@@ -2382,9 +2382,6 @@
         - id: N14WeaponRifleAk112
           prob: 0.025
           orGroup: Weapon
-        - id: N14WeaponRifleL86
-          prob: 0.025
-          orGroup: Weapon
         - id: N14WeaponSniper308Ross
           prob: 0.3
           orGroup: Weapon

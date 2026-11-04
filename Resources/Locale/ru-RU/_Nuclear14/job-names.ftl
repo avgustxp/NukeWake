@@ -15,19 +15,6 @@ job-description-bos-mid-inquisitor = Дезертиры... Вы тот, кого
 job-name-BoS-Mid-Serf = серф СЗБС
 job-description-bos-mid-Serf = Вы раб, вы обязаны служить СЗБС, ваша жизнь в их руках.
 
-# Вашингтонское Братство Стали (ВБС)
-job-name-bos-washington-commander = лорд ВБС
-job-description-bos-washington-commander = Вы... Одна из немногих причин почему Бессмертный все ещё правит братством. Вы его одна из самых верных дланей. Ну-же, ведите братство к террору....
-job-name-bos-washington-initiate = аколит ВБС
-job-description-bos-washington-initiate = Ты юн, неопытен и скорее всего являешься пушечным мясом для Вашингтонского Братства Стали
-job-name-bos-washington-knight = рыцарь ВБС
-job-description-bos-washington-knight = Военная сила Братства Стали. Защищайте свое отделение в их целях.
-job-name-bos-washington-paladin = паладин ВБС
-job-description-bos-washington-paladin = Защищайте Братство любой ценой. Воплощайте волю командира в пустоши.
-job-name-bos-washington-scribe = писец ВБС
-job-description-bos-washington-scribe = Проводите научные миссии и исследования для вашего отделения Братства.
-
-# Караван
 job-name-caravan-leader = глава каравана
 job-description-caravan-leader = Координируйте караванную компанию в регионе и заключайте торговые сделки с местными.
 job-name-caravan-trader = караванщик

@@ -30,18 +30,6 @@ ent-SpawnPointBoSMidSerf = Серф Среднезападного Братст�
 ent-N14SpawnPointBoSMidInquisitor = Инквизитор Среднезападного Братства Стали
     .desc = { ent-N14SpawnPointWastelander.desc }
 
-# Вашинтонское Братство Стали (ВБС) 
-ent-N14SpawnPointBoSWashingtonCommander = Командир Вашингтонского Братства Стали
-    .desc = { ent-N14SpawnPointWastelander.desc }
-ent-N14SpawnPointBoSWashingtonInitiate = Послушник Вашингтонского Братства Стали
-    .desc = { ent-N14SpawnPointWastelander.desc }
-ent-N14SpawnPointBoSWashingtonPaladin = Паладин Вашингтонского Братства Стали
-    .desc = { ent-N14SpawnPointWastelander.desc }
-ent-N14SpawnPointBoSWashingtonKnight = Рыцарь Вашингтонского Братства Стали
-    .desc = { ent-N14SpawnPointWastelander.desc }
-ent-N14SpawnPointBoSWashingtonScribe = Скриптер Вашингтонского Братства Стали
-    .desc = { ent-N14SpawnPointWastelander.desc }
-
 # Караван 
 ent-N14SpawnPointCaravanLeader = Лидер каравана
     .desc = { ent-N14SpawnPointWastelander.desc }

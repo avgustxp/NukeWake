@@ -1,4 +1,4 @@
-# Обитатели пустоши 
+# Обитатели пустоши
 ent-N14ClothingHeadHatBaseball = довоенная бейсбольная кепка
     .desc = Привет из прошлого – бейсбольная кепка, напоминающая о беззаботных днях до войны.
 ent-N14ClothingHeadHatTrucker = { ent-ClothingHeadHatTrucker }
@@ -38,7 +38,7 @@ ent-N14ClothingHeadHatChinese = шапка-ушанка
 ent-N14ClothingHeadHatVancouver = кепка предотвратителя Ванкувера
     .desc = Простая зеленая кепочка, используемая силами Ванкувера.
 
-# Горожане 
+# Горожане
 ent-N14ClothingHeadHatDeputy = шапка помощника шерифа
     .desc = Надежда на закон и порядок, даже если шериф уже не в строю.
 ent-N14ClothingHeadHatSheriff = шапка шерифа
@@ -46,7 +46,7 @@ ent-N14ClothingHeadHatSheriff = шапка шерифа
 ent-N14ClothingHeadHatTownGuard = кепка стражи
     .desc = Довоенная канадская армейская фуражка для офицеров, теперь носимая городской стражей.
 
-# Среднезападное Братство Стали (СЗБС) 
+# Среднезападное Братство Стали (СЗБС)
 ent-N14ClothingHeadHatBrotherhoodCap = фуражка Братства Стали
     .desc = Фуражка, отмечающая принадлежность к Братству Стали - защитникам технологий и знаний.
 ent-N14ClothingHeadHatBrotherhoodBeret = берет Братства Стали
@@ -64,7 +64,7 @@ ent-N14ClothingHeadHatBoSInquisitorHat = шляпа инквизитора СЗ�
 ent-N14ClothingHeadHatBoSInquisitorBlackHat = чёрная шляпа инквизитора СЗБС
     .desc = Чёрная версия известной шляпы инквизитора, стиля в ней ещё больше.
 
-# Анклав 
+# Анклав
 ent-N14ClothingHeadHatEnclaveIntel = берет Анклава
     .desc = Чёрный берет, символ технологического превосходства Анклава.
 ent-N14ClothingHeadHatEnclaveOfficer = офицерская фуражка Анклава
@@ -74,7 +74,7 @@ ent-N14ClothingHeadHatEnclavePeacekeeperCap = фуражка миротворц�
 ent-N14ClothingHeadHatEnclaveScientist = берет учёных Анклава
     .desc = Голубой берет учёного Анклава – символ науки, поставленной на службу власти.
 
-# Новая Калифорнийская Республика (НКР) 
+# Новая Калифорнийская Республика (НКР)
 ent-N14ClothingHeadHatNCRBeretOfficer = офицерский берет НКР
     .desc = Берет, говорящий о верности Республике и готовности бороться за её идеалы.
 ent-N14ClothingHeadHatNCRBeretMedic = медицинский берет НКР
@@ -83,8 +83,8 @@ ent-N14ClothingHeadHatNCRBeretRecon = берет разведчика НКР
     .desc = Берет разведчика – незаметного воина, защищающего Республику из тени.
 ent-N14ClothingHeadHatNCRBeretQM = берет квартирмейстера НКР
     .desc = Черный берет, носимый квартирмейстерами НКР  – хранителями ресурсов и снабжения армии.
-ent-N14ClothingHeadHatNCRSidecap = пилотка НКР
-    .desc = Пилотка бойца НКР – знак принадлежности к армии, сражающейся за возрождение мира.
+ent-N14ClothingHeadHatNCRSidecap = шлем кадета НКР
+    .desc = шлем кадета НКР – знак принадлежности к армии, сражающейся за возрождение мира.
 ent-N14ClothingHeadHatRanger = шляпа рейнджера
     .desc = Шляпа рейнджера, закаленная солнцем и ветром, - символ силы, мужества и верности своей земле.
 ent-N14ClothingHeadHatRangerB = шляпа рейнджера
@@ -106,7 +106,7 @@ ent-N14ClothingHeadHatNCRMPCap = фуражка следователя воен�
 ent-N14ClothingHeadHatNCRMPBeret = берет военной полиции НКР
     .desc = Стильный берет для самых крутых военных полицейских.
 
-# Племя 
+# Племя
 ent-N14ClothingHeadHatTribalOutcastHood = племенной капюшон изгоя
     .desc = Капюшон, скрывающий лицо от позора и презреющих взглядов.
 ent-N14ClothingTribalHeadWraps = племенные повязки на голову
@@ -126,7 +126,7 @@ ent-N14ClothingTribalShemagh = племенной шемаг
 ent-N14ClothingDrylanderGoggles = племенные очки сухопутников
     .desc = Головной убор из тряпок с парой очков.
 
-# Караван 
+# Караван
 ent-N14ClothingHeadHatCaravan = кепка железнодорожника
     .desc = Кепка, идеально подходящая для работающего человека/женщины/персоны/гуля.
 ent-N14ClothingHeadHatCaravanUniform = фуражка сотрудника Каравана "Синяя Линия"
@@ -134,7 +134,7 @@ ent-N14ClothingHeadHatCaravanUniform = фуражка сотрудника Ка�
 ent-N14ClothingHeadHatCaravanSuit = фуражка лидера Каравана "Синяя Линия"
     .desc = Фуражка, которую носят те, кого нежно называют Большим Шефом, Начальником или просто Боссом.
 
-# Западное Братство Стали (ЗБС) 
+# Западное Братство Стали (ЗБС)
 ent-N14ClothingHeadHatBanganeBoS = бандана Братства Стали
     .desc = Бандана, используемая членами Братства Стали, представляет собой практичный головной убор, выполненный в стилистике фракции.
 ent-N14ClothingHeadHatBeretknighBoS = берет рыцаря Западного Братства

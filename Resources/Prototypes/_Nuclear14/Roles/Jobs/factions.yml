@@ -16,13 +16,7 @@
   id: BrotherhoodWashington
   description: department-BrotherhoodWashington-description
   color: "#a2000f"
-  roles:
-  - BoSWashingtonCommander
-  - BoSWashingtonPaladin
-  - BoSWashingtonScribe
-  - BoSWashingtonKnight
-  - BoSWashingtonInitiate
-
+  roles: []
 #- type: department
 #  id: CaravanCompany
 #  description: department-CaravanCompany-description
