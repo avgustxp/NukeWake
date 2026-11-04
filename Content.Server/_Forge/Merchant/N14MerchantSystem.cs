@@ -1,15 +1,22 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
+using Content.Server.Popups;
+using Content.Server.Storage.Components;
 using Content.Shared._Forge.Merchant;
 using Content.Shared._Forge.Weapons.Ranged.Components;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Examine;
+using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
+using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Tag;
+using Content.Shared.UserInterface;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Server.Cargo.Components;
 using Content.Server.Power.Components;
@@ -31,13 +38,18 @@ public sealed partial class N14MerchantSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
+    [Dependency] private readonly PopupSystem _popups = default!;
     [Dependency] private readonly SharedStackSystem _stack = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private const string CapsStackId = "Caps";
+
+    /// <summary>Максимальное расстояние от торговца до ящика, содержимое которого учитывается.</summary>
+    private const float MaxCrateDistance = 4f;
 
     /// <summary>Тег внутреннего магазина/спидлоадера: считается частью оружия, не отдельной вещью.</summary>
     private static readonly ProtoId<TagPrototype> SpeedLoaderInternalTag = "SpeedLoaderInternal";
@@ -48,8 +60,11 @@ public sealed partial class N14MerchantSystem : EntitySystem
     /// <summary>Имя слота сменного магазина оружия (см. SharedGunSystem.Magazine).</summary>
     private const string MagazineSlotId = "gun_magazine";
 
-    /// <summary>Наценка торговца на купленные у игрока вещи (25%).</summary>
-    private const double MerchantMarkup = 1.25;
+    /// <summary>Доля стоимости, которую игрок получает при продаже вещи торговцу.</summary>
+    private const double SellToMerchantRate = 0.75;
+
+    /// <summary>Наценка торговца при продаже вещи игроку: полная стоимость + 25%.</summary>
+    private const double BuyFromMerchantRate = 1.25;
 
     /// <summary>Прототипы-списки цен и иконок (задаются в YAML).</summary>
     private static readonly ProtoId<N14MerchantPricePrototype> PriceListId = "N14MerchantPrices";
@@ -65,10 +80,12 @@ public sealed partial class N14MerchantSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<N14MerchantComponent, ActivatableUIOpenAttemptEvent>(OnUiOpenAttempt);
         SubscribeLocalEvent<N14MerchantComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<N14MerchantComponent, BoundUIClosedEvent>(OnUiClosed);
         SubscribeLocalEvent<N14MerchantComponent, N14MerchantCommitMessage>(OnCommit);
         SubscribeLocalEvent<N14MerchantComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<N14MerchantComponent, ExaminedEvent>(OnExamined);
 
         // При горячей перезагрузке прототипов пересобираем список деталей силовой брони.
         _prototype.PrototypesReloaded += _ => _powerArmorParts = null;
@@ -163,6 +180,11 @@ public sealed partial class N14MerchantSystem : EntitySystem
         {
             var listing = candidates[i];
             listing.PlayerSold = false;
+
+            // Ограниченный запас: после продажи всех экземпляров позиция
+            // пропадает из окна до следующего обновления ассортимента.
+            listing.Remaining = comp.StockPerItem > 0 ? comp.StockPerItem : -1;
+
             comp.Stock.Add(listing);
         }
     }
@@ -269,33 +291,70 @@ public sealed partial class N14MerchantSystem : EntitySystem
     /// <summary>Обновляет открытое окно торговца после смены ассортимента.</summary>
     private void RefreshOpenUis(EntityUid uid, N14MerchantComponent comp)
     {
-        if (!_ui.IsUiOpen(uid, N14MerchantUiKey.Key))
+        // Окно одно на торговца: обновляем состояние только его текущему владельцу.
+        if (comp.CurrentUser is not { } user)
             return;
 
-        // Состояние UI одно на сущность, поэтому отправляем его от имени первого
-        // открывшего окно игрока (капсы/патроны в остальных окнах не различаются).
-        foreach (var actor in _ui.GetActors(uid, N14MerchantUiKey.Key))
+        if (!_ui.IsUiOpen(uid, N14MerchantUiKey.Key, user))
+            return;
+
+        _ui.SetUiState(uid, N14MerchantUiKey.Key, BuildState(uid, comp, user));
+    }
+
+    /// <summary>
+    ///     Не даёт открыть окно, пока его не закрыл предыдущий игрок.
+    ///     Заодно снимает «зависшую» блокировку, если окно уже закрыто
+    ///     (например, игрок вышел из игры).
+    /// </summary>
+    private void OnUiOpenAttempt(EntityUid uid, N14MerchantComponent comp, ref ActivatableUIOpenAttemptEvent args)
+    {
+        var user = args.User;
+
+        if (comp.CurrentUser is not { } current || current == user)
+            return;
+
+        if (_ui.IsUiOpen(uid, N14MerchantUiKey.Key, current))
         {
-            _ui.SetUiState(uid, N14MerchantUiKey.Key, BuildState(uid, comp, actor));
-            break;
+            args.Cancel();
+            _popups.PopupEntity(Loc.GetString("n14-merchant-popup-busy"), user, user);
+            return;
         }
+
+        comp.CurrentUser = null;
     }
 
     private void OnUiOpened(EntityUid uid, N14MerchantComponent comp, BoundUIOpenedEvent args)
     {
         // Пока окно открыто — игрок не может ходить.
-        EnsureComp<N14MerchantTradeUserComponent>(args.Actor);
+        comp.CurrentUser = args.Actor;
+        var tradeUser = EnsureComp<N14MerchantTradeUserComponent>(args.Actor);
+        tradeUser.OpenMerchants.Add(uid);
         _ui.SetUiState(uid, N14MerchantUiKey.Key, BuildState(uid, comp, args.Actor));
     }
 
     private void OnUiClosed(EntityUid uid, N14MerchantComponent comp, BoundUIClosedEvent args)
     {
-        RemComp<N14MerchantTradeUserComponent>(args.Actor);
+        // Событие может прийти и для старого владельца, если окно закрыли принудительно.
+        if (comp.CurrentUser == args.Actor)
+            comp.CurrentUser = null;
+
+        // Игрок может держать открытыми окна нескольких торговцев:
+        // движение разблокируем только после закрытия последнего.
+        if (!TryComp<N14MerchantTradeUserComponent>(args.Actor, out var tradeUser))
+            return;
+
+        tradeUser.OpenMerchants.Remove(uid);
+
+        if (tradeUser.OpenMerchants.Count == 0)
+            RemComp<N14MerchantTradeUserComponent>(args.Actor);
     }
 
     private void OnCommit(EntityUid uid, N14MerchantComponent comp, N14MerchantCommitMessage args)
     {
         var buyer = args.Actor;
+
+        // Ящик, который игрок держит/тянет, — дополнительный источник вещей для продажи.
+        var crate = GetTradeCrate(buyer, uid);
 
         foreach (var index in args.BuyIndices)
         {
@@ -310,7 +369,7 @@ public sealed partial class N14MerchantSystem : EntitySystem
             if (IsPowerArmorPart(listing.Product.Id))
                 continue;
 
-            var price = GetPrice(listing.Product.Id, listing.Price);
+            var price = GetBuyPrice(listing);
             if (price > 0 && !TryTakeCaps(buyer, price))
                 continue;
 
@@ -319,6 +378,25 @@ public sealed partial class N14MerchantSystem : EntitySystem
             comp.Stock[index] = listing;
 
             var product = Spawn(listing.Product, Transform(buyer).Coordinates);
+
+            // Количество единиц в лоте (проданный игроком стак): возвращаем весь стак.
+            if (listing.StackCount > 0 && TryComp<StackComponent>(product, out var productStack))
+                _stack.SetCount(product, listing.StackCount, productStack);
+
+            // Сохраняем прочность оружия, с которой оно было продано торговцу.
+            if (listing.Condition >= 0f &&
+                TryComp<GunConditionComponent>(product, out var gunCondition))
+            {
+                gunCondition.Condition = gunCondition.MaxCondition > 0f
+                    ? Math.Clamp(listing.Condition, 0f, gunCondition.MaxCondition)
+                    : Math.Max(0f, listing.Condition);
+
+                if (gunCondition.Condition <= gunCondition.BrokenThreshold)
+                    gunCondition.Jammed = true;
+
+                Dirty(product, gunCondition);
+            }
+
             _hands.PickupOrDrop(buyer, product);
         }
 
@@ -328,20 +406,32 @@ public sealed partial class N14MerchantSystem : EntitySystem
             if (IsPowerArmorPart(proto))
                 continue;
 
-            if (!TryGetSellPrice(comp, proto, out var price))
+            if (!TryGetBasePrice(comp, proto, out var basePrice))
                 continue;
 
+            // Цена за единицу; стак продаётся целиком, поэтому платим за каждую единицу.
+            var unitPrice = ScalePrice(basePrice, SellToMerchantRate);
+            if (unitPrice <= 0)
+                continue;
+
+            var quantity = CountTradeUnits(buyer, proto, crate);
+            if (quantity <= 0)
+                continue;
+
+            var price = unitPrice * quantity;
             if (price > comp.Caps)
                 continue;
 
-            if (!TryConsumeItem(buyer, proto))
+            // Забираем все вещи этого прототипа (все стаки разом) и платим за каждую единицу.
+            var consumed = ConsumeTradeItems(buyer, proto, crate, comp, basePrice);
+            if (consumed <= 0)
                 continue;
+
+            // Страховка: платим ровно за то, что реально забрали.
+            price = unitPrice * consumed;
 
             comp.Caps -= price;
             GiveCaps(buyer, price);
-
-            // Купленная вещь уходит в ассортимент торговца с наценкой.
-            AddToStock(comp, proto, price);
         }
 
         // Звуки сделки проигрывает клиент (N14MerchantSounds) — серверный kaching убран,
@@ -396,39 +486,67 @@ public sealed partial class N14MerchantSystem : EntitySystem
                 Proto = listing.Product.Id,
                 Name = proto.Name,
                 Description = proto.Description,
-                Price = GetPrice(listing.Product.Id, listing.Price),
+                Price = GetBuyPrice(listing),
                 Count = listing.Remaining,
             };
 
-            // Товар торговца не заспавнен — читаем данные из прототипа (у нового товара прочность полная).
-            FillWeaponInfo(item, proto, null, actor);
+            // Товар торговца не заспавнен — читаем данные из прототипа, но прочность
+            // берём из позиции, если вещь была выкуплена у игрока.
+            FillWeaponInfo(item, proto, null, actor, listing.Condition >= 0f ? listing.Condition : null);
             state.Offers.Add(item);
         }
 
-        BuildRequests(comp, actor, state);
+        BuildRequests(uid, comp, actor, state);
         return state;
     }
 
     /// <summary>
-    ///     Список вещей в руках и экипировке игрока (с заходом в контейнеры вроде рюкзака).
+    ///     Показывает таймер обновления ассортимента в описании торговца (Examine).
     /// </summary>
-    private void BuildRequests(N14MerchantComponent comp, EntityUid actor, N14MerchantUiState state)
+    private void OnExamined(EntityUid uid, N14MerchantComponent comp, ExaminedEvent args)
     {
-        var prices = new Dictionary<string, int>();
-        foreach (var want in comp.Wants)
-        {
-            if (!prices.ContainsKey(want.Product.Id))
-                prices[want.Product.Id] = want.Price;
-        }
+        var remaining = GetRestockRemaining(comp);
+        if (remaining <= 0f)
+            return;
 
+        args.PushMarkup(Loc.GetString("n14-merchant-examine-restock",
+            ("time", FormatRestockTime(remaining))));
+    }
+
+    /// <summary>
+    ///     Секунд до следующего обновления ассортимента; 0 — обновление отключено.
+    /// </summary>
+    private static float GetRestockRemaining(N14MerchantComponent comp)
+    {
+        if (comp.RestockSeconds <= 0f || comp.StockSets.Count == 0)
+            return 0f;
+
+        return MathF.Max(0f, comp.RestockSeconds - comp.RestockTimer);
+    }
+
+    /// <summary>Форматирует остаток в MM:SS.</summary>
+    private static string FormatRestockTime(float seconds)
+    {
+        var total = (int) MathF.Ceiling(seconds);
+        return $"{total / 60:00}:{total % 60:00}";
+    }
+
+    /// <summary>
+    ///     Список вещей, доступных игроку для продажи: руки и экипировка
+    ///     (с заходом в контейнеры вроде рюкзака) плюс содержимое ящика,
+    ///     который игрок держит или тянет.
+    /// </summary>
+    private void BuildRequests(EntityUid merchant, N14MerchantComponent comp, EntityUid actor, N14MerchantUiState state)
+    {
         var owned = new Dictionary<string, int>();
         var order = new List<string>();
         var samples = new Dictionary<string, EntityUid>();
 
         // Сущности, вставленные в магазин оружия (спидлоадеры/магазины) — часть оружия, не отдельные вещи.
-        var insertedMags = CollectInsertedMagazines(actor);
+        var crate = GetTradeCrate(actor, merchant);
+        var insertedMags = CollectInsertedMagazines(actor, crate);
 
-        foreach (var ent in EnumerateInventory(actor))
+        foreach (var ent in EnumerateTradeItems(actor, crate))
         {
             if (!TryGetProtoId(ent, out var id))
                 continue;
@@ -453,14 +571,18 @@ public sealed partial class N14MerchantSystem : EntitySystem
             if (_tag.HasTag(ent, SpeedLoaderInternalTag) || insertedMags.Contains(ent))
                 continue;
 
-            if (owned.TryAdd(id, 1))
+            // Стак продаётся целиком, поэтому в счётчике — количество единиц,
+            // а не число сущностей: 5 досок в одном стаке = 5 товаров.
+            var units = stack != null ? Math.Max(1, stack.Count) : 1;
+
+            if (owned.TryAdd(id, units))
             {
                 order.Add(id);
                 samples[id] = ent;
             }
             else
             {
-                owned[id]++;
+                owned[id] += units;
             }
         }
 
@@ -477,7 +599,7 @@ public sealed partial class N14MerchantSystem : EntitySystem
                 Proto = id,
                 Name = proto.Name,
                 Description = proto.Description,
-                Price = GetPrice(id, prices.GetValueOrDefault(id)),
+                Price = GetSellPrice(comp, id),
                 Count = owned[id],
             };
 
@@ -542,7 +664,16 @@ public sealed partial class N14MerchantSystem : EntitySystem
     ///     Заполняет данные об оружии для строки UI: прочность, калибр, патроны в магазине и у игрока.
     /// </summary>
     /// <param name="entity">Заспавненная сущность (для вещей игрока) или null (товар торговца из прототипа).</param>
-    private void FillWeaponInfo(N14MerchantItemState item, EntityPrototype proto, EntityUid? entity, EntityUid actor)
+    /// <param name="conditionOverride">
+    ///     Прочность выкупленной у игрока вещи: у товара торговца нет заспавненной сущности,
+    ///     поэтому её значение хранится прямо в позиции ассортимента.
+    /// </param>
+    private void FillWeaponInfo(
+        N14MerchantItemState item,
+        EntityPrototype proto,
+        EntityUid? entity,
+        EntityUid actor,
+        float? conditionOverride = null)
     {
         // Иконка предпросмотра из YAML-списка (или дефолт).
         item.IconPath = GetIconPath(proto.ID).ToString();
@@ -555,7 +686,8 @@ public sealed partial class N14MerchantSystem : EntitySystem
         }
         else if (proto.TryGetComponent<GunConditionComponent>(out var protoCond) && protoCond.MaxCondition > 0)
         {
-            item.Condition = Math.Clamp(protoCond.Condition / protoCond.MaxCondition, 0f, 1f);
+            var current = conditionOverride ?? protoCond.Condition;
+            item.Condition = Math.Clamp(current / protoCond.MaxCondition, 0f, 1f);
         }
 
         // Калибр и магазин.
@@ -1106,50 +1238,90 @@ public sealed partial class N14MerchantSystem : EntitySystem
     }
 
     /// <summary>
-    ///     По какой цене торговец берёт вещь у игрока: цена Wants, иначе StaticPrice.
+    ///     Базовая стоимость вещи: цена Wants, иначе список цен / StaticPrice.
+    ///     От неё считаются обе стороны сделки: игрок получает 75%, покупает за 125%.
     /// </summary>
-    private bool TryGetSellPrice(N14MerchantComponent comp, string proto, out int price)
+    private bool TryGetBasePrice(N14MerchantComponent comp, string proto, out int basePrice)
     {
         if (TryFindWant(comp, proto, out var want) && want.Price > 0)
         {
-            price = want.Price;
+            basePrice = want.Price;
             return true;
         }
 
-        price = GetPrice(proto, 0);
-        return price > 0;
+        basePrice = GetPrice(proto, 0);
+        return basePrice > 0;
+    }
+
+    /// <summary>Цена, которую платит игрок при покупке у торговца (полная стоимость + 25%).</summary>
+    private int GetBuyPrice(N14MerchantListing listing)
+    {
+        // Цена лота = цена за единицу × количество единиц в стаке.
+        var unitPrice = GetPrice(listing.Product.Id, listing.Price);
+        var quantity = Math.Max(1, listing.StackCount);
+        return ScalePrice(unitPrice * quantity, BuyFromMerchantRate);
+    }
+
+    /// <summary>Цена, которую получает игрок при продаже торговцу (75% стоимости).</summary>
+    private int GetSellPrice(N14MerchantComponent comp, string proto)
+        => TryGetBasePrice(comp, proto, out var basePrice)
+            ? ScalePrice(basePrice, SellToMerchantRate)
+            : 0;
+
+    /// <summary>Округляет цену по курсу; 0 остаётся 0 (у вещи нет стоимости).</summary>
+    private static int ScalePrice(int basePrice, double rate)
+    {
+        if (basePrice <= 0)
+            return 0;
+
+        return Math.Max(1, (int) Math.Round(basePrice * rate, MidpointRounding.AwayFromZero));
     }
 
     /// <summary>
-    ///     Купленная у игрока вещь попадает в ассортимент торговца с наценкой <see cref="MerchantMarkup"/>.
-    ///     Позиция помечается <see cref="N14MerchantListing.PlayerSold"/> и переживает
-    ///     обновление ассортимента, пока её не купят.
+    ///     Купленная у игрока вещь попадает в ассортимент торговца.
+    ///     Цена хранится базовой — наценка <see cref="BuyFromMerchantRate"/> применяется
+    ///     при покупке. Оружие сохраняет прочность и не сливается с другими экземплярами,
+    ///     чтобы у каждого ствола оставалось своё состояние.
     /// </summary>
-    private void AddToStock(N14MerchantComponent comp, string product, int boughtPrice)
+    private void AddToStock(N14MerchantComponent comp, string product, int basePrice, float condition, int quantity)
     {
-        var sellPrice = (int)Math.Round(boughtPrice * MerchantMarkup, MidpointRounding.AwayFromZero);
+        quantity = Math.Max(1, quantity);
 
-        for (var i = 0; i < comp.Stock.Count; i++)
+        // Оружие с сохранённой прочностью всегда отдельной позицией.
+        if (condition < 0f)
         {
-            var listing = comp.Stock[i];
+            for (var i = 0; i < comp.Stock.Count; i++)
+            {
+                var listing = comp.Stock[i];
 
-            // Сгенерированные позиции не трогаем: у них своя цена и свой цикл обновления.
-            if (!listing.PlayerSold || listing.Product.Id != product || listing.Remaining == 0)
-                continue;
+                // Сгенерированные позиции не трогаем: у них своя цена и свой цикл обновления.
+                if (!listing.PlayerSold ||
+                    listing.Product.Id != product ||
+                    listing.Remaining == 0 ||
+                    listing.Condition >= 0f)
+                {
+                    continue;
+                }
 
-            // Докидываем штуку в уже существующую позицию, цену обновляем.
-            listing.Remaining = listing.Remaining < 0 ? 1 : listing.Remaining + 1;
-            listing.Price = sellPrice;
-            comp.Stock[i] = listing;
-            return;
+                // Докидываем такой же лот в уже существующую позицию, цену обновляем.
+                if (listing.StackCount != quantity)
+                    continue;
+
+                listing.Remaining = listing.Remaining < 0 ? 1 : listing.Remaining + 1;
+                listing.Price = basePrice;
+                comp.Stock[i] = listing;
+                return;
+            }
         }
 
         comp.Stock.Add(new N14MerchantListing
         {
             Product = new EntProtoId(product),
-            Price = sellPrice,
+            Price = basePrice,
             Remaining = 1,
             PlayerSold = true,
+            Condition = condition,
+            StackCount = quantity,
         });
     }
 
@@ -1245,11 +1417,11 @@ public sealed partial class N14MerchantSystem : EntitySystem
     ///     Сущности, вставленные в контейнер боеприпасов любого предмета инвентаря игрока
     ///     (спидлоадеры/магазины). Считаются частью оружия и не показываются отдельными строками.
     /// </summary>
-    private HashSet<EntityUid> CollectInsertedMagazines(EntityUid actor)
+    private HashSet<EntityUid> CollectInsertedMagazines(EntityUid actor, EntityUid? crate)
     {
         var result = new HashSet<EntityUid>();
 
-        foreach (var ent in EnumerateInventory(actor))
+        foreach (var ent in EnumerateTradeItems(actor, crate))
         {
             if (!TryComp<BallisticAmmoProviderComponent>(ent, out var ballistic))
                 continue;
@@ -1288,6 +1460,99 @@ public sealed partial class N14MerchantSystem : EntitySystem
         }
 
         return result;
+    }
+
+    /// <summary>
+    ///     Всё, что игрок может продать: инвентарь плюс содержимое ящика,
+    ///     который он держит или тянет (без дублей, если ящик уже в руках).
+    /// </summary>
+    private List<EntityUid> EnumerateTradeItems(EntityUid actor, EntityUid? crate)
+    {
+        var result = EnumerateInventory(actor);
+
+        if (crate is not { } crateUid || !Exists(crateUid))
+            return result;
+
+        var seen = new HashSet<EntityUid>(result);
+        CollectUnique(crateUid, result, seen, 0);
+        return result;
+    }
+
+    private void CollectUnique(EntityUid uid, List<EntityUid> list, HashSet<EntityUid> seen, int depth)
+    {
+        if (depth > 8)
+            return;
+
+        if (!TryComp<ContainerManagerComponent>(uid, out var manager))
+            return;
+
+        foreach (var container in manager.Containers.Values)
+        {
+            foreach (var ent in container.ContainedEntities)
+            {
+                if (!seen.Add(ent))
+                    continue;
+
+                list.Add(ent);
+                CollectUnique(ent, list, seen, depth + 1);
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Ящик, который игрок держит или тянет, если он закрыт и находится
+    ///     в пределах <see cref="MaxCrateDistance"/> от торговца.
+    /// </summary>
+    private EntityUid? GetTradeCrate(EntityUid user, EntityUid merchant)
+    {
+        if (!TryGetPulledClosedCrate(user, out var crate))
+            return null;
+
+        return IsInRange(merchant, crate, MaxCrateDistance) ? crate : null;
+    }
+
+    /// <summary>
+    ///     Закрытый ящик в руках или на верёвке у игрока. Открытый ящик
+    ///     не учитывается: его содержимое игрок и так видит и может выложить.
+    /// </summary>
+    private bool TryGetPulledClosedCrate(EntityUid user, out EntityUid crate)
+    {
+        crate = default;
+
+        if (TryComp<HandsComponent>(user, out var hands))
+        {
+            foreach (var hand in hands.Hands.Values)
+            {
+                if (hand.HeldEntity is not { } held)
+                    continue;
+
+                if (TryComp<EntityStorageComponent>(held, out var storage) && !storage.Open)
+                {
+                    crate = held;
+                    return true;
+                }
+            }
+        }
+
+        if (!TryComp<PullerComponent>(user, out var puller) || puller.Pulling is not { } pulled)
+            return false;
+
+        if (!TryComp<EntityStorageComponent>(pulled, out var pulledStorage) || pulledStorage.Open)
+            return false;
+
+        crate = pulled;
+        return true;
+    }
+
+    private bool IsInRange(EntityUid a, EntityUid b, float maxDistance)
+    {
+        if (!TryComp<TransformComponent>(a, out var aXf) || !TryComp<TransformComponent>(b, out var bXf))
+            return false;
+
+        if (aXf.MapID != bXf.MapID)
+            return false;
+
+        return Vector2.Distance(_transform.GetWorldPosition(aXf), _transform.GetWorldPosition(bXf)) <= maxDistance;
     }
 
     private void Collect(EntityUid uid, List<EntityUid> list, int depth)
@@ -1329,21 +1594,93 @@ public sealed partial class N14MerchantSystem : EntitySystem
         }
     }
 
-    private bool TryConsumeItem(EntityUid user, string proto)
+    /// <summary>
+    ///     Сколько единиц товара игрок может продать: у стака — его размер, у обычного
+    ///     предмета — 1. Учитываются только те вещи, которые видны в списке продажи.
+    /// </summary>
+    private int CountTradeUnits(EntityUid user, string proto, EntityUid? crate)
     {
-        foreach (var ent in EnumerateInventory(user))
+        var total = 0;
+        var insertedMags = CollectInsertedMagazines(user, crate);
+
+        foreach (var ent in EnumerateTradeItems(user, crate))
         {
-            if (HasComp<VirtualItemComponent>(ent))
+            if (!IsSellableItem(ent, proto, insertedMags))
                 continue;
 
-            if (!TryGetProtoId(ent, out var id) || id != proto)
-                continue;
-
-            Del(ent);
-            return true;
+            total += TryComp<StackComponent>(ent, out var stack) ? Math.Max(1, stack.Count) : 1;
         }
 
-        return false;
+        return total;
+    }
+
+    /// <summary>
+    ///     Забирает все вещи указанного прототипа и кладёт их торговцу в ассортимент.
+    ///     Возвращает число отданных единиц (стак — целиком).
+    /// </summary>
+    private int ConsumeTradeItems(
+        EntityUid user,
+        string proto,
+        EntityUid? crate,
+        N14MerchantComponent comp,
+        int basePrice)
+    {
+        var insertedMags = CollectInsertedMagazines(user, crate);
+
+        // Сначала собираем список: Del() меняет контейнеры прямо во время перебора.
+        var matches = new List<EntityUid>();
+        foreach (var ent in EnumerateTradeItems(user, crate))
+        {
+            if (IsSellableItem(ent, proto, insertedMags))
+                matches.Add(ent);
+        }
+
+        var consumed = 0;
+
+        foreach (var ent in matches)
+        {
+            var quantity = TryComp<StackComponent>(ent, out var stack) ? Math.Max(1, stack.Count) : 1;
+
+            // Запоминаем прочность до удаления сущности, чтобы торговец мог
+            // продать оружие обратно в том же состоянии.
+            var condition = TryComp<GunConditionComponent>(ent, out var gun)
+                ? Math.Max(0f, gun.Condition)
+                : -1f;
+
+            Del(ent);
+
+            // Купленная вещь уходит в ассортимент торговца с наценкой; у оружия
+            // сохраняется прочность, у стака — количество единиц.
+            AddToStock(comp, proto, basePrice, condition, quantity);
+            consumed += quantity;
+        }
+
+        return consumed;
+    }
+
+    /// <summary>
+    ///     Подходит ли сущность под продажу конкретного прототипа: та же вещь,
+    ///     не виртуальная, не капсы, не патроны/магазины и не деталь силовой брони.
+    /// </summary>
+    private bool IsSellableItem(EntityUid ent, string proto, HashSet<EntityUid> insertedMags)
+    {
+        if (HasComp<VirtualItemComponent>(ent))
+            return false;
+
+        if (!TryGetProtoId(ent, out var id) || id != proto)
+            return false;
+
+        if (IsPowerArmorPart(id) || IsAmmoOrMagazine(id))
+            return false;
+
+        if (_tag.HasTag(ent, SpeedLoaderInternalTag) || insertedMags.Contains(ent))
+            return false;
+
+        // Капсы — валюта, а не товар.
+        if (TryComp<StackComponent>(ent, out var stack) && stack.StackTypeId == CapsStackId)
+            return false;
+
+        return true;
     }
 
     #endregion

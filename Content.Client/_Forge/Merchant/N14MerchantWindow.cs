@@ -7,6 +7,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.RichText;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 
@@ -30,13 +31,13 @@ public sealed class N14MerchantWindow : FancyWindow
     private const string StandardPreviewRsiPath = "/Textures/_NukeWake/icons/iconsguns/servicerifle.rsi";
 
     /// <summary>Высота рамки предпросмотра (px). Ширина рамки считается по пропорциям эталона.</summary>
-    private const float PreviewBoxHeight = 112f;
+    private const float PreviewBoxHeight = 112f * N14MerchantTheme.UiScale;
 
     /// <summary>Пропорции эталона (141x161) — на случай, если ресурс не загрузился.</summary>
     private const float PreviewFallbackAspect = 141f / 161f;
 
     /// <summary>Отступ рамки предпросмотра от нижнего края левой колонки.</summary>
-    private const float PreviewPanelTopGap = 18f;
+    private const float PreviewPanelTopGap = 18f * N14MerchantTheme.UiScale;
 
     /// <summary>Кэш текстур предпросмотра по пути к RSI.</summary>
     private static readonly Dictionary<string, Texture?> PreviewCache = new();
@@ -55,23 +56,23 @@ public sealed class N14MerchantWindow : FancyWindow
     private readonly BoxContainer _columns;
 
     /// <summary>Ширина одного info-бокса (цена / калибр).</summary>
-    private const float InfoBoxWidth = 150f;
+    private const float InfoBoxWidth = 150f * N14MerchantTheme.UiScale;
 
     /// <summary>Ширина блока описания = сумма ширин двух info-боксов.</summary>
     private const float InfoWidth = InfoBoxWidth * 2f;
 
     /// <summary>Отступ нижнего края блока описания от низа окна.</summary>
-    private const float ItemDataBottomGap = 40f;
+    private const float ItemDataBottomGap = 40f * N14MerchantTheme.UiScale;
 
     /// <summary>Внутренний отступ блока описания (рамка).</summary>
-    private const float DescPadding = 4f;
+    private const float DescPadding = 4f * N14MerchantTheme.UiScale;
 
     /// <summary>Отступ текста описания от боковых сторон блока.</summary>
-    private const float DescTextInset = 10f;
+    private const float DescTextInset = 10f * N14MerchantTheme.UiScale;
 
     /// <summary>Диапазон размера шрифта описания (авто-подгонка под высоту полосы).</summary>
-    private const int DescFontMax = 14;
-    private const int DescFontMin = 7;
+    private const int DescFontMax = 21;
+    private const int DescFontMin = 10;
 
     /// <summary>Теги, разрешённые в описании (нужен font для авто-подгонки размера).</summary>
     private static readonly Type[] DescTags =
@@ -92,8 +93,9 @@ public sealed class N14MerchantWindow : FancyWindow
     private readonly Dictionary<int, string> _selectedOfferProtos = new();
     private readonly HashSet<string> _selectedRequests = new();
 
-    private readonly Font _font = N14MerchantTheme.GetFont(14);
-    private readonly Font _infoFont = N14MerchantTheme.GetFont(12);
+    private readonly Font _font = N14MerchantTheme.GetFont(21);
+    private readonly Font _listFont = N14MerchantTheme.GetFont(15);
+    private readonly Font _infoFont = N14MerchantTheme.GetFont(18);
 
     public N14MerchantWindow()
     {
@@ -101,23 +103,23 @@ public sealed class N14MerchantWindow : FancyWindow
         N14MerchantSounds.Preload();
 
         Resizable = false;
-        SetSize = new Vector2(820, 620);
+        SetSize = new Vector2(820, 620) * N14MerchantTheme.UiScale;
         Title = Loc.GetString("n14-merchant-window-title");
 
         _playerColumn = new N14MerchantColumn(Loc.GetString("n14-merchant-column-items"));
         _merchantColumn = new N14MerchantColumn(Loc.GetString("n14-merchant-column-npc"));
 
         // Заголовки стоят на уровне верхней линии, но Items чуть левее, NPC чуть правее.
-        _playerColumn.SetHeaderOffset(-18f);
-        _merchantColumn.SetHeaderOffset(18f);
+        _playerColumn.SetHeaderOffset(-27f);
+        _merchantColumn.SetHeaderOffset(27f);
 
         _middle = new BoxContainer
         {
             Orientation = LayoutOrientation.Vertical,
-            MinWidth = 118,
+            MinWidth = 177,
             HorizontalAlignment = HAlignment.Center,
             VerticalAlignment = VAlignment.Center,
-            Margin = new Thickness(4, 0),
+            Margin = new Thickness(6, 0),
         };
 
         var columns = new BoxContainer
@@ -126,11 +128,11 @@ public sealed class N14MerchantWindow : FancyWindow
             HorizontalAlignment = HAlignment.Center,
             VerticalAlignment = VAlignment.Center,
             // Слегка тянем блок колонок вверх.
-            Margin = new Thickness(0, -32, 0, 0),
+            Margin = new Thickness(0, -48, 0, 0),
         };
         // Левую колонку тянем влево, правую — вправо.
-        _playerColumn.Margin = new Thickness(-20, 0, 0, 0);
-        _merchantColumn.Margin = new Thickness(0, 0, -20, 0);
+        _playerColumn.Margin = new Thickness(-30, 0, 0, 0);
+        _merchantColumn.Margin = new Thickness(0, 0, -30, 0);
         columns.AddChild(_playerColumn);
         columns.AddChild(_middle);
         columns.AddChild(_merchantColumn);
@@ -176,7 +178,7 @@ public sealed class N14MerchantWindow : FancyWindow
             HorizontalAlignment = HAlignment.Left,
             VerticalAlignment = VAlignment.Top,
             // Отступ текста от левой рамки (чтобы не был в притык).
-            Margin = new Thickness(DescTextInset, 2, DescTextInset, 2),
+            Margin = new Thickness(DescTextInset, 3, DescTextInset, 3),
         };
 
         _descBox = new N14MerchantDescBox
@@ -185,7 +187,7 @@ public sealed class N14MerchantWindow : FancyWindow
             {
                 BackgroundColor = Color.Transparent,
             },
-            Margin = new Thickness(4),
+            Margin = new Thickness(6),
             MinWidth = InfoWidth,
             MaxWidth = InfoWidth,
         };
@@ -216,7 +218,7 @@ public sealed class N14MerchantWindow : FancyWindow
         var accept = new Button
         {
             Text = Loc.GetString("n14-merchant-accept"),
-            MinSize = new Vector2(130, 34),
+            MinSize = new Vector2(195, 51),
             HorizontalAlignment = HAlignment.Right,
         };
         accept.Label.FontOverride = _font;
@@ -239,7 +241,7 @@ public sealed class N14MerchantWindow : FancyWindow
         var exit = new Button
         {
             Text = Loc.GetString("n14-merchant-exit"),
-            MinSize = new Vector2(130, 34),
+            MinSize = new Vector2(195, 51),
             HorizontalAlignment = HAlignment.Right,
         };
         exit.Label.FontOverride = _font;
@@ -256,7 +258,7 @@ public sealed class N14MerchantWindow : FancyWindow
         {
             Orientation = LayoutOrientation.Vertical,
             HorizontalAlignment = HAlignment.Right,
-            Margin = new Thickness(0, 0, 8, 4),
+            Margin = new Thickness(0, 0, 12, 6),
         };
         buttons.AddChild(accept);
         buttons.AddChild(exit);
@@ -264,11 +266,11 @@ public sealed class N14MerchantWindow : FancyWindow
         var root = new BoxContainer
         {
             Orientation = LayoutOrientation.Vertical,
-            Margin = new Thickness(16, 14, 16, 34),
+            Margin = new Thickness(24, 21, 24, 51),
         };
 
-        var topSpacer = new Control { MinHeight = 8, VerticalExpand = true };
-        var bottomSpacer = new Control { MinHeight = 8, VerticalExpand = true };
+        var topSpacer = new Control { MinHeight = 12, VerticalExpand = true };
+        var bottomSpacer = new Control { MinHeight = 12, VerticalExpand = true };
 
         root.AddChild(topSpacer);
         root.AddChild(columns);
@@ -460,7 +462,7 @@ public sealed class N14MerchantWindow : FancyWindow
         _playerColumn.Rows.RemoveAllChildren();
         foreach (var item in state.Requests)
         {
-            var row = new N14MerchantRow(item.Proto, -1, item.Name, item.Price, item.Count, _font);
+            var row = new N14MerchantRow(item.Proto, -1, item.Name, item.Price, item.Count, _listFont);
             row.Selected = _selectedRequests.Contains(item.Proto);
             row.OnClicked += OnRequestClicked;
             row.OnHovered += OnRowHovered;
@@ -470,7 +472,7 @@ public sealed class N14MerchantWindow : FancyWindow
         _merchantColumn.Rows.RemoveAllChildren();
         foreach (var item in state.Offers)
         {
-            var row = new N14MerchantRow(item.Proto, item.Index, item.Name, item.Price, item.Count, _font);
+            var row = new N14MerchantRow(item.Proto, item.Index, item.Name, item.Price, item.Count, _listFont);
             row.Selected = _selectedOffers.Contains(item.Index);
             row.OnClicked += OnOfferClicked;
             row.OnHovered += OnRowHovered;
@@ -655,8 +657,9 @@ public sealed class N14MerchantWindow : FancyWindow
 
         foreach (var row in _playerColumn.Rows.Children)
         {
+            // Стак продаётся целиком: цена за единицу умножается на количество.
             if (row is N14MerchantRow request && request.Selected)
-                sellTotal += request.Price;
+                sellTotal += request.Price * Math.Max(1, request.Count);
         }
 
         // Покупка у торговца: списываем крышки — знак «-».
@@ -685,7 +688,7 @@ public sealed class N14MerchantWindow : FancyWindow
         var overlay = new LayoutContainer
         {
             HorizontalAlignment = HAlignment.Center,
-            Margin = new Thickness(0, 6, 0, 0),
+            Margin = new Thickness(0, 9, 0, 0),
         };
 
         var arrow = new N14MerchantArrow(pointRight)
@@ -700,7 +703,7 @@ public sealed class N14MerchantWindow : FancyWindow
             var text = new Label
             {
                 Text = price >= 0 ? $"+{price}" : price.ToString(),
-                FontOverride = N14MerchantTheme.GetFont(14),
+                FontOverride = N14MerchantTheme.GetFont(21),
                 FontColorOverride = N14MerchantTheme.Accent,
                 HorizontalAlignment = HAlignment.Center,
                 VerticalAlignment = VAlignment.Center,
