@@ -7,16 +7,16 @@ game-ticker-unknown-role = Таинственный незнакомец
 game-ticker-delay-start = Запуск симуляции отложен на { $seconds } секунд. Проверьте свое снаряжение.
 game-ticker-pause-start = Симуляция приостановлена. Воспользуйтесь моментом, чтобы перевести дух.
 game-ticker-pause-start-resumed = Симуляция возобновлена. Приготовьтесь к выживанию.
-game-ticker-player-join-game-message = Добро пожаловать в Corvax Fallout! Новичок? Нажми ESC и изучи Кодекс Выживания. Нужна помощь? Используй радиосигнал "SOS" (Админ помощь).
+game-ticker-player-join-game-message = Добро пожаловать в NukeWake! Новичок? Нажми ESC и изучи Кодекс Выживания. Нужна помощь? Используй радиосигнал "SOS" (Админ помощь).
 game-ticker-get-info-text =
-    Привет и добро пожаловать на [color=white]Corvax Fallout![/color]
+    Привет и добро пожаловать на [color=white]NukeWake![/color]
     День выживания: [color=white]#{ $roundId }[/color]
     Выживших в округе: [color=white]{ $playerCount }[/color]
     Территория: [color=white]{ $mapName }[/color]
     Условия выживания: [color=white]{ $gmTitle }[/color]
     >[color=yellow]{ $desc }[/color]
 game-ticker-get-info-preround-text =
-    Привет и добро пожаловать на [color=white]Corvax Fallout![/color]
+    Привет и добро пожаловать на [color=white]NukeWake![/color]
     День выживания: [color=white]#{ $roundId }[/color]
     Выживших в округе: [color=white]{ $playerCount }[/color] ([color=white]{ $readyCount }[/color] { $readyCount ->
         [one] готов
