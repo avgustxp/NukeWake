@@ -100,6 +100,7 @@ public sealed class N14MerchantWindow : FancyWindow
     private readonly HashSet<string> _selectedRequests = new();
 
     private readonly Font _font = N14MerchantTheme.GetFont(21);
+    private readonly Font _listFont = N14MerchantTheme.GetFont(15);
     private readonly Font _infoFont = N14MerchantTheme.GetFont(18);
 
     public N14MerchantWindow()
@@ -470,7 +471,7 @@ public sealed class N14MerchantWindow : FancyWindow
         _playerColumn.Rows.RemoveAllChildren();
         foreach (var item in state.Requests)
         {
-            var row = new N14MerchantRow(item.Proto, -1, item.Name, item.Price, item.Count, _font);
+            var row = new N14MerchantRow(item.Proto, -1, item.Name, item.Price, item.Count, _listFont);
             row.Selected = _selectedRequests.Contains(item.Proto);
             row.OnClicked += OnRequestClicked;
             row.OnHovered += OnRowHovered;
@@ -480,7 +481,7 @@ public sealed class N14MerchantWindow : FancyWindow
         _merchantColumn.Rows.RemoveAllChildren();
         foreach (var item in state.Offers)
         {
-            var row = new N14MerchantRow(item.Proto, item.Index, item.Name, item.Price, item.Count, _font);
+            var row = new N14MerchantRow(item.Proto, item.Index, item.Name, item.Price, item.Count, _listFont);
             row.Selected = _selectedOffers.Contains(item.Index);
             row.OnClicked += OnOfferClicked;
             row.OnHovered += OnRowHovered;

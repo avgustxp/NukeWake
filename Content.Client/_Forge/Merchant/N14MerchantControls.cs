@@ -422,6 +422,9 @@ public sealed class N14MerchantColumn : LayoutContainer
         {
             HorizontalExpand = true,
             VerticalExpand = true,
+            // Только вертикальная прокрутка: длинные названия обрезаются, а не
+            // растягивают список (ползунок по горизонтали не появляется).
+            HScrollEnabled = false,
             // Отступ, чтобы первая строка не налезала на слово "Caps".
             Margin = new Thickness(0, 45, 0, 0),
         };
@@ -554,9 +557,14 @@ public sealed class N14MerchantRow : PanelContainer
             Text = count > 1 ? $"{name} ({count})" : name,
             FontOverride = font,
             FontColorOverride = N14MerchantTheme.Accent,
-            HorizontalAlignment = HAlignment.Left,
+            // Stretch, а не Left: у Label с ClipText ширина измеряется как 0,
+            // и при выравнивании Left она бы сжималась в ноль (текст пропадал).
+            HorizontalAlignment = HAlignment.Stretch,
             VerticalAlignment = VAlignment.Center,
             HorizontalExpand = true,
+            // Длинное название обрезается, а не растягивает строку:
+            // горизонтальный ползунок списка не появляется.
+            ClipText = true,
         };
 
         // Квадратик слева от названия — маркер выбора (виден только когда строка выбрана).
@@ -587,7 +595,7 @@ public sealed class N14MerchantRow : PanelContainer
         inner.AddChild(_price);
 
         AddChild(inner);
-        MinHeight = 39;
+        MinHeight = 30;
         ApplyStyle();
     }
 
