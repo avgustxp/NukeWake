@@ -834251,6 +834251,360 @@ entities:
     - type: Transform
       pos: -235.5,-94.5
       parent: 1
+- proto: N14PosterAbraxo
+  entities:
+  - uid: 35275
+    components:
+    - type: Transform
+      pos: 89.5,8.5
+      parent: 1
+  - uid: 55162
+    components:
+    - type: Transform
+      pos: 37.5,-63.5
+      parent: 1
+  - uid: 55163
+    components:
+    - type: Transform
+      pos: -249.5,-77.5
+      parent: 1
+  - uid: 55164
+    components:
+    - type: Transform
+      pos: -266.5,-62.5
+      parent: 1
+  - uid: 55165
+    components:
+    - type: Transform
+      pos: 166.5,-65.5
+      parent: 1
+  - uid: 55166
+    components:
+    - type: Transform
+      pos: 110.5,-79.5
+      parent: 1
+  - uid: 55167
+    components:
+    - type: Transform
+      pos: 170.5,165.5
+      parent: 1
+  - uid: 55168
+    components:
+    - type: Transform
+      pos: -86.5,4.5
+      parent: 1
+  - uid: 119030
+    components:
+    - type: Transform
+      pos: 178.5,53.5
+      parent: 1
+- proto: N14PosterAdvertGrognak1
+  entities:
+  - uid: 55170
+    components:
+    - type: Transform
+      pos: 185.5,-65.5
+      parent: 1
+  - uid: 55172
+    components:
+    - type: Transform
+      pos: -172.5,43.5
+      parent: 1
+  - uid: 140803
+    components:
+    - type: Transform
+      pos: 112.5,-145.5
+      parent: 1
+- proto: N14PosterAdvertJet
+  entities:
+  - uid: 51427
+    components:
+    - type: Transform
+      pos: -195.5,-11.5
+      parent: 1
+  - uid: 55173
+    components:
+    - type: Transform
+      pos: -54.5,32.5
+      parent: 1
+  - uid: 55176
+    components:
+    - type: Transform
+      pos: -247.5,-77.5
+      parent: 1
+  - uid: 112358
+    components:
+    - type: Transform
+      pos: 165.5,51.5
+      parent: 1
+- proto: N14PosterAdvertNukaCola1
+  entities:
+  - uid: 29796
+    components:
+    - type: Transform
+      pos: 28.5,151.5
+      parent: 1
+  - uid: 55178
+    components:
+    - type: Transform
+      pos: 18.5,-0.5
+      parent: 1
+  - uid: 55179
+    components:
+    - type: Transform
+      pos: 85.5,197.5
+      parent: 1
+  - uid: 66020
+    components:
+    - type: Transform
+      pos: 111.5,-3.5
+      parent: 1
+- proto: N14PosterAdvertNukaCola2
+  entities:
+  - uid: 55180
+    components:
+    - type: Transform
+      pos: 19.5,-57.5
+      parent: 1
+  - uid: 55181
+    components:
+    - type: Transform
+      pos: -245.5,-77.5
+      parent: 1
+  - uid: 55182
+    components:
+    - type: Transform
+      pos: -164.5,-19.5
+      parent: 1
+  - uid: 55184
+    components:
+    - type: Transform
+      pos: 134.5,88.5
+      parent: 1
+  - uid: 148718
+    components:
+    - type: Transform
+      pos: 23.5,102.5
+      parent: 1
+- proto: N14PosterBoscom
+  entities:
+  - uid: 55185
+    components:
+    - type: Transform
+      pos: -243.5,-77.5
+      parent: 1
+  - uid: 55186
+    components:
+    - type: Transform
+      pos: 119.5,10.5
+      parent: 1
+  - uid: 146273
+    components:
+    - type: Transform
+      pos: -207.5,-11.5
+      parent: 1
+- proto: N14PosterCautionSign1
+  entities:
+  - uid: 55187
+    components:
+    - type: Transform
+      pos: 162.5,-71.5
+      parent: 1
+  - uid: 55188
+    components:
+    - type: Transform
+      pos: 40.5,-63.5
+      parent: 1
+  - uid: 55190
+    components:
+    - type: Transform
+      pos: 142.5,-156.5
+      parent: 1
+  - uid: 55191
+    components:
+    - type: Transform
+      pos: 176.5,-180.5
+      parent: 1
+  - uid: 60427
+    components:
+    - type: Transform
+      pos: -174.5,-118.5
+      parent: 1
+  - uid: 140725
+    components:
+    - type: Transform
+      pos: 151.5,-208.5
+      parent: 1
+  - uid: 145222
+    components:
+    - type: Transform
+      pos: -245.5,-19.5
+      parent: 1
+- proto: N14PosterCautionSign2
+  entities:
+  - uid: 55192
+    components:
+    - type: Transform
+      pos: 184.5,-182.5
+      parent: 1
+  - uid: 55193
+    components:
+    - type: Transform
+      pos: 34.5,-40.5
+      parent: 1
+  - uid: 55194
+    components:
+    - type: Transform
+      pos: 45.5,-69.5
+      parent: 1
+  - uid: 55195
+    components:
+    - type: Transform
+      pos: 161.5,-80.5
+      parent: 1
+  - uid: 145230
+    components:
+    - type: Transform
+      pos: -249.5,-23.5
+      parent: 1
+- proto: N14PosterDangerSign1
+  entities:
+  - uid: 55196
+    components:
+    - type: Transform
+      pos: -185.5,59.5
+      parent: 1
+  - uid: 55197
+    components:
+    - type: Transform
+      pos: -264.5,-70.5
+      parent: 1
+  - uid: 55198
+    components:
+    - type: Transform
+      pos: 168.5,-188.5
+      parent: 1
+  - uid: 55199
+    components:
+    - type: Transform
+      pos: 170.5,-182.5
+      parent: 1
+  - uid: 55200
+    components:
+    - type: Transform
+      pos: 168.5,-183.5
+      parent: 1
+  - uid: 140695
+    components:
+    - type: Transform
+      pos: 145.5,-224.5
+      parent: 1
+- proto: N14PosterDangerSign2
+  entities:
+  - uid: 55201
+    components:
+    - type: Transform
+      pos: -38.5,-76.5
+      parent: 1
+  - uid: 55202
+    components:
+    - type: Transform
+      pos: 184.5,-180.5
+      parent: 1
+  - uid: 55203
+    components:
+    - type: Transform
+      pos: -17.5,-65.5
+      parent: 1
+  - uid: 55204
+    components:
+    - type: Transform
+      pos: 86.5,176.5
+      parent: 1
+  - uid: 55205
+    components:
+    - type: Transform
+      pos: 177.5,-182.5
+      parent: 1
+  - uid: 55206
+    components:
+    - type: Transform
+      pos: 179.5,-160.5
+      parent: 1
+  - uid: 56843
+    components:
+    - type: Transform
+      pos: 20.5,192.5
+      parent: 1
+  - uid: 143460
+    components:
+    - type: Transform
+      pos: -180.5,-62.5
+      parent: 1
+  - uid: 143471
+    components:
+    - type: Transform
+      pos: -177.5,-31.5
+      parent: 1
+  - uid: 143836
+    components:
+    - type: Transform
+      pos: -168.5,-49.5
+      parent: 1
+  - uid: 158500
+    components:
+    - type: Transform
+      pos: 183.5,53.5
+      parent: 1
+- proto: N14PosterDangerSign3
+  entities:
+  - uid: 481
+    components:
+    - type: Transform
+      pos: 186.5,53.5
+      parent: 1
+  - uid: 55207
+    components:
+    - type: Transform
+      pos: 40.5,-55.5
+      parent: 1
+  - uid: 55209
+    components:
+    - type: Transform
+      pos: -197.5,26.5
+      parent: 1
+  - uid: 108497
+    components:
+    - type: Transform
+      pos: 13.5,170.5
+      parent: 1
+  - uid: 126949
+    components:
+    - type: Transform
+      pos: 97.5,84.5
+      parent: 1
+- proto: N14PosterDangerSign4
+  entities:
+  - uid: 55210
+    components:
+    - type: Transform
+      pos: 39.5,-55.5
+      parent: 1
+  - uid: 55211
+    components:
+    - type: Transform
+      pos: 179.5,-193.5
+      parent: 1
+  - uid: 67028
+    components:
+    - type: Transform
+      pos: 19.5,192.5
+      parent: 1
+  - uid: 138551
+    components:
+    - type: Transform
+      pos: 99.5,-154.5
+      parent: 1
 - proto: N14PosterFallout
   entities:
   - uid: 55212
@@ -834284,6 +834638,48 @@ entities:
     components:
     - type: Transform
       pos: 137.5,-16.5
+      parent: 1
+- proto: N14PosterGNN
+  entities:
+  - uid: 39958
+    components:
+    - type: Transform
+      pos: 104.5,-5.5
+      parent: 1
+  - uid: 55216
+    components:
+    - type: Transform
+      pos: -193.5,43.5
+      parent: 1
+  - uid: 55217
+    components:
+    - type: Transform
+      pos: -179.5,46.5
+      parent: 1
+  - uid: 55218
+    components:
+    - type: Transform
+      pos: 29.5,-55.5
+      parent: 1
+  - uid: 55219
+    components:
+    - type: Transform
+      pos: 170.5,-65.5
+      parent: 1
+  - uid: 115499
+    components:
+    - type: Transform
+      pos: 43.5,25.5
+      parent: 1
+  - uid: 146271
+    components:
+    - type: Transform
+      pos: -202.5,-11.5
+      parent: 1
+  - uid: 148380
+    components:
+    - type: Transform
+      pos: 45.5,92.5
       parent: 1
 - proto: N14PosterNCR1
   entities:
@@ -834446,6 +834842,114 @@ entities:
     - type: Transform
       pos: -8.5,-19.5
       parent: 1
+- proto: N14PosterSafety1
+  entities:
+  - uid: 87530
+    components:
+    - type: Transform
+      pos: 185.5,53.5
+      parent: 1
+  - uid: 108594
+    components:
+    - type: Transform
+      pos: 15.5,170.5
+      parent: 1
+- proto: N14PosterSafety12
+  entities:
+  - uid: 55242
+    components:
+    - type: Transform
+      pos: 190.5,97.5
+      parent: 1
+  - uid: 140756
+    components:
+    - type: Transform
+      pos: 104.5,-147.5
+      parent: 1
+- proto: N14PosterSafety3
+  entities:
+  - uid: 55243
+    components:
+    - type: Transform
+      pos: 191.5,97.5
+      parent: 1
+- proto: N14PosterSafety4
+  entities:
+  - uid: 153871
+    components:
+    - type: Transform
+      pos: 239.5,-84.5
+      parent: 1
+- proto: N14PosterSafety5
+  entities:
+  - uid: 55245
+    components:
+    - type: Transform
+      pos: -47.5,30.5
+      parent: 1
+  - uid: 55246
+    components:
+    - type: Transform
+      pos: 40.5,-44.5
+      parent: 1
+  - uid: 55247
+    components:
+    - type: Transform
+      pos: 164.5,34.5
+      parent: 1
+  - uid: 101207
+    components:
+    - type: Transform
+      pos: 183.5,32.5
+      parent: 1
+  - uid: 140723
+    components:
+    - type: Transform
+      pos: 145.5,-219.5
+      parent: 1
+- proto: N14PosterSafety6
+  entities:
+  - uid: 55249
+    components:
+    - type: Transform
+      pos: -190.5,55.5
+      parent: 1
+  - uid: 55251
+    components:
+    - type: Transform
+      pos: 170.5,-164.5
+      parent: 1
+  - uid: 101208
+    components:
+    - type: Transform
+      pos: 182.5,32.5
+      parent: 1
+  - uid: 160083
+    components:
+    - type: Transform
+      pos: 14.5,137.5
+      parent: 1
+- proto: N14PosterSafety7
+  entities:
+  - uid: 4004
+    components:
+    - type: Transform
+      pos: 50.5,-63.5
+      parent: 1
+- proto: N14PosterSafety8
+  entities:
+  - uid: 40067
+    components:
+    - type: Transform
+      pos: 184.5,53.5
+      parent: 1
+- proto: N14PosterSafety9
+  entities:
+  - uid: 55256
+    components:
+    - type: Transform
+      pos: 171.5,-174.5
+      parent: 1
 - proto: N14PosterVaultTec01
   entities:
   - uid: 55257
@@ -834590,6 +835094,100 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 45.5,-157.5
+      parent: 1
+- proto: N14PosterWideNukacola1
+  entities:
+  - uid: 66787
+    components:
+    - type: Transform
+      pos: 113.5,-18.5
+      parent: 1
+- proto: N14PosterWideNukaDark
+  entities:
+  - uid: 55276
+    components:
+    - type: Transform
+      pos: 129.5,27.5
+      parent: 1
+  - uid: 104951
+    components:
+    - type: Transform
+      pos: 136.5,-7.5
+      parent: 1
+  - uid: 143887
+    components:
+    - type: Transform
+      pos: 48.5,16.5
+      parent: 1
+- proto: N14PosterWideRedrocket1
+  entities:
+  - uid: 5348
+    components:
+    - type: Transform
+      pos: 176.5,53.5
+      parent: 1
+- proto: N14PosterWideVim
+  entities:
+  - uid: 55277
+    components:
+    - type: Transform
+      pos: -67.5,-15.5
+      parent: 1
+  - uid: 96095
+    components:
+    - type: Transform
+      pos: 39.5,16.5
+      parent: 1
+  - uid: 138571
+    components:
+    - type: Transform
+      pos: 104.5,-161.5
+      parent: 1
+- proto: N14PosterWideVimCaptainsblend
+  entities:
+  - uid: 55278
+    components:
+    - type: Transform
+      pos: -174.5,-99.5
+      parent: 1
+  - uid: 55279
+    components:
+    - type: Transform
+      pos: -275.5,-73.5
+      parent: 1
+- proto: N14PosterWideVimQuartz
+  entities:
+  - uid: 55280
+    components:
+    - type: Transform
+      pos: -19.5,-60.5
+      parent: 1
+  - uid: 55281
+    components:
+    - type: Transform
+      pos: -260.5,-49.5
+      parent: 1
+  - uid: 55282
+    components:
+    - type: Transform
+      pos: 203.5,-158.5
+      parent: 1
+  - uid: 86984
+    components:
+    - type: Transform
+      pos: 239.5,-78.5
+      parent: 1
+  - uid: 152875
+    components:
+    - type: Transform
+      pos: 139.5,-16.5
+      parent: 1
+- proto: N14PosterWideVimRefresh
+  entities:
+  - uid: 55283
+    components:
+    - type: Transform
+      pos: -149.5,-0.5
       parent: 1
 - proto: N14PowerCellFocused
   entities:
@@ -851217,6 +851815,13 @@ entities:
     - type: Transform
       pos: -223.5,-100.5
       parent: 1
+- proto: N14SignBarstowStrongExpress
+  entities:
+  - uid: 56039
+    components:
+    - type: Transform
+      pos: 26.5,-0.5
+      parent: 1
 - proto: N14SignClinic
   entities:
   - uid: 56040
@@ -851269,6 +851874,13 @@ entities:
     - type: Transform
       pos: 65.5,-41.5
       parent: 1
+- proto: N14SignGroceries
+  entities:
+  - uid: 99517
+    components:
+    - type: Transform
+      pos: 48.5,152.5
+      parent: 1
 - proto: N14SignHotel
   entities:
   - uid: 56046
@@ -851276,6 +851888,25 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -62.5,-9.5
+      parent: 1
+- proto: N14SignHubrisComics
+  entities:
+  - uid: 140812
+    components:
+    - type: Transform
+      pos: 101.5,-154.5
+      parent: 1
+- proto: N14SignMassFusion
+  entities:
+  - uid: 56047
+    components:
+    - type: Transform
+      pos: 150.5,-172.5
+      parent: 1
+  - uid: 56048
+    components:
+    - type: Transform
+      pos: 134.5,-173.5
       parent: 1
 - proto: N14SignMrHandyDamaged
   entities:
@@ -851576,6 +852207,14 @@ entities:
       parent: 1
     missingComponents:
     - PointLight
+- proto: N14SignRedRocket
+  entities:
+  - uid: 93851
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 220.5,60.5
+      parent: 1
 - proto: N14SignStreetBusstop
   entities:
   - uid: 316
@@ -852383,6 +853022,13 @@ entities:
       canCollide: False
     - type: Fixtures
       fixtures: {}
+- proto: N14SignSullivans
+  entities:
+  - uid: 56131
+    components:
+    - type: Transform
+      pos: -67.5,-9.5
+      parent: 1
 - proto: N14SignVaultTecDamaged
   entities:
   - uid: 56132
@@ -852407,6 +853053,13 @@ entities:
     components:
     - type: Transform
       pos: 44.5,5.5
+      parent: 1
+- proto: N14SignWickedShipping
+  entities:
+  - uid: 56136
+    components:
+    - type: Transform
+      pos: -152.5,-0.5
       parent: 1
 - proto: N14SignWorkersOnly
   entities:
@@ -1020326,6 +1020979,59 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 92.02888,-105.696724
+      parent: 1
+- proto: StreetFurnitureBillboardMassfusion1
+  entities:
+  - uid: 101252
+    components:
+    - type: Transform
+      pos: 125.5,-89.5
+      parent: 1
+- proto: StreetFurnitureBillboardMassfusion1worn
+  entities:
+  - uid: 101253
+    components:
+    - type: Transform
+      pos: -42.5,-76.5
+      parent: 1
+  - uid: 101254
+    components:
+    - type: Transform
+      pos: 177.5,65.5
+      parent: 1
+- proto: StreetFurnitureBillboardNukacola1
+  entities:
+  - uid: 101255
+    components:
+    - type: Transform
+      pos: 237.5,54.5
+      parent: 1
+- proto: StreetFurnitureBillboardNukacola1worn
+  entities:
+  - uid: 101257
+    components:
+    - type: Transform
+      pos: 72.5,-1.5
+      parent: 1
+  - uid: 101258
+    components:
+    - type: Transform
+      pos: 78.5,-76.5
+      parent: 1
+  - uid: 121752
+    components:
+    - type: Transform
+      pos: -90.5,48.5
+      parent: 1
+- proto: StreetFurnitureBillboardSchoelt
+  entities:
+  - uid: 101259
+    components:
+    - type: MetaData
+      desc: A large projector screen, tattered and stained by the elements.
+      name: projector screen
+    - type: Transform
+      pos: 145.5,93.5
       parent: 1
 - proto: SubstationBasic
   entities:

@@ -6,7 +6,7 @@
         "x": 32,
         "y": 32
     },
-        "states": [
+    "states": [
         {
             "name": "icon"
         },
@@ -42,9 +42,6 @@
         {
             "name": "equipped-SUITSTORAGE",
             "directions": 4
-        },
-        {
-            "name": "mag-1"
-        }
-    ]
+    }
+  ]
 }

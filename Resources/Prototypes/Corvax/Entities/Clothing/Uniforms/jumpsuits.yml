@@ -152,6 +152,15 @@
 
 - type: entity
   parent: N14ClothingUniformBase
+  id: N14ClothingUniformJumpsuitNCRMP
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/NCRMPUniform.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/NCRMPUniform.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
   id: M14ClothingUniformKhansUniform
   name: great khan uniform
   description: Clothing marking the wearer as one of the the Great Khans. Most common are denim pants.

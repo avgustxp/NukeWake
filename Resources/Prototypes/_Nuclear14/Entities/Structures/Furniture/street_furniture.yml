@@ -44,6 +44,124 @@
 
 # Billboards
 - type: entity
+  id: StreetFurnitureBillboardNukacola1
+  parent: N14SignFloorBase
+  name: billboard
+  description: A billboard advertising nuka cola.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Street_Furniture/billboards192x192.rsi
+    layers:
+    - state: base
+    - state: nukacola1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "2.1,-1.5,2,-3"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-2,-1.5,-2.2,-3"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+
+
+- type: entity
+  id: StreetFurnitureBillboardNukacola1worn
+  parent: StreetFurnitureBillboardNukacola1
+  description: A billboard advertising nuka cola.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Street_Furniture/billboards192x192.rsi
+    layers:
+    - state: base
+    - state: nukacola1-worn
+
+- type: entity
+  id: StreetFurnitureBillboardMassfusion1
+  parent: StreetFurnitureBillboardNukacola1
+  description: A billboard advertising the Mass Fusion company.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Street_Furniture/billboards192x192.rsi
+    layers:
+    - state: base
+    - state: massfusion1
+
+- type: entity
+  id: StreetFurnitureBillboardMassfusion1worn
+  parent: StreetFurnitureBillboardNukacola1
+  description: A billboard advertising the Mass Fusion company.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Street_Furniture/billboards192x192.rsi
+    layers:
+    - state: base
+    - state: massfusion1-worn
+
+- type: entity
+  id: StreetFurnitureBillboardRedrocket1
+  parent: StreetFurnitureBillboardNukacola1
+  description: A billboard advertising the Red Rocket fuel company.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Street_Furniture/billboards192x192.rsi
+    layers:
+    - state: base
+    - state: redrocket1
+
+- type: entity
+  id: StreetFurnitureBillboardRedrocket1worn
+  parent: StreetFurnitureBillboardNukacola1
+  description: A billboard advertising the Red Rocket fuel company.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Street_Furniture/billboards192x192.rsi
+    layers:
+    - state: base
+    - state: redrocket1-worn
+
+- type: entity
+  parent: StreetFurnitureBillboardNukacola1
+  id: StreetFurnitureBillboardHorizonAirlines
+  description: A billboard advertising the Horizon Airlines company.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: horizonairlines
+
+- type: entity
+  parent: StreetFurnitureBillboardHorizonAirlines
+  id: StreetFurnitureBillboardHorizonAirlinesWorn
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: horizonairlines-worn
+
+- type: entity
+  parent: StreetFurnitureBillboardNukacola1
+  id: StreetFurnitureBillboardSchoelt
+  description: A billboard advertising the Schoelt propane company.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: schoelt
+
+# Floor Signs
+- type: entity
   parent: N14SignFloorBase
   id: N14SignFloorBazaar
   suffix: bazaar

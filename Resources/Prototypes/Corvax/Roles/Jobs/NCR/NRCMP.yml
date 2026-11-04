@@ -47,11 +47,11 @@
 - type: startingGear
   id: NCRMPinvestigatorGear
   equipment:
-    jumpsuit: N14ClothingMPUniformNCRDesert
+    jumpsuit: N14ClothingUniformJumpsuitNCRMP
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsCombatFilled
     head:  N14ClothingHeadHatNCRMPCap
-    outerClothing: N14ClothingOuterNCRCombatArmor
+    outerClothing: N14ClothingOuterNCRMPArmorWest
     pocket1: NCRMPinvestigatorKits
     gloves: N14ClothingHandsGlovesCombat
     id: N14IDNCRDogtagNCO
