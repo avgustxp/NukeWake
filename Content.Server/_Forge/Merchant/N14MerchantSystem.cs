@@ -463,8 +463,6 @@ public sealed partial class N14MerchantSystem : EntitySystem
             MerchantName = Identity.Name(uid, EntityManager),
             MerchantCaps = comp.Caps,
             PlayerCaps = CountCaps(actor),
-            // Остаток до обновления ассортимента; 0 — обновление отключено.
-            RestockSeconds = GetRestockRemaining(comp),
         };
 
         for (var i = 0; i < comp.Stock.Count; i++)

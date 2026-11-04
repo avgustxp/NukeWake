@@ -86,12 +86,6 @@ public sealed class N14MerchantWindow : FancyWindow
     /// <summary>Текущий текст описания (в markup-escape виде) для повторной укладки.</summary>
     private string _descText = string.Empty;
 
-    /// <summary>Секунды до обновления ассортимента; тикает на клиенте между обновлениями состояния.</summary>
-    private float _restockRemaining;
-
-    /// <summary>Последний показанный текст таймера, чтобы не переписывать Label каждый кадр.</summary>
-    private string _restockText = string.Empty;
-
     /// <summary>Состояния предметов по прототипу — для отображения info-боксов при наведении.</summary>
     private readonly Dictionary<string, N14MerchantItemState> _itemsByProto = new();
 
@@ -441,9 +435,6 @@ public sealed class N14MerchantWindow : FancyWindow
         _playerColumn.Caps.Text = Loc.GetString("n14-merchant-caps", ("caps", state.PlayerCaps));
         _merchantColumn.Caps.Text = Loc.GetString("n14-merchant-caps", ("caps", state.MerchantCaps));
 
-        _restockRemaining = MathF.Max(0f, state.RestockSeconds);
-        UpdateRestockLabel();
-
         // Пересобираем строки, сохраняя выбор по прототипу/индексу.
         _previewPanel.Visible = false;
         _itemData.Visible = false;
@@ -492,40 +483,6 @@ public sealed class N14MerchantWindow : FancyWindow
 
         RecenterWindow(new Vector2(0.5f, 0.5f));
         RebuildMiddle();
-    }
-
-    /// <summary>
-    ///     Тикаем таймер обновления локально, чтобы не пересобирать список каждый серверный тик.
-    /// </summary>
-    protected override void FrameUpdate(FrameEventArgs args)
-    {
-        base.FrameUpdate(args);
-
-        if (_restockRemaining <= 0f)
-            return;
-
-        _restockRemaining = MathF.Max(0f, _restockRemaining - args.DeltaSeconds);
-        UpdateRestockLabel();
-    }
-
-    private void UpdateRestockLabel()
-    {
-        if (_restockRemaining <= 0f)
-        {
-            _merchantColumn.Restock.Visible = false;
-            return;
-        }
-
-        var total = (int) MathF.Ceiling(_restockRemaining);
-        var text = Loc.GetString("n14-merchant-restock",
-            ("time", $"{total / 60:00}:{total % 60:00}"));
-
-        if (text == _restockText)
-            return;
-
-        _restockText = text;
-        _merchantColumn.Restock.Text = text;
-        _merchantColumn.Restock.Visible = true;
     }
 
     private void OnOfferClicked(N14MerchantRow row)

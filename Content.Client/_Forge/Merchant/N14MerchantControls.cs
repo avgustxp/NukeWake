@@ -351,7 +351,6 @@ public sealed class N14MerchantColumn : LayoutContainer
 
     public Label Header { get; }
     public Label Caps { get; }
-    public Label Restock { get; }
     public BoxContainer Rows { get; }
 
     private readonly N14MerchantFrame _frame;
@@ -404,15 +403,6 @@ public sealed class N14MerchantColumn : LayoutContainer
             Margin = new Thickness(0, 12, 14, 3),
         };
 
-        Restock = new Label
-        {
-            Visible = false,
-            HorizontalAlignment = HAlignment.Right,
-            FontColorOverride = N14MerchantTheme.Accent,
-            FontOverride = N14MerchantTheme.GetFont(18),
-            Margin = new Thickness(0, 0, 14, 6),
-        };
-
         Rows = new BoxContainer
         {
             Orientation = LayoutOrientation.Vertical,
@@ -438,7 +428,6 @@ public sealed class N14MerchantColumn : LayoutContainer
         };
         content.AddChild(_headerRow);
         content.AddChild(Caps);
-        content.AddChild(Restock);
         content.AddChild(scroll);
 
         AddChild(content);

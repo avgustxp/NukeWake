@@ -2,7 +2,6 @@ n14-merchant-window-title = Trade
 n14-merchant-column-items = Items
 n14-merchant-column-npc = NPC
 n14-merchant-caps = Caps: {$caps}
-n14-merchant-restock = Assortment refresh: {$time}
 n14-merchant-examine-restock = Assortment refresh in {$time}.
 n14-merchant-caps-word = Caps
 n14-merchant-accept = Accept

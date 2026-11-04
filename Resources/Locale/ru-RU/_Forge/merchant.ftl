@@ -2,7 +2,6 @@ n14-merchant-window-title = Торговля
 n14-merchant-column-items = Вещи
 n14-merchant-column-npc = NPC
 n14-merchant-caps = Крышки: {$caps}
-n14-merchant-restock = Обновление ассортимента: {$time}
 n14-merchant-examine-restock = Обновление ассортимента через {$time}.
 n14-merchant-caps-word = Caps
 n14-merchant-accept = Accept
