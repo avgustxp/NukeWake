@@ -1,4 +1,3 @@
-using Content.Client._NC.Sponsor.UI; // Forge-Change
 using Content.Client.Message;
 /// Forge-Change-Start
 using Content.Client.Stylesheets;
@@ -27,7 +26,6 @@ namespace Content.Client.Lobby.UI
         [Dependency] private readonly IConfigurationManager _configuration = default!;
 
         /// Forge-Change-End
-        private SponsorWindow? _sponsorWindow; // Forge-Change
 
         public LobbyGui()
         {
@@ -57,7 +55,6 @@ namespace Content.Client.Lobby.UI
             /// Forge-Change-End
             LeaveButton.OnPressed += _ => _consoleHost.ExecuteCommand("disconnect");
             OptionsButton.OnPressed += _ => UserInterfaceManager.GetUIController<OptionsUIController>().ToggleWindow();
-            SponsorButton.OnPressed += _ => OpenSponsorWindow(); // Forge-Change
         }
 
         /// Forge-Change-Start
@@ -116,21 +113,6 @@ namespace Content.Client.Lobby.UI
                 ApplyLobbyStyle(child, enabled);
         }
         /// Forge-Change-End
-
-        // Forge-Change: open (or focus) the sponsorship window.
-        private void OpenSponsorWindow()
-        {
-            // A closed window is removed from its parent (IsOpen == false) but not disposed,
-            // so only focus it when it is actually open; otherwise (re)create it.
-            if (_sponsorWindow is { Disposed: false, IsOpen: true })
-            {
-                _sponsorWindow.MoveToFront();
-                return;
-            }
-
-            _sponsorWindow = new SponsorWindow();
-            _sponsorWindow.OpenCentered();
-        }
 
         public void SwitchState(LobbyGuiState state)
         {
