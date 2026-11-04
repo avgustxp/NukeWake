@@ -21451,6 +21451,20 @@ entities:
     - type: Physics
       angularDamping: 0
       linearDamping: 0
+- proto: N14PosterSafety1
+  entities:
+  - uid: 3535
+    components:
+    - type: Transform
+      pos: 116.5,212.5
+      parent: 2
+- proto: N14PosterSafety12
+  entities:
+  - uid: 3536
+    components:
+    - type: Transform
+      pos: 119.5,208.5
+      parent: 2
 - proto: N14PosterVaultTec01
   entities:
   - uid: 3537

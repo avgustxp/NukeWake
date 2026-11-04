@@ -6,7 +6,7 @@
       "x": 32,
       "y": 32
     },
-        "states": [
+    "states": [
         {
             "name": "base"
         },
@@ -15,12 +15,6 @@
         },
         {
             "name": "off"
-        },
-        {
-            "name": "icon"
-        },
-        {
-            "name": "radioon"
         }
     ]
 }
