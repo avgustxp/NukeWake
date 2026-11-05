@@ -5,8 +5,8 @@
   description: It's a vault skirt. It has a bright yellow 14 on the back.
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/Uniforms/FalloutSkirts/vault14dress.rsi
+    sprite: _NukeWake/Clothing/Uniforms/Jumpsuit/vaultuniform.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/Uniforms/FalloutSkirts/vault14dress.rsi
+    sprite: _NukeWake/Clothing/Uniforms/Jumpsuit/vaultuniform.rsi
 
 
