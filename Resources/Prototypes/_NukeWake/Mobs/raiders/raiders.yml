@@ -1,0 +1,529 @@
+- type: entity
+  name: Хан-костолом
+  parent: N14BaseMobRaider
+  id: N14MobRaiderKhanMelee
+  description: Тренированный член банды Ханов для ведения ближнего боя.
+  components:
+    - type: Loadout
+      prototypes:
+      - NukeKhanMeleeGear
+
+- type: entity
+  name: Хан-вышибала
+  parent: N14BaseMobRaider
+  id: N14MobRaiderKhanShotgun
+  description: Член банды Ханов с рычажным дробовиком для ближнего боя.
+  components:
+    - type: Gun
+      minAngle: 34.5
+      maxAngle: 104
+      angleIncrease: 8
+      angleDecay: 16
+      fireRate: 0.75
+      soundGunshot: /Audio/_Nuclear14/Weapons/Guns/Shotguns/N14WeaponDoubleBarrelShotgun/shot1.ogg
+      useKey: false
+      selectedMode: SemiAuto
+      availableModes:
+        - SemiAuto
+    - type: CombatMode
+    - type: BasicEntityAmmoProvider
+      proto: N14ShellShotgun20
+      capacity: 5
+      count: 5
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 2
+      rechargeSound:
+        path: /Audio/_Nuclear14/Weapons/Effects/Reload/Shotguns/shotgun_insert.ogg
+    - type: Loadout
+      prototypes:
+        - NukeKhanShotgunGear
+    - type: Sprite
+      layers: # Long boring part to make sure layering is correct
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.Face" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: Mobs/Species/Human/parts.rsi
+      - shader: StencilMask
+        map: ["enum.HumanoidVisualLayers.StencilMask"]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: unisex_full
+        visible: false
+      - map: ["jumpsuit"]
+      - map: ["enum.HumanoidVisualLayers.LFoot"]
+      - map: ["enum.HumanoidVisualLayers.RFoot"]
+      - map: ["enum.HumanoidVisualLayers.LHand"]
+      - map: ["enum.HumanoidVisualLayers.RHand"]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "innerBelt" ]
+      - map: [ "innerNeck" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "id" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "enum.HumanoidVisualLayers.Wings" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/lever_shotgun.rsi
+        state: inhand-right 
+
+- type: entity
+  name: Хан-стрелок
+  parent: N14BaseMobRaider
+  id: N14MobRaiderKhanSMG
+  description: Член банды Ханов обученный стрелять из ПП.
+  components:
+    - type: Gun
+      minAngle: 1.5
+      maxAngle: 13.5
+      angleIncrease: 16
+      angleDecay: 16
+      fireRate: 1.4
+      soundGunshot: /Audio/_Nuclear14/Weapons/Guns/Pistols/N14WeaponPistol9mm/shot1.ogg
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+    - type: CombatMode
+    - type: BasicEntityAmmoProvider
+      proto: N14CartridgePistol9
+      capacity: 30
+      count: 30
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1.5
+      rechargeSound:
+        path: /Audio/_Nuclear14/Weapons/Effects/Reload/SMGs/smg_magin.ogg
+    - type: Loadout
+      prototypes:
+        - NukeKhanSMGGear
+    - type: Sprite
+      layers: # Long boring part to make sure layering is correct
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.Face" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: Mobs/Species/Human/parts.rsi
+      - shader: StencilMask
+        map: ["enum.HumanoidVisualLayers.StencilMask"]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: unisex_full
+        visible: false
+      - map: ["jumpsuit"]
+      - map: ["enum.HumanoidVisualLayers.LFoot"]
+      - map: ["enum.HumanoidVisualLayers.RFoot"]
+      - map: ["enum.HumanoidVisualLayers.LHand"]
+      - map: ["enum.HumanoidVisualLayers.RHand"]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "innerBelt" ]
+      - map: [ "innerNeck" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "id" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "enum.HumanoidVisualLayers.Wings" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/9mmSMG.rsi
+        state: inhand-right 
+
+- type: entity
+  name: Папа-Хан
+  parent: N14BaseMobRaider
+  id: N14MobRaiderKhanPapa
+  description: Лидер банды Ханов.
+  components:
+    - type: MobThresholds 
+      thresholds:
+        0: Alive
+        200: Dead
+    - type: Gun
+      minAngle: 4.5
+      maxAngle: 22.5
+      angleIncrease: 1
+      angleDecay: 4
+      fireRate: 0.5
+      soundGunshot: /Audio/_Nuclear14/Weapons/Guns/Snipers/N14WeaponPipeRifle/shot1.ogg
+      useKey: false
+      selectedMode: SemiAuto
+      availableModes:
+        - SemiAuto
+    - type: CombatMode
+    - type: BasicEntityAmmoProvider
+      proto: N14Cartridge308Rifle
+      capacity: 1
+      count: 1
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1
+      rechargeSound:
+        path: /Audio/Weapons/Guns/MagIn/bullet_insert.ogg
+    - type: Loadout
+      prototypes:
+        - NukeKhanPapaGear
+    - type: Sprite
+      layers: # Long boring part to make sure layering is correct
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.Face" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: Mobs/Species/Human/parts.rsi
+      - shader: StencilMask
+        map: ["enum.HumanoidVisualLayers.StencilMask"]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: unisex_full
+        visible: false
+      - map: ["jumpsuit"]
+      - map: ["enum.HumanoidVisualLayers.LFoot"]
+      - map: ["enum.HumanoidVisualLayers.RFoot"]
+      - map: ["enum.HumanoidVisualLayers.LHand"]
+      - map: ["enum.HumanoidVisualLayers.RHand"]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "innerBelt" ]
+      - map: [ "innerNeck" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "id" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "enum.HumanoidVisualLayers.Wings" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/enfield.rsi
+        state: inhand-right # Only part we change, the gun sprite.
+
+
+- type: entity
+  name: Чёрт-Торчок
+  parent: N14BaseMobRaider
+  id: N14MobRaiderFiendMelee
+  description: Конченный наркоман с ножом!
+  components:
+    - type: Loadout
+      prototypes:
+      - NukeFiendMeleeGear
+
+- type: entity
+  name: Чёрт-Стрелок
+  parent: N14BaseMobRaider
+  id: N14MobRaiderFiendSMG
+  description: Безумный наркоман с ПП!
+  components:
+    - type: Gun
+      minAngle: 1.5
+      maxAngle: 13.5
+      angleIncrease: 1
+      angleDecay: 4
+      fireRate: 1.5
+      soundGunshot: /Audio/_Nuclear14/Weapons/Guns/Pistols/N14WeaponPistol12mm/shot1.ogg
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+    - type: CombatMode
+    - type: BasicEntityAmmoProvider
+      proto: N14CartridgePistol127
+      capacity: 28
+      count: 28
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 2
+      rechargeSound:
+        path: /Audio/_Nuclear14/Weapons/Effects/Reload/Pistols/pistol_magin.ogg
+    - type: Loadout
+      prototypes:
+        - NukeFiendSMGGear
+    - type: Sprite
+      layers: 
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.Face" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: Mobs/Species/Human/parts.rsi
+      - shader: StencilMask
+        map: ["enum.HumanoidVisualLayers.StencilMask"]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: unisex_full
+        visible: false
+      - map: ["jumpsuit"]
+      - map: ["enum.HumanoidVisualLayers.LFoot"]
+      - map: ["enum.HumanoidVisualLayers.RFoot"]
+      - map: ["enum.HumanoidVisualLayers.LHand"]
+      - map: ["enum.HumanoidVisualLayers.RHand"]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "innerBelt" ]
+      - map: [ "innerNeck" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "id" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "enum.HumanoidVisualLayers.Wings" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/12mmSMG.rsi
+        state: inhand-right  
+
+- type: entity
+  name: Чёрт-Плазмер
+  parent: N14BaseMobRaider
+  id: N14MobRaiderFiendPlasma
+  description: Рукастый торчок из банды чертей который смог восстановить плазменное ружьё.
+  components:
+    - type: Gun
+      minAngle: 1.5
+      maxAngle: 11.5
+      angleIncrease: 1
+      angleDecay: 4
+      fireRate: 1
+      soundGunshot:
+        collection: N14RechargerRifleGunshot
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+    - type: CombatMode
+    - type: BasicEntityAmmoProvider
+      proto: BulletPlasma
+      capacity: 10
+      count: 10
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 2
+      rechargeSound:
+        path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+    - type: Loadout
+      prototypes:
+        - NukeFiendPlasmaGear
+    - type: Sprite
+      layers: 
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.Face" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: Mobs/Species/Human/parts.rsi
+      - shader: StencilMask
+        map: ["enum.HumanoidVisualLayers.StencilMask"]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: unisex_full
+        visible: false
+      - map: ["jumpsuit"]
+      - map: ["enum.HumanoidVisualLayers.LFoot"]
+      - map: ["enum.HumanoidVisualLayers.RFoot"]
+      - map: ["enum.HumanoidVisualLayers.LHand"]
+      - map: ["enum.HumanoidVisualLayers.RHand"]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "innerBelt" ]
+      - map: [ "innerNeck" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "id" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "enum.HumanoidVisualLayers.Wings" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - sprite: _Nuclear14/Objects/Weapons/Guns/Battery/plasma_rifle_crude.rsi
+        state: inhand-right  
+
+- type: entity
+  name: Чёрт-Босс
+  parent: N14BaseMobRaider
+  id: N14MobRaiderFiendBossRCW
+  description: Безумец, занимающий лидирующее положение в банде чертей.
+  components:
+    - type: MobThresholds 
+      thresholds:
+        0: Alive
+        200: Dead
+    - type: Gun
+      minAngle: 1.5
+      maxAngle: 10.5
+      angleIncrease: 1
+      angleDecay: 4
+      fireRate: 1.7
+      soundGunshot:
+        collection: N14RechargerRifleGunshot
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+    - type: CombatMode
+    - type: BasicEntityAmmoProvider
+      proto: BulletLaser
+      capacity: 35
+      count: 35
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 2
+      rechargeSound:
+        path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+    - type: Loadout
+      prototypes:
+        - NukeFiendLaserRCWBossGear
+    - type: Sprite
+      layers: 
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.Face" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: Mobs/Species/Human/parts.rsi
+      - shader: StencilMask
+        map: ["enum.HumanoidVisualLayers.StencilMask"]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: unisex_full
+        visible: false
+      - map: ["jumpsuit"]
+      - map: ["enum.HumanoidVisualLayers.LFoot"]
+      - map: ["enum.HumanoidVisualLayers.RFoot"]
+      - map: ["enum.HumanoidVisualLayers.LHand"]
+      - map: ["enum.HumanoidVisualLayers.RHand"]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "innerBelt" ]
+      - map: [ "innerNeck" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "id" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "enum.HumanoidVisualLayers.Wings" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - sprite: _Forge/Objects/Weapons/Guns/Battery/laserrcw.rsi
+        state: inhand-right  
+
+
+- type: entity
+  name: Гуль-Кочевник
+  parent: N14BaseMobRaider
+  id: N14MobRaiderGlowingGhoulMelee
+  description: Обезумевший светящийся гуль который давно потерял всякие моральные принципы и слоняется по пустоши в поисках очередной жертвы
+  components:
+    - type: Loadout
+      prototypes:
+      - NukeGlGhoulTrawelerGear
+    - type: HumanoidAppearance
+      species: GhoulGlowing

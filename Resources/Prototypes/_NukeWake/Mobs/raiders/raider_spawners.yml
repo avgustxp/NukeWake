@@ -1,0 +1,134 @@
+- type: entity
+  name: Спавнер Хана-Костолома
+  id: N14RaiderMobSpawnerKhanMelee
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRaiderKhanMelee
+
+- type: entity
+  name: Спавнер Хана-Вышибалы
+  id: N14RaiderMobSpawnerKhanShotgun
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRaiderKhanShotgun
+
+- type: entity
+  name: Спавнер Хана-Стрелка
+  id: N14RaiderMobSpawnerKhanSMG
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRaiderKhanSMG
+
+- type: entity
+  name: Спавнер Папы-Хана
+  id: N14RaiderMobSpawnerKhanPapa
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRaiderKhanPapa
+
+- type: entity
+  name: Спавнер Черта-Торчка
+  id: N14RaiderMobSpawnerFiendMelee
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRaiderFiendMelee
+
+- type: entity
+  name: Спавнер Черта-Стрелка
+  id: N14RaiderMobSpawnerFiendSMG
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRaiderFiendSMG
+
+- type: entity
+  name: Спавнер Черта-Плазмера
+  id: N14RaiderMobSpawnerFiendPlasma
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRaiderFiendPlasma
+
+- type: entity
+  name: Спавнер Черта-Босса
+  id: N14RaiderMobSpawnerFiendBoss
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRaiderFiendBossRCW
+
+- type: entity
+  name: Спавнер Светящегося кочевника
+  id: N14RaiderMobSpawnerGlowingGhoulTraveler
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRaiderGlowingGhoulMelee
