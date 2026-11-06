@@ -1,0 +1,110 @@
+- type: startingGear
+  id: NukeKhanMeleeGear
+  equipment:
+    jumpsuit: M14ClothingUniformKhansUniform
+    shoes: N14ClothingBootsBlack
+    mask: N14ClothingMaskBlackMask
+    gloves: N14ClothingHandsGlovesCloth
+    head: MisfitsClothingHeadKhanHelmet
+    outerClothing: M14ClothingOuterKhanLeather
+    pocket1: N14RaiderStash
+  inhand:
+  - N14TrenchClub
+
+- type: startingGear
+  id: NukeKhanShotgunGear
+  equipment:
+    jumpsuit: M14ClothingUniformKhansUniformShorts
+    shoes: N14ClothingBootsBlack
+    head: MisfitsClothingHeadKhanHelmet
+    outerClothing: M14ClothingOuterKhanLeatherArmored
+    pocket1: N14RaiderStash
+
+- type: startingGear
+  id: NukeKhanSMGGear
+  equipment:
+    jumpsuit: M14ClothingUniformKhansUniform
+    shoes: N14ClothingBootsBlack
+    eyes: N14ClothingSnowGoggles
+    gloves: N14ClothingHandsGlovesCloth
+    head: MisfitsClothingHeadKhanHelmet
+    outerClothing: M14ClothingOuterKhanLeather
+    pocket1: N14RaiderStash
+
+- type: startingGear
+  id: NukeKhanPapaGear
+  equipment:
+    jumpsuit: M14ClothingUniformKhansUniformShorts
+    shoes: N14ClothingBootsCombatMK2
+    eyes: N14ClothingSnowGoggles
+    mask: N14ClothingMaskBrownMask
+    neck: N14ClothingNeckTribalCloakBr
+    gloves: N14ClothingHandsGlovesCloth
+    head: MisfitsClothingHeadKhanHelmet
+    outerClothing: M14ClothingOuterKhanLeatherArmored
+    pocket1: N14RaiderStash
+
+- type: startingGear
+  id: NukeFiendMeleeGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRaider
+    head: N14ClothingHeadHatFiendHelmet
+    outerClothing: N14ClothingOuterRaiderBlastmaster
+    pocket1: N14RaiderStash
+    pocket2: N14Jet
+  inhand:
+  - N14CombatKnife
+
+- type: startingGear
+  id: NukeFiendPlasmaGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRaider
+    eyes: N14ClothingEyesGlassesWelding
+    gloves: N14ClothingHandsGlovesCloth
+    head: N14ClothingHeadHatFiendHelmet
+    outerClothing: N14ClothingOuterRaiderBadlands
+    pocket1: N14RaiderStash
+    pocket2: N14Jet
+
+- type: startingGear
+  id: NukeFiendSMGGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRaider
+    mask: N14ClothingMaskBlackMask
+    head: N14ClothingHeadHatFiendHelmet
+    outerClothing: N14ClothingOuterRaiderBlastmaster
+    pocket1: N14RaiderStash
+    pocket2: N14Jet
+
+- type: startingGear
+  id: NukeFiendLaserRCWBossGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRaider
+    mask: N14ClothingMaskHockey
+    neck: N14ClothingNeckTownGuardCloak
+    eyes: N14ClothingEyesGlassesWelding
+    gloves: N14ClothingHandsGlovesCloth
+    head: N14ClothingHeadHatFiendHelmet
+    outerClothing: N14ClothingOuterMetalArmor
+    pocket1: N14RaiderStash
+    pocket2: N14Jet
+
+
+- type: startingGear
+  id: NukeGlGhoulTrawelerGear
+  equipment:
+    jumpsuit: N14ClothingUniformDesertPants
+    shoes: N14ClothingShoesTribal
+    mask: N14ClothingHaldWraps
+    eyes: N14ClothingSnowGoggles
+    gloves: ClothingHandsGlovesFingerless
+    head: N14ClothingHeadHatScavengerHelmet
+    outerClothing: N14ClothingOuterReinforcedArmorKit
+    pocket1: N14RaiderStash
+    pocket2: N14Jet
+  inhand:
+  - N14WastelandSpear
