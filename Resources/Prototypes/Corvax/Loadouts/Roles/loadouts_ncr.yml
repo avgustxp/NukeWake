@@ -92,24 +92,6 @@
     - N14ClothingOuterNCRVestSnow
 
 - type: loadout
-  id: LoadoutClothingOuterNCRVestpaddedWebSnow
-  category: OuterArmor
-  cost: 3
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSoldier
-        - NCREngineer
-        - NCRMedic
-        - NCRWS
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRSoldier
-      min: 36000 # 10 hours veterancy unlock
-  items:
-    - N14ClothingOuterNCRVestpaddedWebSnow
-
-- type: loadout
   id: LoadoutClothingOuterNCRCombatArmorSnow
   category: OuterArmor
   cost: 0
@@ -153,23 +135,6 @@
       min: 72000 # 20 hours veterancy unlock
   items:
     - N14ClothingNeckNCRMPCoat
-
-- type: loadout
-  id: LoadoutClothingNeckNCRMPBeret
-  category: Head
-  cost: 2
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRMPinvestigator
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRMPinvestigator
-      min: 72000 # 20 hours veterancy unlock
-  items:
-    - N14ClothingHeadHatNCRMPBeret
-
-# MARK: Наплечники НКР
 
 - type: loadout
   id: LoadoutClothingNeckNCRShoulderPad

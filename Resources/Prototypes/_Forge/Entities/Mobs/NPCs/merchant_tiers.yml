@@ -26,8 +26,6 @@
       price: 0
     - product: MagazineBox762
       price: 0
-    - product: N14IronOre
-      price: 0
     - product: N14Gunpowder
       price: 0
     - product: N14JunkDuctTape
@@ -68,8 +66,6 @@
     - product: N14FloraWildBrocFlowerClippingSeed
       price: 0
     - product: MagazineBox556
-      price: 0
-    - product: N14LeadOre
       price: 0
     - product: N14MaterialThread
       price: 0
@@ -121,8 +117,6 @@
       price: 0
     - product: MagazineBox10mm
       price: 0
-    - product: N14CopperOre
-      price: 0
     - product: N14MaterialLeather
       price: 0
     - product: N14JunkToaster
@@ -160,8 +154,6 @@
     - product: N14FloraWildXanderRootClippingSeed
       price: 0
     - product: MagazineBox762
-      price: 0
-    - product: N14GoldOre
       price: 0
     - product: N14MaterialCircuitry
       price: 0
@@ -221,8 +213,6 @@
       price: 0
     - product: MagazineBox20gauge
       price: 0
-    - product: N14SilverOre
-      price: 0
     - product: N14PowerCellHigh
       price: 0
     - product: N14MaterialBrahminHide
@@ -262,8 +252,6 @@
     - product: N14FloraWildPricklyPearClippingSeed
       price: 0
     - product: MagazineBox12
-      price: 0
-    - product: N14AluminumOre
       price: 0
     - product: N14MaterialAntChitin
       price: 0
@@ -371,8 +359,6 @@
       price: 0
     - product: N14WeaponPistol10mm
       price: 0
-    - product: N14GoldOre
-      price: 0
     - product: N14IngotLead20
       price: 0
     - product: N14ScrapElectronic
@@ -391,8 +377,6 @@
     - product: N14FloraDaturaClippingSeed
       price: 0
     - product: MagazineBox308
-      price: 0
-    - product: N14SilverOre
       price: 0
     - product: N14MaterialNightstalkerPelt
       price: 0
@@ -439,8 +423,6 @@
     - product: N14FloraWildMutfruitClippingSeed
       price: 0
     - product: MagazineBox50
-      price: 0
-    - product: N14BrassOre
       price: 0
     - product: N14IngotGold
       price: 0
