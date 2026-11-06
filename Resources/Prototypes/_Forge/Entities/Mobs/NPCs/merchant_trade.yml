@@ -268,7 +268,6 @@
     N14ClothingHeadHatArmyBeretRanger: 7
     N14ClothingHeadHatArmyBeretSpecial: 20
     N14ClothingHeadHatArmyCap: 20
-    N14ClothingHeadHatAssasin: 20
     N14ClothingHeadHatBandit: 20
     N14ClothingHeadHatBanganeBoS: 20
     N14ClothingHeadHatBaseHelmetmarine: 1400
@@ -277,11 +276,6 @@
     N14ClothingHeadHatBaseballHelmetBlueprint: 10
     N14ClothingHeadHatBeanie: 20
     N14ClothingHeadHatBeretknighBoS: 20
-    N14ClothingHeadHatBoSInquisitorBattleHelmet: 80
-    N14ClothingHeadHatBoSInquisitorBattleHelmetHood: 80
-    N14ClothingHeadHatBoSInquisitorBlackHat: 20
-    N14ClothingHeadHatBoSInquisitorCap: 20
-    N14ClothingHeadHatBoSInquisitorHat: 20
     N14ClothingHeadHatBrotherCapralHelmet: 25
     N14ClothingHeadHatBrotherHelmet: 25
     N14ClothingHeadHatBrotherhoodBeret: 20
@@ -324,7 +318,6 @@
     N14ClothingHeadHatDeanVeteranHelmet: 100
     N14ClothingHeadHatDeputy: 20
     N14ClothingHeadHatDesertBoonie: 20
-    N14ClothingHeadHatDog: 20
     N14ClothingHeadHatEdlerSkullhelm: 80
     N14ClothingHeadHatEldersDamagedSkullHelm: 80
     N14ClothingHeadHatEnclaveHelmet: 25
@@ -335,9 +328,6 @@
     N14ClothingHeadHatEnclavePeacekeeperCap: 20
     N14ClothingHeadHatEnclaveScientist: 20
     N14ClothingHeadHatEyeBot: 150
-    N14ClothingHeadHatGastat: 20
-    N14ClothingHeadHatGastatPrime: 20
-    N14ClothingHeadHatGastatVeteran: 20
     N14ClothingHeadHatHeadscarf: 20
     N14ClothingHeadHatHelmetChineseStealthSuitHelmet: 5000
     N14ClothingHeadHatHelmetFirefighterHelmet: 25
@@ -375,16 +365,12 @@
     N14ClothingHeadHatNCRHelmetMetalSnow: 80
     N14ClothingHeadHatNCRHelmetMetalWoods: 80
     N14ClothingHeadHatNCRHelmetSnow: 80
-    N14ClothingHeadHatNCRMPBeret: 20
     N14ClothingHeadHatNCRMPCap: 20
     N14ClothingHeadHatNCRSidecap: 20
     N14ClothingHeadHatNightstalker: 20
     N14ClothingHeadHatPressHelmet: 25
     N14ClothingHeadHatPrewarMilitaryHelmet: 35
-    N14ClothingHeadHatPrimeAssasin: 20
-    N14ClothingHeadHatPrinceps: 20
     N14ClothingHeadHatPrincepsGalea: 25
-    N14ClothingHeadHatPrincepsPrime: 20
     N14ClothingHeadHatPrincepsPrimeGalea: 25
     N14ClothingHeadHatRaiderbag: 20
     N14ClothingHeadHatRanger: 20
@@ -401,7 +387,6 @@
     N14ClothingHeadHatSheriff: 20
     N14ClothingHeadHatSpecHelmetRCMP: 25
     N14ClothingHeadHatTownGuard: 20
-    N14ClothingHeadHatTriarium: 20
     N14ClothingHeadHatTribalOutcastHood: 20
     N14ClothingHeadHatTribalPowerhelm: 20
     N14ClothingHeadHatTrucker: 20
@@ -534,9 +519,6 @@
     N14ClothingOfficerUniformNCRDesert: 15
     N14ClothingOfficerUniformNCRSnow: 15
     N14ClothingOuterArmoredKit: 200
-    N14ClothingOuterBOSInquisitorBattleArmor: 200
-    N14ClothingOuterBOSInquisitorBlackCoat: 30
-    N14ClothingOuterBOSInquisitorCoat: 30
     N14ClothingOuterBandito: 200
     N14ClothingOuterBattlecoatCoat: 20
     N14ClothingOuterBattlecoatTan: 20
@@ -646,8 +628,6 @@
     N14ClothingOuterNCRCombatArmorMK2Blueprint: 10
     N14ClothingOuterNCRCombatArmorMK2Snow: 300
     N14ClothingOuterNCRCombatArmorSnow: 200
-    N14ClothingOuterNCRCombatVeteranArmor: 300
-    N14ClothingOuterNCRCombatVeteranArmorSnow: 300
     N14ClothingOuterNCRCorrectional: 30
     N14ClothingOuterNCRDressJacket: 15
     N14ClothingOuterNCRDressJacketCO: 15
@@ -661,9 +641,6 @@
     N14ClothingOuterNCRVestSnow: 100
     N14ClothingOuterNCRVestWoods: 100
     N14ClothingOuterNCRVestpaddedWeb: 100
-    N14ClothingOuterNCRVestpaddedWebSnow: 100
-    N14ClothingOuterNCRVeteranArmor: 300
-    N14ClothingOuterNCRVeteranArmorSnow: 300
     N14ClothingOuterOverseerCoat: 30
     N14ClothingOuterPainspike: 30
     N14ClothingOuterPoliceChief: 30
@@ -809,7 +786,6 @@
     N14ClothingUniformJumpskirtRDFormal: 15
     N14ClothingUniformJumpskirtSundress: 15
     N14ClothingUniformJumpskirtTribal: 15
-    N14ClothingUniformJumpskirtVault14: 15
     N14ClothingUniformJumpskirtWastelandDoc: 15
     N14ClothingUniformJumpsuitBOSBlack: 15
     N14ClothingUniformJumpsuitBOSFieldScribe: 15
@@ -840,7 +816,6 @@
     N14ClothingUniformJumpsuitEnclave: 15
     N14ClothingUniformJumpsuitFollowers: 15
     N14ClothingUniformJumpsuitFudd: 15
-    N14ClothingUniformJumpsuitInquisitorBOS: 15
     N14ClothingUniformJumpsuitLegionnaire: 15
     N14ClothingUniformJumpsuitLegionnaireOther: 15
     N14ClothingUniformJumpsuitManagerSuit: 15
@@ -2073,7 +2048,6 @@
     N14WeaponPlasmaRifleUrban: 1500
     N14WeaponRevolver10mm: 30
     N14WeaponRevolver10mmEmpty: 30
-    N14WeaponRevolver12-7x55mmRSH12: 500
     N14WeaponRevolver44MagnumCaptain: 500
     N14WeaponRevolver44Magnun: 70
     N14WeaponRevolver44Tribal: 50
@@ -2521,7 +2495,6 @@
     N14ClothingOuterCombatArmorMK3: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterCombatArmorRCMP: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterCombatArmorSeniorBOS: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
-    N14ClothingOuterNCRCombatVeteranArmor: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterNCRCombatArmor: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterNCRCombatArmorBlueprint: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
     N14ClothingOuterNCRCombatArmorMK2: /Textures/_NukeWake/icons/iconsarmor/combatarmor.rsi
@@ -2594,7 +2567,6 @@
     N14ClothingHeadHatNCRBeretQM: /Textures/_NukeWake/icons/iconsarmor/beret.rsi
     N14ClothingHeadHatArmyBeretRanger: /Textures/_NukeWake/icons/iconsarmor/beret.rsi
     N14ClothingHeadHatEnclaveIntel: /Textures/_NukeWake/icons/iconsarmor/beret.rsi
-    N14ClothingHeadHatNCRMPBeret: /Textures/_NukeWake/icons/iconsarmor/beret.rsi
     N14ClothingHeadHatNCRBeretOfficer: /Textures/_NukeWake/icons/iconsarmor/ncrofficerberet.rsi
     N14ClothingHeadHatBrotherhoodBeret: /Textures/_NukeWake/icons/iconsarmor/beret.rsi
     N14ClothingHeadHatBeretknighBoS: /Textures/_NukeWake/icons/iconsarmor/beret.rsi
@@ -2634,7 +2606,6 @@
     N14ClothingHeadHatVaultRiot: /Textures/_NukeWake/icons/iconsarmor/securityhelmet.rsi
     ClothingHeadHelmetRiot: /Textures/_NukeWake/icons/iconsarmor/securityhelmet.rsi
     N14ClothingOuterNCRVest: /Textures/_NukeWake/icons/iconsarmor/ncrbasicarmor.rsi
-    N14ClothingOuterNCRVeteranArmor: /Textures/_NukeWake/icons/iconsarmor/ncrbasicarmor.rsi
     N14ClothingOuterNCRVestWoods: /Textures/_NukeWake/icons/iconsarmor/ncrbasicarmor.rsi
     N14ClothingHeadHatNCRHelmetMetalWoods: /Textures/_NukeWake/icons/iconsarmor/MPncrhelmet.rsi
     N14ClothingHeadHatNCRHelmetMetalGhillie: /Textures/_NukeWake/icons/iconsarmor/MPncrhelmet.rsi
@@ -2692,7 +2663,6 @@
     N14ClothingOuterConquerorCenturionArmor: /Textures/_NukeWake/icons/iconsarmor/legatearmor.rsi
     N14ClothingOuterLegateArmor: /Textures/_NukeWake/icons/iconsarmor/legatearmor.rsi
     N14ClothingHeadHatAnimal: /Textures/_NukeWake/icons/iconsarmor/vexillariushelmet.rsi
-    N14ClothingHeadHatDog: /Textures/_NukeWake/icons/iconsarmor/vexillariushelmet.rsi
     N14ClothingHeadHatRangerHelmetOld: /Textures/_NukeWake/icons/iconsarmor/rangerhelmet.rsi
     N14ClothingHeadHatRangerHelmetModif: /Textures/_NukeWake/icons/iconsarmor/rangerhelmet.rsi
     N14ClothingHeadHatRangerHelmet: /Textures/_NukeWake/icons/iconsarmor/rangerhelmet.rsi

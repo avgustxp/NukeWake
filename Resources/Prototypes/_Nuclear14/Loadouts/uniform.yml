@@ -13,21 +13,7 @@
       departments:
         - Vault
 
-- type: loadout #Forge-Add-Start
-  id: N14LoadoutUniformJumpskirtVault14
-  category: Uniform
-  cost: 2
-  exclusive: true
-  items:
-    - N14ClothingUniformJumpskirtVault14
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Vault #Forge-Add-End
 # wastelander and townfolk jumpsuits
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitAsylumDress
   category: Uniform
