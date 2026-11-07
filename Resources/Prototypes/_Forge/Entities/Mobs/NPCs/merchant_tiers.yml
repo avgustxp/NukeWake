@@ -1,6 +1,6 @@
 # MARK: Наборы товаров торговцев (merchant stock sets)
-# Каждый набор — 10 позиций: оружие ближнего боя, стрелковое, броня, одежда,
-# шлем, росток, патроны, руда, материал, хлам.
+# Ассортимент: оружие ближнего боя, стрелковое, броня, одежда, шлем, росток,
+# патроны. Материалы, руда, лом и хлам намеренно не продаются.
 # Все наборы одного тира объединяются в пул торговца: при появлении и каждые
 # 20 минут он случайно набирает из пула stockSize позиций.
 # stockPerItem — сколько экземпляров одного товара выставляется за цикл.
@@ -25,10 +25,6 @@
     - product: N14FloraWildTatoClippingSeed
       price: 0
     - product: MagazineBox762
-      price: 0
-    - product: N14Gunpowder
-      price: 0
-    - product: N14JunkDuctTape
       price: 0
     - product: N14WeaponSniper308Ross
       price: 0
@@ -66,10 +62,6 @@
     - product: N14FloraWildBrocFlowerClippingSeed
       price: 0
     - product: MagazineBox556
-      price: 0
-    - product: N14MaterialThread
-      price: 0
-    - product: N14JunkCoffeepot
       price: 0
 
     - product: N14ClothingOuterVaultSecVest
@@ -117,10 +109,6 @@
       price: 0
     - product: MagazineBox10mm
       price: 0
-    - product: N14MaterialLeather
-      price: 0
-    - product: N14JunkToaster
-      price: 0
 
     - product: N14DirtyGauze10
       price: 0
@@ -154,10 +142,6 @@
     - product: N14FloraWildXanderRootClippingSeed
       price: 0
     - product: MagazineBox762
-      price: 0
-    - product: N14MaterialCircuitry
-      price: 0
-    - product: N14JunkComponentSensorModule
       price: 0
     - product: JunkCannon
       price: 0
@@ -215,10 +199,6 @@
       price: 0
     - product: N14PowerCellHigh
       price: 0
-    - product: N14MaterialBrahminHide
-      price: 0
-    - product: N14JunkToaster
-      price: 0
     - product: N14Turbo
       price: 0
     - product: N14Psycho
@@ -252,10 +232,6 @@
     - product: N14FloraWildPricklyPearClippingSeed
       price: 0
     - product: MagazineBox12
-      price: 0
-    - product: N14MaterialAntChitin
-      price: 0
-    - product: N14JunkComponentGearLarge
       price: 0
     - product: N14MedkitFilled
       price: 0
@@ -359,10 +335,6 @@
       price: 0
     - product: N14WeaponPistol10mm
       price: 0
-    - product: N14IngotLead20
-      price: 0
-    - product: N14ScrapElectronic
-      price: 0
 
 - type: n14MerchantStockSet
   id: N14MerchantStockT3Travel
@@ -378,10 +350,6 @@
       price: 0
     - product: MagazineBox308
       price: 0
-    - product: N14MaterialNightstalkerPelt
-      price: 0
-    - product: N14Scrap
-      price: 0
     - product: N14DrinkSunsetSarsaparillaBottleFull
       price: 0
     - product: N14CryoGrenade
@@ -389,10 +357,6 @@
     - product: Portafib
       price: 0
     - product: N14ClothingBackpackHiking
-      price: 0
-    - product: N14JunkLunchboxFill
-      price: 0
-    - product: N14ScrapBrass1
       price: 0
     - product: N14HolotapeQuestEnclaveplans
       price: 0
@@ -408,8 +372,6 @@
       price: 0
     - product: MagazineBox12
       price: 0
-    - product: N14JunkGunpartsAdvancedFrame
-      price: 0
     - product: N14MagazineMinigun5mm
       price: 0
     - product: N14PlasmaCartridge
@@ -423,10 +385,6 @@
     - product: N14FloraWildMutfruitClippingSeed
       price: 0
     - product: MagazineBox50
-      price: 0
-    - product: N14IngotGold
-      price: 0
-    - product: N14JunkComponentSensorModule
       price: 0
     - product: N14SledgeHammer
       price: 0
