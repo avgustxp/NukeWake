@@ -22,6 +22,14 @@ public sealed partial class GunConditionComponent : Component
     public float Condition = 100f;
 
     /// <summary>
+    ///     Включён ли износ: потеря прочности, клины и блокировка стрельбы при поломке.
+    ///     По умолчанию выключен — оружие не изнашивается.
+    ///     Чтобы включить износ для конкретного оружия, укажите wearEnabled: true в прототипе.
+    /// </summary>
+    [DataField]
+    public bool WearEnabled;
+
+    /// <summary>
     ///     При этом значении прочности или ниже оружие не может стрелять.
     /// </summary>
     [DataField]
