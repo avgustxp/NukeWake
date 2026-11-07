@@ -952,6 +952,52 @@
       - id: N14PlasmaGrenade
 
 - type: entity
+  name: elderss Gauss rifle kit
+  parent: KitBase
+  id: KitBrootherWest_Eldergauss
+  description: Standard Gauss Rifle kit
+  components:
+  - type: Sprite
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponGaussRifle
+      - id: N14PowerCellFusionCellAdvansed
+        amount: 3
+      - id: N14WeaponLaserMagnetoPistol
+      - id: N14PowerCellMagnetoSmall
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14PlasmaGrenade
+
+- type: entity
+  name: elderss Wattz 3000 kit
+  parent: KitBase
+  id: KitBrootherWest_Elderwattz
+  description: Standard Wattz 3000 kit
+  components:
+  - type: Sprite
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponLaserRifleWattz3000
+      - id: N14PowerCellFocused
+        amount: 3
+      - id: N14WeaponLaserMagnetoPistol
+      - id: N14PowerCellMagnetoSmall
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14PlasmaGrenade
+
+- type: entity
   name: elderss Rifle kit
   parent: KitBase
   id: KitBrootherWest_Elderrifle

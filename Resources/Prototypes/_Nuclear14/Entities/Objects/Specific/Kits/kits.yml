@@ -1312,7 +1312,7 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponPlasmaRifleUrban
+      - id: N14WeaponPlasmaRifleAuto
       - id: N14PlasmaCartridge
         amount: 3
       - id: N14WeaponPistol12mm

@@ -248,6 +248,22 @@
     - MBoS_PalSni_Set
     - MBoS_PalPla_Set
 
+# Paladin kit without the Wattz 2000 sniper option. Used by the Paladin rank;
+# the full kit above stays with the Paladin Commander.
+- type: entity
+  id: BoSMidwestPaladinKitsStandard
+  name: Undecided Midwestern Paladin Kit (Standard)
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MBoS_PalLas_Set
+    - MBoS_PalBal_Set
+    - MBoS_PalPla_Set
+
 - type: entity
   id: BoSWashingtonPaladinKits
   name: Undecided Washington Paladin Kit
