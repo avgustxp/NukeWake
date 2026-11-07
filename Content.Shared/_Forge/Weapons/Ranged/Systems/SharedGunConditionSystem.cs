@@ -46,7 +46,7 @@ public abstract class SharedGunConditionSystem : EntitySystem
 
     private void OnUseInHand(Entity<GunConditionComponent> ent, ref UseInHandEvent args)
     {
-        if (args.Handled || !ent.Comp.Jammed || IsBroken(ent.Comp))
+        if (args.Handled || !ent.Comp.WearEnabled || !ent.Comp.Jammed || IsBroken(ent.Comp))
             return;
 
         // Блокируем смену хвата также на клиенте, пока сервер устраняет клин.
@@ -60,6 +60,10 @@ public abstract class SharedGunConditionSystem : EntitySystem
 
     private void OnAttemptShoot(Entity<GunConditionComponent> ent, ref AttemptShootEvent args)
     {
+        // Износ отключён: прочность не влияет на стрельбу.
+        if (!ent.Comp.WearEnabled)
+            return;
+
         if (IsBroken(ent.Comp))
         {
             args.Cancelled = true;
@@ -76,7 +80,7 @@ public abstract class SharedGunConditionSystem : EntitySystem
 
     private void OnExamined(Entity<GunConditionComponent> ent, ref ExaminedEvent args)
     {
-        if (!args.IsInDetailsRange)
+        if (!args.IsInDetailsRange || !ent.Comp.WearEnabled)
             return;
 
         var percent = GetConditionPercent(ent.Comp);

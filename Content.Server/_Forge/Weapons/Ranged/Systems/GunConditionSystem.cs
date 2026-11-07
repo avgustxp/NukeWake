@@ -55,6 +55,9 @@ public sealed class GunConditionSystem : SharedGunConditionSystem
 
     private void OnDamageChanged(Entity<GunConditionComponent> ent, ref DamageChangedEvent args)
     {
+        if (!ent.Comp.WearEnabled)
+            return;
+
         // Износ остаётся в GunCondition. Учитываем только новый урон, а не накопленный итог.
         if (args.DamageDelta == null)
             return;
@@ -83,7 +86,15 @@ public sealed class GunConditionSystem : SharedGunConditionSystem
         if (!HasComp<ItemComponent>(uid))
             return;
 
-        EnsureComp<GunConditionComponent>(uid);
+        var condition = EnsureComp<GunConditionComponent>(uid);
+
+        // Износ отключён: сбрасываем прочность и клин, чтобы старое оружие
+        // с карты или из сохранения снова работало.
+        if (condition.WearEnabled)
+            return;
+
+        condition.Condition = condition.MaxCondition;
+        condition.Jammed = false;
     }
 
     private void OnRepairToolExamined(Entity<GunConditionRepairToolComponent> ent, ref ExaminedEvent args)
@@ -112,7 +123,7 @@ public sealed class GunConditionSystem : SharedGunConditionSystem
 
     private void OnGunShot(Entity<GunConditionComponent> ent, ref GunShotEvent args)
     {
-        if (IsBroken(ent.Comp))
+        if (!ent.Comp.WearEnabled || IsBroken(ent.Comp))
             return;
 
         var wasJammed = ent.Comp.Jammed;
