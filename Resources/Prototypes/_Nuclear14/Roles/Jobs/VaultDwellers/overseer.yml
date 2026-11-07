@@ -10,9 +10,6 @@
   - !type:CharacterDepartmentTimeRequirement
     department: Vault
     min: 36000 # 10 hours
-  # Forge-Change-Start
-  - !type:MinPlayersRequirement
-    min: 20 # Forge-Change-End
   weight: 20
   startingGear: OverseerGear
   alwaysUseSpawner: true

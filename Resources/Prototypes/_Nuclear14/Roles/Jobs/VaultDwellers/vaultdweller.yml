@@ -11,8 +11,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
-  - !type:MinPlayersRequirement
-    min: 20 # Forge-Change-End
+  # Forge-Change-End
   startingGear: VaultDwellerGear
   alwaysUseSpawner: true
   icon: "JobIconVaulDweller" # Forge-Change

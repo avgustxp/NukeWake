@@ -197,6 +197,8 @@
     possibleSets:
     - KitBrootherWest_ElderlasSet
     - KitBrootherWest_ElderrifleSet
+    - KitBrootherWest_EldergaussSet
+    - KitBrootherWest_ElderwattzSet
 
 # Broother Western kits Paladin
 - type: entity
@@ -819,6 +821,26 @@
     state: rifleman
   content:
   - KitBrootherWest_Elderlas
+
+- type: UndecidedLoadoutBackpackSet
+  id: KitBrootherWest_EldergaussSet
+  name: undecided-loadout-category-elder-gauss-name
+  description: undecided-loadout-category-elder-gauss-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content:
+  - KitBrootherWest_Eldergauss
+
+- type: UndecidedLoadoutBackpackSet
+  id: KitBrootherWest_ElderwattzSet
+  name: undecided-loadout-category-elder-wattz-name
+  description: undecided-loadout-category-elder-wattz-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content:
+  - KitBrootherWest_Elderwattz
 
 # Inquisitor Brother Kits
 - type: UndecidedLoadoutBackpackSet

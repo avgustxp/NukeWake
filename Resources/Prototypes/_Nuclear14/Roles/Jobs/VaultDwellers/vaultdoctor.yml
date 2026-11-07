@@ -15,9 +15,6 @@
   - !type:CharacterDepartmentTimeRequirement
     department: Vault
     min: 7200 # 2 hours
-  # Forge-Change-Start
-  - !type:MinPlayersRequirement
-    min: 20 # Forge-Change-End
   startingGear: VaultDoctorGear
   alwaysUseSpawner: true
   icon: "JobIconVaultMedic" # Forge-Change
