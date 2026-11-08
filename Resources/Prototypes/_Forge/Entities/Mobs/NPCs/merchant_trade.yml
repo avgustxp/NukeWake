@@ -1884,20 +1884,20 @@
     N14SawImprovised: 20
     N14Scalpel: 20
     N14ScalpelRusted: 20
-    N14Scrap: 60
-    N14Scrap1: 200
-    N14ScrapBrass: 60
+    N14Scrap: 5
+    N14Scrap1: 5
+    N14ScrapBrass: 5
     N14ScrapBrass1: 5
-    N14ScrapCopper: 60
+    N14ScrapCopper: 5
     N14ScrapCopper1: 5
-    N14ScrapElectronic: 60
-    N14ScrapElectronic1: 11
-    N14ScrapGold: 60
-    N14ScrapGold1: 11
-    N14ScrapLead: 60
+    N14ScrapElectronic: 5
+    N14ScrapElectronic1: 5
+    N14ScrapGold: 5
+    N14ScrapGold1: 5
+    N14ScrapLead: 5
     N14ScrapLead1: 5
-    N14ScrapMachete: 10
-    N14ScrapSteel: 60
+    N14ScrapMachete: 5
+    N14ScrapSteel: 5
     N14ScrapSteel1: 5
     N14Screwdriver: 3
     N14SeedBase: 1
