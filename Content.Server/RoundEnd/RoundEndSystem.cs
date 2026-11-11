@@ -23,6 +23,10 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Timer = Robust.Shared.Timing.Timer;
 using Content.Server.Announcements.Systems;
+using Content.Server.Weather;
+using Content.Shared.Weather;
+using Robust.Shared.Map;
+
 
 namespace Content.Server.RoundEnd
 {
@@ -45,6 +49,15 @@ namespace Content.Server.RoundEnd
         [Dependency] private readonly StationSystem _stationSystem = default!;
         [Dependency] private readonly AnnouncerSystem _announcer = default!;
 
+        // NukeWake: раунд длится 2 часа 30 минут, затем ещё 2 минут идёт постраунд.
+        private const string FinalStormPrototypeId = "NCRadioactiveStorm";
+        private static readonly TimeSpan MaxRoundDuration = TimeSpan.FromMinutes(150);
+        private static readonly TimeSpan PostRoundRestartDelay = TimeSpan.FromMinutes(2);
+
+        // NukeWake: погодная система и проверка существования основной карты.
+        [Dependency] private readonly WeatherSystem _weatherSystem = default!;
+        [Dependency] private readonly IMapManager _mapManager = default!;
+
         public TimeSpan DefaultCooldownDuration { get; set; } = TimeSpan.FromSeconds(30);
 
         /// <summary>
@@ -59,20 +72,15 @@ namespace Content.Server.RoundEnd
         public TimeSpan? ExpectedShuttleLength => ExpectedCountdownEnd - LastCountdownStart;
         public TimeSpan? ShuttleTimeLeft => ExpectedCountdownEnd - _gameTiming.CurTime;
 
-        public TimeSpan AutoCallStartTime;
         private bool _autoCalledBefore = false;
 
         public override void Initialize()
         {
             base.Initialize();
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Reset());
-            SetAutoCallTime();
+
         }
 
-        private void SetAutoCallTime()
-        {
-            AutoCallStartTime = _gameTiming.CurTime;
-        }
 
         private void Reset()
         {
@@ -90,7 +98,6 @@ namespace Content.Server.RoundEnd
 
             LastCountdownStart = null;
             ExpectedCountdownEnd = null;
-            SetAutoCallTime();
             _autoCalledBefore = false;
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
         }
@@ -375,22 +382,52 @@ namespace Content.Server.RoundEnd
             Timer.Spawn(countdown, _shuttle.CallEmergencyShuttle, _countdownTokenSource.Token);
         }
 
+        /// <summary>
+        /// NukeWake: заканчивает раунд, в конце вызывает TryStartFinalStorm
+        /// </summary>
         public override void Update(float frameTime)
         {
-            // Check if we should auto-call.
-            int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
-                                        : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);
-            if (mins != 0 && _gameTiming.CurTime - AutoCallStartTime > TimeSpan.FromMinutes(mins))
-            {
-                if (!_shuttle.EmergencyShuttleArrived && ExpectedCountdownEnd is null)
-                {
-                    RequestRoundEnd(null, false, "round-end-system-shuttle-auto-called-announcement");
-                    _autoCalledBefore = true;
-                }
 
-                // Always reset auto-call in case of a recall.
-                SetAutoCallTime();
+            if (_gameTicker.RunLevel != GameRunLevel.InRound)
+                return;
+
+            var elapsed = _gameTiming.CurTime - _gameTicker.RoundStartTimeSpan;
+            if (elapsed < MaxRoundDuration)
+                return;
+
+            try
+            {
+                TryStartFinalStorm();
             }
+            catch (Exception e)
+            {
+                Log.Error($"NukeWake: Ошибка запуска финальной бури: {e}");
+            }
+
+            EndRound(PostRoundRestartDelay);
+        }
+
+        /// <summary>
+        /// NukeWake: пытается включить радиоактивную бурю на основной карте раунда.
+        /// Отсутствие карты или прототипа не должно мешать завершению раунда.
+        /// </summary>
+        private void TryStartFinalStorm()
+        {
+            var mapId = _gameTicker.DefaultMap;
+            if (!_mapManager.MapExists(mapId))
+            {
+                Log.Error($"NukeWake: Основная карта {mapId} не существует. Буря не запущена.");
+                return;
+            }
+
+            if (!_protoManager.TryIndex<WeatherPrototype>(FinalStormPrototypeId, out var storm))
+            {
+                Log.Error($"NukeWake: Прототип погоды {FinalStormPrototypeId} не найден.");
+                return;
+            }
+
+            _weatherSystem.SetWeather(mapId, storm, null);
+            Log.Info($"NukeWake: Радиоактивная буря запущена на карте {mapId}.");
         }
     }
 
