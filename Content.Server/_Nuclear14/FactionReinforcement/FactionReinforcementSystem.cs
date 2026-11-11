@@ -1,3 +1,4 @@
+using System.Text;
 using Content.Server.Mind;
 using Content.Server.Popups;
 using Content.Server.Power.Components;
@@ -77,6 +78,11 @@ public sealed class FactionReinforcementSystem : EntitySystem
     /// </summary>
     private readonly Dictionary<EntityUid, (EntityUid Actor, string Department)> _openTerminals = new();
 
+    /// <summary>
+    /// Last UI state signature sent to each terminal, so unchanged states are not re-sent every tick.
+    /// </summary>
+    private readonly Dictionary<EntityUid, string> _lastStateSignature = new();
+
     private TimeSpan _nextRefresh;
 
     public override void Initialize()
@@ -109,6 +115,7 @@ public sealed class FactionReinforcementSystem : EntitySystem
         _damagedPlayers.Clear();
         _cuffedPlayers.Clear();
         _usedReinforcements.Clear();
+        _lastStateSignature.Clear();
     }
 
     private void OnCuffedStateChanged(EntityUid uid, CuffableComponent component, ref CuffedStateChangeEvent args)
@@ -152,7 +159,7 @@ public sealed class FactionReinforcementSystem : EntitySystem
         }
 
         _openTerminals[uid] = (args.Actor, department);
-        _ui.SetUiState(uid, FactionReinforcementUiKey.Key, BuildState(uid, department));
+        SendUiState(uid, department);
     }
 
     private void OnUiClosed(EntityUid uid, FactionReinforcementComponent component, BoundUIClosedEvent args)
@@ -161,7 +168,10 @@ public sealed class FactionReinforcementSystem : EntitySystem
             return;
 
         if (_openTerminals.TryGetValue(uid, out var open) && open.Actor == args.Actor)
+        {
             _openTerminals.Remove(uid);
+            _lastStateSignature.Remove(uid);
+        }
     }
 
     public override void Update(float frameTime)
@@ -187,14 +197,26 @@ public sealed class FactionReinforcementSystem : EntitySystem
                 continue;
             }
 
-            _ui.SetUiState(terminal, FactionReinforcementUiKey.Key, BuildState(terminal, open.Department));
+            var state = BuildState(terminal, open.Department);
+            var signature = StateSignature(state);
+
+            // The status only changes when a holder gets damaged, cuffed or changes their ID.
+            // Re-sending an identical state every second wastes bandwidth, so skip it.
+            if (_lastStateSignature.TryGetValue(terminal, out var previous) && previous == signature)
+                continue;
+
+            _lastStateSignature[terminal] = signature;
+            _ui.SetUiState(terminal, FactionReinforcementUiKey.Key, state);
         }
 
         if (stale == null)
             return;
 
         foreach (var terminal in stale)
+        {
             _openTerminals.Remove(terminal);
+            _lastStateSignature.Remove(terminal);
+        }
     }
 
     private void OnReinforcementRequested(EntityUid uid, FactionReinforcementComponent component,
@@ -273,7 +295,29 @@ public sealed class FactionReinforcementSystem : EntitySystem
 
     private void RefreshUi(EntityUid uid, string department)
     {
-        _ui.SetUiState(uid, FactionReinforcementUiKey.Key, BuildState(uid, department));
+        SendUiState(uid, department);
+    }
+
+    /// <summary>
+    /// Builds, sends and caches the UI state for a terminal.
+    /// </summary>
+    private void SendUiState(EntityUid uid, string department)
+    {
+        var state = BuildState(uid, department);
+        _lastStateSignature[uid] = StateSignature(state);
+        _ui.SetUiState(uid, FactionReinforcementUiKey.Key, state);
+    }
+
+    /// <summary>
+    /// Compact representation of a UI state, used to detect whether it actually changed.
+    /// </summary>
+    private static string StateSignature(FactionReinforcementBoundUserInterfaceState state)
+    {
+        var signature = new StringBuilder(state.DepartmentId);
+        foreach (var entry in state.Jobs)
+            signature.Append('|').Append(entry.Job).Append(':').Append((byte) entry.Status);
+
+        return signature.ToString();
     }
 
     private FactionReinforcementBoundUserInterfaceState BuildState(EntityUid uid, string department)
