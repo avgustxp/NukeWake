@@ -139,5 +139,20 @@ namespace Content.Server.GameTicking
             UpdateRoundFlow(frameTime);
             UpdateGameRules();
         }
+
+        /// <summary>
+        /// NukeWake: устанавливает время раунда (Для тестирования)
+        /// </summary>
+        public bool SetRoundElapsedTime(TimeSpan elapsed)
+        {
+            if (RunLevel != GameRunLevel.InRound || elapsed < TimeSpan.Zero)
+                return false;
+
+            RoundStartTimeSpan = _gameTiming.CurTime - elapsed;
+
+            SendStatusToAll();
+
+            return true;
+        }
     }
 }
