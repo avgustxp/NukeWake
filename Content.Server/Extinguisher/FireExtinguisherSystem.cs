@@ -1,7 +1,6 @@
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Popups;
-using Content.Shared._N14.Water;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Extinguisher;
 using Content.Shared.FixedPoint;
@@ -19,7 +18,6 @@ public sealed class FireExtinguisherSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly N14WaterSourceSystem _waterSource = default!;
 
     public override void Initialize()
     {
@@ -63,28 +61,6 @@ public sealed class FireExtinguisherSystem : EntitySystem
         if (entity.Comp.HasSafety && entity.Comp.Safety)
         {
             _popupSystem.PopupEntity(Loc.GetString("fire-extinguisher-component-safety-on-message"), entity.Owner, args.User);
-            return;
-        }
-
-        // Infinite water sources (e.g. water tiles) don't have a solution to drain from.
-        if (TryComp<N14WaterSourceComponent>(args.Target.Value, out var waterSource)
-            && _solutionContainerSystem.TryGetRefillableSolution(entity.Owner, out var waterContainerSoln, out var waterContainerSolution))
-        {
-            args.Handled = true;
-
-            var waterTransfer = waterContainerSolution.AvailableVolume;
-            if (TryComp<SolutionTransferComponent>(entity.Owner, out var waterSolTrans))
-            {
-                waterTransfer = waterSolTrans.TransferAmount;
-            }
-
-            if (_waterSource.Fill((args.Target.Value, waterSource), waterContainerSoln.Value, waterTransfer) > 0)
-            {
-                _audio.PlayPvs(entity.Comp.RefillSound, entity.Owner);
-                _popupSystem.PopupEntity(Loc.GetString("fire-extinguisher-component-after-interact-refilled-message", ("owner", entity.Owner)),
-                    entity.Owner, args.Target.Value);
-            }
-
             return;
         }
 

@@ -31,7 +31,7 @@ namespace Content.Server.NPC.Systems;
 /// <summary>
 /// Handles utility queries for NPCs.
 /// </summary>
-public sealed partial class NPCUtilitySystem : EntitySystem // Forge-Change: helpers live in _Forge.
+public sealed class NPCUtilitySystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
@@ -81,23 +81,6 @@ public sealed partial class NPCUtilitySystem : EntitySystem // Forge-Change: hel
         var weh = _proto.Index<UtilityQueryPrototype>(proto);
         var ents = _entPool.Get();
 
-        // Forge-Change-Start: remembered attackers enter the normal query before its filters.
-        EntityUid? retaliationTarget = null;
-        EntityUid? currentRetaliationTarget = null;
-        if ((proto == "NearbyMeleeTargets" || proto == "NearbyGunTargets") &&
-            _retaliation.TryGetPlayerAttacker(blackboard.GetValue<EntityUid>(NPCBlackboard.Owner), out var attacker))
-        {
-            retaliationTarget = attacker;
-            ents.Add(attacker);
-            if (blackboard.TryGetValue<EntityUid>("Target", out var current, EntityManager) &&
-                _retaliation.IsRememberedPlayerAttacker(blackboard.GetValue<EntityUid>(NPCBlackboard.Owner), current))
-            {
-                currentRetaliationTarget = current;
-                ents.Add(current);
-            }
-        }
-        // Forge-Change-End
-
         foreach (var query in weh.Query)
         {
             switch (query)
@@ -110,15 +93,6 @@ public sealed partial class NPCUtilitySystem : EntitySystem // Forge-Change: hel
                     break;
             }
         }
-
-        // Forge-Change-Start: prioritize retaliation only after filters and considerations pass.
-        if (TrySelectRetaliationTarget(blackboard, weh, ents, currentRetaliationTarget, retaliationTarget, out var target))
-        {
-            blackboard.Remove<EntityUid>(NPCBlackboard.UtilityTarget);
-            _entPool.Return(ents);
-            return new UtilityResult(new Dictionary<EntityUid, float> { [target] = 1f });
-        }
-        // Forge-Change-End
 
         if (ents.Count == 0)
         {
@@ -183,8 +157,7 @@ public sealed partial class NPCUtilitySystem : EntitySystem // Forge-Change: hel
         }
     }
 
-    private float GetScore(NPCBlackboard blackboard, EntityUid targetUid, UtilityConsideration consideration,
-        float? retaliationDistance = null) // Forge-Change
+    private float GetScore(NPCBlackboard blackboard, EntityUid targetUid, UtilityConsideration consideration)
     {
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
         switch (consideration)
@@ -301,8 +274,7 @@ public sealed partial class NPCUtilitySystem : EntitySystem // Forge-Change: hel
                     return 0f;
                 }
 
-                // Forge-Change: a remembered attacker is not penalized for exceeding normal vision.
-                return retaliationDistance.HasValue ? 0f : Math.Clamp(distance / radius, 0f, 1f);
+                return Math.Clamp(distance / radius, 0f, 1f);
             }
             case TargetAmmoCon:
             {
@@ -328,14 +300,12 @@ public sealed partial class NPCUtilitySystem : EntitySystem // Forge-Change: hel
             case TargetInLOSCon:
             {
                 var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
-                radius = Math.Max(radius, retaliationDistance ?? radius); // Forge-Change: preserve occlusion checks at extended range.
 
                 return _examine.InRangeUnOccluded(owner, targetUid, radius + 0.5f, null) ? 1f : 0f;
             }
             case TargetInLOSOrCurrentCon:
             {
                 var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
-                radius = Math.Max(radius, retaliationDistance ?? radius); // Forge-Change: preserve current-target and occlusion rules.
                 const float bufferRange = 0.5f;
 
                 if (blackboard.TryGetValue<EntityUid>("Target", out var currentTarget, EntityManager) &&

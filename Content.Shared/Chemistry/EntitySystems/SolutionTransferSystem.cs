@@ -1,4 +1,3 @@
-using Content.Shared._N14.Water;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
@@ -22,7 +21,6 @@ public sealed class SolutionTransferSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private readonly N14WaterSourceSystem _waterSource = default!;
 
     /// <summary>
     ///     Default transfer amounts for the set-transfer verb.
@@ -97,32 +95,6 @@ public sealed class SolutionTransferSystem : EntitySystem
             return;
 
         var (uid, comp) = ent;
-
-        // Infinite water sources (e.g. water tiles) don't have a solution, so handle them before the generic path.
-        if (comp.CanReceive
-            && TryComp<N14WaterSourceComponent>(target, out var waterSource)
-            && TryComp<RefillableSolutionComponent>(uid, out var waterRefill)
-            && _solution.TryGetRefillableSolution((uid, waterRefill, null), out var waterOwnerSoln, out var waterOwnerRefill))
-        {
-            var transferAmount = comp.TransferAmount;
-
-            if (waterRefill.MaxRefill is {} maxRefill)
-                transferAmount = FixedPoint2.Min(transferAmount, maxRefill);
-
-            var transferred = _waterSource.Fill((target, waterSource), waterOwnerSoln.Value, transferAmount);
-            if (transferred > 0)
-            {
-                var toTheBrim = waterOwnerRefill.AvailableVolume == 0;
-                var msg = toTheBrim
-                    ? "comp-solution-transfer-fill-fully"
-                    : "comp-solution-transfer-fill-normal";
-
-                _popup.PopupClient(Loc.GetString(msg, ("owner", args.Target), ("amount", transferred), ("target", uid)), uid, args.User);
-
-                args.Handled = true;
-                return;
-            }
-        }
 
         //Special case for reagent tanks, because normally clicking another container will give solution, not take it.
         if (comp.CanReceive

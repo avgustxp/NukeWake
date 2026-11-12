@@ -1,4 +1,3 @@
-using Content.Shared._N14.Water;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.DragDrop;
 using Content.Shared.FixedPoint;
@@ -46,23 +45,6 @@ public sealed partial class PuddleSystem
             else
             {
                 _popups.PopupEntity(Loc.GetString("mopping-system-full", ("used", args.Target)), args.Target, args.User);
-            }
-
-            return;
-        }
-
-        // Infinite water sources (e.g. water tiles) don't have a solution, draw from them directly.
-        if (TryComp<N14WaterSourceComponent>(args.Target, out var waterSource))
-        {
-            var transferred = _waterSource.Fill((args.Target, waterSource), soln.Value, solution.AvailableVolume);
-
-            if (transferred > 0)
-            {
-                _audio.PlayPvs(AbsorbentComponent.DefaultTransferSound, entity);
-            }
-            else
-            {
-                _popups.PopupEntity(Loc.GetString("mopping-system-full", ("used", entity.Owner)), entity, args.User);
             }
 
             return;

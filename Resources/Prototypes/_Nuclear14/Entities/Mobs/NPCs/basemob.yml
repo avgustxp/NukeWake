@@ -18,7 +18,6 @@
   - type: Body
     prototype: N14Animal
   - type: InputMover
-  - type: ProximityNPC # Forge-Change: sleep distant Wendover NPCs
   - type: MobMover
   - type: NpcFactionMember
     factions:
@@ -101,8 +100,6 @@
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
-  - type: NPCRetaliation # Forge-Change: pursue players who damage NPCs from beyond vision range
-    attackMemoryLength: 30 # Forge-Change
   - type: Sprite
     drawdepth: Mobs
   - type: MobState

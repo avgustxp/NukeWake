@@ -1,6 +1,6 @@
-// Forge-Change: reuse the steering buffer, reject stale paths, and profile NPC steering.
 using System.Numerics;
 using System.Threading;
+using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.DoAfter;
 using Content.Server.NPC.Components;
@@ -72,11 +72,6 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
     private ObjectPool<HashSet<EntityUid>> _entSetPool =
         new DefaultObjectPool<HashSet<EntityUid>>(new SetPolicy<EntityUid>());
 
-    // Forge-Change-Start: reuse the NPC buffer across ticks.
-    private (EntityUid, NPCSteeringComponent, InputMoverComponent, TransformComponent)[] _npcPool =
-        Array.Empty<(EntityUid, NPCSteeringComponent, InputMoverComponent, TransformComponent)>();
-    // Forge-Change-End
-
     /// <summary>
     /// Enabled antistuck detection so if an NPC is in the same spot for a while it will re-path.
     /// </summary>
@@ -111,7 +106,6 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
         UpdatesBefore.Add(typeof(SharedPhysicsSystem));
         Subs.CVar(_configManager, CCVars.NPCEnabled, SetNPCEnabled, true);
         Subs.CVar(_configManager, CCVars.NPCPathfinding, SetNPCPathfinding, true);
-        Subs.CVar(_configManager, CCVars.NPCPathfindingProfile, SetProfileEnabled, true); // Forge-Change
 
         SubscribeLocalEvent<NPCSteeringComponent, ComponentShutdown>(OnSteeringShutdown);
         SubscribeNetworkEvent<RequestNPCSteeringDebugEvent>(OnDebugRequest);
@@ -232,37 +226,29 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
             return;
 
         // Not every mob has the modifier component so do it as a separate query.
-        // Forge-Change-Start: fill the reusable buffer without per-tick allocation.
-        var count = Count<ActiveNPCComponent>();
-        if (_npcPool.Length < count)
-            _npcPool = new (EntityUid, NPCSteeringComponent, InputMoverComponent, TransformComponent)[count];
-        // Forge-Change-End
+        var npcs = new (EntityUid, NPCSteeringComponent, InputMoverComponent, TransformComponent)[Count<ActiveNPCComponent>()];
 
         var query = EntityQueryEnumerator<ActiveNPCComponent, NPCSteeringComponent, InputMoverComponent, TransformComponent>();
         var index = 0;
 
         while (query.MoveNext(out var uid, out _, out var steering, out var mover, out var xform))
         {
-            _npcPool[index] = (uid, steering, mover, xform); // Forge-Change
+            npcs[index] = (uid, steering, mover, xform);
             index++;
         }
 
-        // Forge-Change-Start: run steering directly and measure it when requested.
-        var curTime = _timing.CurTime;
-        var profileStart = _profileEnabled ? System.Diagnostics.Stopwatch.GetTimestamp() : 0;
-        var following = 0;
-
-        for (var i = 0; i < index; i++)
+        // Dependency issues across threads.
+        var options = new ParallelOptions
         {
-            var (uid, steering, mover, xform) = _npcPool[i];
-            if (_profileEnabled && steering.CurrentPath.Count > 0)
-                following++;
-            Steer(uid, steering, mover, xform, frameTime, curTime);
-        }
+            MaxDegreeOfParallelism = 1,
+        };
+        var curTime = _timing.CurTime;
 
-        if (_profileEnabled)
-            RecordSteeringProfile(System.Diagnostics.Stopwatch.GetElapsedTime(profileStart).TotalMilliseconds, index, following);
-        // Forge-Change-End
+        Parallel.For(0, index, options, i =>
+        {
+            var (uid, steering, mover, xform) = npcs[i];
+            Steer(uid, steering, mover, xform, frameTime, curTime);
+        });
 
 
         if (_subscribedSessions.Count > 0)
@@ -271,7 +257,7 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
 
             for (var i = 0; i < index; i++)
             {
-                var (uid, steering, mover, _) = _npcPool[i]; // Forge-Change
+                var (uid, steering, mover, _) = npcs[i];
 
                 data.Add(new NPCSteeringDebugData(
                     GetNetEntity(uid),
@@ -326,9 +312,6 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
         // No path set from pathfinding or the likes.
         if (steering.Status == SteeringStatus.NoPath)
         {
-            // Forge-Change: MoveTo may have finished while melee combat keeps steering active.
-            // Clear distant retaliation even when NoPath was set outside the path request callback.
-            ForgetUnreachableAttacker(uid, steering);
             SetDirection(uid, mover, steering, Vector2.Zero);
             return;
         }
@@ -365,9 +348,6 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
 
         if (steering.CanSeek && !TrySeek(uid, mover, steering, body, xform, offsetRot, moveSpeed, interest, frameTime, ref forceSteer))
         {
-            // Forge-Change: TrySeek can also mark the route unreachable after MoveTo has finished.
-            if (steering.Status == SteeringStatus.NoPath)
-                ForgetUnreachableAttacker(uid, steering);
             SetDirection(uid, mover, steering, Vector2.Zero);
             return;
         }
@@ -454,37 +434,17 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
             return;
         }
 
-        // Forge-Change-Start: keep the token and target tied to this path request.
-        var pathfindToken = new CancellationTokenSource();
-        if (_profileEnabled)
-            _profileRequests++;
-        var pathfindTarget = steering.Coordinates;
-        steering.PathfindToken = pathfindToken;
-        // Forge-Change-End
+        steering.PathfindToken = new CancellationTokenSource();
 
         var flags = _pathfindingSystem.GetFlags(uid);
 
         var result = await _pathfindingSystem.GetPathSafe(
             uid,
             xform.Coordinates,
-            pathfindTarget, // Forge-Change
+            steering.Coordinates,
             steering.Range,
-            pathfindToken.Token, // Forge-Change
+            steering.PathfindToken.Token,
             flags);
-
-        // Forge-Change-Start: ignore path results from superseded requests.
-        // A previous request may finish after the target or steering component changes.
-        // Its result must not replace a newer route or clear a newer request token.
-        if (!Exists(uid) ||
-            !TryComp<NPCSteeringComponent>(uid, out var currentSteering) ||
-            !ReferenceEquals(currentSteering, steering) ||
-            steering.PathfindToken != pathfindToken ||
-            pathfindToken.IsCancellationRequested ||
-            !steering.Coordinates.Equals(pathfindTarget))
-        {
-            return;
-        }
-        // Forge-Change-End
 
         steering.PathfindToken = null;
 
@@ -493,26 +453,11 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
             steering.CurrentPath.Clear();
             steering.FailedPathCount++;
 
-            // Forge-Change: stop moving into obstacles once the remembered player has no route.
-            var forgotAttacker = ForgetUnreachableAttacker(uid, steering);
-            if (forgotAttacker || steering.FailedPathCount >= NPCSteeringComponent.FailedPathLimit)
+            if (steering.FailedPathCount >= NPCSteeringComponent.FailedPathLimit)
             {
                 steering.Status = SteeringStatus.NoPath;
-                if (TryComp<InputMoverComponent>(uid, out var mover))
-                    SetDirection(uid, mover, steering, Vector2.Zero);
             }
 
-            return;
-        }
-
-        // Forge-Change: re-pathing must obey the same detour limit as HTN planning.
-        if (_pathfindingSystem.ExceedsPlayerChaseDetour(uid, xform.Coordinates, pathfindTarget, result.Path))
-        {
-            steering.Status = SteeringStatus.NoPath;
-            steering.CurrentPath.Clear();
-            ForgetUnreachableAttacker(uid, steering);
-            if (TryComp<InputMoverComponent>(uid, out var mover))
-                SetDirection(uid, mover, steering, Vector2.Zero);
             return;
         }
 
@@ -521,7 +466,6 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
 
         PrunePath(uid, ourPos, targetPos.Position - ourPos.Position, result.Path);
         steering.CurrentPath = new Queue<PathPoly>(result.Path);
-        steering.FailedPathCount = 0; // Forge-Change
     }
 
     // TODO: Move these to movercontroller

@@ -1,5 +1,4 @@
 using Content.Client.Weapons.Ranged.Components;
-using Content.Shared._Forge.Weapons.Ranged.Events; // #Forge-Change
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Client.GameObjects;
 
@@ -10,7 +9,6 @@ public sealed partial class GunSystem
     private void InitializeSpentAmmo()
     {
         SubscribeLocalEvent<SpentAmmoVisualsComponent, AppearanceChangeEvent>(OnSpentAmmoAppearance);
-        SubscribeNetworkEvent<SpentCartridgeEvent>(OnSpentCartridge); // #Forge-Change: server-confirmed casing visuals.
     }
 
     private void OnSpentAmmoAppearance(EntityUid uid, SpentAmmoVisualsComponent component, ref AppearanceChangeEvent args)
