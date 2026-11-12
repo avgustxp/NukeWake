@@ -81,8 +81,7 @@ public sealed partial class NPCCombatSystem
             return;
         }
 
-        // Forge-Change: keep pursuing a distant player remembered after their attack.
-        if (distance > TargetMeleeLostRange && !IsRememberedMeleeAttacker(uid, component.Target))
+        if (distance > TargetMeleeLostRange)
         {
             component.Status = CombatStatus.TargetUnreachable;
             return;

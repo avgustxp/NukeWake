@@ -79,13 +79,12 @@ namespace Content.Shared.Movement.Systems
         {
             base.UpdateAfterSolve(prediction, frameTime);
 
-            // Forge-Change: disable the empty entity query run after every physics substep.
-            // var query = AllEntityQuery<InputMoverComponent, PhysicsComponent>();
-            //
-            // while (query.MoveNext(out var uid, out var _, out var physics))
-            // {
-            //     //PhysicsSystem.SetLinearVelocity(uid, Vector2.Zero, body: physics);
-            // }
+            var query = AllEntityQuery<InputMoverComponent, PhysicsComponent>();
+
+            while (query.MoveNext(out var uid, out var _, out var physics))
+            {
+                //PhysicsSystem.SetLinearVelocity(uid, Vector2.Zero, body: physics);
+            }
 
             UsedMobMovement.Clear();
         }

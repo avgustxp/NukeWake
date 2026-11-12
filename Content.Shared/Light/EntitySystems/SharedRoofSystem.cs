@@ -15,29 +15,6 @@ public abstract class SharedRoofSystem : EntitySystem
     private HashSet<Entity<IsRoofComponent>> _roofSet = new();
 
     /// <summary>
-    ///     Number of entities with <see cref="IsRoofComponent"/>. Almost all maps use the per-tile
-    ///     bitmask instead, so when this is zero we can skip the entity lookup entirely.
-    /// </summary>
-    private int _roofEntities;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<IsRoofComponent, ComponentStartup>(OnRoofEntityStartup);
-        SubscribeLocalEvent<IsRoofComponent, ComponentShutdown>(OnRoofEntityShutdown);
-    }
-
-    private void OnRoofEntityStartup(Entity<IsRoofComponent> ent, ref ComponentStartup args)
-    {
-        _roofEntities++;
-    }
-
-    private void OnRoofEntityShutdown(Entity<IsRoofComponent> ent, ref ComponentShutdown args)
-    {
-        _roofEntities--;
-    }
-
-    /// <summary>
     /// Returns whether the specified tile is roof-occupied.
     /// </summary>
     /// <returns>Returns false if no data or not rooved.</returns>
@@ -57,10 +34,6 @@ public abstract class SharedRoofSystem : EntitySystem
             if (isRoof)
                 return true;
         }
-
-        // Fast path: nothing in the world can mark a tile as roofed, don't do a lookup per tile.
-        if (_roofEntities <= 0)
-            return false;
 
         _roofSet.Clear();
         _lookup.GetLocalEntitiesIntersecting(grid.Owner, index, _roofSet);

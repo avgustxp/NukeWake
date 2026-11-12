@@ -21,15 +21,12 @@
     - type: MindContainer
       showExamineInfo: False
     - type: InputMover
-    - type: ProximityNPC # Forge-Change: sleep distant Wendover NPCs
     - type: MobMover
     - type: SurgeryTarget
       canOperate: false
     - type: HTN
       rootTask:
         task: N14RangedHostileCompound
-    - type: NPCRetaliation # Forge-Change: pursue players who damage NPCs from beyond vision range
-      attackMemoryLength: 30 # Forge-Change
     - type: Carriable
     - type: Perishable
       rotAfter: 1800 # Rots after half of an in-game day
@@ -134,15 +131,12 @@
     - type: MindContainer
       showExamineInfo: False
     - type: InputMover
-    - type: ProximityNPC # Forge-Change: sleep distant Wendover NPCs
     - type: MobMover
     - type: SurgeryTarget
       canOperate: false
     - type: HTN
       rootTask:
         task: N14RangedHostileCompound
-    - type: NPCRetaliation # Forge-Change: pursue players who damage NPCs from beyond vision range
-      attackMemoryLength: 30 # Forge-Change
     - type: Carriable
     - type: Perishable
       rotAfter: 1800 # Rots after half of an in-game day
@@ -239,15 +233,12 @@
     - type: MindContainer
       showExamineInfo: False
     - type: InputMover
-    - type: ProximityNPC # Forge-Change: sleep distant Wendover NPCs
     - type: MobMover
     - type: SurgeryTarget
       canOperate: false
     - type: HTN
       rootTask:
         task: N14RangedHostileCompound
-    - type: NPCRetaliation # Forge-Change: pursue players who damage NPCs from beyond vision range
-      attackMemoryLength: 30 # Forge-Change
     - type: Carriable
     - type: Perishable
       rotAfter: 1800 # Rots after half of an in-game day
