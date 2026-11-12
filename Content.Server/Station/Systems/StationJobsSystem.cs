@@ -225,6 +225,23 @@ public sealed partial class StationJobsSystem : EntitySystem
         // DeltaV end added RemovedPlayerJobsEvent for CaptainStateSystem
     }
 
+    /// <summary>
+    /// Returns all players that currently occupy the given job on a station.
+    /// </summary>
+    public IEnumerable<NetUserId> GetPlayersWithJob(EntityUid station,
+        string jobPrototypeId,
+        StationJobsComponent? jobsComponent = null)
+    {
+        if (!Resolve(station, ref jobsComponent, false))
+            yield break;
+
+        foreach (var (userId, jobs) in jobsComponent.PlayerJobs)
+        {
+            if (jobs.Contains(jobPrototypeId))
+                yield return userId;
+        }
+    }
+
     /// <inheritdoc cref="TrySetJobSlot(Robust.Shared.GameObjects.EntityUid,string,int,bool,Content.Server.Station.Components.StationJobsComponent?)"/>
     /// <param name="station">Station to adjust the job slot on.</param>
     /// <param name="jobPrototype">Job prototype to adjust.</param>
