@@ -1,3 +1,4 @@
+using Content.Shared._N14.Water;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
@@ -32,6 +33,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         SubscribeLocalEvent<RefillableSolutionComponent, CanDragEvent>(OnRefillableCanDrag);
         SubscribeLocalEvent<DumpableSolutionComponent, CanDropTargetEvent>(OnDumpCanDropTarget);
         SubscribeLocalEvent<DrainableSolutionComponent, CanDropTargetEvent>(OnDrainCanDropTarget);
+        SubscribeLocalEvent<N14WaterSourceComponent, CanDropTargetEvent>(OnWaterSourceCanDropTarget);
         SubscribeLocalEvent<RefillableSolutionComponent, CanDropDraggedEvent>(OnRefillableCanDropDragged);
         SubscribeLocalEvent<PuddleComponent, GetFootstepSoundEvent>(OnGetFootstepSound);
         SubscribeLocalEvent<PuddleComponent, ExaminedEvent>(HandlePuddleExamined);
@@ -63,9 +65,20 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         }
     }
 
+    private void OnWaterSourceCanDropTarget(Entity<N14WaterSourceComponent> entity, ref CanDropTargetEvent args)
+    {
+        if (HasComp<RefillableSolutionComponent>(args.Dragged))
+        {
+            args.CanDrop = true;
+            args.Handled = true;
+        }
+    }
+
     private void OnRefillableCanDropDragged(Entity<RefillableSolutionComponent> entity, ref CanDropDraggedEvent args)
     {
-        if (!HasComp<DrainableSolutionComponent>(args.Target) && !HasComp<DumpableSolutionComponent>(args.Target))
+        if (!HasComp<DrainableSolutionComponent>(args.Target)
+            && !HasComp<DumpableSolutionComponent>(args.Target)
+            && !HasComp<N14WaterSourceComponent>(args.Target))
             return;
 
         args.CanDrop = true;
