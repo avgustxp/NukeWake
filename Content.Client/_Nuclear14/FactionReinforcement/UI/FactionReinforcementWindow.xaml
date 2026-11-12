@@ -1,0 +1,14 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                       Title="{Loc 'faction-reinforcement-window-title'}"
+                       MinSize="520 360"
+                       Resizable="False">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="8 8 8 8">
+        <Label Name="HeaderLabel" Text="{Loc 'faction-reinforcement-header'}" />
+        <PanelContainer MinHeight="2" />
+        <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+            <BoxContainer Name="JobsContainer" Orientation="Vertical" HorizontalExpand="True" />
+        </ScrollContainer>
+        <Label Text="{Loc 'faction-reinforcement-footer'}" StyleClasses="LabelSubText" />
+    </BoxContainer>
+</controls:FancyWindow>
