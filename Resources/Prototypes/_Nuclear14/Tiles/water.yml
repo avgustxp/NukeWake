@@ -17,15 +17,8 @@
     drawdepth: BelowFloor
     layers:
       - state: shoreline_water
-  - type: SolutionContainerManager
-    solutions:
-      pool:
-        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
-        reagents:
-        - ReagentId: Water
-          Quantity: 9999999
-  - type: DrainableSolution
-    solution: pool
+  - type: N14WaterSource
+    reagent: Water
   - type: SpeedModifierContacts
     walkSpeedModifier: 0.5
     sprintSpeedModifier: 0.5
@@ -65,13 +58,8 @@
     sprintSpeedModifier: 0.2
   - type: TileEmission
     color: "#55b240"
-  - type: SolutionContainerManager
-    solutions:
-      pool:
-        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
-        reagents:
-        - ReagentId: WaterDirty # Forge-Change
-          Quantity: 9999999
+  - type: N14WaterSource
+    reagent: WaterDirty # Forge-Change
 
 - type: entity
   parent: N14FloorWaterSewerDeep
@@ -152,13 +140,8 @@
   - type: SpeedModifierContacts
     walkSpeedModifier: 0.2
     sprintSpeedModifier: 0.2
-  - type: SolutionContainerManager
-    solutions:
-      pool:
-        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
-        reagents:
-        - ReagentId: WaterSalt # Forge-Change
-          Quantity: 9999999
+  - type: N14WaterSource
+    reagent: WaterSalt # Forge-Change
 
 - type: entity
   parent: N14FloorWaterSaltDeep

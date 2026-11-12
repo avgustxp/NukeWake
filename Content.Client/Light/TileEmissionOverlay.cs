@@ -74,20 +74,22 @@ public sealed class TileEmissionOverlay : Overlay
                     continue;
 
                 var gridMatrix = _xformSystem.GetWorldMatrix(grid.Owner);
+                var tileSize = grid.Comp.TileSize;
+
+                // The transform is the same for every emitting entity on this grid,
+                // so set it once instead of once per entity.
+                worldHandle.SetTransform(Matrix3x2.Multiply(gridMatrix, invMatrix));
 
                 foreach (var ent in _entities)
                 {
                     var xform = _xformQuery.Comp(ent);
 
                     var tile = _mapSystem.LocalToTile(grid.Owner, grid, xform.Coordinates);
-                    var matty = Matrix3x2.Multiply(gridMatrix, invMatrix);
-
-                    worldHandle.SetTransform(matty);
 
                     // Yes I am fully aware this leads to overlap. If you really want to have alpha then you'll need
                     // to turn the squares into polys.
                     // Additionally no shadows so if you make it too big it's going to go through a 1x wall.
-                    var local = _lookup.GetLocalBounds(tile, grid.Comp.TileSize).Enlarged(ent.Comp.Range);
+                    var local = _lookup.GetLocalBounds(tile, tileSize).Enlarged(ent.Comp.Range);
                     worldHandle.DrawRect(local, ent.Comp.Color);
                 }
             }
