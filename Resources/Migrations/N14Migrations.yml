@@ -101,7 +101,7 @@ N14SpawnPointBoSWashingtonScribe: null
 N14ClothingOuterLegionnaireDuster: N14ClothingOuterLegionnaireLightReconnaissanceArmor
 N14ClothingOuterLegionnaireHeavyArmorBlueprint: N14ClothingOuterDeanLegionnairePrimeArmorBlueprint
 N14ClothingOuterLegionnairePrincepsPrimeArmor: N14ClothingOuterDeanLegionnairePrimeArmor
-N14ClothingOuterNCRCombatVeteranArmorDesert: N14ClothingOuterNCRCombatVeteranArmor
+N14ClothingOuterNCRCombatVeteranArmorDesert: null
 # Removed equipment (no replacement left after cleanup)
 N14ClothingHeadHatWBoSBattleHelmet: null
 N14ClothingHeadHatWBoSBeret: null
@@ -323,3 +323,39 @@ LandMineModular: N14LandMine
 # N14CrateMedicalRefilling: N14LootCrateMedical
 # N14CrateWastelandBotanyRefilling: N14LootCrateWastelandBotany
 # N14CrateMilitaryRefilling: N14LootCrateMilitary
+
+# 06/11/2026 Removed prototypes that referenced missing RSI files (no valid sprite available).
+N14ClothingHeadHatAssasin: null
+N14ClothingHeadHatBoSInquisitorBattleHelmet: null
+N14ClothingHeadHatBoSInquisitorBattleHelmetHood: null
+N14ClothingHeadHatBoSInquisitorBlackHat: null
+N14ClothingHeadHatBoSInquisitorCap: null
+N14ClothingHeadHatBoSInquisitorHat: null
+N14ClothingHeadHatDog: null
+N14ClothingHeadHatGastat: null
+N14ClothingHeadHatGastatPrime: null
+N14ClothingHeadHatGastatVeteran: null
+N14ClothingHeadHatNCRMPBeret: null
+N14ClothingHeadHatPrimeAssasin: null
+N14ClothingHeadHatPrinceps: null
+N14ClothingHeadHatPrincepsPrime: null
+N14ClothingHeadHatTriarium: null
+N14ClothingOuterBOSInquisitorBattleArmor: null
+N14ClothingOuterBOSInquisitorBlackCoat: null
+N14ClothingOuterBOSInquisitorCoat: null
+N14ClothingOuterNCRCombatVeteranArmor: null
+N14ClothingOuterNCRCombatVeteranArmorSnow: null
+N14ClothingOuterNCRVestpaddedWebSnow: null
+N14ClothingOuterNCRVeteranArmor: null
+N14ClothingOuterNCRVeteranArmorSnow: null
+N14ClothingUniformJumpskirtVault14: null
+N14ClothingUniformJumpsuitInquisitorBOS: null
+N14WeaponRevolver12-7x55mmRSH12: null
+SponsorGhost1: null
+SponsorGhost2: null
+SponsorGhost3: null
+SponsorGhostGatchi: null
+SponsorGhostGuardian: null
+SponsorGhostMauler: null
+SponsorGhostRobast: null
+SponsorGhostSeraphim: null

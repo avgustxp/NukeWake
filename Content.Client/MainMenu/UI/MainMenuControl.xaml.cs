@@ -6,6 +6,8 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 
+using System.Numerics;
+
 namespace Content.Client.MainMenu.UI;
 
 [GenerateTypedNameReferences]
@@ -24,6 +26,7 @@ public sealed partial class MainMenuControl : Control
 
         var logoTexture = resCache.GetResource<TextureResource>("/Textures/Logo/logo-ru.png");
         Logo.Texture = logoTexture;
+        Logo.TextureScale = new Vector2(0.25f, 0.25f);
 
         var currentUserName = configMan.GetCVar(CVars.PlayerName);
         UsernameBox.Text = currentUserName;

@@ -40,11 +40,8 @@
 - type: startingGear
   id: BoSMidInquisitorGear
   equipment:
-    jumpsuit: N14ClothingUniformJumpsuitInquisitorBOS
     back: N14ClothingBackpackMilitary # Forge-Change
     shoes: N14ClothingBootsCombatFilled
-    head:  N14ClothingHeadHatBoSInquisitorCap
-    outerClothing: N14ClothingOuterBOSInquisitorCoat
     pocket1: BoSMidwestInquisitorKits
     gloves: N14ClothingHandsGlovesCombat
     id: N14IDBrotherhoodHolotagPaladin

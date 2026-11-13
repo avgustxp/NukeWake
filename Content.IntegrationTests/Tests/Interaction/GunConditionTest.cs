@@ -18,6 +18,7 @@ public sealed class GunConditionTest : InteractionTest
         await SpawnTarget("ForgeWeaponRifleGestio");
         await Pickup();
         var condition = Comp<GunConditionComponent>();
+        condition.WearEnabled = true;
         MovementSpeedModifierComponent speed = null!;
         await Server.WaitPost(() =>
         {
@@ -53,10 +54,27 @@ public sealed class GunConditionTest : InteractionTest
     }
 
     [Test]
+    public async Task DisabledConditionIgnoresDamage()
+    {
+        await SpawnTarget("ForgeWeaponRifleGestio");
+        var condition = Comp<GunConditionComponent>();
+        var damageSystem = SEntMan.System<DamageableSystem>();
+        var hit = new DamageSpecifier();
+        hit.DamageDict.Add("Blunt", FixedPoint2.New(200));
+
+        Assert.That(condition.WearEnabled, Is.False);
+
+        await Server.WaitPost(() => damageSystem.TryChangeDamage(STarget, hit, ignoreResistances: true));
+        Assert.That(condition.Condition, Is.EqualTo(condition.MaxCondition));
+        Assert.That(condition.Jammed, Is.False);
+    }
+
+    [Test]
     public async Task DirectDamageAndRepair()
     {
         await SpawnTarget("ForgeWeaponRifleGestio");
         var condition = Comp<GunConditionComponent>();
+        condition.WearEnabled = true;
         var damageable = Comp<DamageableComponent>();
         var damageSystem = SEntMan.System<DamageableSystem>();
         var hit = new DamageSpecifier();

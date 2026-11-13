@@ -48,13 +48,8 @@ public sealed class SponsorData
     };
 
     // Each level can unlock several ghost skins; list as many entity prototype ids as needed.
-    public static readonly Dictionary<SponsorLevel, List<string>> SponsorGhost = new()
-    {
-        { SponsorLevel.Level1, new() { "SponsorGhostRobast" } },
-        { SponsorLevel.Level3, new() { "SponsorGhost1", "SponsorGhostMauler", "SponsorGhostGuardian" } },
-        { SponsorLevel.Level4, new() { "SponsorGhost2", "SponsorGhostSeraphim", "SponsorGhostGatchi" } },
-        { SponsorLevel.Level5, new() { "SponsorGhost3" } }
-    };
+    // All sponsor ghost prototypes were removed together with their missing sprites, so no skins are available.
+    public static readonly Dictionary<SponsorLevel, List<string>> SponsorGhost = new();
 
     public static SponsorLevel ParseRoles(List<string> roles)
     {

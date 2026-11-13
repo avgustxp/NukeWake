@@ -275,6 +275,20 @@ undecided-loadout-category-elder-laser-description =
     1 магнитно-лазерный пистолет, 2 магнитно-лазерные батареи,
     1 бинт, 1 стимпак, 1 плазменная граната.
 
+undecided-loadout-category-elder-gauss-name = Ящик гауссовой винтовки Старейшены
+undecided-loadout-category-elder-gauss-description =
+    Пробивает всё, что видит насквозь.
+    Содержит: 1 гауссову винтовку, 3 продвинутые ядерные батареи,
+    1 магнитно-лазерный пистолет, 2 магнитно-лазерные батареи,
+    1 бинт, 1 стимпак, 1 сухпаёк, 1 плазменную гранату.
+
+undecided-loadout-category-elder-wattz-name = Ящик винтовки Wattz 3000 Старейшены
+undecided-loadout-category-elder-wattz-description =
+    Точность и мощь лазерных технологий.
+    Содержит: 1 лазерную винтовку Wattz 3000, 3 сфокусированные батареи,
+    1 магнитно-лазерный пистолет, 2 магнитно-лазерные батареи,
+    1 бинт, 1 стимпак, 1 сухпаёк, 1 плазменную гранату.
+
 undecided-loadout-category-paladin-rifle-name = Ящик огнестрельного снаряжения Паладина
 undecided-loadout-category-paladin-rifle-description =
     Эффективно. Быстро. Надежно.

@@ -47,7 +47,3 @@
       id: N14ClothingHeadHatTribalPowerhelm
     - type: loadout
       id: N14ClothingTribalShamanHeadband
-    - type: loadout # Forge-Add
-      id: LoadoutClothingHeadHatBoSInquisitorBattleHelmet 
-    - type: loadout # Forge-Add
-      id: LoadoutClothingHeadHatBoSInquisitorBattleHelmetHood
