@@ -52,3 +52,14 @@
   - type: Sprite
     sprite: Corvax/Structures/Decoration/flag4.rsi
     state: nevada
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14FlagWestBOS
+  name: Флаг Западного Братства Стали
+  description: Белый флаг с серым клинком и шестерёнками Западного Братства Стали.
+  suffix: Woodland
+  components:
+  - type: Sprite
+    sprite: Corvax/Structures/Decoration/flag3.rsi
+    state: flag_westbos
