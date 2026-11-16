@@ -26,19 +26,6 @@
 
 - type: entity
   parent: MobHuman
-  id: N14MobHumanCaesarLegionDean
-  name: Dean
-  components:
-    - type: RandomHumanoidAppearance
-      randomizeName: true
-    - type: Loadout
-      prototypes: [CaesarLegionDeanGear]
-    - type: NpcFactionMember
-      factions:
-      - CaesarLegion
-
-- type: entity
-  parent: MobHuman
   id: N14MobHumanCaesarLegionnaireVeteran
   name: Legionnaire-Veteran
   components:

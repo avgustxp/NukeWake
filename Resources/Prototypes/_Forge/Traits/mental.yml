@@ -7,7 +7,9 @@
       jobs:
         - CaesarLegionCenturion
         - CaesarLegionVenator
-        - CaesarLegionDean
+        - CaesarLegionRecruitDean
+        - CaesarLegionBellatorDean
+        - CaesarLegionVeteranDean
   functions:
     - !type:TraitAddComponent
       components:

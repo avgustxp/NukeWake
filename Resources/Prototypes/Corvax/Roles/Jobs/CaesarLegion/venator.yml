@@ -41,7 +41,8 @@
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     outerClothing: N14ClothingOuterLegionnaireLightReconnaissanceArmor
-    mask: N14ClothingMaskBrownMask
+    mask: N14ClothingNeckBikerBandana
+    eyes: N14ClothingSnowGoggles
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingShoesKaligi
     head: N14ClothingHeadHatVenator

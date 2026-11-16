@@ -13,6 +13,12 @@ ent-N14IDLegionaryMedalSilver2 = отличительная медаль
     .desc = Отличительная медаль со знаком быка.
 ent-N14IDLegionaryMedalSilver3 = отличительная медаль
     .desc = Отличительная медаль со знаком быка.
+ent-N14IDLegionaryDeanRecruit = ID карта декана рекрутов
+    .desc = Отличительная медаль со знаком быка.
+ent-N14IDLegionaryDeanBellator = ID карта декана воинов
+    .desc = Отличительная медаль со знаком быка.
+ent-N14IDLegionaryDeanVeteran = ID карта декана ветеранов
+    .desc = Отличительная медаль со знаком быка.
 ent-N14IDLegionaryMedalGold = отличительная медаль
     .desc = Отличительная медаль со знаком быка.
 

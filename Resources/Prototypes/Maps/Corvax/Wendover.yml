@@ -78,7 +78,9 @@
           VaultSecurity: [ 2, 2 ]
           CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion
           CaesarLegionVenator: [ 1, 1 ] # Forge-Legion
-          CaesarLegionDean: [ 2, 2 ] # Forge-Legion
+          CaesarLegionRecruitDean: [ 1, 1 ] # Forge-Legion
+          CaesarLegionBellatorDean: [ 1, 1 ] # Forge-Legion
+          CaesarLegionVeteranDean: [ 1, 1 ] # Forge-Legion
           CaesarLegionLegionnaireVeteran: [ 3, 3 ] # Forge-Legion
           CaesarLegionLegionnaireWarrior: [ 5, 5 ] # Forge-Legion
           CaesarLegionLegionnaireRecruit: [ 6, 6 ] # Forge-Legion

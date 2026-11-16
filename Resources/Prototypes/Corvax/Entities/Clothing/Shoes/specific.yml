@@ -13,3 +13,6 @@
     spawned:
     - id: N14MaterialLeather1
       amount: 2
+  - type: ClothingSpeedModifier
+    walkModifier: 1.05
+    sprintModifier: 1.05

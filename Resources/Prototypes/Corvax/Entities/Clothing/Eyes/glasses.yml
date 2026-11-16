@@ -17,7 +17,7 @@
     sprite: Corvax/Clothing/Eyes/wboseyepiece.rsi
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: N14ClothingEyesGlassesWelding
   id: N14ClothingSnowGoggles
   name: snow goggles
   description: Thick goggles made specifically for keeping snow and dust out of the eyes.

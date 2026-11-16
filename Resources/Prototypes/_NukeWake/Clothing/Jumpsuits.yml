@@ -1,0 +1,32 @@
+- type: entity
+  parent: N14ClothingUniformJumpsuitLegionnaire
+  id: N14ClothingUniformJumpsuitLegionnaireTunic2
+  name: туника легионера
+  description: Вариант туники легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Jumpsuits/tunica2.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Jumpsuits/tunica2.rsi
+
+- type: entity
+  parent: N14ClothingUniformJumpsuitLegionnaire
+  id: N14ClothingUniformJumpsuitLegionnaireTunic3
+  name: туника легионера
+  description: Вариант туники легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Jumpsuits/tunica3.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Jumpsuits/tunica3.rsi
+
+- type: entity
+  parent: N14ClothingUniformJumpsuitLegionnaire
+  id: N14ClothingUniformJumpsuitLegionnaireTunic4
+  name: туника легионера
+  description: Вариант туники легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Jumpsuits/tunica4.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Jumpsuits/tunica4.rsi

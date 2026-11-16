@@ -296,8 +296,8 @@
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     outerClothing: N14ClothingOuterLegionnaireBaseArmor
-    neck: ClothingNeckRedScarf
-    eyes: N14ClothingEyesGlassesWelding
+    mask: N14ClothingNeckBikerBandana
+    eyes: N14ClothingSnowGoggles
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingShoesKaligi
     head: N14ClothingHeadHatLightBaseballHelmet

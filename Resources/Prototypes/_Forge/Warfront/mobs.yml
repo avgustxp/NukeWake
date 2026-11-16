@@ -46,7 +46,8 @@
     gloves: N14ClothingHandsGlovesLegate
     belt: ClothingBeltRope
     back: N14ClothingBackpackMilitary
-    eyes: N14ClothingEyesGlassesWelding
+    mask: N14ClothingNeckBikerBandana
+    eyes: N14ClothingSnowGoggles
     id: N14IDLegionaryMedalLegate
     pocket1: LegionLegateloadoutkits
   storage:

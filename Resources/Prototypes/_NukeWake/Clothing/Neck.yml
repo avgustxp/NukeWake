@@ -1,0 +1,42 @@
+- type: entity
+  parent: ClothingMaskBandBotany
+  id: N14ClothingNeckBikerBandana
+  name: байкерская бандана
+  description: Байкерская бандана, повязанная на шею.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Neck/bikerbandana.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: icon
+      map: [ "foldedLayer" ]
+      visible: false
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Neck/bikerbandana.rsi
+
+- type: entity
+  parent: N14ClothingNeckCapeLegionSagum
+  id: N14ClothingNeckLegionScarf
+  name: легионерский шарф
+  description: Шарф легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Neck/legioscarf.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Neck/legioscarf.rsi
+
+- type: entity
+  parent: M14ClothingNeckLegionMantle
+  id: N14ClothingNeckLegionCenturionScarf
+  name: центурионский шарф
+  description: Шарф центуриона Легиона. Носится только вместе с центурионской бронёй.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Neck/legiocenturionscarf.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Neck/legiocenturionscarf.rsi
+  - type: ClothingRequiresWearing
+    slots: OUTERCLOTHING
+    requiredClothing:
+    - N14ClothingOuterLegionnaireCenturionArmor
