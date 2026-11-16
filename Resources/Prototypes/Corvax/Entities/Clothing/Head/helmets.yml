@@ -135,11 +135,9 @@
     refineResult:
     - id: N14ComponentHelmetMK2
   - type: Sprite
-    sprite: Corvax/Clothing/Head/Helmets/veteranhelmet.rsi
+    sprite: _NukeWake/Clothing/Helmets/LegionDecanVeteran.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/Head/Helmets/veteranhelmet.rsi
-  - type: HelmetToggle
-    altPrefix: alt        # RSI должен иметь стейт "alt-equipped-HELMET"
+    sprite: _NukeWake/Clothing/Helmets/LegionDecanVeteran.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -166,11 +164,9 @@
     refineResult:
     - id: N14ComponentHelmetMK2
   - type: Sprite
-    sprite: Corvax/Clothing/Head/Helmets/primehelmet.rsi
+    sprite: _NukeWake/Clothing/Helmets/LegionDecanBellator.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/Head/Helmets/primehelmet.rsi
-  - type: HelmetToggle
-    altPrefix: alt        # RSI должен иметь стейт "alt-equipped-HELMET"
+    sprite: _NukeWake/Clothing/Helmets/LegionDecanBellator.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -197,11 +193,9 @@
     refineResult:
     - id: N14ComponentHelmetMK2
   - type: Sprite
-    sprite: Corvax/Clothing/Head/Helmets/recruithelmet.rsi
+    sprite: _NukeWake/Clothing/Helmets/LegionDecanRecruit.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/Head/Helmets/recruithelmet.rsi
-  - type: HelmetToggle
-    altPrefix: alt        # RSI должен иметь стейт "alt-equipped-HELMET"
+    sprite: _NukeWake/Clothing/Helmets/LegionDecanRecruit.rsi
   - type: Armor
     modifiers:
       coefficients:

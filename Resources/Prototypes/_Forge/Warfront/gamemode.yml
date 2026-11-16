@@ -15,7 +15,9 @@
   - WarfrontNCRSoldier
   - WarfrontLegionLegate
   - CaesarLegionCenturion
-  - CaesarLegionDean
+  - CaesarLegionRecruitDean
+  - CaesarLegionBellatorDean
+  - CaesarLegionVeteranDean
   - CaesarLegionLegionnaireVeteran
   - WarfrontCaesarLegionLegionnaireWarrior
   rules:
@@ -39,6 +41,8 @@
     legionJobs:
     - WarfrontLegionLegate
     - CaesarLegionCenturion
-    - CaesarLegionDean
+    - CaesarLegionRecruitDean
+    - CaesarLegionBellatorDean
+    - CaesarLegionVeteranDean
     - CaesarLegionLegionnaireVeteran
     - WarfrontCaesarLegionLegionnaireWarrior

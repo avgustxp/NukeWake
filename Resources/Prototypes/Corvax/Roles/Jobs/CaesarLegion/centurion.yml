@@ -45,13 +45,14 @@
   id: CaesarLegionCenturionGear
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
-    neck: ClothingNeckBlackScarf
-    eyes: N14ClothingEyesGlassesWelding
+    neck: N14ClothingNeckLegionCenturionScarf
+    mask: N14ClothingNeckBikerBandana
+    eyes: N14ClothingSnowGoggles
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsCenturion
-    head: N14ClothingHeadHatCenturionHelmet
+    head: N14ClothingHeadHatCenturionGalea
     gloves: N14ClothingHandsGlovesCenturion
-    outerClothing: N14ClothingOuterHeavyCenturionArmor
+    outerClothing: N14ClothingOuterLegionnaireCenturionArmor
     belt: ClothingBeltRope
     pocket1: LegionCenturionloadoutkits
     id: N14IDLegionaryMedalGold

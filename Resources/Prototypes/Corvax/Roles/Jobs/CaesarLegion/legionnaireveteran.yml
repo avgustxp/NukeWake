@@ -40,11 +40,11 @@
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     outerClothing: N14ClothingOuterLegionnaireVeteranArmor
-    neck: ClothingNeckRedScarf
-    eyes: N14ClothingEyesGlassesWelding
+    mask: N14ClothingNeckBikerBandana
+    eyes: N14ClothingSnowGoggles
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsBlack
-    head: N14ClothingHeadHatBaseballHelmet
+    head: N14ClothingHeadHatVeteranLightHelmet
     gloves: N14ClothingHandsGlovesTribal
     pocket1: LegionVeteranloadoutkits
     id: N14IDLegionaryMedalSilver2

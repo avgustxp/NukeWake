@@ -37,11 +37,11 @@
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     outerClothing: N14ClothingOuterLegionnaireRecruitArmor
-    mask: N14ClothingMaskBrownMask
-    eyes: N14ClothingEyesGlassesWelding
+    mask: N14ClothingNeckBikerBandana
+    eyes: N14ClothingSnowGoggles
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingShoesKaligi
-    head: N14ClothingHeadHatTribalOutcastHood
+    head: N14ClothingHeadHatBellatorBlackHelmet
     gloves: N14ClothingHandsGlovesTribal
     belt: ClothingBeltRope
     pocket1: LegionRecruitloadoutkits

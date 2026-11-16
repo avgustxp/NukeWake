@@ -23,13 +23,62 @@
       - state: green
       - state: venator
 
+# Старый спавнер декана оставлен как мигратор: при загрузке карты он
+# создаёт на своём тайле три новых спавнера деканов и удаляет себя.
+# Нужно, чтобы старые карты (и копии карт в user data) работали без ручной правки.
 - type: entity
   id: N14SpawnPointDean
-  parent: N14SpawnPointCenturion
+  parent: MarkerBase
   name: dean
   components:
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: dean
+  - type: EntityTableSpawner
+    offset: 0
+    deleteSpawnerAfterSpawn: true
+    table: !type:AllSelector
+      children:
+      - !type:EntSelector
+        id: N14SpawnPointRecruitDean
+      - !type:EntSelector
+        id: N14SpawnPointBellatorDean
+      - !type:EntSelector
+        id: N14SpawnPointVeteranDean
+
+- type: entity
+  id: N14SpawnPointRecruitDean
+  parent: N14SpawnPointCenturion
+  name: recruit-dean
+  components:
   - type: SpawnPoint
-    job_id: CaesarLegionDean
+    job_id: CaesarLegionRecruitDean
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  id: N14SpawnPointBellatorDean
+  parent: N14SpawnPointCenturion
+  name: bellator-dean
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionBellatorDean
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  id: N14SpawnPointVeteranDean
+  parent: N14SpawnPointCenturion
+  name: veteran-dean
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVeteranDean
   - type: Sprite
     layers:
       - state: green

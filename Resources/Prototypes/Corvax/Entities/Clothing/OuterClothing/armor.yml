@@ -218,9 +218,9 @@
     refineResult:
     - id: N14ComponentArmorPlateMK1
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/veteranarmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranArmor.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/veteranarmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranArmor.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -238,9 +238,9 @@
   description: "Good durable armor that does not burden movement."
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/reconnaissancearmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVenatorArmorPrime.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/reconnaissancearmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVenatorArmorPrime.rsi
   - type: ClothingSpeedModifier
     walkModifier: 1.05
     sprintModifier: 1.05
@@ -261,9 +261,9 @@
   description: "Incredibly light armor with not the best protection, but you feel faster."
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/lightreconnaissancearmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVenatorArmorLight.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/lightreconnaissancearmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVenatorArmorLight.rsi
   - type: ClothingSpeedModifier
     walkModifier: 1.1
     sprintModifier: 1.1
@@ -284,9 +284,9 @@
   description: "The most standard and common armor."
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/basearmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionBellatorArmor.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/basearmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionBellatorArmor.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -304,9 +304,9 @@
   description: "Not very reliable, but very light legionnaire armor."
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/lightarmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionRecruitArmor.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/lightarmor.rsi
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionRecruitArmor.rsi
   - type: ClothingSpeedModifier
     walkModifier: 1.1
     sprintModifier: 1.1

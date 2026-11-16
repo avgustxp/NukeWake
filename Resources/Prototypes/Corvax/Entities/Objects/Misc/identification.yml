@@ -45,7 +45,43 @@
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: leg_prime
   - type: PresetIdCard
-    job: CaesarLegionDean
+    job: CaesarLegionVeteranDean
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryDeanRecruit
+  name: distinctive medal
+  description: "A distinctive medal with the sign of the bull."
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: leg_recruit
+  - type: PresetIdCard
+    job: CaesarLegionRecruitDean
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryDeanBellator
+  name: distinctive medal
+  description: "A distinctive medal with the sign of the bull."
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: leg_aux
+  - type: PresetIdCard
+    job: CaesarLegionBellatorDean
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryDeanVeteran
+  name: distinctive medal
+  description: "A distinctive medal with the sign of the bull."
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: leg_prime
+  - type: PresetIdCard
+    job: CaesarLegionVeteranDean
 
 - type: entity
   parent: N14IDPassportBlank

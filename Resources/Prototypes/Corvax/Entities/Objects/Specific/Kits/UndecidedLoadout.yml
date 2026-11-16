@@ -51,6 +51,35 @@
     - DeanHeavySniperSet
 
 - type: entity
+  id: LegionRecruitDeanloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionWarriorloadoutkits
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - WarriorBaseSet
+    - WarriorSlaveOwnerSet
+    - WarriorHealerSet
+    - WarriorFirearmSet
+    - WarriorMeleeSet
+    - WarriorSpearSet
+
+- type: entity
+  id: LegionBellatorDeanloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionVeteranloadoutkits
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - VeteranFirearmSet
+    - VeteranBerserkerSet
+    - VeteranKebabSet
+    - VeteranSuppressorSet
+    - VeteranSwordsmanSet
+
+- type: entity
   id: LegionVeteranloadoutkits
   name: kit
   description: "please only take one."

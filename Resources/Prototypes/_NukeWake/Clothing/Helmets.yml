@@ -16,3 +16,113 @@
         Piercing: 0.95
         Heat: 0.95
     priceMultiplier: 0.1
+
+- type: entity
+  parent: N14ClothingHeadHatLightBaseballHelmet
+  id: N14ClothingHeadHatBellatorBlackHelmet
+  name: чёрный шлем беллатора
+  description: Шлем легионера-беллатора в чёрном цвете.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionBellatorBlack.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionBellatorBlack.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatLightBaseballHelmet
+  id: N14ClothingHeadHatBellatorBrownHelmet
+  name: коричневый шлем беллатора
+  description: Шлем легионера-беллатора в коричневом цвете.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionBellatorBrown.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionBellatorBrown.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatLightBaseballHelmet
+  id: N14ClothingHeadHatBellatorGaleaHelmet
+  name: галея беллатора
+  description: Галея легионера-беллатора.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionBellatorGalea.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionBellatorGalea.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatLightBaseballHelmet
+  id: N14ClothingHeadHatDogHelmet
+  name: шлем из шкуры псины
+  description: Шлем легионера с собачьей символикой.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionDoghelmet.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionDoghelmet.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatBaseballHelmet
+  id: N14ClothingHeadHatVeteranMediumHelmet
+  name: шлем ветерана с гребнем
+  description: Средний шлем ветерана-легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionVeteranMedium.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionVeteranMedium.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatBaseballHelmet
+  id: N14ClothingHeadHatVeteranLightHelmet
+  name: шлем ветерана
+  description: Лёгкий шлем ветерана-легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionVeteranLight.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionVeteranLight.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatCombatHelmetMK2
+  id: N14ClothingHeadHatVeteranHeavyHelmet
+  name: тяжёлый шлем ветерана
+  description: Тяжёлый шлем ветерана-легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionVeteranHeavy.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionVeteranHeavy.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatCombatHelmetMK2
+  id: N14ClothingHeadHatShakalHelmet
+  name: шлем из шкуры шакала
+  description: Шлем легионера-шакала.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionShakalhelmet.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionShakalhelmet.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatCenturionHelmet
+  id: N14ClothingHeadHatCenturionGalea
+  name: центурионская галея
+  description: Галея центуриона Легиона.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionCenturionGalea.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionCenturionGalea.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatLightBaseballHelmet
+  id: N14ClothingHeadHatLegionHood
+  name: капюшон разведчика
+  description: Капюшон легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/Helmets/LegionHood.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/Helmets/LegionHood.rsi

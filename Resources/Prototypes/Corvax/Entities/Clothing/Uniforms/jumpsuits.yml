@@ -16,9 +16,9 @@
   description: Legionnaires tunic in standard colors.
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/Uniforms/Jumpsuit/roman.rsi
+    sprite: _NukeWake/Clothing/Jumpsuits/tunica.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/Uniforms/Jumpsuit/roman.rsi
+    sprite: _NukeWake/Clothing/Jumpsuits/tunica.rsi
 
 - type: entity
   parent: ClothingUniformBase

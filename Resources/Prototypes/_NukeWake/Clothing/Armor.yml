@@ -1,0 +1,86 @@
+- type: entity
+  parent: N14ClothingOuterLegionnaireVeteranArmor
+  id: N14ClothingOuterLegionnaireVeteranTorsoArmor
+  name: прайм броня ветерана-легионера
+  description: Усиленная броня ветерана-легионера, защищающая торс.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranTorsoArmor.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranTorsoArmor.rsi
+
+- type: entity
+  parent: N14ClothingOuterLegionnaireVeteranArmor
+  id: N14ClothingOuterLegionnaireVeteranMediumArmor
+  name: кованая броня ветерана-легионера
+  description: Сбалансированная броня ветерана-легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranMediumArmor.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranMediumArmor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.65
+        Heat: 0.65
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
+
+
+- type: entity
+  parent: N14ClothingOuterLegionnaireVeteranArmor
+  id: N14ClothingOuterLegionnaireVeteranLightArmor
+  name: лёгкая броня ветерана-легионера
+  description: Лёгкая броня ветерана-легионера, не стесняющая движений.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranLightArmor.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranLightArmor.rsi
+
+- type: entity
+  parent: N14ClothingOuterLegionnaireVeteranArmor
+  id: N14ClothingOuterLegionnaireVeteranHeavyArmor
+  name: тяжёлая броня ветерана-легионера
+  description: Тяжёлая броня ветерана-легионера с усиленной защитой.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranHeavyArmor.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVeteranHeavyArmor.rsi
+
+- type: entity
+  parent: N14ClothingOuterLegionnaireBaseArmor
+  id: N14ClothingOuterLegionnaireGladiatorArmor
+  name: броня гладиатора Легиона
+  description: Броня гладиатора Легиона.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionGladiatorArmor.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionGladiatorArmor.rsi
+
+- type: entity
+  parent: N14ClothingOuterHeavyCenturionArmor
+  id: N14ClothingOuterLegionnaireCenturionArmor
+  name: центурионская тяжёлая броня
+  description: Тяжёлая броня центуриона Легиона.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionCenturionArmor.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionCenturionArmor.rsi
+
+- type: entity
+  parent: N14ClothingOuterLegionnaireReconnaissanceArmor
+  id: N14ClothingOuterLegionnaireMediumReconnaissanceArmor
+  name: средняя разведывательная броня
+  description: Средняя разведывательная броня легионера.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVenatorArmorMedium.rsi
+  - type: Clothing
+    sprite: _NukeWake/Clothing/OuterClothing/Armor/LegionVenatorArmorMedium.rsi

@@ -59,7 +59,9 @@
           VaultSecurity: [ 2, 2 ]
           CaesarLegionCenturion: [ 1, 1 ] # Corvax-Legion
           CaesarLegionVenator: [ 1, 1 ] # Corvax-Legion
-          CaesarLegionDean: [ 2, 2 ] # Corvax-Legion
+          CaesarLegionRecruitDean: [ 1, 1 ] # Corvax-Legion
+          CaesarLegionBellatorDean: [ 1, 1 ] # Corvax-Legion
+          CaesarLegionVeteranDean: [ 1, 1 ] # Corvax-Legion
           CaesarLegionLegionnaireVeteran: [ 3, 3 ] # Corvax-Legion
           CaesarLegionLegionnaireWarrior: [ 4, 4 ] # Corvax-Legion
           CaesarLegionLegionnaireRecruit: [ 6, 6 ] # Corvax-Legion
