@@ -379,9 +379,10 @@ public sealed partial class N14MerchantSystem : EntitySystem
 
             var product = Spawn(listing.Product, Transform(buyer).Coordinates);
 
-            // Количество единиц в лоте (проданный игроком стак): возвращаем весь стак.
-            if (listing.StackCount > 0 && TryComp<StackComponent>(product, out var productStack))
-                _stack.SetCount(product, listing.StackCount, productStack);
+            // Количество единиц в лоте (проданный игроком стак или стак из прототипа): возвращаем весь стак.
+            var units = GetListingUnits(listing);
+            if (units > 0 && TryComp<StackComponent>(product, out var productStack))
+                _stack.SetCount(product, units, productStack);
 
             // Сохраняем прочность оружия, с которой оно было продано торговцу.
             if (listing.Condition >= 0f &&
@@ -1258,8 +1259,23 @@ public sealed partial class N14MerchantSystem : EntitySystem
     {
         // Цена лота = цена за единицу × количество единиц в стаке.
         var unitPrice = GetPrice(listing.Product.Id, listing.Price);
-        var quantity = Math.Max(1, listing.StackCount);
-        return ScalePrice(unitPrice * quantity, BuyFromMerchantRate);
+        return ScalePrice(unitPrice * GetListingUnits(listing), BuyFromMerchantRate);
+    }
+
+    /// <summary>
+    ///     Количество единиц в одном лоте. У выкупленных у игрока позиций задано явно,
+    ///     у позиций из прототипа (-1/0) берётся размер стака самого прототипа.
+    /// </summary>
+    private int GetListingUnits(N14MerchantListing listing)
+    {
+        if (listing.StackCount > 0)
+            return listing.StackCount;
+
+        if (_prototype.TryIndex<EntityPrototype>(listing.Product.Id, out var proto) &&
+            proto.TryGetComponent<StackComponent>(out var stack))
+            return Math.Max(1, stack.Count);
+
+        return 1;
     }
 
     /// <summary>Цена, которую получает игрок при продаже торговцу (75% стоимости).</summary>

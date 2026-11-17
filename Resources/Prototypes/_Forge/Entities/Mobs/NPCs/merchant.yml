@@ -45,8 +45,8 @@
     - type: Godmode
     - type: N14Merchant
       merchantName: Merchant
-      capsMin: 2000
-      capsMax: 4000
+      capsMin: 5000
+      capsMax: 8000
       stockSets:
         - N14MerchantStockT1Combat
         - N14MerchantStockT1Travel
@@ -98,8 +98,8 @@
     - type: Godmode
     - type: N14Merchant
       merchantName: Veteran Trader
-      capsMin: 3000
-      capsMax: 5000
+      capsMin: 8000
+      capsMax: 12000
       stockSets:
         - N14MerchantStockT2Combat
         - N14MerchantStockT2Travel
@@ -151,8 +151,8 @@
     - type: Godmode
     - type: N14Merchant
       merchantName: Elite Trader
-      capsMin: 6000
-      capsMax: 7000
+      capsMin: 12000
+      capsMax: 15000
       stockSets:
         - N14MerchantStockT3Combat
         - N14MerchantStockT3Travel
