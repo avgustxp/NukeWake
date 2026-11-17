@@ -140,7 +140,7 @@
     N14CigaretteSpent: 5
     N14CigaretteWinston: 2
     N14CleanGauze1: 15
-    N14CleanGauze10: 50
+    N14CleanGauze10: 5
     N14ClothingBackpackCaravanFilled: 80
     N14ClothingBackpackCaravanLeaderFilled: 80
     N14ClothingBackpackCaravanTraderFilled: 80
@@ -1068,7 +1068,7 @@
     N14DecorationFlagpoleWBOS: 100
     N14DecorationFlagpoleWesternBOS: 100
     N14DirtyGauze1: 15
-    N14DirtyGauze10: 25
+    N14DirtyGauze10: 4
     N14DirtySuperStimpak: 25
     N14DoctorBag: 300
     N14DoctorSyringe: 25
@@ -1747,7 +1747,7 @@
     N14NukaNade: 50
     N14OatBushel: 3
     N14Ointment1: 15
-    N14Ointment10: 50
+    N14Ointment10: 5
     N14OpticalSensor: 100
     N14OrganGhoulAppendix: 5
     N14OrganGhoulBrain: 5
