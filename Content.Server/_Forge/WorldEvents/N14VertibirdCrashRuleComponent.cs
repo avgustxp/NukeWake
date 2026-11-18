@@ -72,6 +72,61 @@ public sealed partial class N14VertibirdCrashRuleComponent : Component
     public string WarpPointPrototype = "WarpPoint";
 
     /// <summary>
+    ///     Минимальное расстояние (в тайлах) до ближайшего игрока. Точка крушения
+    ///     выбирается только там, где в этом радиусе нет игроков.
+    /// </summary>
+    [DataField]
+    public float MinPlayerClearance = 15f;
+
+    /// <summary>
+    ///     Прототип дыма, выпускаемого в точке крушения (как у дымовой гранаты).
+    /// </summary>
+    [DataField]
+    public EntProtoId SmokePrototype = "Smoke";
+
+    /// <summary>
+    ///     Сколько секунд держится дым после крушения.
+    /// </summary>
+    [DataField]
+    public float SmokeDuration = 30f;
+
+    /// <summary>
+    ///     Насколько сильно расползается дым (spreadAmount дымовой гранаты).
+    /// </summary>
+    [DataField]
+    public int SmokeSpreadAmount = 50;
+
+    /// <summary>
+    ///     Прототип напольного огня, которым хаотично охватывается окрестность.
+    /// </summary>
+    [DataField]
+    public EntProtoId FirePrototype = "ForgeSurfaceFire";
+
+    /// <summary>
+    ///     Сколько секунд горит каждый очаг огня.
+    /// </summary>
+    [DataField]
+    public TimeSpan FireDuration = TimeSpan.FromSeconds(40);
+
+    /// <summary>
+    ///     Интенсивность очагов огня.
+    /// </summary>
+    [DataField]
+    public float FireIntensity = 1f;
+
+    /// <summary>
+    ///     Радиус (в тайлах) вокруг точки крушения, в котором поджигается земля.
+    /// </summary>
+    [DataField]
+    public float FireRadius = 8f;
+
+    /// <summary>
+    ///     Сколько случайных попыток поджога делается в радиусе FireRadius.
+    /// </summary>
+    [DataField]
+    public int FireAttempts = 120;
+
+    /// <summary>
     ///     Момент времени, когда произойдёт крушение.
     /// </summary>
     public TimeSpan CrashAt;

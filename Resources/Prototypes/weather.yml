@@ -57,6 +57,25 @@
   message: weather-ashfall-heavy
 # Forge-Change-End
 
+# Forge-Change-Start
+- type: weather
+  id: Fog
+  sprite:
+    sprite: /Textures/Effects/weather_fog.rsi
+    state: fog
+  sound:
+    path: /Audio/Effects/Weather/snowstorm_weak.ogg
+    params:
+      loop: true
+      volume: -12
+  temperature: 285
+  duration: 600
+  chance: 1
+  showMessage: true
+  sender: weather-announcement
+  message: weather-fog
+# Forge-Change-End
+
 - type: weather
   id: Default
   # Forge-Change-Start

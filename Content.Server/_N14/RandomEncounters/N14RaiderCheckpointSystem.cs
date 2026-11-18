@@ -74,7 +74,7 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
             return;
         _acc = 0f;
 
-        var checkpoints = new Dictionary<string, (EntityUid Boss, N14RaiderCheckpointComponent Comp)>();
+        var checkpoints = new Dictionary<string, List<(EntityUid Boss, N14RaiderCheckpointComponent Comp)>>();
         var garrisons = new Dictionary<string, List<EntityUid>>();
 
         var checkpointQuery = EntityQueryEnumerator<N14RaiderCheckpointComponent>();
@@ -83,7 +83,9 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
             if (comp.CheckpointId.Length == 0)
                 continue;
 
-            checkpoints[comp.CheckpointId] = (uid, comp);
+            if (!checkpoints.TryGetValue(comp.CheckpointId, out var bossList))
+                checkpoints[comp.CheckpointId] = bossList = new List<(EntityUid, N14RaiderCheckpointComponent)>();
+            bossList.Add((uid, comp));
         }
 
         var memberQuery = EntityQueryEnumerator<N14RaiderCheckpointMemberComponent>();
@@ -173,7 +175,7 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
                     if (!_triggeredUsers.TryGetValue((id, map, box), out var triggered))
                         _triggeredUsers[(id, map, box)] = triggered = new HashSet<NetUserId>();
 
-                    var paid = checkpoint.Comp != null && checkpoint.Comp.PaidUsers.Contains(userId);
+                    var paid = checkpoint != null && checkpoint.Any(boss => boss.Comp.PaidUsers.Contains(userId));
 
                     if (paid)
                     {
@@ -198,8 +200,11 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
         // Forget players who disconnected or went observer, so a fresh appearance is a fresh crossing.
         PruneIsolatedUsers(seenUsers);
 
-        foreach (var (boss, comp) in checkpoints.Values)
-            HandleBoss(boss, comp);
+        foreach (var bossList in checkpoints.Values)
+        {
+            foreach (var (boss, comp) in bossList)
+                HandleBoss(boss, comp, bossList);
+        }
     }
 
     private void PruneIsolatedUsers(HashSet<NetUserId> seenUsers)
@@ -285,7 +290,7 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
     /// player (unless fighting) and calls the toll price out once on approach, then
     /// processes any pending caps offer.
     /// </summary>
-    private void HandleBoss(EntityUid boss, N14RaiderCheckpointComponent comp)
+    private void HandleBoss(EntityUid boss, N14RaiderCheckpointComponent comp, IReadOnlyList<(EntityUid Boss, N14RaiderCheckpointComponent Comp)> checkpointBosses)
     {
         TryHandleOffer(boss, comp);
 
@@ -315,6 +320,14 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
 
         if (nearest == EntityUid.Invalid)
             return;
+
+        // Если игрок уже заплатил любому боссу этой заставы — не приветствовать его повторно.
+        if (_playerManager.TryGetSessionByEntity(nearest, out var nearestSession))
+        {
+            var userId = nearestSession.UserId;
+            if (checkpointBosses.Any(b => b.Comp.PaidUsers.Contains(userId)))
+                return;
+        }
 
         // Skip while actively fighting so the HTN combat can steer the boss instead.
         if (!(TryComp<FactionExceptionComponent>(boss, out var factionException) &&

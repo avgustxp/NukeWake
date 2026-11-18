@@ -1,8 +1,14 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 using Content.Server.NPC;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
+using Content.Server.Destructible;
+using Content.Server.NPC.Pathfinding;
+using Content.Shared.Weapons.Melee;
 using Content.Server.NPC.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
@@ -27,6 +33,8 @@ public sealed class N14CaravanSystem : EntitySystem
     [Dependency] private readonly NPCSystem _npc = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
+    [Dependency] private readonly PathfindingSystem _pathfinding = default!;
+    [Dependency] private readonly SharedMeleeWeaponSystem _melee = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private const float UpdateInterval = 0.25f;
@@ -48,7 +56,7 @@ public sealed class N14CaravanSystem : EntitySystem
     /// member that gets stuck (e.g. wedged on geometry) must not freeze the
     /// whole column forever.
     /// </summary>
-    private const float StragglerGraceSeconds = 5f;
+    private const float StragglerGraceSeconds = 3f;
 
     /// <summary>
     /// If nobody has reached the current waypoint after this long AND at least one
@@ -56,9 +64,28 @@ public sealed class N14CaravanSystem : EntitySystem
     /// skip it. This keeps a column from freezing forever on a bad hop or a
     /// genuinely unreachable marker.
     /// </summary>
-    private const float StallSkipSeconds = 20f;
+    private const float StallSkipSeconds = 10f;
+
+    /// <summary>How long a member can fail to move toward the waypoint before we force re-path.</summary>
+    private const float StuckThresholdSeconds = 5f;
+
+    /// <summary>Minimum distance (units) a member must move in StuckThresholdSeconds to not be considered stuck.</summary>
+    private const float StuckMoveThreshold = 1f;
+
+    /// <summary>Max different evasion offsets to try before giving up on a stuck member.</summary>
+    private const int MaxStuckAttempts = 4;
 
     private float _accumulator;
+
+    /// <summary>Last known position and time per caravan member, for stuck detection.</summary>
+    private readonly Dictionary<EntityUid, (Vector2 Position, TimeSpan Time)> _memberLastPos = new();
+
+    /// <summary>How many evasion offsets we've already tried for a stuck member (0..MaxStuckAttempts-1).</summary>
+    private readonly Dictionary<EntityUid, int> _memberStuckAttempts = new();
+
+    /// <summary>Last time a member smashed an obstacle, to avoid spamming attacks every tick.</summary>
+    private readonly Dictionary<EntityUid, TimeSpan> _memberLastSmash = new();
+
     private readonly Dictionary<(EntityUid Member, EntityUid Attacker), TimeSpan> _retaliationMemories = new();
 
     public override void Initialize()
@@ -70,58 +97,31 @@ public sealed class N14CaravanSystem : EntitySystem
 
     private void OnSpawnMarkerMapInit(EntityUid uid, N14CaravanSpawnMarkerComponent comp, MapInitEvent args)
     {
-        // Defer a moment so all route markers from the map load are initialized.
-        Timer.Spawn(500, () =>
+        // Defer a moment so all markers from the map load are initialized.
+        Timer.Spawn(500, async () =>
         {
             if (TerminatingOrDeleted(uid))
                 return;
-            TryStartCaravan(uid);
+            await TryStartCaravanAsync(uid);
         });
     }
 
-    private void TryStartCaravan(EntityUid spawnMarker)
+    /// <summary>
+    /// Spawns a caravan at the given marker and computes an optimal path to the
+    /// despawn marker (if any) using <see cref="PathfindingSystem"/>. No intermediate
+    /// route-point markers are required.
+    /// </summary>
+    private async Task TryStartCaravanAsync(EntityUid spawnMarker)
     {
         var spawnXform = Transform(spawnMarker);
         var gridUid = spawnXform.GridUid;
         if (gridUid == null)
             return;
 
-        // Gather route markers on the same grid, ordered by the digits in their name.
-        var routeSpots = new List<(int Order, EntityCoordinates Coords)>();
-        var routeQuery = EntityQueryEnumerator<N14CaravanRoutePointComponent, TransformComponent>();
-        while (routeQuery.MoveNext(out var pointUid, out _, out var pointXform))
-        {
-            if (pointXform.GridUid != gridUid)
-                continue;
-
-            var name = MetaData(pointUid).EntityName;
-            routeSpots.Add((ParseOrder(name), pointXform.Coordinates));
-        }
-
-        routeSpots.Sort((a, b) => a.Order.CompareTo(b.Order));
-
-        // Build the route and, on big maps, split long legs into short hops so the
-        // steering pathfinder never has to chew through hundreds of tiles in one pass.
         var origin = spawnXform.Coordinates;
-        var route = new List<EntityCoordinates>();
-        for (var i = 0; i < routeSpots.Count; i++)
-        {
-            if (i == 0)
-            {
-                route.Add(routeSpots[0].Coords);
-                continue;
-            }
 
-            var from = route[^1];
-            var to = routeSpots[i].Coords;
-            var hops = HopCount(from.Position, to.Position);
-            route.AddRange(ChunkLeg(from, to, hops));
-        }
-
-        // Optional removal marker on the same grid. Fold it into the route as the
-        // final (chunked) leg so the column walks it like any other waypoint and
-        // the caravan is then removed.
-        var despawn = (EntityCoordinates?)null;
+        // Optional removal marker on the same grid — the final destination.
+        EntityCoordinates? despawn = null;
         var despawnQuery = EntityQueryEnumerator<N14CaravanDespawnMarkerComponent, TransformComponent>();
         while (despawnQuery.MoveNext(out var despawnUid, out _, out var despawnXform))
         {
@@ -132,12 +132,57 @@ public sealed class N14CaravanSystem : EntitySystem
             }
         }
 
+        // Build the route: ask the pathfinder for an optimal path from spawn to despawn.
+        var route = new List<EntityCoordinates>();
         if (despawn is { } dp)
         {
-            var last = route.Count > 0 ? route[^1] : origin;
-            var hops = HopCount(last.Position, dp.Position);
-            route.AddRange(ChunkLeg(last, dp, hops));
-            despawn = null;
+            var cancel = new CancellationTokenSource();
+            var pathResult = await _pathfinding.GetPathSafe(
+                spawnMarker,
+                origin,
+                dp,
+                1.5f, // arrive within this distance of the target
+                cancel.Token);
+
+            if (pathResult.Result == PathResult.NoPath || pathResult.Path == null || pathResult.Path.Count == 0)
+            {
+                Log.Error($"Caravan at {spawnMarker}: no path to despawn marker, spawning at origin without route.");
+                route.Add(origin);
+            }
+            else
+            {
+                // Extract waypoints from path polys (each poly center is a navigation node).
+                foreach (var poly in pathResult.Path)
+                {
+                    route.Add(poly.Coordinates);
+                }
+
+                // Ensure the route starts exactly at the spawn origin.
+                if (!route[0].Equals(origin))
+                    route.Insert(0, origin);
+            }
+        }
+        else
+        {
+            // No despawn marker — just spawn at origin with a trivial route.
+            route.Add(origin);
+        }
+
+        // Split long legs into short hops so the steering pathfinder never has to
+        // chew through hundreds of tiles in one pass on big maps.
+        var finalRoute = new List<EntityCoordinates>();
+        for (var i = 0; i < route.Count; i++)
+        {
+            if (i == 0)
+            {
+                finalRoute.Add(route[0]);
+                continue;
+            }
+
+            var from = finalRoute[^1];
+            var to = route[i];
+            var hops = HopCount(from.Position, to.Position);
+            finalRoute.AddRange(ChunkLeg(from, to, hops));
         }
 
         // Spawn the caravan: merc leader, pack brahmin, merc rear guard.
@@ -146,7 +191,7 @@ public sealed class N14CaravanSystem : EntitySystem
         var rear = Spawn("N14MobCaravanGuard", Offset(origin, new Vector2(-2f, 0f)));
 
         var comp = EnsureComp<N14CaravanComponent>(leader);
-        comp.Route = route;
+        comp.Route = finalRoute;
         comp.DespawnPoint = despawn;
         comp.Members.Add(leader);
         comp.Members.Add(brahmin);
@@ -159,7 +204,7 @@ public sealed class N14CaravanSystem : EntitySystem
         }
 
         // Everyone walks the same route together.
-        var firstTarget = route.Count > 0 ? route[0] : despawn ?? origin;
+        var firstTarget = finalRoute.Count > 0 ? finalRoute[0] : origin;
         foreach (var member in comp.Members)
             _npc.SetBlackboard(member, NPCBlackboard.FollowTarget, firstTarget);
 
@@ -215,6 +260,9 @@ public sealed class N14CaravanSystem : EntitySystem
                 if (!Exists(member))
                 {
                     comp.Members.RemoveAt(i);
+                    _memberLastPos.Remove(member);
+                    _memberStuckAttempts.Remove(member);
+                    _memberLastSmash.Remove(member);
                     continue;
                 }
 
@@ -228,6 +276,9 @@ public sealed class N14CaravanSystem : EntitySystem
                     }
 
                     comp.Members.RemoveAt(i);
+                    _memberLastPos.Remove(member);
+                    _memberStuckAttempts.Remove(member);
+                    _memberLastSmash.Remove(member);
                 }
             }
 
@@ -294,6 +345,77 @@ public sealed class N14CaravanSystem : EntitySystem
                 _npc.SetBlackboard(member, NPCBlackboard.FollowTarget, target.Value);
             }
 
+            // Stuck detection and proactive re-pathing: if a member hasn't moved
+            // toward the waypoint for StuckThresholdSeconds, cancel their current
+            // pathfind and re-issue the target (with an evasion offset on repeats)
+            // so the NPC steering system re-calculates a route around whatever
+            // is blocking them.
+            var now = _timing.CurTime;
+            foreach (var member in comp.Members)
+            {
+                if (brahminPaused && member == comp.Brahmin)
+                    continue;
+                if (!Exists(member) || TerminatingOrDeleted(member))
+                {
+                    _memberLastPos.Remove(member);
+                    _memberStuckAttempts.Remove(member);
+                    continue;
+                }
+
+                var memberPos = _transform.GetMapCoordinates(member).Position;
+
+                if (_memberLastPos.TryGetValue(member, out var last))
+                {
+                    var timeStuck = now - last.Time;
+                    var distMoved = (memberPos - last.Position).Length();
+
+                    if (timeStuck > TimeSpan.FromSeconds(StuckThresholdSeconds) && distMoved < StuckMoveThreshold)
+                    {
+                        // Free the stuck NPC: cancel any in-flight pathfind so the
+                        // steering system is forced to request a fresh path next tick.
+                        if (TryComp<NPCSteeringComponent>(member, out var steering))
+                        {
+                            steering.PathfindToken?.Cancel();
+                            steering.PathfindToken = null;
+                            steering.CurrentPath.Clear();
+                            steering.FailedPathCount = 0;
+                            steering.Status = SteeringStatus.Moving;
+                        }
+
+                        // On repeated stuck events, try to smash a nearby destructible obstacle
+                        // (walls, crates, etc.) so the column can push through. Only smash on
+                        // repeat attempts — first we try evasion, then we break what blocks us.
+                        if (_memberStuckAttempts.TryGetValue(member, out var attempts) && attempts > 0)
+                        {
+                            TrySmashObstacle(member);
+                        }
+
+                        // On repeated stuck events, offset the target so the NPC
+                        // tries to walk around the obstacle instead of into it.
+                        var evasionTarget = target.Value;
+                        if (_memberStuckAttempts.TryGetValue(member, out var _) && attempts > 0)
+                        {
+                            var radians = MathF.PI * attempts / 2f; // 90, 180, 270 degrees
+                            var offset = new Vector2(MathF.Cos(radians), MathF.Sin(radians)) * 2.5f;
+                            evasionTarget = new EntityCoordinates(target.Value.EntityId, target.Value.Position + offset);
+                        }
+
+                        _npc.SetBlackboard(member, NPCBlackboard.FollowTarget, evasionTarget);
+
+                        if (!_memberStuckAttempts.ContainsKey(member))
+                            _memberStuckAttempts[member] = 0;
+                        _memberStuckAttempts[member] = (_memberStuckAttempts[member] + 1) % MaxStuckAttempts;
+                    }
+                    else
+                    {
+                        // Moving normally — reset stuck attempt counter.
+                        _memberStuckAttempts.Remove(member);
+                    }
+                }
+
+                _memberLastPos[member] = (memberPos, now);
+            }
+
             // Advance the shared waypoint once the whole living column is at it.
             // This keeps everyone walking the same route together: no member can
             // outrun the pack and end up "following" / being followed by another.
@@ -345,6 +467,7 @@ public sealed class N14CaravanSystem : EntitySystem
                     AnyMemberStuckNoPath(comp))
                 {
                     comp.LastAdvanceTime = _timing.CurTime;
+                    continue; // <-- don't fall through to NextPoint++ without waiting
                 }
                 else
                 {
@@ -445,6 +568,54 @@ public sealed class N14CaravanSystem : EntitySystem
         }
     }
 
+    /// <summary>
+    /// Attempts to smash a nearby destructible obstacle (wall, crate, etc.) so the
+    /// stuck caravan member can push through. Only deals 100 structural damage —
+    /// enough to break most light obstacles but not wipe everything in sight.
+    /// </summary>
+    private void TrySmashObstacle(EntityUid member)
+    {
+        // Cooldown: don't smash more than once every 2 seconds per member.
+        if (_memberLastSmash.TryGetValue(member, out var lastSmash) &&
+            _timing.CurTime - lastSmash < TimeSpan.FromSeconds(2f))
+            return;
+
+        if (!_melee.TryGetWeapon(member, out _, out var meleeWeapon))
+            return;
+
+        var memberPos = _transform.GetMapCoordinates(member).Position;
+        var mapId = _transform.GetMapCoordinates(member).MapId;
+
+        // Find the nearest destructible obstacle within smashing range.
+        EntityUid? nearest = null;
+        var nearestDistSq = float.MaxValue;
+
+        var destructibleQuery = GetEntityQuery<DestructibleComponent, TransformComponent>();
+        foreach (var (obstacle, obsXform) in destructibleQuery)
+        {
+            if (!Exists(obstacle) || obstacle == member)
+                continue;
+
+            if (obsXform.MapId != mapId)
+                continue;
+
+            var distSq = (obsXform.Coordinates.Position - memberPos).LengthSquared();
+            if (distSq <= 9f && distSq < nearestDistSq) // 3 tiles radius
+            {
+                nearestDistSq = distSq;
+                nearest = obstacle;
+            }
+        }
+
+        if (nearest is not { } obstacleEnt)
+            return;
+
+        _memberLastSmash[member] = _timing.CurTime;
+
+        // Deal damage to break the obstacle (weapon damage applied via melee system).
+        _melee.AttemptLightAttack(member, member, meleeWeapon, obstacleEnt);
+    }
+
     private void RemoveCaravan(EntityUid leader, N14CaravanComponent comp)
     {
         if (comp.Removing)
@@ -455,6 +626,10 @@ public sealed class N14CaravanSystem : EntitySystem
         {
             if (Exists(member) && !TerminatingOrDeleted(member))
                 QueueDel(member);
+
+            _memberLastPos.Remove(member);
+            _memberStuckAttempts.Remove(member);
+            _memberLastSmash.Remove(member);
         }
 
         comp.Members.Clear();

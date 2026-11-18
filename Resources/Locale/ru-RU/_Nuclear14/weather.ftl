@@ -15,3 +15,4 @@ weather-sandstorm-extreme = Надвигается экстремальная п
 weather-snowfall-extreme = Надвигается экстремальный снегопад.
 weather-radioactive-particles = Надвигаются радиоактивные осадки. Внимание! Немедленно найдите укрытие!
 weather-radioactive-rain = Надвигается радиоактивный дождь. Внимание! Немедленно найдите укрытие!
+weather-fog = Надвигается туман.

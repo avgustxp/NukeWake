@@ -1,10 +1,13 @@
 using Content.Server.Announcements.Systems;
+using Content.Server.Fluids.EntitySystems;
 using Content.Server.GameTicking;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Components;
 using Content.Server.StationEvents.Events;
 using Content.Server.Warps;
+using Content.Server._Forge.Fire;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Maps;
@@ -42,7 +45,9 @@ public sealed class N14VertibirdCrashRuleSystem : StationEventSystem<N14Vertibir
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SmokeSystem _smoke = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly SurfaceFireSystem _surfaceFire = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
 
     protected override void Started(EntityUid uid, N14VertibirdCrashRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
@@ -161,6 +166,73 @@ public sealed class N14VertibirdCrashRuleSystem : StationEventSystem<N14Vertibir
             if (TryComp<WarpPointComponent>(warp, out var warpComp))
                 warpComp.Location = Loc.GetString("n14-vertibird-warp-location");
         }
+
+        // Дымовая завеса как у дымовой гранаты: закрывает место падения и мешает обзору.
+        SpawnCrashSmoke(offset, mapId, comp);
+
+        // Хаотично поджигаем окрестность напольным огнём.
+        var fires = IgniteCrashArea(offset, mapId, comp);
+        Sawmill.Info($"Vertibird crash: ignited {fires} tiles around the crash site");
+    }
+
+    /// <summary>
+    ///     Выпускает облако дыма в точке крушения — то же, что делает дымовая граната
+    ///     (SmokeOnTrigger), но без самого предмета-гранаты.
+    /// </summary>
+    private void SpawnCrashSmoke(Vector2 center, MapId mapId, N14VertibirdCrashRuleComponent comp)
+    {
+        if (!MapManager.TryFindGridAt(new MapCoordinates(center, mapId), out var gridUid, out var grid))
+            return;
+
+        var indices = _mapSystem.WorldToTile(gridUid, grid, center);
+        if (!_mapSystem.TryGetTileRef(gridUid, grid, indices, out var tileRef) || tileRef.Tile.IsEmpty)
+            return;
+
+        var smoke = Spawn(comp.SmokePrototype, _mapSystem.ToCenterCoordinates(tileRef, grid));
+        if (!TryComp<SmokeComponent>(smoke, out var smokeComp))
+        {
+            Sawmill.Error($"Vertibird crash: smoke prototype {comp.SmokePrototype} has no SmokeComponent");
+            Del(smoke);
+            return;
+        }
+
+        _smoke.StartSmoke(smoke, new Solution(), comp.SmokeDuration, comp.SmokeSpreadAmount, smokeComp);
+    }
+
+    /// <summary>
+    ///     Хаотично поджигает землю вокруг точки крушения. Каждый очаг ставится на
+    ///     случайный тайл в радиусе FireRadius; повторный поджог того же тайла
+    ///     просто продлевает уже существующий огонь.
+    /// </summary>
+    private int IgniteCrashArea(Vector2 center, MapId mapId, N14VertibirdCrashRuleComponent comp)
+    {
+        var ignited = 0;
+        var radius = MathF.Max(0f, comp.FireRadius);
+
+        for (var i = 0; i < comp.FireAttempts; i++)
+        {
+            var world = center + _random.NextVector2(0f, radius);
+
+            if (!MapManager.TryFindGridAt(new MapCoordinates(world, mapId), out var gridUid, out var grid))
+                continue;
+
+            var indices = _mapSystem.WorldToTile(gridUid, grid, world);
+            if (!_mapSystem.TryGetTileRef(gridUid, grid, indices, out var tileRef) || tileRef.Tile.IsEmpty)
+                continue;
+
+            if (_surfaceFire.TrySpawnFire(
+                    _mapSystem.ToCenterCoordinates(tileRef, grid),
+                    comp.FirePrototype,
+                    comp.FireDuration,
+                    comp.FireIntensity,
+                    null,
+                    out _))
+            {
+                ignited++;
+            }
+        }
+
+        return ignited;
     }
 
     /// <summary>
@@ -272,6 +344,13 @@ public sealed class N14VertibirdCrashRuleSystem : StationEventSystem<N14Vertibir
             anchorPos - new Vector2(comp.MaxDistance, comp.MaxDistance),
             anchorPos + new Vector2(comp.MaxDistance, comp.MaxDistance));
 
+        // Игроки, находящиеся в зоне поиска. Точка крушения не должна быть ближе
+        // MinPlayerClearance тайлов ни к одному из них.
+        var players = _lookup.GetEntitiesInRange<ActorComponent>(
+            new MapCoordinates(anchorPos, mapId),
+            comp.MaxDistance + comp.MinPlayerClearance,
+            LookupFlags.Uncontained);
+
         var preferred = new List<Vector2>();
         var surface = new List<Vector2>();
 
@@ -280,6 +359,9 @@ public sealed class N14VertibirdCrashRuleSystem : StationEventSystem<N14Vertibir
             var pos = _mapSystem.GridTileToWorldPos(anchor, grid, tile.GridIndices);
             var dist = Vector2.Distance(pos, anchorPos);
             if (dist < comp.MinDistance || dist > comp.MaxDistance)
+                continue;
+
+            if (!IsClearOfPlayers(pos, players, comp.MinPlayerClearance))
                 continue;
 
             surface.Add(pos);
@@ -303,14 +385,31 @@ public sealed class N14VertibirdCrashRuleSystem : StationEventSystem<N14Vertibir
         // 2: любой тайл поверхности в радиусе — лучше, чем рисковать пустотой.
         if (surface.Count > 0)
         {
-            spot = _random.Pick(surface);
-            Sawmill.Info("Vertibird crash: no preferred spot with clearance, using random surface tile");
+            _random.Shuffle(surface);
+            spot = surface[0];
+            Sawmill.Info("Vertibird crash: no preferred spot with clearance, using random player-free surface tile");
             return true;
         }
 
         // 3: поверхности в радиусе нет вовсе — случайная точка как есть.
         spot = anchorPos + _random.NextVector2(comp.MinDistance, comp.MaxDistance);
-        Sawmill.Warning("Vertibird crash: no surface tiles found in range, using blind random point");
+        Sawmill.Warning("Vertibird crash: no surface tiles free of players in range, using blind random point");
+        return true;
+    }
+
+    /// <summary>
+    ///     Проверяет, что в радиусе clearance вокруг точки нет ни одного игрока.
+    /// </summary>
+    private bool IsClearOfPlayers(Vector2 spot, IEnumerable<Entity<ActorComponent>> players, float clearance)
+    {
+        var sqrClearance = clearance * clearance;
+
+        foreach (var player in players)
+        {
+            if (Vector2.DistanceSquared(_xform.GetWorldPosition(player.Owner), spot) < sqrClearance)
+                return false;
+        }
+
         return true;
     }
 

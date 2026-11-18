@@ -74,10 +74,7 @@
   - type: SolutionContainerManager
     solutions:
       matchstick:
-        maxVol: 0
-        reagents:
-        - ReagentId: Sulfur
-          Quantity: 0 # Forge-Add-End
+        maxVol: 0 # Forge-Add-End: no reagents, a spent match should not contain sulfur (Quantity: 0 crashed map loading)
 
 - type: entity
   name: match box

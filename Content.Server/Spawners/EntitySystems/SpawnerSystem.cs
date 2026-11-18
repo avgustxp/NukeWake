@@ -27,9 +27,22 @@ public sealed class SpawnerSystem : EntitySystem
     {
         base.Update(frameTime);
 
+        // Снимаем список спавнеров до обхода: спавн сущности, у которой есть свой
+        // TimedSpawner (например, брамин со спавнером навоза), добавляет компонент
+        // в словарь прямо во время перечисления и ломает итератор.
+        var spawners = new List<Entity<TimedSpawnerComponent>>();
+
         var query = EntityQueryEnumerator<TimedSpawnerComponent>();
         while (query.MoveNext(out var uid, out var component))
         {
+            spawners.Add((uid, component));
+        }
+
+        foreach (var (uid, component) in spawners)
+        {
+            if (TerminatingOrDeleted(uid))
+                continue;
+
             component.TimeElapsed += frameTime;
 
             if (component.TimeElapsed < component.IntervalSeconds)

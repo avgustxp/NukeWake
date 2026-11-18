@@ -19,4 +19,5 @@ weather-sandstorm-extreme = Extreme sandstorm is approaching.
 weather-snowfall-extreme = Extreme snowfall is approaching.
 weather-radioactive-particles = Radioactive fallout is approaching. Seek shelter immediately.
 weather-radioactive-rain = Radioactive rain is approaching. Seek shelter immediately.
+weather-fog = Fog is rolling in.
 # Forge-Change-End
