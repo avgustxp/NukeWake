@@ -5,6 +5,7 @@
   description: N14
   rules:
   - N14Rule
+  - N14VertibirdCrash
 
 - type: entity
   id: N14Rule
