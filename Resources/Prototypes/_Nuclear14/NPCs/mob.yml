@@ -5,3 +5,15 @@
         - !type:HTNCompoundTask
           task: N14MeleeCombatCompound
 # Same as the base version, but without idle walking around & about
+
+# Like N14HostileCompound, but falls back to random idle wandering when there is
+# nothing to fight (used by passive/peaceful NPCs that shouldn't drift off-map).
+- type: htnCompound
+  id: N14HostileWanderCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: N14MeleeCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound

@@ -1,0 +1,50 @@
+# Wasteland survivor - a random-encounter beggar.
+# Greets the first player who approaches, accepts clean water offered via the F key,
+# says thanks, despawns once no player is in view (see N14SurvivorSystem),
+# and fights back (unarmed) if attacked - see NPCRetaliation and the HTN below.
+- type: entity
+  name: survivor
+  suffix: NPC
+  parent: N14MobHumanWastelander
+  id: N14MobRandomEncounterSurvivor
+  description: Оборванный, отчаявшийся странник пустоши, умирающий от жажды.
+  components:
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: NpcFactionMember
+      friendlyOrderable: true
+      factions:
+      - Passive
+    - type: Loadout
+      prototypes: [N14GearRandomEncounterSurvivor]
+    - type: N14Survivor
+    - type: NPCRetaliation
+      attackMemoryLength: 30
+    - type: FactionException
+    - type: HTN
+      rootTask:
+        task: N14HostileWanderCompound
+      blackboard:
+        NavInteract: !type:Bool
+          true
+        NavClimb: !type:Bool
+          true
+        NavPry: !type:Bool
+          true
+        NavSmash: !type:Bool
+          true
+        ESP: !type:Bool
+          true
+        ## Wander within a short radius of the spawn point.
+        IdleRange: !type:Single
+          10.0
+        ## React to attackers within the same radius the survivor tracks players at.
+        VisionRadius: !type:Single
+          16.0
+
+- type: startingGear
+  id: N14GearRandomEncounterSurvivor
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRags
+    back: N14ClothingBackpackSurvivorFilled # Rusty-closet loot

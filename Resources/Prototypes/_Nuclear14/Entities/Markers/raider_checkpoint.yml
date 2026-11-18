@@ -1,0 +1,70 @@
+# Raider checkpoint building blocks usable in the map editor.
+#
+# - N14RaiderCheckpointMarker: the gate marker (green cross, same look as the trade
+#   contract markers). The markers of one checkpoint form a gate; passing through it
+#   without paying the boss (N14RaiderCheckpointComponent.PaidUsers) angers the whole
+#   garrison that shares its checkpointId. Swap the sprite for your own decorations if
+#   you want to.
+
+- type: entity
+  name: маркер ворот заставы
+  parent: MarkerBase
+  id: N14RaiderCheckpointMarker
+  suffix: Застава
+  components:
+    - type: Sprite
+      sprite: Markers/cross.rsi
+      state: green
+    - type: N14RaiderCheckpointMarker
+      checkpointId: base_checkpoint
+
+- type: entity
+  name: спавнер босса заставы
+  parent: MarkerBase
+  id: N14RaiderCheckpointBossSpawner
+  suffix: Застава
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - state: timed
+    - type: N14RaiderCheckpointSpawner
+      prototype: N14MobRaiderBossCheckpoint
+
+- type: entity
+  name: спавнер стрелка заставы
+  parent: MarkerBase
+  id: N14RaiderCheckpointSkrimisherSpawner
+  suffix: Застава
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - state: timed
+    - type: N14RaiderCheckpointSpawner
+      prototype: N14MobRaiderSkrimisherCheckpoint
+
+- type: entity
+  name: спавнер психо-заставы
+  parent: MarkerBase
+  id: N14RaiderCheckpointPsychoSpawner
+  suffix: Застава
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - state: timed
+    - type: N14RaiderCheckpointSpawner
+      prototype: N14MobRaiderPsychoRangedCheckpoint
+
+- type: entity
+  name: спавнер заставы рейдеров
+  parent: MarkerBase
+  id: N14RaiderOutpostSpawner
+  suffix: Застава
+  components:
+    - type: Sprite
+      sprite: Markers/cross.rsi
+      state: green
+    - type: N14GridSpawner
+      gridPath: /Maps/Autosaves/ZastavaPrefab.yml

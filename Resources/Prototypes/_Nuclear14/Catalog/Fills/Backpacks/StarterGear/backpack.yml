@@ -41,6 +41,23 @@
         - id: N14MagazinePistol10mm
         - id: N14MagazinePistol10mm
 
+# Caravan guard backpack, filled like the N14LootClosetGunCabinet (N14BaseMilitaryStorageFill).
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: [ N14ClothingBackpackMilitary, N14BaseMilitaryStorageFill ]
+  id: N14ClothingBackpackCaravanGuardFilled
+  name: caravan guard backpack
+  description: A military backpack carrying the guard's kit.
+
+# Random-encounter survivor backpack, filled with the same domestic junk as the
+# N14LootClosetRusty closet (N14StorageFillDomestic).
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: [ N14ClothingBackpackTrekker, N14StorageFillDomestic ]
+  id: N14ClothingBackpackSurvivorFilled
+  name: survivor backpack
+  description: A worn-out backpack carrying the survivor's meagre belongings.
+
 - type: entity
   categories: [ HideSpawnMenu ]
   parent: N14ClothingBackpackHiking

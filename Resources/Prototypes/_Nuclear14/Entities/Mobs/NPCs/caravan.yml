@@ -1,0 +1,107 @@
+# A peaceful caravan guard. Walks with the caravan and only fights back when attacked.
+- type: entity
+  name: caravan guard
+  parent: N14MobNPCCaravanMerc
+  id: N14MobCaravanGuard
+  description: A hired guard walking with the caravan. Peaceful, unless you give it a reason not to be.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: NpcFactionMember
+    friendlyOrderable: true
+    factions:
+    - Passive
+  - type: NPCRetaliation
+    attackMemoryLength: 30
+  - type: FactionException
+  - type: Loadout
+    prototypes:
+    - N14CaravanGuardNPC
+  - type: HTN
+    rootTask:
+      task: N14CaravanGuardCompound
+    # Re-plan faster so the column react to a changed waypoint promptly.
+    planCooldown: 0.2
+    blackboard:
+      FollowRange: !type:Single
+        1.5
+      FollowCloseRange: !type:Single
+        1.0
+      # Don't idle long at a waypoint — the whole column waits here anyway.
+      MaximumIdleTime: !type:Single
+        1.0
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.0
+    baseSprintSpeed: 5.0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        layer:
+        - Opaque
+        - BulletImpassable
+
+# Pack brahmin that walks in the middle of the caravan.
+# Sprites like N14PackBrahminCrate, but the crate is purely decorative — no storage, no open.
+- type: entity
+  name: caravan pack brahmin
+  parent: N14MobBrahmin
+  id: N14MobCaravanBrahmin
+  description: A brahmin lugging a crate for the caravan.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: HTN
+    rootTask:
+      task: N14CaravanWalkCompound
+    # Re-plan faster so the brahmin reacts to a changed waypoint promptly.
+    planCooldown: 0.2
+    blackboard:
+      FollowRange: !type:Single
+        1.5
+      FollowCloseRange: !type:Single
+        1.0
+      # Don't idle long at a waypoint — the whole column waits here anyway.
+      MaximumIdleTime: !type:Single
+        1.0
+  - type: Sprite
+    drawdepth: BelowFloor
+    scale: 1.25, 1.25
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: brahmin-2
+      sprite: _Nuclear14/Mobs/Animals/brahmin.rsi
+      drawdepth: Mobs
+    - state: base
+      sprite: Corvax/Structures/Storage/footlockerforbrahmin.rsi
+      drawdepth: Mobs
+    - state: closed
+      sprite: Corvax/Structures/Storage/footlockerforbrahmin.rsi
+      drawdepth: Mobsы
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.0
+    baseSprintSpeed: 5.0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        layer:
+        - Opaque
+        - BulletImpassable

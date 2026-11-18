@@ -653,6 +653,22 @@
     prototypes:
       - N14MobRaiderEnforcerMelee
 
+#MARK: Random Encounters
+- type: entity
+  name: Wasteland Survivor Spawner
+  id: N14SpawnMobRandomEncounterSurvivor
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Markers/Jobs/wastelanders.rsi
+        state: survivor
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRandomEncounterSurvivor
+
 #MARK: Ghoul
 - type: entity
   name: Feral Ghoul Spawner

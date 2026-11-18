@@ -1,0 +1,67 @@
+# Raider checkpoint garrison - peaceful sentries that demand a toll.
+# The boss takes 50 caps offered through the F key; a N14RaiderCheckpointMarker
+# turns the whole group hostile to anyone who crosses the gate without paying.
+# See N14RaiderCheckpointSystem.
+#
+# NOTE: all garrison entities of one outpost must share the same `checkpointId`,
+# and this id must match the ids on the checkpoint markers and the spawner grid.
+
+- type: entity
+  name: главарь заставы рейдеров
+  parent: N14MobRaiderBoss
+  id: N14MobRaiderBossCheckpoint
+  suffix: Застава
+  description: Главарь местной заставы. Пропустит через ворота ровно за одну плату — крышки.
+  components:
+    - type: NpcFactionMember
+      friendlyOrderable: true
+      factions:
+      - Passive
+    - type: NPCRetaliation
+      attackMemoryLength: 30
+    - type: RespiratorImmune
+    - type: PressureImmunity
+    - type: FactionException
+    - type: N14RaiderCheckpointMember
+      checkpointId: base_checkpoint
+    - type: N14RaiderCheckpoint
+      checkpointId: base_checkpoint
+      paymentAmount: 50
+
+- type: entity
+  name: рейдер-караульный
+  parent: N14MobRaiderSkrimisher
+  id: N14MobRaiderSkrimisherCheckpoint
+  suffix: Застава
+  description: Часовой заставы рейдеров. Пока боссу платят — ворота не трогает.
+  components:
+    - type: NpcFactionMember
+      friendlyOrderable: true
+      factions:
+      - Passive
+    - type: NPCRetaliation
+      attackMemoryLength: 30
+    - type: RespiratorImmune
+    - type: PressureImmunity
+    - type: FactionException
+    - type: N14RaiderCheckpointMember
+      checkpointId: base_checkpoint
+
+- type: entity
+  name: рейдер-псих
+  parent: N14MobRaiderPsychoRanged
+  id: N14MobRaiderPsychoRangedCheckpoint
+  suffix: Застава
+  description: Вооружённый псих с заставы. Сдержан, пока боссу платят.
+  components:
+    - type: NpcFactionMember
+      friendlyOrderable: true
+      factions:
+      - Passive
+    - type: NPCRetaliation
+      attackMemoryLength: 30
+    - type: RespiratorImmune
+    - type: PressureImmunity
+    - type: FactionException
+    - type: N14RaiderCheckpointMember
+      checkpointId: base_checkpoint
