@@ -1,0 +1,145 @@
+# Storage closets made from the _NukeWake sprites.
+# Fixtures are left explicit so the collision can be adjusted to the final sprite art.
+
+# PlaceFree only works for entities that are not anchored: anchoring snaps the
+# transform to the centre of a tile. These closets therefore spawn unanchored
+# and keep their static physics body, which is enough for them to stay in place.
+- type: entity
+  parent: N14ClosetBase
+  id: N14ClosetBaseFreePlace
+  abstract: true
+  placement:
+    mode: PlaceFree
+  components:
+  - type: Transform
+    anchored: false
+
+- type: entity
+  parent: N14ClosetBaseFreePlace
+  id: N14ClosetAmmoBox
+  name: ящик боеприпасов
+  description: Маленький зеленый ящик для амуниции
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Structures/Storage/Closets/ammobox.rsi
+  # TODO: подогнать bounds под спрайт.
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.25,-0.3,0.2,0.1"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  parent: [ N14ClosetAmmoBox, N14StorageFillAmmoBox ]
+  id: N14LootClosetAmmoBox
+  suffix: Loot,Ammo,Random
+
+- type: entity
+  parent: N14ClosetBaseFreePlace
+  id: N14ClosetBig
+  name: локер
+  description: Индивидуальные металлические шкафчики.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Structures/Storage/Closets/bigcloset.rsi
+  # TODO: подогнать bounds под спрайт.
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.4,-0.5,0.4,0.5"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  parent: [ N14ClosetBig, N14StorageFillDomestic ]
+  id: N14LootClosetBig
+  suffix: Loot,Domestic,Random
+
+- type: entity
+  parent: N14ClosetBaseFreePlace
+  id: N14ClosetSmallBox
+  name: маленький металлический ящик
+  description: Маленький ящик для хранения безделушек.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Structures/Storage/Closets/smallbox.rsi
+  # TODO: подогнать bounds под спрайт.
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.25,-0.3,0.2,0.1"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  parent: [ N14ClosetSmallBox, N14StorageFillDomestic ]
+  id: N14LootClosetSmallBox
+  suffix: Loot,Domestic,Random
+
+- type: entity
+  parent: N14ClosetBaseFreePlace
+  id: N14ClosetSmall
+  name: шкафчик
+  description: Одиночный металлический шкафчик для разных вещей.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Structures/Storage/Closets/smallcloset.rsi
+  # TODO: подогнать bounds под спрайт.
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.25,-0.48,0.25,0.48"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  parent: [ N14ClosetSmall, N14StorageFillDomestic ]
+  id: N14LootClosetSmall
+  suffix: Loot,Domestic,Random
+
+- type: entity
+  parent: N14ClosetBaseFreePlace
+  id: N14ClosetSmallCrate
+  name: маленький металлический ящик
+  description: Маленький ящик для хранения припасов.
+  components:
+  - type: Sprite
+    sprite: _NukeWake/Structures/Storage/Closets/smallcrate.rsi
+  # TODO: подогнать bounds под спрайт.
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.25,-0.3,0.2,0.1"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  parent: [ N14ClosetSmallCrate, N14StorageFillDomestic ]
+  id: N14LootClosetSmallCrate
+  suffix: Loot,Domestic,Random
