@@ -743,6 +743,11 @@
         whitelist:
           tags:
             - N14Cartridge308Rifle
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
   - type: FollowDistance
     backStrength: 3
   - type: StaticPrice

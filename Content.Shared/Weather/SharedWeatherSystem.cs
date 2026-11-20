@@ -220,6 +220,13 @@ public abstract class SharedWeatherSystem : EntitySystem
 
         _audio.Stop(data.Stream);
         data.Stream = null;
+
+        foreach (var extra in data.ExtraStreams)
+        {
+            _audio.Stop(extra);
+        }
+        data.ExtraStreams.Clear();
+
         component.Weather.Remove(proto);
         Dirty(uid, component);
     }

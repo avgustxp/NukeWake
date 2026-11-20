@@ -21,3 +21,11 @@
   copyright: '"RATH - Rain Hard Loop 08s" of SONNISS.com. See https://sonniss.com/gdc-bundle-license/ for license.'
   license: Custom
   source: https://gdc.sonniss.com
+
+- files:
+    - storm1.wav
+    - storm2.wav
+    - thunder-single-hit.ogg
+  copyright: Provided by the NukeWake project contributors.
+  license: Custom
+  source: NukeWake

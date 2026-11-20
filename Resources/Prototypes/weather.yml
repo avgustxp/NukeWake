@@ -192,6 +192,22 @@
     params:
       loop: true
       volume: -6
+  sounds:
+    - path: /Audio/Effects/Weather/storm1.wav
+      params:
+        loop: true
+        volume: -10
+    - path: /Audio/Effects/Weather/storm2.wav
+      params:
+        loop: true
+        volume: -12
+  lightning:
+    minInterval: 25
+    maxInterval: 65
+    chance: 0.5
+    radius: 10
+    height: 8
+    prototype: N14WeatherLightning
   temperature: 310
   duration: 250
   showMessage: true
