@@ -398,7 +398,7 @@
   requirements:
     - !type:CharacterTraitRequirement
       inverted: true
-      traits:
+      traits: []
   functions:
     - !type:TraitAddComponent
       components:
