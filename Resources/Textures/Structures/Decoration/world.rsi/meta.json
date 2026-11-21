@@ -111,6 +111,15 @@
       "name": "skeleton"
     },
     {
+      "name": "rotten_ncr"
+    },
+    {
+      "name": "skeleton_roman"
+    },
+    {
+      "name": "skeleton_ncr"
+    },
+    {
       "name": "shower",
       "directions": 4
     },

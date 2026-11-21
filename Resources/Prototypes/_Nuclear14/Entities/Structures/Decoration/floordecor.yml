@@ -720,3 +720,54 @@
   components:
   - type: Sprite
     drawdepth: Mobs
+
+- type: entity
+  parent: N14DecorFloorWorldBase
+  id: N14DecorFloorSkeletonRottenNCR
+  name: труп НКРовца
+  description: Подгнивший труп бойца НКР.
+  components:
+  - type: Sprite
+    state: rotten_ncr
+
+- type: entity
+  parent: N14DecorFloorSkeletonRottenNCR
+  id: N14DecorFloorSkeletonRottenNCROver
+  suffix: draws over objects, mapping
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+
+- type: entity
+  parent: N14DecorFloorWorldBase
+  id: N14DecorFloorSkeletonLegion
+  name: скелет легионера
+  description: Останки павшего бойца Легиона.
+  components:
+  - type: Sprite
+    state: skeleton_roman
+
+- type: entity
+  parent: N14DecorFloorSkeletonLegion
+  id: N14DecorFloorSkeletonLegionOver
+  suffix: draws over objects, mapping
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+
+- type: entity
+  parent: N14DecorFloorWorldBase
+  id: N14DecorFloorSkeletonNCR
+  name: скелет НКРовца
+  description: Останки павшего бойца НКР.
+  components:
+  - type: Sprite
+    state: skeleton_ncr
+
+- type: entity
+  parent: N14DecorFloorSkeletonNCR
+  id: N14DecorFloorSkeletonNCROver
+  suffix: draws over objects, mapping
+  components:
+  - type: Sprite
+    drawdepth: Mobs
