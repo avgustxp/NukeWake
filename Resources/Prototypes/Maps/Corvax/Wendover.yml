@@ -30,7 +30,7 @@
           Wastelander: [ -1, -1 ]
           # WastelandScavenger: [ 3, 2 ]
           WastelandReporter: [ 1, 2 ]
-          # WastelandMusician: [ 2, 3 ]
+          WastelandMusician: [ 2, 3 ]
           WastelandFarmer: [ 2, 3 ]
           WastelandChaplain: [ 1, 1 ]
           WastelandBartender: [ 1, 2 ]
@@ -66,15 +66,15 @@
           # BoSWashingtonKnight: [ 2, 2 ]
           # BoSWashingtonInitiate: [ 0, 2 ]
           BoSWestElderCommander: [ 1, 1 ]
-          BoSWestPaladin: [ 1, 2 ]
-          BoSWestKnight: [ 2, 3 ]
+          BoSWestPaladin: [ 1, 1 ]
+          BoSWestKnight: [ 3, 3 ]
           BoSWestScribe: [ 1, 2 ]
           BoSWestGunsmith: [ 2, 2 ]
           Overseer: [ 1, 1 ]
           VaultDoctor: [ 2, 2 ]
-          VaultDweller: [ 4, 4 ]
+          VaultDweller: [ 6, 6 ]
           VaultEngineer: [ 1, 1 ]
-          VaultSecurity: [ 2, 2 ]
+          VaultSecurity: [ 3, 3 ]
           CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion
           CaesarLegionVenator: [ 1, 1 ] # Forge-Legion
           CaesarLegionRecruitDean: [ 1, 1 ] # Forge-Legion
@@ -85,4 +85,4 @@
           CaesarLegionLegionnaireRecruit: [ 6, 6 ] # Forge-Legion
           CaesarLegionSlave: [ 3, 3 ] # Forge-Legion
           # Raider: [3,3]
-          Followers: [ 2, 2 ]
+          Followers: [ 3, 3 ]
