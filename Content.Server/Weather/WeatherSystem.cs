@@ -2,6 +2,7 @@
 using Content.Server.Administration;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
+using Content.Server.Lightning;
 using Content.Server.Maps;
 using Content.Server.Radiation.Components;
 using Content.Server.Radiation.Systems;
@@ -9,19 +10,16 @@ using Content.Shared.Administration;
 using Content.Shared._N14.Weather;
 using Content.Shared.CCVar;
 using Content.Shared.Ghost;
-using Content.Shared.GameTicking;
-using Content.Shared.Light.Components;
 using Content.Shared.Weather;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
-using Robust.Shared.Maths;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using System.Linq;
-/// Forge-Change-End
+using System.Numerics;
 
 namespace Content.Server.Weather;
 
@@ -35,21 +33,9 @@ public sealed class WeatherSystem : SharedWeatherSystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly RadiationSystem _radiation = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly LightningSystem _lightning = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-
-    private const float WeatherEffectInterval = 1f;
-    private const string DefaultWeatherPrototype = "Default";
-    // Schedule the next event only after the previous weather has fully ended.
-    private static readonly TimeSpan RandomWeatherMinDelay = TimeSpan.FromMinutes(30);
-    private static readonly TimeSpan RandomWeatherMaxDelay = TimeSpan.FromMinutes(60);
-    private static readonly TimeSpan RandomWeatherMinDuration = TimeSpan.FromMinutes(5);
-    private static readonly TimeSpan RandomWeatherMaxDuration = TimeSpan.FromMinutes(10);
-    private static readonly TimeSpan RandomRadioactiveWeatherMinDuration = TimeSpan.FromMinutes(1);
-    private static readonly TimeSpan RandomRadioactiveWeatherMaxDuration = TimeSpan.FromMinutes(3);
-
-    private readonly Dictionary<(EntityUid MapUid, string ProtoId), float> _effectAccumulators = new();
-    private readonly Dictionary<MapId, GameMapPrototype> _loadedGameMaps = new();
-    private TimeSpan? _nextRandomWeatherTime;
 
     public override void Initialize()
     {
@@ -126,129 +112,55 @@ public sealed class WeatherSystem : SharedWeatherSystem
     {
         base.Run(uid, weather, weatherProto, frameTime);
 
-        if (weather.State != WeatherState.Running)
+        if (weatherProto.Lightning is not { } lightning || weather.State != WeatherState.Running)
             return;
 
-        if (weatherProto.Radioactive)
-            RunRadioactiveWeather(uid, weatherProto, frameTime);
-    }
+        var interval = TimeSpan.FromSeconds(_random.NextFloat(lightning.MinInterval, lightning.MaxInterval));
 
-    protected override bool SetState(EntityUid uid, WeatherState state, WeatherComponent component, WeatherData weather, WeatherPrototype weatherProto)
-    {
-        if (!base.SetState(uid, state, component, weather, weatherProto))
-            return false;
-
-        if (state == WeatherState.Starting && weatherProto.ShowMessage && weatherProto.Message != string.Empty)
+        if (weather.NextLightning == TimeSpan.Zero)
         {
-            var sender = weatherProto.Sender != null
-                ? Loc.GetString(weatherProto.Sender.Value)
-                : Loc.GetString("weather-announcement");
-            var color = weatherProto.Radioactive ? Color.Red : Color.LightSkyBlue;
-
-            _chat.DispatchGlobalAnnouncement(Loc.GetString(weatherProto.Message), sender, colorOverride: color);
-        }
-
-        return true;
-    }
-
-    protected override void EndWeather(EntityUid uid, WeatherComponent component, string proto)
-    {
-        _effectAccumulators.Remove((uid, proto));
-        base.EndWeather(uid, component, proto);
-    }
-
-    public bool CanSeeThroughWeather(EntityUid viewer, EntityUid target)
-    {
-        if (!TryComp(viewer, out TransformComponent? viewerXform) ||
-            !TryComp(target, out TransformComponent? targetXform))
-        {
-            return true;
-        }
-
-        if (viewerXform.MapUid == null ||
-            viewerXform.MapUid != targetXform.MapUid ||
-            !TryComp<WeatherComponent>(viewerXform.MapUid.Value, out var weather))
-        {
-            return true;
-        }
-
-        var visibilityRadius = float.MaxValue;
-        foreach (var (protoId, data) in weather.Weather)
-        {
-            if (data.State != WeatherState.Starting && data.State != WeatherState.Running)
-                continue;
-
-            if (!_prototype.TryIndex<WeatherPrototype>(protoId, out var weatherProto) ||
-                weatherProto.VisibilityClearRadius <= 0f)
-            {
-                continue;
-            }
-
-            visibilityRadius = MathF.Min(visibilityRadius, weatherProto.VisibilityClearRadius);
-        }
-
-        if (visibilityRadius == float.MaxValue)
-            return true;
-
-        if (!IsWeatherExposed(viewerXform.MapUid.Value, viewerXform) &&
-            !IsWeatherExposed(viewerXform.MapUid.Value, targetXform))
-        {
-            return true;
-        }
-
-        if (!viewerXform.Coordinates.TryDistance(EntityManager, _transform, targetXform.Coordinates, out var distance))
-            return true;
-
-        return distance <= visibilityRadius;
-    }
-
-    private void RunRadioactiveWeather(EntityUid mapUid, WeatherPrototype weatherProto, float frameTime)
-    {
-        var key = (mapUid, weatherProto.ID);
-        _effectAccumulators.TryGetValue(key, out var accumulator);
-        accumulator += frameTime;
-
-        if (accumulator < WeatherEffectInterval)
-        {
-            _effectAccumulators[key] = accumulator;
+            weather.NextLightning = Timing.CurTime + interval;
             return;
         }
 
-        _effectAccumulators[key] = 0f;
+        if (Timing.CurTime < weather.NextLightning)
+            return;
 
-        var irradiated = false;
-        var query = EntityQueryEnumerator<RadiationReceiverComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var receiver, out var xform))
+        weather.NextLightning = Timing.CurTime + interval;
+
+        if (!_random.Prob(lightning.Chance))
+            return;
+
+        TryStrikeWeatherLightning(uid, lightning);
+    }
+
+    private void TryStrikeWeatherLightning(EntityUid mapUid, WeatherLightningSettings settings)
+    {
+        var players = new List<EntityUid>();
+
+        var query = EntityQueryEnumerator<ActorComponent, TransformComponent>();
+        while (query.MoveNext(out var player, out _, out var xform))
         {
-            if (HasComp<GhostComponent>(uid) || HasComp<WeatherImmuneComponent>(uid))
+            if (xform.MapUid != mapUid || HasComp<GhostComponent>(player))
                 continue;
 
-            if (!IsWeatherExposed(mapUid, xform))
-                continue;
-
-            _radiation.IrradiateReceiver((uid, receiver), weatherProto.RadsPerSecond, accumulator);
-            irradiated = true;
+            players.Add(player);
         }
 
-        if (irradiated)
-            _radiation.RaiseRadiationUpdated();
+        if (players.Count == 0)
+            return;
+
+        var target = Transform(_random.Pick(players));
+        var offset = _random.NextAngle().ToVec() * _random.NextFloat(1f, settings.Radius);
+        var strikeMap = _transform.ToMapCoordinates(target.Coordinates.Offset(offset));
+        var strike = Spawn("N14WeatherLightningStrikePoint", strikeMap);
+        var sky = Spawn("N14WeatherLightningStrikePoint",
+            new MapCoordinates(strikeMap.Position + new Vector2(0f, settings.Height), strikeMap.MapId));
+
+        _lightning.ShootLightning(sky, strike, settings.Prototype.Id, triggerLightningEvents: false);
     }
 
-    private bool IsWeatherExposed(EntityUid mapUid, TransformComponent xform)
-    {
-        if (xform.MapUid != mapUid || xform.GridUid == null)
-            return false;
-
-        var gridUid = xform.GridUid.Value;
-        if (!TryComp<MapGridComponent>(gridUid, out var grid))
-            return false;
-
-        TryComp<RoofComponent>(gridUid, out var roof);
-        var tile = MapManager.GetTileRef(gridUid, grid, xform.Coordinates);
-        return CanWeatherAffect(gridUid, grid, tile, roof);
-    }
-
-    private bool WeatherEventRunning()
+    private bool WeatherRunning()
     {
         var query = EntityQueryEnumerator<WeatherComponent>();
         while (query.MoveNext(out _, out var comp))

@@ -43,25 +43,46 @@ public sealed class WeatherSystem : SharedWeatherSystem
         if (mapUid == null || entXform.MapUid != mapUid)
         {
             weather.Stream = _audio.Stop(weather.Stream);
+
+            foreach (var extra in weather.ExtraStreams)
+            {
+                _audio.Stop(extra);
+            }
+
+            weather.ExtraStreams.Clear();
             return;
         }
 
-        if (!Timing.IsFirstTimePredicted || weatherProto.Sound == null)
+        if (!Timing.IsFirstTimePredicted || (weatherProto.Sound == null && weatherProto.Sounds.Count == 0))
             return;
 
         // #Forge-Change-Start: recalculate occlusion immediately when creating a new stream.
-        if (weather.Stream == null)
+        if (weather.Stream == null && weatherProto.Sound != null)
         {
             weather.Stream = _audio.PlayGlobal(weatherProto.Sound, Filter.Local(), true)?.Entity;
             weather.NextAudioOcclusionUpdate = TimeSpan.Zero;
         }
-        // #Forge-Change-End
-        if (!TryComp(weather.Stream, out AudioComponent? comp))
-            return;
 
+        // Layered ambient streams, kept in sync with the prototype's list.
+        if (weather.ExtraStreams.Count != weatherProto.Sounds.Count)
+        {
+            foreach (var extra in weather.ExtraStreams)
+            {
+                _audio.Stop(extra);
+            }
+
+            weather.ExtraStreams.Clear();
+
+            foreach (var sound in weatherProto.Sounds)
+            {
+                if (_audio.PlayGlobal(sound, Filter.Local(), true)?.Entity is { } extra)
+                    weather.ExtraStreams.Add(extra);
+            }
+        }
+        // #Forge-Change-End
 
         // #Forge-Change-Start: reuse occlusion between updates, recalculating at 4 Hz.
-        var occlusion = comp.Occlusion;
+        var occlusion = 0f;
 
         // Keep gain/fades updating every tick, but only run the tile BFS at 4 Hz.
         // A new listener, grid or stream needs an immediate calculation.
@@ -136,10 +157,25 @@ public sealed class WeatherSystem : SharedWeatherSystem
         }
         // #Forge-Change-End
 
-        var alpha = GetPercent(weather, uid);
-        alpha *= SharedAudioSystem.VolumeToGain(weatherProto.Sound.Params.Volume);
-        _audio.SetGain(weather.Stream, alpha, comp);
-        comp.Occlusion = occlusion;
+        var percent = GetPercent(weather, uid);
+
+        if (weatherProto.Sound != null && TryComp(weather.Stream, out AudioComponent? comp))
+        {
+            var alpha = percent * SharedAudioSystem.VolumeToGain(weatherProto.Sound.Params.Volume);
+            _audio.SetGain(weather.Stream, alpha, comp);
+            comp.Occlusion = occlusion;
+        }
+
+        for (var i = 0; i < weather.ExtraStreams.Count && i < weatherProto.Sounds.Count; i++)
+        {
+            var stream = weather.ExtraStreams[i];
+            if (!TryComp(stream, out AudioComponent? extraComp))
+                continue;
+
+            var alpha = percent * SharedAudioSystem.VolumeToGain(weatherProto.Sounds[i].Params.Volume);
+            _audio.SetGain(stream, alpha, extraComp);
+            extraComp.Occlusion = occlusion;
+        }
     }
 
     protected override bool SetState(EntityUid uid, WeatherState state, WeatherComponent comp, WeatherData weather, WeatherPrototype weatherProto)
@@ -152,7 +188,17 @@ public sealed class WeatherSystem : SharedWeatherSystem
 
         // TODO: Fades (properly)
         weather.Stream = _audio.Stop(weather.Stream);
-        weather.Stream = _audio.PlayGlobal(weatherProto.Sound, Filter.Local(), true)?.Entity;
+
+        foreach (var extra in weather.ExtraStreams)
+        {
+            _audio.Stop(extra);
+        }
+
+        weather.ExtraStreams.Clear();
+
+        if (weatherProto.Sound != null)
+            weather.Stream = _audio.PlayGlobal(weatherProto.Sound, Filter.Local(), true)?.Entity;
+
         weather.NextAudioOcclusionUpdate = TimeSpan.Zero; // #Forge-Change: the replacement stream has no cached occlusion.
         return true;
     }

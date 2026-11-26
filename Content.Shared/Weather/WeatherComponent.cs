@@ -25,6 +25,15 @@ public sealed partial class WeatherData
     [NonSerialized]
     public EntityUid? Stream;
 
+    // #Forge-Change-Start: additional layered ambient streams, client only.
+    [NonSerialized]
+    public List<EntityUid> ExtraStreams = new();
+
+    // Server-only scheduling for the next lightning strike attempt.
+    [NonSerialized]
+    public TimeSpan NextLightning;
+    // #Forge-Change-End
+
     // #Forge-Change-Start: client-only cache scheduling; never included in the weather network state.
     [NonSerialized] public TimeSpan NextAudioOcclusionUpdate;
     [NonSerialized] public EntityUid? AudioOcclusionEntity;

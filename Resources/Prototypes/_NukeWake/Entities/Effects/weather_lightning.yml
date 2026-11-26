@@ -1,0 +1,17 @@
+# Lightning used by the Storm weather. Its beam plays the thunder sound instead of the usual shock sound.
+- type: entity
+  parent: BaseLightning
+  id: N14WeatherLightning
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Beam
+    sound: /Audio/Effects/Weather/thunder-single-hit.ogg
+
+# Invisible point used as the start/end of a weather lightning beam.
+- type: entity
+  id: N14WeatherLightningStrikePoint
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+  - type: TimedDespawn
+    lifetime: 3

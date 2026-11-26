@@ -1,0 +1,238 @@
+# Special ammo-box loot: 1-3 random magazines/ammo boxes.
+# Magazine entries have weight 1, ammo boxes only 0.1.
+# The second and third groups each have a 50% chance to roll N14EmptySlot,
+# which is never spawned, giving 1-3 items total.
+
+- type: entity
+  abstract: true
+  id: N14StorageFillAmmoBox
+  components:
+  - type: StorageFill
+    contents:
+    # First guaranteed item.
+    - id: N14MagazineAmerican100Drum
+      prob: 1
+      orGroup: Ammo1
+    - id: N14MagazineSMG9mm
+      prob: 1
+      orGroup: Ammo1
+    - id: N14MagazineShotgun20
+      prob: 1
+      orGroup: Ammo1
+    - id: DrumMagazine45SubMachineGun
+      prob: 1
+      orGroup: Ammo1
+    - id: N14MagazineShotgun12
+      prob: 1
+      orGroup: Ammo1
+    - id: N14MagazineShotgun12
+      prob: 1
+      orGroup: Ammo1
+    - id: Magazine308Rifle
+      prob: 1
+      orGroup: Ammo1
+    - id: Magazine556Rifle
+      prob: 1
+      orGroup: Ammo1
+    - id: LongMagazine556Rifle
+      prob: 1
+      orGroup: Ammo1
+    - id: Magazine556Rifle30
+      prob: 1
+      orGroup: Ammo1
+    - id: Magazine762AmmoShort
+      prob: 1
+      orGroup: Ammo1
+    - id: Magazine545Rifle
+      prob: 1
+      orGroup: Ammo1
+    - id: N14MagazinePistol9mm
+      prob: 1
+      orGroup: Ammo1
+    - id: N14MagazinePistol10mm
+      prob: 1
+      orGroup: Ammo1
+    - id: N14MagazinePistol12mm
+      prob: 1
+      orGroup: Ammo1
+    - id: N14MagazineMinigun5mm
+      prob: 1
+      orGroup: Ammo1
+    - id: MagazineBox45-70
+      prob: 0.1
+      orGroup: Ammo1
+    - id: MagazineBox12
+      prob: 0.1
+      orGroup: Ammo1
+    - id: MagazineBox762
+      prob: 0.1
+      orGroup: Ammo1
+    - id: MagazineBox545
+      prob: 0.1
+      orGroup: Ammo1
+    - id: MagazineBox20gauge
+      prob: 0.1
+      orGroup: Ammo1
+    - id: MagazineBox556
+      prob: 0.1
+      orGroup: Ammo1
+    - id: MagazineBox9mm
+      prob: 0.1
+      orGroup: Ammo1
+    - id: MagazineBox10mm
+      prob: 0.1
+      orGroup: Ammo1
+
+    # Second item: 50% chance.
+    - id: N14EmptySlot
+      prob: 16.8
+      orGroup: Ammo2
+    - id: N14MagazineAmerican100Drum
+      prob: 1
+      orGroup: Ammo2
+    - id: N14MagazineSMG9mm
+      prob: 1
+      orGroup: Ammo2
+    - id: N14MagazineShotgun20
+      prob: 1
+      orGroup: Ammo2
+    - id: DrumMagazine45SubMachineGun
+      prob: 1
+      orGroup: Ammo2
+    - id: N14MagazineShotgun12
+      prob: 1
+      orGroup: Ammo2
+    - id: N14MagazineShotgun12
+      prob: 1
+      orGroup: Ammo2
+    - id: Magazine308Rifle
+      prob: 1
+      orGroup: Ammo2
+    - id: Magazine556Rifle
+      prob: 1
+      orGroup: Ammo2
+    - id: LongMagazine556Rifle
+      prob: 1
+      orGroup: Ammo2
+    - id: Magazine556Rifle30
+      prob: 1
+      orGroup: Ammo2
+    - id: Magazine762AmmoShort
+      prob: 1
+      orGroup: Ammo2
+    - id: Magazine545Rifle
+      prob: 1
+      orGroup: Ammo2
+    - id: N14MagazinePistol9mm
+      prob: 1
+      orGroup: Ammo2
+    - id: N14MagazinePistol10mm
+      prob: 1
+      orGroup: Ammo2
+    - id: N14MagazinePistol12mm
+      prob: 1
+      orGroup: Ammo2
+    - id: N14MagazineMinigun5mm
+      prob: 1
+      orGroup: Ammo2
+    - id: MagazineBox45-70
+      prob: 0.1
+      orGroup: Ammo2
+    - id: MagazineBox12
+      prob: 0.1
+      orGroup: Ammo2
+    - id: MagazineBox762
+      prob: 0.1
+      orGroup: Ammo2
+    - id: MagazineBox545
+      prob: 0.1
+      orGroup: Ammo2
+    - id: MagazineBox20gauge
+      prob: 0.1
+      orGroup: Ammo2
+    - id: MagazineBox556
+      prob: 0.1
+      orGroup: Ammo2
+    - id: MagazineBox9mm
+      prob: 0.1
+      orGroup: Ammo2
+    - id: MagazineBox10mm
+      prob: 0.1
+      orGroup: Ammo2
+
+    # Third item: 50% chance.
+    - id: N14EmptySlot
+      prob: 16.8
+      orGroup: Ammo3
+    - id: N14MagazineAmerican100Drum
+      prob: 1
+      orGroup: Ammo3
+    - id: N14MagazineSMG9mm
+      prob: 1
+      orGroup: Ammo3
+    - id: N14MagazineShotgun20
+      prob: 1
+      orGroup: Ammo3
+    - id: DrumMagazine45SubMachineGun
+      prob: 1
+      orGroup: Ammo3
+    - id: N14MagazineShotgun12
+      prob: 1
+      orGroup: Ammo3
+    - id: N14MagazineShotgun12
+      prob: 1
+      orGroup: Ammo3
+    - id: Magazine308Rifle
+      prob: 1
+      orGroup: Ammo3
+    - id: Magazine556Rifle
+      prob: 1
+      orGroup: Ammo3
+    - id: LongMagazine556Rifle
+      prob: 1
+      orGroup: Ammo3
+    - id: Magazine556Rifle30
+      prob: 1
+      orGroup: Ammo3
+    - id: Magazine762AmmoShort
+      prob: 1
+      orGroup: Ammo3
+    - id: Magazine545Rifle
+      prob: 1
+      orGroup: Ammo3
+    - id: N14MagazinePistol9mm
+      prob: 1
+      orGroup: Ammo3
+    - id: N14MagazinePistol10mm
+      prob: 1
+      orGroup: Ammo3
+    - id: N14MagazinePistol12mm
+      prob: 1
+      orGroup: Ammo3
+    - id: N14MagazineMinigun5mm
+      prob: 1
+      orGroup: Ammo3
+    - id: MagazineBox45-70
+      prob: 0.1
+      orGroup: Ammo3
+    - id: MagazineBox12
+      prob: 0.1
+      orGroup: Ammo3
+    - id: MagazineBox762
+      prob: 0.1
+      orGroup: Ammo3
+    - id: MagazineBox545
+      prob: 0.1
+      orGroup: Ammo3
+    - id: MagazineBox20gauge
+      prob: 0.1
+      orGroup: Ammo3
+    - id: MagazineBox556
+      prob: 0.1
+      orGroup: Ammo3
+    - id: MagazineBox9mm
+      prob: 0.1
+      orGroup: Ammo3
+    - id: MagazineBox10mm
+      prob: 0.1
+      orGroup: Ammo3
