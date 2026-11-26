@@ -80,4 +80,16 @@ public sealed class OfferItemSystem : SharedOfferItemSystem
         offerItem.Item = null;
         UnReceive(uid, component, offerItem);
     }
+
+    /// <summary>
+    /// Declines a pending offer, resetting both sides and keeping the item with the giver.
+    /// </summary>
+    public void Decline(EntityUid receiver, OfferItemComponent? component = null)
+    {
+        if (!Resolve(receiver, ref component, false) || component.Target is not { } giver)
+            return;
+
+        if (TryComp<OfferItemComponent>(giver, out var giverComp))
+            UnOffer(giver, giverComp);
+    }
 }

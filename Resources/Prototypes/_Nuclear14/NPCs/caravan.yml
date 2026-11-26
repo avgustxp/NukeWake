@@ -1,0 +1,54 @@
+# Every caravan member walks to the same FollowTarget waypoint in exactly the
+# same way: move to it, wait nearby. No vault shared follow/vehicle logic, no
+# member follows another — the caravan drives the waypoints from the system.
+- type: htnCompound
+  id: N14CaravanWalkCompound
+  branches:
+    # Branch 1: Move toward the follow target when out of range.
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: FollowTarget
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            # The shared waypoint is often a long, fixed distance away. Let the
+            # steering loop pathfind per-chunk (GetPathSafe) instead of doing one
+            # big blocking pathfind at plan time, which blows the 512-node A*
+            # budget on long routes and drops the whole column into the idle branch.
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+
+    # Branch 2: Wait near the follow target when already in range.
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: FollowTarget
+            - !type:CoordinatesInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:WaitOperator
+            key: MaximumIdleTime
+
+    # Branch 3: Idle in place — fallback when no follow target is set.
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:WaitOperator
+            key: MaximumIdleTime
+
+# A caravan guard: fights only when a real threat becomes hostile, otherwise walks
+# the exact same shared waypoint as the rest of the caravan.
+- type: htnCompound
+  id: N14CaravanGuardCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: N14RangedHostileCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: N14CaravanWalkCompound

@@ -1,0 +1,1614 @@
+meta:
+  format: 7
+  category: Map
+  engineVersion: 275.1.0
+  forkId: ""
+  forkVersion: ""
+  time: 09/10/2026 14:50:33
+  entityCount: 211
+maps:
+- 1
+grids:
+- 3
+orphans: []
+nullspace: []
+tilemap:
+  1: Space
+  0: FloorWoodHouse
+  2: FloorWoodHouseBroken
+  3: PlatingBurnt
+entities:
+- proto: ""
+  entities:
+  - uid: 1
+    components:
+    - type: MetaData
+      name: Map Entity
+    - type: Transform
+    - type: Map
+      mapPaused: True
+    - type: GridTree
+    - type: Broadphase
+    - type: OccluderTree
+  - uid: 3
+    components:
+    - type: MetaData
+      name: grid
+    - type: Transform
+      pos: -1.1796875,-0.359375
+      parent: 1
+    - type: MapGrid
+      chunks:
+        0,0:
+          ind: 0,0
+          tiles: AAAAAAAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAA==
+          version: 7
+        -1,0:
+          ind: -1,0
+          tiles: AQAAAAAAAAEAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAAAAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAA==
+          version: 7
+        0,-1:
+          ind: 0,-1
+          tiles: AQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAIAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAA==
+          version: 7
+        -1,-1:
+          ind: -1,-1
+          tiles: AQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAwAAAAAAAAMAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAADAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAA==
+          version: 7
+    - type: Broadphase
+    - type: Physics
+      bodyStatus: InAir
+      angularDamping: 0.05
+      linearDamping: 0.05
+      fixedRotation: False
+      bodyType: Dynamic
+    - type: Fixtures
+      fixtures: {}
+    - type: OccluderTree
+    - type: SpreaderGrid
+    - type: Shuttle
+    - type: GridPathfinding
+    - type: Gravity
+      gravityShakeSound: !type:SoundPathSpecifier
+        path: /Audio/Effects/alert.ogg
+    - type: DecalGrid
+      chunkCollection:
+        version: 2
+        nodes:
+        - node:
+            color: '#FFFFFF71'
+            id: Dirt
+          decals:
+            0: 2.5635536,-3.0070157
+            1: 3.4180455,-3.2782829
+            2: 2.4279199,-3.7801275
+            3: 3.3366656,-4.3226624
+            4: -5.427295,-0.9880792
+            5: -6.3660975,4.4289513
+    - type: GridAtmosphere
+      version: 2
+      data:
+        chunkSize: 4
+        uniqueMixes:
+          - volume: 2500
+            temperature: 293.15
+            moles:
+            - 21.82478
+            - 82.10312
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+        tiles:
+          -4,0:
+            0: 128
+          -3,-1:
+            0: 26624
+          -3,0:
+            0: 3831
+          -2,-1:
+            0: 49632
+          -2,0:
+            0: 36626
+          -2,1:
+            0: 110
+          -1,-1:
+            0: 8464
+          -1,0:
+            0: 4427
+          0,-2:
+            0: 32768
+          0,-1:
+            0: 12012
+          0,0:
+            0: 3085
+          1,-2:
+            0: 4096
+          1,-1:
+            0: 4081
+          1,0:
+            0: 4073
+          2,-1:
+            0: 61184
+          2,0:
+            0: 63
+          3,-1:
+            0: 4096
+          3,0:
+            0: 1
+    - type: GasTileOverlay
+    - type: RadiationGridResistance
+- proto: N14BarricadeSandbagSingle
+  entities:
+  - uid: 66
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -6.5,5.5
+      parent: 3
+  - uid: 67
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -5.5,5.5
+      parent: 3
+  - uid: 68
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -5.5,5.5
+      parent: 3
+  - uid: 69
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -4.5,4.5
+      parent: 3
+  - uid: 70
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -4.5,4.5
+      parent: 3
+  - uid: 143
+    components:
+    - type: Transform
+      pos: 4.5,-4.5
+      parent: 3
+  - uid: 146
+    components:
+    - type: Transform
+      pos: 3.5,-4.5
+      parent: 3
+  - uid: 147
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 3.5,-4.5
+      parent: 3
+  - uid: 148
+    components:
+    - type: Transform
+      pos: 2.5,-3.5
+      parent: 3
+- proto: N14ComputerTerminalRustedBroken
+  entities:
+  - uid: 141
+    components:
+    - type: Transform
+      pos: -7.5,1.5
+      parent: 3
+- proto: N14CurrencyCap10
+  entities:
+  - uid: 124
+    components:
+    - type: Transform
+      pos: 7.67325,0.5477226
+      parent: 3
+  - uid: 125
+    components:
+    - type: Transform
+      pos: 7.781757,0.6291027
+      parent: 3
+  - uid: 126
+    components:
+    - type: Transform
+      pos: 7.8631372,0.5341592
+      parent: 3
+- proto: N14CurrencyCap50
+  entities:
+  - uid: 127
+    components:
+    - type: Transform
+      pos: 8.514178,0.6697929
+      parent: 3
+- proto: N14DecorationFlagLocust
+  entities:
+  - uid: 89
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.5,5.5
+      parent: 3
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 145
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 4.5,-1.5
+      parent: 3
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard1
+  entities:
+  - uid: 85
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.9668846,5.4175835
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 173
+    components:
+    - type: Transform
+      pos: -0.23276901,-2.070279
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard10
+  entities:
+  - uid: 73
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.772231,-0.9449794
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 164
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.1677396,0.6352067
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 169
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.2070107,3.1457741
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard11
+  entities:
+  - uid: 95
+    components:
+    - type: Transform
+      pos: 1.0961156,-0.5851445
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard12
+  entities:
+  - uid: 65
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.7105994,0.8860748
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 99
+    components:
+    - type: Transform
+      pos: 3.2798176,-4.8576045
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 117
+    components:
+    - type: Transform
+      pos: 6.4011464,1.0316093
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 155
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.9556074,1.4218819
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 168
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.3845882,3.5443692
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard13
+  entities:
+  - uid: 71
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.0028086,0.4791739
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 82
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 2.0938635,0.71099854
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 84
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 4.9828606,0.7923788
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 112
+    components:
+    - type: Transform
+      pos: 2.9000432,0.056939006
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 186
+    components:
+    - type: Transform
+      pos: 5.79112,0.2788968
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard14
+  entities:
+  - uid: 153
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.196059,-0.46342587
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard15
+  entities:
+  - uid: 76
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.1138115,2.9883966
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 154
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.240438,0.5538266
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 159
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.215808,0.03841877
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 176
+    components:
+    - type: Transform
+      pos: 1.7881726,-4.6066284
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard17
+  entities:
+  - uid: 77
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.0324311,2.2017212
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 152
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.152757,4.895448
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 160
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.833537,0.83865714
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 177
+    components:
+    - type: Transform
+      pos: 0.6895399,-3.6165025
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard18
+  entities:
+  - uid: 74
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.8536115,-0.4702618
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 79
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -2.9410849,-0.9979856
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 103
+    components:
+    - type: Transform
+      pos: 4.9209847,-3.0672402
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 106
+    components:
+    - type: Transform
+      pos: 4.853168,-4.6677175
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 167
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.5646744,0.7113308
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 171
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.200826,4.000266
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 182
+    components:
+    - type: Transform
+      pos: 2.1272566,-0.38381624
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard19
+  entities:
+  - uid: 81
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -0.68995523,0.11421049
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 110
+    components:
+    - type: Transform
+      pos: 2.6152124,0.97924787
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 115
+    components:
+    - type: Transform
+      pos: -2.1074944,-0.28418666
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 120
+    components:
+    - type: Transform
+      pos: 6.4418364,2.0081718
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 181
+    components:
+    - type: Transform
+      pos: 2.249327,0.6741263
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard2
+  entities:
+  - uid: 88
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.9558172,3.87136
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 102
+    components:
+    - type: Transform
+      pos: 2.6965928,-2.3212552
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 180
+    components:
+    - type: Transform
+      pos: 3.4157765,0.6741263
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 184
+    components:
+    - type: Transform
+      pos: -2.0936058,1.6079569
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard20
+  entities:
+  - uid: 86
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.8176875,4.739415
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 98
+    components:
+    - type: Transform
+      pos: 1.0554254,-2.4840157
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 158
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.837227,0.56738997
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard21
+  entities:
+  - uid: 78
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 1.0901744,-0.10280341
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 87
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.4034085,4.9564295
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 93
+    components:
+    - type: Transform
+      pos: 4.5819006,-2.1626544
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 100
+    components:
+    - type: Transform
+      pos: 2.3303819,-3.9352956
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 108
+    components:
+    - type: Transform
+      pos: 3.7274086,-3.7902584
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 118
+    components:
+    - type: Transform
+      pos: 7.431962,0.109300524
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 161
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.6843405,-0.44986248
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 165
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -2.286121,0.56738997
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 166
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.561077,1.4761354
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 179
+    components:
+    - type: Transform
+      pos: 1.0693142,-0.51944983
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard22
+  entities:
+  - uid: 107
+    components:
+    - type: Transform
+      pos: 4.066493,-4.8169146
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 116
+    components:
+    - type: Transform
+      pos: 5.4381475,1.0316093
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 185
+    components:
+    - type: Transform
+      pos: -2.51407,1.7300272
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard23
+  entities:
+  - uid: 101
+    components:
+    - type: Transform
+      pos: 2.1947484,-2.8095365
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 109
+    components:
+    - type: Transform
+      pos: 1.665777,-0.53984904
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 111
+    components:
+    - type: Transform
+      pos: 4.0529294,0.8029241
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 114
+    components:
+    - type: Transform
+      pos: -2.161748,-0.8402846
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 119
+    components:
+    - type: Transform
+      pos: 8.354271,0.082173795
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard24
+  entities:
+  - uid: 80
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -0.98796034,0.54823816
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 104
+    components:
+    - type: Transform
+      pos: 4.6497173,-3.6369019
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 113
+    components:
+    - type: Transform
+      pos: 4.1071825,0.016248882
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 163
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.320626,-0.39560914
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 172
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.7396708,3.6069286
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 183
+    components:
+    - type: Transform
+      pos: -1.4425642,0.67208487
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard3
+  entities:
+  - uid: 170
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.261264,2.738873
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 187
+    components:
+    - type: Transform
+      pos: 7.676428,-0.5213418
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard4
+  entities:
+  - uid: 72
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.965807,0.30285
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 75
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -1.9202354,1.6320599
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 83
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 5.0235505,1.6197441
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard5
+  entities:
+  - uid: 156
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.131931,1.1506147
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard6
+  entities:
+  - uid: 105
+    components:
+    - type: Transform
+      pos: 4.9345484,-4.2472534
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 162
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.1344275,-0.8838904
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard7
+  entities:
+  - uid: 94
+    components:
+    - type: Transform
+      pos: 1.2317493,-2.9316068
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard8
+  entities:
+  - uid: 96
+    components:
+    - type: Transform
+      pos: 1.0961156,-1.0598623
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 157
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -9.705282,0.5402632
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard9
+  entities:
+  - uid: 97
+    components:
+    - type: Transform
+      pos: 1.2588761,-1.4260732
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookPile2
+  entities:
+  - uid: 189
+    components:
+    - type: Transform
+      pos: -3.6293924,1.3303553
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookPile4
+  entities:
+  - uid: 136
+    components:
+    - type: Transform
+      pos: 0.6724974,0.08925313
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookPile5
+  entities:
+  - uid: 190
+    components:
+    - type: Transform
+      pos: -4.171927,0.85563743
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookPile6
+  entities:
+  - uid: 138
+    components:
+    - type: Transform
+      pos: 6.0339303,1.8524907
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 188
+    components:
+    - type: Transform
+      pos: -9.814287,0.36735627
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookstack2
+  entities:
+  - uid: 130
+    components:
+    - type: Transform
+      pos: -3.7084699,0.048563004
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood1
+  entities:
+  - uid: 131
+    components:
+    - type: Transform
+      pos: 3.3223042,0.8054265
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood2
+  entities:
+  - uid: 135
+    components:
+    - type: Transform
+      pos: -6.559405,4.6617885
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood3
+  entities:
+  - uid: 129
+    components:
+    - type: Transform
+      pos: 0.49866867,0.6426661
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 134
+    components:
+    - type: Transform
+      pos: -3.9875083,3.3548322
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood5
+  entities:
+  - uid: 133
+    components:
+    - type: Transform
+      pos: 4.814275,-2.2505546
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood6
+  entities:
+  - uid: 128
+    components:
+    - type: Transform
+      pos: -4.9108796,-0.64585364
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 132
+    components:
+    - type: Transform
+      pos: 2.0337844,-1.7894001
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorPallet
+  entities:
+  - uid: 91
+    components:
+    - type: Transform
+      pos: 4.7748837,0.5020869
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 92
+    components:
+    - type: Transform
+      pos: -8.989486,1.1124383
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 174
+    components:
+    - type: Transform
+      pos: -5.60684,0.09817231
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 175
+    components:
+    - type: Transform
+      pos: -0.309146,0.86157024
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorScrapwood
+  entities:
+  - uid: 140
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 3.7676349,-1.8761163
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 142
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.248783,-0.755147
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 144
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.4189525,5.742932
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 194
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -2.9735012,0.6080255
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 197
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 0.29573858,0.09261757
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 198
+    components:
+    - type: Transform
+      pos: 4.0663543,0.56733537
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 199
+    components:
+    - type: Transform
+      pos: -4.6590786,3.728826
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 200
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 7.16321,-0.5571977
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorTrashbags4
+  entities:
+  - uid: 123
+    components:
+    - type: Transform
+      pos: -7.69137,1.8362423
+      parent: 3
+- proto: N14LootClosetCabinetWood
+  entities:
+  - uid: 121
+    components:
+    - type: Transform
+      pos: 6.5,1.5
+      parent: 3
+- proto: N14MobRaiderBossCheckpoint
+  entities:
+  - uid: 206
+    components:
+    - type: Transform
+      pos: 3.5,-3.5
+      parent: 3
+  - uid: 209
+    components:
+    - type: Transform
+      pos: -5.5,4.5
+      parent: 3
+- proto: N14RaiderCheckpointMarker
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      anchored: False
+      pos: -2.6796875,0.140625
+      parent: 1
+  - uid: 5
+    components:
+    - type: Transform
+      pos: -0.5,0.5
+      parent: 3
+  - uid: 6
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 3
+  - uid: 7
+    components:
+    - type: Transform
+      pos: -2.5,0.5
+      parent: 3
+  - uid: 29
+    components:
+    - type: Transform
+      pos: -2.5,-0.5
+      parent: 3
+  - uid: 30
+    components:
+    - type: Transform
+      pos: 1.5,-0.5
+      parent: 3
+  - uid: 149
+    components:
+    - type: Transform
+      anchored: False
+      pos: 0.3203125,0.140625
+      parent: 1
+  - uid: 150
+    components:
+    - type: Transform
+      anchored: False
+      pos: -3.6796875,1.140625
+      parent: 1
+  - uid: 151
+    components:
+    - type: Transform
+      anchored: False
+      pos: 0.3203125,1.140625
+      parent: 1
+- proto: N14MobRaiderPsychoRangedCheckpoint
+  entities:
+  - uid: 207
+    components:
+    - type: Transform
+      pos: 3.5,0.5
+      parent: 3
+  - uid: 210
+    components:
+    - type: Transform
+      pos: -1.5,1.5
+      parent: 3
+- proto: N14MobRaiderSkrimisherCheckpoint
+  entities:
+  - uid: 208
+    components:
+    - type: Transform
+      pos: -5.5,-0.5
+      parent: 3
+  - uid: 211
+    components:
+    - type: Transform
+      pos: -6.5,0.5
+      parent: 3
+- proto: N14TableCasinoPool
+  entities:
+  - uid: 122
+    components:
+    - type: Transform
+      pos: 7.5,0.5
+      parent: 3
+- proto: N14Torch
+  entities:
+  - uid: 90
+    components:
+    - type: Transform
+      pos: -4.5,3.5
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+- proto: N14TorchWall
+  entities:
+  - uid: 137
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 4.5,-2.5
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 139
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 1.5,-1.5
+      parent: 3
+    - type: Fixtures
+      fixtures: {}
+  - uid: 178
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -3.6796875,-1.859375
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 191
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -3.6796875,2.140625
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 192
+    components:
+    - type: Transform
+      anchored: False
+      rot: 1.5707963267948966 rad
+      pos: 0.3203125,2.140625
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 193
+    components:
+    - type: Transform
+      anchored: False
+      pos: 5.3203125,-0.859375
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 195
+    components:
+    - type: Transform
+      anchored: False
+      pos: -6.6796875,-1.859375
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 196
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -9.6796875,0.140625
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14WallAdobeSlantedIndestructible
+  entities:
+  - uid: 11
+    components:
+    - type: Transform
+      pos: -8.5,-1.5
+      parent: 3
+  - uid: 22
+    components:
+    - type: Transform
+      pos: 9.5,-0.5
+      parent: 3
+  - uid: 23
+    components:
+    - type: Transform
+      pos: 7.5,-2.5
+      parent: 3
+  - uid: 36
+    components:
+    - type: Transform
+      pos: -3.5,2.5
+      parent: 3
+  - uid: 42
+    components:
+    - type: Transform
+      pos: -11.5,0.5
+      parent: 3
+  - uid: 43
+    components:
+    - type: Transform
+      pos: -10.5,1.5
+      parent: 3
+  - uid: 204
+    components:
+    - type: Transform
+      pos: -12.5,-0.5
+      parent: 3
+- proto: N14WallBrickAltSlantedIndestructible
+  entities:
+  - uid: 21
+    components:
+    - type: Transform
+      pos: 5.5,2.5
+      parent: 3
+- proto: N14WallRoughScrapSlantedIndestructible
+  entities:
+  - uid: 15
+    components:
+    - type: Transform
+      pos: 2.5,-1.5
+      parent: 3
+  - uid: 16
+    components:
+    - type: Transform
+      pos: 5.5,-2.5
+      parent: 3
+  - uid: 17
+    components:
+    - type: Transform
+      pos: 6.5,-1.5
+      parent: 3
+  - uid: 19
+    components:
+    - type: Transform
+      pos: 3.5,2.5
+      parent: 3
+  - uid: 20
+    components:
+    - type: Transform
+      pos: 4.5,2.5
+      parent: 3
+  - uid: 46
+    components:
+    - type: Transform
+      pos: -10.5,2.5
+      parent: 3
+  - uid: 47
+    components:
+    - type: Transform
+      pos: -11.5,1.5
+      parent: 3
+  - uid: 48
+    components:
+    - type: Transform
+      pos: -10.5,0.5
+      parent: 3
+  - uid: 49
+    components:
+    - type: Transform
+      pos: -6.5,-2.5
+      parent: 3
+- proto: N14WallScrapBlueSlantedIndestructible
+  entities:
+  - uid: 10
+    components:
+    - type: Transform
+      pos: 3.5,-1.5
+      parent: 3
+  - uid: 32
+    components:
+    - type: Transform
+      pos: -4.5,2.5
+      parent: 3
+  - uid: 201
+    components:
+    - type: Transform
+      pos: -13.5,1.5
+      parent: 3
+- proto: N14WallScrapRedSlantedIndestructible
+  entities:
+  - uid: 9
+    components:
+    - type: Transform
+      pos: -3.5,-1.5
+      parent: 3
+  - uid: 33
+    components:
+    - type: Transform
+      pos: -5.5,2.5
+      parent: 3
+  - uid: 38
+    components:
+    - type: Transform
+      pos: -9.5,0.5
+      parent: 3
+  - uid: 41
+    components:
+    - type: Transform
+      pos: 7.5,2.5
+      parent: 3
+  - uid: 50
+    components:
+    - type: Transform
+      pos: 8.5,1.5
+      parent: 3
+  - uid: 51
+    components:
+    - type: Transform
+      pos: 11.5,0.5
+      parent: 3
+  - uid: 52
+    components:
+    - type: Transform
+      pos: 12.5,-0.5
+      parent: 3
+- proto: N14WallScrapSlantedIndestructible
+  entities:
+  - uid: 8
+    components:
+    - type: Transform
+      pos: -4.5,-2.5
+      parent: 3
+  - uid: 31
+    components:
+    - type: Transform
+      pos: -8.5,2.5
+      parent: 3
+  - uid: 53
+    components:
+    - type: Transform
+      pos: 6.5,2.5
+      parent: 3
+  - uid: 54
+    components:
+    - type: Transform
+      pos: 10.5,-1.5
+      parent: 3
+  - uid: 55
+    components:
+    - type: Transform
+      pos: 8.5,-1.5
+      parent: 3
+  - uid: 57
+    components:
+    - type: Transform
+      pos: 11.5,-0.5
+      parent: 3
+  - uid: 63
+    components:
+    - type: Transform
+      pos: 9.5,1.5
+      parent: 3
+  - uid: 64
+    components:
+    - type: Transform
+      pos: 7.5,1.5
+      parent: 3
+  - uid: 205
+    components:
+    - type: Transform
+      pos: -11.5,-0.5
+      parent: 3
+- proto: N14WallSewerSlantedIndestructible
+  entities:
+  - uid: 14
+    components:
+    - type: Transform
+      pos: -3.5,-2.5
+      parent: 3
+  - uid: 18
+    components:
+    - type: Transform
+      pos: -7.5,2.5
+      parent: 3
+  - uid: 34
+    components:
+    - type: Transform
+      pos: -9.5,1.5
+      parent: 3
+  - uid: 37
+    components:
+    - type: Transform
+      pos: -9.5,2.5
+      parent: 3
+  - uid: 44
+    components:
+    - type: Transform
+      pos: -12.5,1.5
+      parent: 3
+  - uid: 45
+    components:
+    - type: Transform
+      pos: -10.5,-0.5
+      parent: 3
+  - uid: 56
+    components:
+    - type: Transform
+      pos: 5.5,-1.5
+      parent: 3
+  - uid: 58
+    components:
+    - type: Transform
+      pos: 7.5,-1.5
+      parent: 3
+  - uid: 59
+    components:
+    - type: Transform
+      pos: 10.5,0.5
+      parent: 3
+  - uid: 60
+    components:
+    - type: Transform
+      pos: 11.5,-1.5
+      parent: 3
+- proto: N14WallWoodSlantedIndestructible
+  entities:
+  - uid: 4
+    components:
+    - type: Transform
+      pos: -5.5,-2.5
+      parent: 3
+  - uid: 12
+    components:
+    - type: Transform
+      pos: -9.5,-0.5
+      parent: 3
+  - uid: 13
+    components:
+    - type: Transform
+      pos: -7.5,-1.5
+      parent: 3
+  - uid: 24
+    components:
+    - type: Transform
+      pos: 6.5,-2.5
+      parent: 3
+  - uid: 25
+    components:
+    - type: Transform
+      pos: 4.5,-1.5
+      parent: 3
+  - uid: 26
+    components:
+    - type: Transform
+      pos: 2.5,2.5
+      parent: 3
+  - uid: 27
+    components:
+    - type: Transform
+      pos: 9.5,0.5
+      parent: 3
+  - uid: 28
+    components:
+    - type: Transform
+      pos: 9.5,-1.5
+      parent: 3
+  - uid: 35
+    components:
+    - type: Transform
+      pos: -6.5,2.5
+      parent: 3
+  - uid: 61
+    components:
+    - type: Transform
+      pos: 10.5,-0.5
+      parent: 3
+  - uid: 62
+    components:
+    - type: Transform
+      pos: 12.5,0.5
+      parent: 3
+  - uid: 202
+    components:
+    - type: Transform
+      pos: -12.5,0.5
+      parent: 3
+  - uid: 203
+    components:
+    - type: Transform
+      pos: -13.5,0.5
+      parent: 3
+- proto: WoodenSupport
+  entities:
+  - uid: 39
+    components:
+    - type: Transform
+      pos: -8.5,1.5
+      parent: 3
+  - uid: 40
+    components:
+    - type: Transform
+      pos: 5.5,1.5
+      parent: 3
+...

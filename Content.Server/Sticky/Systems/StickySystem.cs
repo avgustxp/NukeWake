@@ -39,7 +39,7 @@ public sealed class StickySystem : EntitySystem
             return;
 
         // try stick object to a clicked target entity
-        args.Handled = StartSticking(uid, args.User, args.Target.Value, component);
+        args.Handled = TryStartSticking(uid, args.User, args.Target.Value, component);
     }
 
     private void AddUnstickVerb(EntityUid uid, StickyComponent component, GetVerbsEvent<Verb> args)
@@ -63,7 +63,15 @@ public sealed class StickySystem : EntitySystem
         });
     }
 
-    private bool StartSticking(EntityUid uid, EntityUid user, EntityUid target, StickyComponent? component = null)
+    /// <summary>
+    /// Starts the "stick to target" do-after. Usually called from interaction, but
+    /// also used by NPCs (e.g. raiders planting C4) that have no hands.
+    /// </summary>
+    /// <param name="needHand">
+    /// Whether the do-after should require a hand and break when the user moves.
+    /// NPC users pass <c>false</c>.
+    /// </param>
+    public bool TryStartSticking(EntityUid uid, EntityUid user, EntityUid target, StickyComponent? component = null, bool needHand = true)
     {
         if (!Resolve(uid, ref component))
             return false;
@@ -94,8 +102,10 @@ public sealed class StickySystem : EntitySystem
             // start sticking object to target
             _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, delay, new StickyDoAfterEvent(), uid, target: target, used: uid)
             {
-                BreakOnMove = true,
-                NeedHand = true
+                BreakOnMove = needHand,
+                NeedHand = needHand,
+                RequireCanInteract = needHand,
+                DistanceThreshold = needHand ? null : 3f,
             });
         }
         else

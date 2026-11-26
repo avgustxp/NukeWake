@@ -11,8 +11,10 @@ public sealed partial class PathfindingSystem
 
     /// <summary>
     /// Maximum amount of nodes we're allowed to expand.
+    /// Increased from 512 so caravans (and other NPCs) can still pathfind to
+    /// route markers that are far away across large maps in a single pass.
     /// </summary>
-    private const int NodeLimit = 512;
+    private const int NodeLimit = 4096;
 
     private sealed class PathComparer : IComparer<ValueTuple<float, PathPoly>>
     {

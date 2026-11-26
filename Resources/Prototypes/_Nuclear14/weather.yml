@@ -1,20 +1,26 @@
 #! Corvax-Change
 
-# - type: weather
-#   id: SandstormHeavyExtreme
-#   sprite:
-#     sprite: /Textures/Effects/weather.rsi
-#     state: sandstorm_heavy
-#   sound:
-#     path: /Audio/Effects/Weather/snowstorm.ogg
-#     params:
-#       loop: true
-#       volume: -6
-#   temperature: 400 #
-#   duration: 60
-#   showMessage: true
-#   sender: weather-announcement
-#   message: weather-sandstorm-extreme
+# Forge-Change-Start
+# Restore a sandstorm weather prototype and point it at the imported Fallout loop.
+- type: weather
+  id: SandstormHeavyExtreme
+  sprite:
+    sprite: /Textures/Effects/weather.rsi
+    state: sandstorm_heavy
+  sound:
+    path: /Audio/_Nuclear14/Weather/sandstorm_loop.ogg
+    params:
+      loop: true
+      volume: -6
+  temperature: 400
+  duration: 600
+  chance: 1
+  visibilityClearRadius: 5
+  visibilityClearBuffer: 2
+  showMessage: true
+  sender: weather-announcement
+  message: weather-sandstorm-extreme
+# Forge-Change-End
 
 - type: weather
   id: SnowfallHeavyExtreme
@@ -27,7 +33,12 @@
       loop: true
       volume: -6
   temperature: 2 # -
-  duration: 60
+  # Forge-Change-Start
+  duration: 600
+  visibilityClearRadius: 5
+  visibilityClearBuffer: 2
+  # Forge-Change-End
   showMessage: true
+  chance: 0 # Enabled by the Juneau map's weatherWeights. # Forge-Change
   sender: weather-announcement
   message: weather-snowfall-extreme

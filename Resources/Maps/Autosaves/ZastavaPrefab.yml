@@ -1,0 +1,1655 @@
+meta:
+  format: 7
+  category: Map
+  engineVersion: 275.1.0
+  forkId: ""
+  forkVersion: ""
+  time: 09/10/2026 14:50:33
+  entityCount: 210
+maps:
+- 1
+grids: []
+orphans: []
+nullspace: []
+tilemap:
+  1: Space
+  0: FloorWoodHouse
+  2: FloorWoodHouseBroken
+  3: PlatingBurnt
+entities:
+- proto: ""
+  entities:
+  - uid: 1
+    components:
+    - type: MetaData
+      name: Map Entity
+    - type: Transform
+    - type: Map
+      mapPaused: True
+    - type: GridTree
+    - type: Broadphase
+    - type: OccluderTree
+- proto: N14BarricadeSandbagSingle
+  entities:
+  - uid: 66
+    components:
+    - type: Transform
+      anchored: False
+      rot: 3.141592653589793 rad
+      pos: -7.6796875,5.140625
+      parent: 1
+  - uid: 67
+    components:
+    - type: Transform
+      anchored: False
+      rot: 3.141592653589793 rad
+      pos: -6.6796875,5.140625
+      parent: 1
+  - uid: 68
+    components:
+    - type: Transform
+      anchored: False
+      rot: 1.5707963267948966 rad
+      pos: -6.6796875,5.140625
+      parent: 1
+  - uid: 69
+    components:
+    - type: Transform
+      anchored: False
+      rot: 3.141592653589793 rad
+      pos: -5.6796875,4.140625
+      parent: 1
+  - uid: 70
+    components:
+    - type: Transform
+      anchored: False
+      rot: 1.5707963267948966 rad
+      pos: -5.6796875,4.140625
+      parent: 1
+  - uid: 143
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.3203125,-4.859375
+      parent: 1
+  - uid: 146
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.3203125,-4.859375
+      parent: 1
+  - uid: 147
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: 2.3203125,-4.859375
+      parent: 1
+  - uid: 148
+    components:
+    - type: Transform
+      anchored: False
+      pos: 1.3203125,-3.859375
+      parent: 1
+- proto: N14ComputerTerminalRustedBroken
+  entities:
+  - uid: 141
+    components:
+    - type: Transform
+      anchored: False
+      pos: -8.6796875,1.140625
+      parent: 1
+- proto: N14CurrencyCap10
+  entities:
+  - uid: 124
+    components:
+    - type: Transform
+      anchored: False
+      pos: 6.4935625,0.18834759999999995
+      parent: 1
+  - uid: 125
+    components:
+    - type: Transform
+      anchored: False
+      pos: 6.6020695,0.2697277
+      parent: 1
+  - uid: 126
+    components:
+    - type: Transform
+      anchored: False
+      pos: 6.6834497,0.17478419999999995
+      parent: 1
+- proto: N14CurrencyCap50
+  entities:
+  - uid: 127
+    components:
+    - type: Transform
+      anchored: False
+      pos: 7.334490499999999,0.3104179
+      parent: 1
+- proto: N14DecorationFlagLocust
+  entities:
+  - uid: 89
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -7.6796875,5.140625
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 145
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: 3.3203125,-1.859375
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard1
+  entities:
+  - uid: 85
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -8.1465721,5.0582085
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 173
+    components:
+    - type: Transform
+      pos: -0.23276901,-2.070279
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard10
+  entities:
+  - uid: 73
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -6.9519185,-1.3043544
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 164
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.1677396,0.6352067
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 169
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.2070107,3.1457741
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard11
+  entities:
+  - uid: 95
+    components:
+    - type: Transform
+      anchored: False
+      pos: -0.08357189999999992,-0.9445195
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard12
+  entities:
+  - uid: 65
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -4.8902868999999995,0.5266998
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 99
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.1001301,-5.2169795
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 117
+    components:
+    - type: Transform
+      anchored: False
+      pos: 5.2214589,0.6722343
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 155
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.9556074,1.4218819
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 168
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.3845882,3.5443692
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard13
+  entities:
+  - uid: 71
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -7.1824961,0.11979889999999999
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 82
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: 0.9141759999999999,0.35162353999999996
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 84
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: 3.8031731000000004,0.43300380000000005
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 112
+    components:
+    - type: Transform
+      anchored: False
+      pos: 1.7203556999999998,-0.302435994
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 186
+    components:
+    - type: Transform
+      pos: 5.79112,0.2788968
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard14
+  entities:
+  - uid: 153
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.196059,-0.46342587
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard15
+  entities:
+  - uid: 76
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -4.293499000000001,2.6290216
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 154
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.240438,0.5538266
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 159
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.215808,0.03841877
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 176
+    components:
+    - type: Transform
+      pos: 1.7881726,-4.6066284
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard17
+  entities:
+  - uid: 77
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -4.2121186,1.8423462000000002
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 152
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.152757,4.895448
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 160
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.833537,0.83865714
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 177
+    components:
+    - type: Transform
+      pos: 0.6895399,-3.6165025
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard18
+  entities:
+  - uid: 74
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -7.033299,-0.8296368000000001
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 79
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -4.1207724,-1.3573606
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 103
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.7412972,-3.4266152
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 106
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.6734805,-5.0270925
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 167
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.5646744,0.7113308
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 171
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.200826,4.000266
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 182
+    components:
+    - type: Transform
+      pos: 2.1272566,-0.38381624
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard19
+  entities:
+  - uid: 81
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -1.86964273,-0.24516451
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 110
+    components:
+    - type: Transform
+      anchored: False
+      pos: 1.4355248999999999,0.61987287
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 115
+    components:
+    - type: Transform
+      anchored: False
+      pos: -3.2871819,-0.64356166
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 120
+    components:
+    - type: Transform
+      anchored: False
+      pos: 5.2621489,1.6487968
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 181
+    components:
+    - type: Transform
+      pos: 2.249327,0.6741263
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard2
+  entities:
+  - uid: 88
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -5.1355047,3.511985
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 102
+    components:
+    - type: Transform
+      anchored: False
+      pos: 1.5169053,-2.6806302
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 180
+    components:
+    - type: Transform
+      pos: 3.4157765,0.6741263
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 184
+    components:
+    - type: Transform
+      pos: -2.0936058,1.6079569
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard20
+  entities:
+  - uid: 86
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -7.997375,4.38004
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 98
+    components:
+    - type: Transform
+      anchored: False
+      pos: -0.12426209999999993,-2.8433907
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 158
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.837227,0.56738997
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard21
+  entities:
+  - uid: 78
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -0.08951310000000001,-0.46217841
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 87
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -5.583096,4.5970545
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 93
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.4022131,-2.5220294
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 100
+    components:
+    - type: Transform
+      anchored: False
+      pos: 1.1506944,-4.2946706
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 108
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.5477211,-4.1496334
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 118
+    components:
+    - type: Transform
+      anchored: False
+      pos: 6.2522745,-0.250074476
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 161
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.6843405,-0.44986248
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 165
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -2.286121,0.56738997
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 166
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.561077,1.4761354
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 179
+    components:
+    - type: Transform
+      pos: 1.0693142,-0.51944983
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard22
+  entities:
+  - uid: 107
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.8868055000000004,-5.1762896
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 116
+    components:
+    - type: Transform
+      anchored: False
+      pos: 4.25846,0.6722343
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 185
+    components:
+    - type: Transform
+      pos: -2.51407,1.7300272
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard23
+  entities:
+  - uid: 101
+    components:
+    - type: Transform
+      anchored: False
+      pos: 1.0150609,-3.1689115
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 109
+    components:
+    - type: Transform
+      anchored: False
+      pos: 0.48608950000000006,-0.89922404
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 111
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.8732419,0.44354910000000003
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 114
+    components:
+    - type: Transform
+      anchored: False
+      pos: -3.3414355,-1.1996596
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 119
+    components:
+    - type: Transform
+      anchored: False
+      pos: 7.174583500000001,-0.277201205
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard24
+  entities:
+  - uid: 80
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -2.16764784,0.18886316000000003
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 104
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.4700298,-3.9962769
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 113
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.9274950000000004,-0.343126118
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 163
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.320626,-0.39560914
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 172
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.7396708,3.6069286
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 183
+    components:
+    - type: Transform
+      pos: -1.4425642,0.67208487
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard3
+  entities:
+  - uid: 170
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.261264,2.738873
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 187
+    components:
+    - type: Transform
+      pos: 7.676428,-0.5213418
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard4
+  entities:
+  - uid: 72
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -8.1454945,-0.05652499999999999
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 75
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -3.0999229,1.2726849
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 83
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: 3.843863,1.2603691
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard5
+  entities:
+  - uid: 156
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.131931,1.1506147
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard6
+  entities:
+  - uid: 105
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.7548608999999997,-4.6066284
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 162
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.1344275,-0.8838904
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard7
+  entities:
+  - uid: 94
+    components:
+    - type: Transform
+      anchored: False
+      pos: 0.052061799999999936,-3.2909818
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard8
+  entities:
+  - uid: 96
+    components:
+    - type: Transform
+      anchored: False
+      pos: -0.08357189999999992,-1.4192373
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 157
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -9.705282,0.5402632
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBoard9
+  entities:
+  - uid: 97
+    components:
+    - type: Transform
+      anchored: False
+      pos: 0.07918859999999994,-1.7854482
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookPile2
+  entities:
+  - uid: 189
+    components:
+    - type: Transform
+      pos: -3.6293924,1.3303553
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookPile4
+  entities:
+  - uid: 136
+    components:
+    - type: Transform
+      anchored: False
+      pos: -0.5071901,-0.27012187
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookPile5
+  entities:
+  - uid: 190
+    components:
+    - type: Transform
+      pos: -4.171927,0.85563743
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookPile6
+  entities:
+  - uid: 138
+    components:
+    - type: Transform
+      anchored: False
+      pos: 4.8542428,1.4931157
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 188
+    components:
+    - type: Transform
+      pos: -9.814287,0.36735627
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorBookstack2
+  entities:
+  - uid: 130
+    components:
+    - type: Transform
+      anchored: False
+      pos: -4.8881574,-0.310811996
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood1
+  entities:
+  - uid: 131
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.1426167,0.44605150000000005
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood2
+  entities:
+  - uid: 135
+    components:
+    - type: Transform
+      anchored: False
+      pos: -7.7390925,4.3024135
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood3
+  entities:
+  - uid: 129
+    components:
+    - type: Transform
+      anchored: False
+      pos: -0.68101883,0.2832911
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 134
+    components:
+    - type: Transform
+      anchored: False
+      pos: -5.1671958,2.9954572
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood5
+  entities:
+  - uid: 133
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.6345875000000003,-2.6099296
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorFood6
+  entities:
+  - uid: 128
+    components:
+    - type: Transform
+      anchored: False
+      pos: -6.0905671,-1.00522864
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 132
+    components:
+    - type: Transform
+      anchored: False
+      pos: 0.8540969,-2.1487751
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorPallet
+  entities:
+  - uid: 91
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.5951962,0.1427119
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 92
+    components:
+    - type: Transform
+      anchored: False
+      pos: -10.1691735,0.7530633
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 174
+    components:
+    - type: Transform
+      pos: -5.60684,0.09817231
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 175
+    components:
+    - type: Transform
+      pos: -0.309146,0.86157024
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorScrapwood
+  entities:
+  - uid: 140
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: 2.5879474,-2.2354913
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 142
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -5.4284705,-1.114522
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 144
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -6.59864,5.383557
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 194
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -2.9735012,0.6080255
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 197
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 0.29573858,0.09261757
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 198
+    components:
+    - type: Transform
+      pos: 4.0663543,0.56733537
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 199
+    components:
+    - type: Transform
+      pos: -4.6590786,3.728826
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 200
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 7.16321,-0.5571977
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14DecorFloorTrashbags4
+  entities:
+  - uid: 123
+    components:
+    - type: Transform
+      anchored: False
+      pos: -8.8710575,1.4768673
+      parent: 1
+- proto: N14LootClosetCabinetWood
+  entities:
+  - uid: 121
+    components:
+    - type: Transform
+      anchored: False
+      pos: 5.3203125,1.140625
+      parent: 1
+- proto: N14MobRaiderBossCheckpoint
+  entities:
+  - uid: 206
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.3203125,-3.859375
+      parent: 1
+  - uid: 209
+    components:
+    - type: Transform
+      anchored: False
+      pos: -6.6796875,4.140625
+      parent: 1
+- proto: N14RaiderCheckpointMarker
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      anchored: False
+      pos: -2.6796875,0.140625
+      parent: 1
+  - uid: 5
+    components:
+    - type: Transform
+      anchored: False
+      pos: -1.6796875,0.140625
+      parent: 1
+  - uid: 6
+    components:
+    - type: Transform
+      anchored: False
+      pos: -0.6796875,0.140625
+      parent: 1
+  - uid: 7
+    components:
+    - type: Transform
+      anchored: False
+      pos: -3.6796875,0.140625
+      parent: 1
+  - uid: 29
+    components:
+    - type: Transform
+      anchored: False
+      pos: -3.6796875,-0.859375
+      parent: 1
+  - uid: 30
+    components:
+    - type: Transform
+      anchored: False
+      pos: 0.3203125,-0.859375
+      parent: 1
+  - uid: 149
+    components:
+    - type: Transform
+      anchored: False
+      pos: 0.3203125,0.140625
+      parent: 1
+  - uid: 150
+    components:
+    - type: Transform
+      anchored: False
+      pos: -3.6796875,1.140625
+      parent: 1
+  - uid: 151
+    components:
+    - type: Transform
+      anchored: False
+      pos: 0.3203125,1.140625
+      parent: 1
+- proto: N14MobRaiderPsychoRangedCheckpoint
+  entities:
+  - uid: 207
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.3203125,0.140625
+      parent: 1
+  - uid: 210
+    components:
+    - type: Transform
+      anchored: False
+      pos: -2.6796875,1.140625
+      parent: 1
+- proto: N14MobRaiderSkrimisherCheckpoint
+  entities:
+  - uid: 208
+    components:
+    - type: Transform
+      anchored: False
+      pos: -6.6796875,-0.859375
+      parent: 1
+  - uid: 211
+    components:
+    - type: Transform
+      anchored: False
+      pos: -7.6796875,0.140625
+      parent: 1
+- proto: N14TableCasinoPool
+  entities:
+  - uid: 122
+    components:
+    - type: Transform
+      anchored: False
+      pos: 6.3203125,0.140625
+      parent: 1
+- proto: N14Torch
+  entities:
+  - uid: 90
+    components:
+    - type: Transform
+      anchored: False
+      pos: -5.6796875,3.140625
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14TorchWall
+  entities:
+  - uid: 137
+    components:
+    - type: Transform
+      anchored: False
+      rot: 1.5707963267948966 rad
+      pos: 3.3203125,-2.859375
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 139
+    components:
+    - type: Transform
+      anchored: False
+      rot: 1.5707963267948966 rad
+      pos: 0.3203125,-1.859375
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 178
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -3.6796875,-1.859375
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 191
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -3.6796875,2.140625
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 192
+    components:
+    - type: Transform
+      anchored: False
+      rot: 1.5707963267948966 rad
+      pos: 0.3203125,2.140625
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 193
+    components:
+    - type: Transform
+      anchored: False
+      pos: 5.3203125,-0.859375
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 195
+    components:
+    - type: Transform
+      anchored: False
+      pos: -6.6796875,-1.859375
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 196
+    components:
+    - type: Transform
+      anchored: False
+      rot: -1.5707963267948966 rad
+      pos: -9.6796875,0.140625
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+- proto: N14WallAdobeSlantedIndestructible
+  entities:
+  - uid: 11
+    components:
+    - type: Transform
+      anchored: False
+      pos: -9.6796875,-1.859375
+      parent: 1
+  - uid: 22
+    components:
+    - type: Transform
+      anchored: False
+      pos: 8.3203125,-0.859375
+      parent: 1
+  - uid: 23
+    components:
+    - type: Transform
+      anchored: False
+      pos: 6.3203125,-2.859375
+      parent: 1
+  - uid: 36
+    components:
+    - type: Transform
+      anchored: False
+      pos: -4.6796875,2.140625
+      parent: 1
+  - uid: 42
+    components:
+    - type: Transform
+      anchored: False
+      pos: -12.6796875,0.140625
+      parent: 1
+  - uid: 43
+    components:
+    - type: Transform
+      anchored: False
+      pos: -11.6796875,1.140625
+      parent: 1
+  - uid: 204
+    components:
+    - type: Transform
+      anchored: False
+      pos: -13.6796875,-0.859375
+      parent: 1
+- proto: N14WallBrickAltSlantedIndestructible
+  entities:
+  - uid: 21
+    components:
+    - type: Transform
+      anchored: False
+      pos: 4.3203125,2.140625
+      parent: 1
+- proto: N14WallRoughScrapSlantedIndestructible
+  entities:
+  - uid: 15
+    components:
+    - type: Transform
+      anchored: False
+      pos: 1.3203125,-1.859375
+      parent: 1
+  - uid: 16
+    components:
+    - type: Transform
+      anchored: False
+      pos: 4.3203125,-2.859375
+      parent: 1
+  - uid: 17
+    components:
+    - type: Transform
+      anchored: False
+      pos: 5.3203125,-1.859375
+      parent: 1
+  - uid: 19
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.3203125,2.140625
+      parent: 1
+  - uid: 20
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.3203125,2.140625
+      parent: 1
+  - uid: 46
+    components:
+    - type: Transform
+      anchored: False
+      pos: -11.6796875,2.140625
+      parent: 1
+  - uid: 47
+    components:
+    - type: Transform
+      anchored: False
+      pos: -12.6796875,1.140625
+      parent: 1
+  - uid: 48
+    components:
+    - type: Transform
+      anchored: False
+      pos: -11.6796875,0.140625
+      parent: 1
+  - uid: 49
+    components:
+    - type: Transform
+      anchored: False
+      pos: -7.6796875,-2.859375
+      parent: 1
+- proto: N14WallScrapBlueSlantedIndestructible
+  entities:
+  - uid: 10
+    components:
+    - type: Transform
+      anchored: False
+      pos: 2.3203125,-1.859375
+      parent: 1
+  - uid: 32
+    components:
+    - type: Transform
+      anchored: False
+      pos: -5.6796875,2.140625
+      parent: 1
+  - uid: 201
+    components:
+    - type: Transform
+      anchored: False
+      pos: -14.6796875,1.140625
+      parent: 1
+- proto: N14WallScrapRedSlantedIndestructible
+  entities:
+  - uid: 9
+    components:
+    - type: Transform
+      anchored: False
+      pos: -4.6796875,-1.859375
+      parent: 1
+  - uid: 33
+    components:
+    - type: Transform
+      anchored: False
+      pos: -6.6796875,2.140625
+      parent: 1
+  - uid: 38
+    components:
+    - type: Transform
+      anchored: False
+      pos: -10.6796875,0.140625
+      parent: 1
+  - uid: 41
+    components:
+    - type: Transform
+      anchored: False
+      pos: 6.3203125,2.140625
+      parent: 1
+  - uid: 50
+    components:
+    - type: Transform
+      anchored: False
+      pos: 7.3203125,1.140625
+      parent: 1
+  - uid: 51
+    components:
+    - type: Transform
+      anchored: False
+      pos: 10.3203125,0.140625
+      parent: 1
+  - uid: 52
+    components:
+    - type: Transform
+      anchored: False
+      pos: 11.3203125,-0.859375
+      parent: 1
+- proto: N14WallScrapSlantedIndestructible
+  entities:
+  - uid: 8
+    components:
+    - type: Transform
+      anchored: False
+      pos: -5.6796875,-2.859375
+      parent: 1
+  - uid: 31
+    components:
+    - type: Transform
+      anchored: False
+      pos: -9.6796875,2.140625
+      parent: 1
+  - uid: 53
+    components:
+    - type: Transform
+      anchored: False
+      pos: 5.3203125,2.140625
+      parent: 1
+  - uid: 54
+    components:
+    - type: Transform
+      anchored: False
+      pos: 9.3203125,-1.859375
+      parent: 1
+  - uid: 55
+    components:
+    - type: Transform
+      anchored: False
+      pos: 7.3203125,-1.859375
+      parent: 1
+  - uid: 57
+    components:
+    - type: Transform
+      anchored: False
+      pos: 10.3203125,-0.859375
+      parent: 1
+  - uid: 63
+    components:
+    - type: Transform
+      anchored: False
+      pos: 8.3203125,1.140625
+      parent: 1
+  - uid: 64
+    components:
+    - type: Transform
+      anchored: False
+      pos: 6.3203125,1.140625
+      parent: 1
+  - uid: 205
+    components:
+    - type: Transform
+      anchored: False
+      pos: -12.6796875,-0.859375
+      parent: 1
+- proto: N14WallSewerSlantedIndestructible
+  entities:
+  - uid: 14
+    components:
+    - type: Transform
+      anchored: False
+      pos: -4.6796875,-2.859375
+      parent: 1
+  - uid: 18
+    components:
+    - type: Transform
+      anchored: False
+      pos: -8.6796875,2.140625
+      parent: 1
+  - uid: 34
+    components:
+    - type: Transform
+      anchored: False
+      pos: -10.6796875,1.140625
+      parent: 1
+  - uid: 37
+    components:
+    - type: Transform
+      anchored: False
+      pos: -10.6796875,2.140625
+      parent: 1
+  - uid: 44
+    components:
+    - type: Transform
+      anchored: False
+      pos: -13.6796875,1.140625
+      parent: 1
+  - uid: 45
+    components:
+    - type: Transform
+      anchored: False
+      pos: -11.6796875,-0.859375
+      parent: 1
+  - uid: 56
+    components:
+    - type: Transform
+      anchored: False
+      pos: 4.3203125,-1.859375
+      parent: 1
+  - uid: 58
+    components:
+    - type: Transform
+      anchored: False
+      pos: 6.3203125,-1.859375
+      parent: 1
+  - uid: 59
+    components:
+    - type: Transform
+      anchored: False
+      pos: 9.3203125,0.140625
+      parent: 1
+  - uid: 60
+    components:
+    - type: Transform
+      anchored: False
+      pos: 10.3203125,-1.859375
+      parent: 1
+- proto: N14WallWoodSlantedIndestructible
+  entities:
+  - uid: 4
+    components:
+    - type: Transform
+      anchored: False
+      pos: -6.6796875,-2.859375
+      parent: 1
+  - uid: 12
+    components:
+    - type: Transform
+      anchored: False
+      pos: -10.6796875,-0.859375
+      parent: 1
+  - uid: 13
+    components:
+    - type: Transform
+      anchored: False
+      pos: -8.6796875,-1.859375
+      parent: 1
+  - uid: 24
+    components:
+    - type: Transform
+      anchored: False
+      pos: 5.3203125,-2.859375
+      parent: 1
+  - uid: 25
+    components:
+    - type: Transform
+      anchored: False
+      pos: 3.3203125,-1.859375
+      parent: 1
+  - uid: 26
+    components:
+    - type: Transform
+      anchored: False
+      pos: 1.3203125,2.140625
+      parent: 1
+  - uid: 27
+    components:
+    - type: Transform
+      anchored: False
+      pos: 8.3203125,0.140625
+      parent: 1
+  - uid: 28
+    components:
+    - type: Transform
+      anchored: False
+      pos: 8.3203125,-1.859375
+      parent: 1
+  - uid: 35
+    components:
+    - type: Transform
+      anchored: False
+      pos: -7.6796875,2.140625
+      parent: 1
+  - uid: 61
+    components:
+    - type: Transform
+      anchored: False
+      pos: 9.3203125,-0.859375
+      parent: 1
+  - uid: 62
+    components:
+    - type: Transform
+      anchored: False
+      pos: 11.3203125,0.140625
+      parent: 1
+  - uid: 202
+    components:
+    - type: Transform
+      anchored: False
+      pos: -13.6796875,0.140625
+      parent: 1
+  - uid: 203
+    components:
+    - type: Transform
+      anchored: False
+      pos: -14.6796875,0.140625
+      parent: 1
+- proto: WoodenSupport
+  entities:
+  - uid: 39
+    components:
+    - type: Transform
+      anchored: False
+      pos: -9.6796875,1.140625
+      parent: 1
+  - uid: 40
+    components:
+    - type: Transform
+      anchored: False
+      pos: 4.3203125,1.140625
+      parent: 1
+...

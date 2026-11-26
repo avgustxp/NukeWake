@@ -84,6 +84,17 @@
     shoes: N14ClothingBootsBlack
     head: N14ClothingHeadHatArmyBeret
 
+- type: startingGear
+  id: N14CaravanGuardNPC
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitCaravanOveralls
+    outerClothing: N14ClothingOuterPoliceVest
+    shoes: N14ClothingBootsBlack
+    head: N14ClothingHeadHatArmyBeret
+    back: N14ClothingBackpackCaravanGuardFilled # Gun cabinet loot
+    pocket1: N14CurrencyCap50
+    pocket2: N14CurrencyCap50
+
 # Tribal faction NPCs
 - type: startingGear
   id: TribalSkirmisherNPC

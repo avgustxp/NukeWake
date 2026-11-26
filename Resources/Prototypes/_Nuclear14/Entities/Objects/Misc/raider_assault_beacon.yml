@@ -1,0 +1,54 @@
+# Raider assault trigger items (admin/event tools), one per attack point.
+# Using one in hand announces the raid and spawns raiders from the matching spawners.
+# Mirrors N14VertibirdCrashTrigger.
+
+- type: entity
+  parent: BaseItem
+  id: N14RaiderAssaultTriggerNorth
+  name: радиомаяк нападения (Северный перевал)
+  description: Передаёт рейдерам приказ атаковать Северный перевал.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/flare.rsi
+    layers:
+    - state: flare_base
+      color: "#b33939"
+  - type: Item
+    size: Small
+    sprite: Objects/Misc/flare.rsi
+  - type: N14RaiderAssaultTrigger
+    attackPointId: north_pass
+
+- type: entity
+  parent: BaseItem
+  id: N14RaiderAssaultTriggerWest
+  name: радиомаяк нападения (Западная ферма)
+  description: Передаёт рейдерам приказ атаковать Западную ферму.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/flare.rsi
+    layers:
+    - state: flare_base
+      color: "#b33939"
+  - type: Item
+    size: Small
+    sprite: Objects/Misc/flare.rsi
+  - type: N14RaiderAssaultTrigger
+    attackPointId: west_farm
+
+- type: entity
+  parent: BaseItem
+  id: N14RaiderAssaultTriggerSouth
+  name: радиомаяк нападения (Старый завод)
+  description: Передаёт рейдерам приказ атаковать Старый завод.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/flare.rsi
+    layers:
+    - state: flare_base
+      color: "#b33939"
+  - type: Item
+    size: Small
+    sprite: Objects/Misc/flare.rsi
+  - type: N14RaiderAssaultTrigger
+    attackPointId: old_factory

@@ -1,20 +1,16 @@
-using Content.Server.Administration;
+﻿using Content.Server.Administration;
 using Content.Server.GameTicking;
-using Content.Server.Lightning;
 using Content.Server.Maps;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
-using Content.Shared.Ghost;
 using Content.Shared.Weather;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using System.Linq;
-using System.Numerics;
 
 namespace Content.Server.Weather;
 
@@ -27,8 +23,6 @@ public sealed class WeatherSystem : SharedWeatherSystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly LightningSystem _lightning = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -57,58 +51,6 @@ public sealed class WeatherSystem : SharedWeatherSystem
                 Logger.InfoS("weather", $"Randomizing weather to {weather.ID} on map {map}");
             }
         }
-    }
-
-    protected override void Run(EntityUid uid, WeatherData weather, WeatherPrototype weatherProto, float frameTime)
-    {
-        base.Run(uid, weather, weatherProto, frameTime);
-
-        if (weatherProto.Lightning is not { } lightning || weather.State != WeatherState.Running)
-            return;
-
-        var interval = TimeSpan.FromSeconds(_random.NextFloat(lightning.MinInterval, lightning.MaxInterval));
-
-        if (weather.NextLightning == TimeSpan.Zero)
-        {
-            weather.NextLightning = Timing.CurTime + interval;
-            return;
-        }
-
-        if (Timing.CurTime < weather.NextLightning)
-            return;
-
-        weather.NextLightning = Timing.CurTime + interval;
-
-        if (!_random.Prob(lightning.Chance))
-            return;
-
-        TryStrikeWeatherLightning(uid, lightning);
-    }
-
-    private void TryStrikeWeatherLightning(EntityUid mapUid, WeatherLightningSettings settings)
-    {
-        var players = new List<EntityUid>();
-
-        var query = EntityQueryEnumerator<ActorComponent, TransformComponent>();
-        while (query.MoveNext(out var player, out _, out var xform))
-        {
-            if (xform.MapUid != mapUid || HasComp<GhostComponent>(player))
-                continue;
-
-            players.Add(player);
-        }
-
-        if (players.Count == 0)
-            return;
-
-        var target = Transform(_random.Pick(players));
-        var offset = _random.NextAngle().ToVec() * _random.NextFloat(1f, settings.Radius);
-        var strikeMap = _transform.ToMapCoordinates(target.Coordinates.Offset(offset));
-        var strike = Spawn("N14WeatherLightningStrikePoint", strikeMap);
-        var sky = Spawn("N14WeatherLightningStrikePoint",
-            new MapCoordinates(strikeMap.Position + new Vector2(0f, settings.Height), strikeMap.MapId));
-
-        _lightning.ShootLightning(sky, strike, settings.Prototype.Id, triggerLightningEvents: false);
     }
 
     private bool WeatherRunning()
@@ -230,6 +172,11 @@ public sealed class WeatherSystem : SharedWeatherSystem
             curr += proto.Chance;
         }
         return null;
+    }
+
+    public bool CanSeeThroughWeather(EntityUid owner, EntityUid target)
+    {
+        return true;
     }
 
     private CompletionResult WeatherCompletion(IConsoleShell shell, string[] args)

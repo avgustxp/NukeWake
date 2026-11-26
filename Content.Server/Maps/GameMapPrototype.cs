@@ -51,7 +51,10 @@ public sealed partial class GameMapPrototype : IPrototype
             ID = ID,
             MapName = MapName,
             MapPath = mapPath,
-            _stations = _stations
+            /// Forge-Change-Start
+            _stations = _stations,
+            WeatherWeights = WeatherWeights
+            /// Forge-Change-End
         };
     }
 }

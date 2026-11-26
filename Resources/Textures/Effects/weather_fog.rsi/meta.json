@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "copyright": "Procedurally generated for Forge-Station",
+  "license": "CC0-1.0",
+  "size": {
+    "x": 128,
+    "y": 128
+  },
+  "states": [
+    {
+      "name": "fog",
+      "delays": [
+        [
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+# Caravan markers.
+# Route order is set by the digits in the marker's name — rename placed instances
+# so they carry the sequence, e.g. "caravan point 1", "caravan point 2", etc.
+- type: entity
+  name: caravan route point
+  parent: MarkerBase
+  id: N14CaravanRoutePoint
+  components:
+  - type: N14CaravanRoutePoint
+  - type: Sprite
+    state: red
+
+- type: entity
+  name: caravan spawn
+  parent: MarkerBase
+  id: N14CaravanSpawnMarker
+  components:
+  - type: N14CaravanSpawnMarker
+  - type: Sprite
+    state: green
+
+- type: entity
+  name: caravan despawn
+  parent: MarkerBase
+  id: N14CaravanDespawnMarker
+  components:
+  - type: N14CaravanDespawnMarker
+  - type: Sprite
+    state: blue
+
+# Invisible wall that only caravan members can walk through.
+- type: entity
+  name: caravan gate
+  parent: MarkerBlocker
+  id: N14MarkerBlockerCaravan
+  suffix: caravan-only wall
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - CaravanGate
+        - BulletImpassable
+        - InteractImpassable
+        density: 1000
