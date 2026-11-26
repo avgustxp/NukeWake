@@ -1,0 +1,145 @@
+# Raider assault map markers.
+#
+# - N14RaiderAssaultPoint* : attack points. The entity `name` is the point name used
+#   by the raid announcement, so rename them freely.
+# - N14RaiderAssaultSpawner* : raider spawn markers. Each is bound to a point by
+#   `attackPointId`; every point has two of them in this set (six total).
+#
+# An N14RaiderAssaultTrigger* item launched by an admin/event starts the raid: it
+# announces the attack and spawns raiders from all matching spawners.
+
+# --- Attack points ---------------------------------------------------------
+
+- type: entity
+  name: Северный перевал
+  parent: MarkerBase
+  id: N14RaiderAssaultPointNorth
+  suffix: Нападение
+  components:
+    - type: Sprite
+      sprite: Markers/cross.rsi
+      state: green
+    - type: N14RaiderAssaultPoint
+      attackPointId: north_pass
+      wanderRadius: 7
+      maxAlive: 10
+
+- type: entity
+  name: Западная ферма
+  parent: MarkerBase
+  id: N14RaiderAssaultPointWest
+  suffix: Нападение
+  components:
+    - type: Sprite
+      sprite: Markers/cross.rsi
+      state: green
+    - type: N14RaiderAssaultPoint
+      attackPointId: west_farm
+      wanderRadius: 7
+      maxAlive: 10
+
+- type: entity
+  name: Старый завод
+  parent: MarkerBase
+  id: N14RaiderAssaultPointSouth
+  suffix: Нападение
+  components:
+    - type: Sprite
+      sprite: Markers/cross.rsi
+      state: green
+    - type: N14RaiderAssaultPoint
+      attackPointId: old_factory
+      wanderRadius: 7
+      maxAlive: 10
+
+# --- Raider spawners (two per attack point) --------------------------------
+
+- type: entity
+  name: спавнер штурмовиков (Северный перевал)
+  parent: MarkerBase
+  id: N14RaiderAssaultSpawnerNorthA
+  suffix: Нападение
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - state: timed
+    - type: N14RaiderAssaultSpawner
+      attackPointId: north_pass
+      prototype: N14MobRaiderSkrimisherAssault
+      count: 5
+
+- type: entity
+  name: спавнер охотников (Северный перевал)
+  parent: MarkerBase
+  id: N14RaiderAssaultSpawnerNorthB
+  suffix: Нападение
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - state: timed
+    - type: N14RaiderAssaultSpawner
+      attackPointId: north_pass
+      prototype: N14MobRaiderHunterAssault
+      count: 5
+
+- type: entity
+  name: спавнер психо-рейдеров (Западная ферма)
+  parent: MarkerBase
+  id: N14RaiderAssaultSpawnerWestA
+  suffix: Нападение
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - state: timed
+    - type: N14RaiderAssaultSpawner
+      attackPointId: west_farm
+      prototype: N14MobRaiderPsychoRangedAssault
+      count: 5
+
+- type: entity
+  name: спавнер штурмовиков (Западная ферма)
+  parent: MarkerBase
+  id: N14RaiderAssaultSpawnerWestB
+  suffix: Нападение
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - state: timed
+    - type: N14RaiderAssaultSpawner
+      attackPointId: west_farm
+      prototype: N14MobRaiderSkrimisherAssault
+      count: 5
+
+- type: entity
+  name: спавнер охотников (Старый завод)
+  parent: MarkerBase
+  id: N14RaiderAssaultSpawnerSouthA
+  suffix: Нападение
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - state: timed
+    - type: N14RaiderAssaultSpawner
+      attackPointId: old_factory
+      prototype: N14MobRaiderHunterAssault
+      count: 5
+
+- type: entity
+  name: спавнер психо-рейдеров (Старый завод)
+  parent: MarkerBase
+  id: N14RaiderAssaultSpawnerSouthB
+  suffix: Нападение
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - state: timed
+    - type: N14RaiderAssaultSpawner
+      attackPointId: old_factory
+      prototype: N14MobRaiderPsychoRangedAssault
+      count: 5

@@ -136,7 +136,7 @@ public sealed class N14CaravanSystem : EntitySystem
         var route = new List<EntityCoordinates>();
         if (despawn is { } dp)
         {
-            var cancel = new CancellationTokenSource();
+            var cancel = new System.Threading.CancellationTokenSource();
             var pathResult = await _pathfinding.GetPathSafe(
                 spawnMarker,
                 origin,
@@ -590,13 +590,13 @@ public sealed class N14CaravanSystem : EntitySystem
         EntityUid? nearest = null;
         var nearestDistSq = float.MaxValue;
 
-        var destructibleQuery = GetEntityQuery<DestructibleComponent, TransformComponent>();
-        foreach (var (obstacle, obsXform) in destructibleQuery)
+        var destructibleQuery = EntityQueryEnumerator<DestructibleComponent, TransformComponent>();
+        while (destructibleQuery.MoveNext(out var obstacle, out _, out var obsXform))
         {
             if (!Exists(obstacle) || obstacle == member)
                 continue;
 
-            if (obsXform.MapId != mapId)
+            if (_transform.GetMapId(obstacle) != mapId)
                 continue;
 
             var distSq = (obsXform.Coordinates.Position - memberPos).LengthSquared();

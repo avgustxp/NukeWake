@@ -1,11 +1,15 @@
 using Content.Server.Chat.Systems;
+using Content.Server.NPC;
 using Content.Server.NPC.Components;
+using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Server.OfferItem;
 using Content.Server.Popups;
+using Content.Server._Forge.NPC;
 using Content.Shared.Chat;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
@@ -16,6 +20,7 @@ using Robust.Server.Player;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 using System.Linq;
 using System.Numerics;
 
@@ -43,6 +48,9 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly RotateToFaceSystem _rotateToFace = default!;
     [Dependency] private readonly NPCRetaliationSystem _retaliation = default!;
+    [Dependency] private readonly NPCSystem _npc = default!;
+    [Dependency] private readonly ProximityNPCSystem _proximity = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     /// <summary>Delay between checkpoint update ticks.</summary>
     private const float UpdateInterval = 0.5f;
@@ -52,6 +60,15 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
 
     /// <summary>Markers farther apart than this are treated as separate gates.</summary>
     private const float GateClusterRange = 4f;
+
+    /// <summary>How long a guard must go without fighting before it walks back to its spawn point.</summary>
+    private const float ReturnHomeDelay = 30f;
+
+    /// <summary>Distance to the home position at which a returning guard is considered to be back.</summary>
+    private const float HomeArriveRange = 1f;
+
+    /// <summary>Give up walking home after this long (e.g. the spawn point got walled off).</summary>
+    private const float ReturnHomeTimeout = 60f;
 
     /// <summary>Users who already crossed a gate (hostile) per gate.</summary>
     private readonly Dictionary<(string Id, MapId Map, Box2 Box), HashSet<NetUserId>> _triggeredUsers = new();
@@ -65,6 +82,7 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<N14RaiderCheckpointMemberComponent, DidUnequipEvent>(OnDidUnequip);
+        SubscribeLocalEvent<N14RaiderCheckpointMemberComponent, MapInitEvent>(OnMemberMapInit);
     }
 
     public override void Update(float frameTime)
@@ -73,6 +91,8 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
         if (_acc < UpdateInterval)
             return;
         _acc = 0f;
+
+        UpdateReturnHome();
 
         var checkpoints = new Dictionary<string, List<(EntityUid Boss, N14RaiderCheckpointComponent Comp)>>();
         var garrisons = new Dictionary<string, List<EntityUid>>();
@@ -205,6 +225,108 @@ public sealed class N14RaiderCheckpointSystem : EntitySystem
             foreach (var (boss, comp) in bossList)
                 HandleBoss(boss, comp, bossList);
         }
+    }
+
+    private void OnMemberMapInit(Entity<N14RaiderCheckpointMemberComponent> ent, ref MapInitEvent args)
+    {
+        // MapInit runs after the spawner (or the map itself) has positioned the guard,
+        // so this is exactly the position of the spawn marker it came from.
+        ent.Comp.Home = Transform(ent).Coordinates;
+    }
+
+    /// <summary>
+    /// Sends garrison members back to the position of their spawn markers once they
+    /// have stopped fighting for <see cref="ReturnHomeDelay"/> seconds.
+    /// </summary>
+    private void UpdateReturnHome()
+    {
+        var now = _timing.CurTime;
+        var query = EntityQueryEnumerator<N14RaiderCheckpointMemberComponent>();
+
+        while (query.MoveNext(out var uid, out var member))
+        {
+            if (member.Home is not { } home)
+                continue;
+
+            if (!Exists(uid) || TerminatingOrDeleted(uid))
+                continue;
+
+            // Dead guards stay where they fell.
+            if (TryComp<MobStateComponent>(uid, out var mob) && mob.CurrentState != MobState.Alive)
+                continue;
+
+            // Ranged/melee combat components are added by the HTN combat operators
+            // while the guard is actually engaging a target, so they are the most
+            // reliable "still shooting" signal. Getting shot at also resets the timer
+            // through NPCRetaliation, which puts the guard back into combat.
+            if (HasComp<NPCRangedCombatComponent>(uid) || HasComp<NPCMeleeCombatComponent>(uid))
+            {
+                member.LastCombatTime = now;
+
+                // Combat interrupted the walk home: stop chasing the old home target
+                // so the guard does not resume walking the instant the fight ends.
+                // The proximity wake window is left alone so being shot at still
+                // keeps a distant guard awake. The 30s delay starts over.
+                if (member.ReturningHome)
+                {
+                    member.ReturningHome = false;
+
+                    if (HasComp<HTNComponent>(uid))
+                        _npc.SetBlackboard(uid, NPCBlackboard.FollowTarget, Transform(uid).Coordinates);
+                }
+
+                continue;
+            }
+
+            if (now - member.LastCombatTime < TimeSpan.FromSeconds(ReturnHomeDelay))
+                continue;
+
+            var homePos = _transform.ToMapCoordinates(home);
+            var memberPos = _transform.GetMapCoordinates(uid);
+
+            if (homePos.MapId != memberPos.MapId ||
+                (homePos.Position - memberPos.Position).Length() <= HomeArriveRange)
+            {
+                if (member.ReturningHome)
+                    StopReturning(uid, member);
+
+                continue;
+            }
+
+            // Wake the guard even if no player is nearby: NPCs far from players are
+            // put to sleep by ProximityNPC and would otherwise never walk back.
+            // Refreshing the "retaliation" window every tick keeps it awake until home.
+            _proximity.WakeForRetaliation(uid, now + TimeSpan.FromSeconds(UpdateInterval * 2));
+
+            if (!member.ReturningHome)
+            {
+                member.ReturningHome = true;
+                member.ReturnStartTime = now;
+            }
+            else if (now - member.ReturnStartTime > TimeSpan.FromSeconds(ReturnHomeTimeout))
+            {
+                // The spawn point became unreachable (walls, doors, map edits).
+                // Stop trying instead of pathfinding there forever.
+                StopReturning(uid, member);
+                continue;
+            }
+
+            // Re-issued every tick; the HTN walk branch (N14CaravanWalkCompound) does
+            // the actual pathfinding and steering towards the stored position.
+            _npc.SetBlackboard(uid, NPCBlackboard.FollowTarget, home);
+        }
+    }
+
+    /// <summary>
+    /// Stops the walk-home behaviour and idles the guard in place.
+    /// </summary>
+    private void StopReturning(EntityUid uid, N14RaiderCheckpointMemberComponent member)
+    {
+        member.ReturningHome = false;
+        _proximity.CancelRetaliation(uid);
+
+        if (HasComp<HTNComponent>(uid))
+            _npc.SetBlackboard(uid, NPCBlackboard.FollowTarget, Transform(uid).Coordinates);
     }
 
     private void PruneIsolatedUsers(HashSet<NetUserId> seenUsers)

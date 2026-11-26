@@ -1,0 +1,62 @@
+# Raider assault mobs.
+# They keep the normal raider faction (hostile to players), so N14RangedHostileCompound
+# makes them shoot anyone they meet while N14RaiderAssaultCompound's walk branch sends
+# them to the attack point. N14RaiderAssaultSystem sets FollowTarget and handles the
+# wander behaviour after arrival.
+
+- type: entity
+  name: рейдер-штурмовик
+  parent: N14MobRaiderSkrimisher
+  id: N14MobRaiderSkrimisherAssault
+  suffix: Нападение
+  description: Рейдер, идущий на штурм. Стреляет по всему, что встретит на пути.
+  components:
+    - type: HTN
+      rootTask:
+        task: N14RaiderAssaultCompound
+      planCooldown: 0.2
+      blackboard:
+        FollowRange: !type:Single
+          1.5
+        FollowCloseRange: !type:Single
+          1.0
+        MaximumIdleTime: !type:Single
+          2.0
+
+- type: entity
+  name: рейдер-охотник на штурме
+  parent: N14MobRaiderHunter
+  id: N14MobRaiderHunterAssault
+  suffix: Нападение
+  description: Рейдер с винтовкой, прикрывающий штурм с дистанции.
+  components:
+    - type: HTN
+      rootTask:
+        task: N14RaiderAssaultCompound
+      planCooldown: 0.2
+      blackboard:
+        FollowRange: !type:Single
+          1.5
+        FollowCloseRange: !type:Single
+          1.0
+        MaximumIdleTime: !type:Single
+          2.0
+
+- type: entity
+  name: рейдер-псих на штурме
+  parent: N14MobRaiderPsychoRanged
+  id: N14MobRaiderPsychoRangedAssault
+  suffix: Нападение
+  description: Одержимый рейдер, не отступающий от выбранной цели.
+  components:
+    - type: HTN
+      rootTask:
+        task: N14RaiderAssaultCompound
+      planCooldown: 0.2
+      blackboard:
+        FollowRange: !type:Single
+          1.5
+        FollowCloseRange: !type:Single
+          1.0
+        MaximumIdleTime: !type:Single
+          2.0
